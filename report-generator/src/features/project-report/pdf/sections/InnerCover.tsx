@@ -117,7 +117,7 @@ export default function InnerCover() {
               style={{ width: 18, height: 1.5, backgroundColor: "#cbd5e1" }}
             />
             <ArchBox
-              label="Order State Management"
+              label="Workflow State Management"
               bg="#eff6ff"
               border="#3b82f6"
               bold
@@ -149,7 +149,7 @@ export default function InnerCover() {
               border="#10b981"
             />
             <ArchBox label="Better Auth" bg="#fffbeb" border="#f59e0b" />
-            <ArchBox label="Inngest Queue" bg="#eef2ff" border="#6366f1" />
+            <ArchBox label="Execution Queue" bg="#eef2ff" border="#6366f1" />
           </View>
         </View>
 
@@ -208,7 +208,7 @@ export default function InnerCover() {
               marginBottom: 5,
             }}
           >
-            FLOWGENT
+            AROWAI
           </Text>
 
           <Text
@@ -276,7 +276,7 @@ export default function InnerCover() {
               marginBottom: 8,
             }}
           >
-            AI-Powered Django E-Commerce Platform
+            Advanced Workflow Automation Platform
           </Text>
 
           <View style={{ paddingHorizontal: 16 }}>
@@ -290,10 +290,24 @@ export default function InnerCover() {
               }}
             >
               A modern, full-stack platform for building, scheduling, and
-              executing automated orders with real-time monitoring, team
+              executing automated workflows with real-time monitoring, team
               collaboration, and third-party integrations.
             </Text>
           </View>
+
+          <Text
+            style={{
+              fontSize: 14,
+              fontFamily: "Times-Bold",
+              color: "#0f172a",
+              textAlign: "center",
+              letterSpacing: 2,
+              marginBottom: 11,
+              textTransform: "uppercase",
+            }}
+          >
+            AROWAI: ADVANCED WORKFLOW ECOSYSTEM
+          </Text>
 
           {/* Key Features */}
           <View
@@ -335,7 +349,7 @@ export default function InnerCover() {
                   marginBottom: 2,
                 }}
               >
-                AUTHOR
+                AUTHORS
               </Text>
               <Text
                 style={{
@@ -344,7 +358,7 @@ export default function InnerCover() {
                   color: "#0f172a",
                 }}
               >
-                Kanish Kumar
+                Rutashman Sharma & Lovejinder Singh
               </Text>
             </View>
             <View style={{ alignItems: "center" }}>

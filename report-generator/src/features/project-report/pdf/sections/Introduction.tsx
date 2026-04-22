@@ -13,38 +13,39 @@ import ProjectStructure from "../diagrams/ProjectStructure";
 export default function Introduction() {
   return (
     <BookPageLayout chapterTitle="Introduction" chapterNum="01">
-      {/* Chapter Title Block */}
-      <View style={{ marginBottom: 14, alignItems: "center", marginBottom: 10 }}>
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
         <Text
           style={{
-            fontSize: 11,
+            fontSize: 12,
             fontFamily: "Times-Roman",
             color: "#666666",
             letterSpacing: 4,
             textTransform: "uppercase",
-            marginBottom: 4,
+            marginBottom: 12,
           }}
         >
           Chapter 01
         </Text>
-        <Text
-          style={{
-            fontSize: 26,
-            fontFamily: "Times-Bold",
-            textAlign: "center",
-            letterSpacing: 1.5,
-            textTransform: "uppercase",
-            color: "#000000",
-          }}
-        >
-          Introduction
-        </Text>
+        <View style={{ marginBottom: 16 }}>
+          <Text
+            style={{
+              fontSize: 32,
+              fontFamily: "Times-Bold",
+              textAlign: "center",
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "#000000",
+              lineHeight: 1.1,
+            }}
+          >
+            Introduction
+          </Text>
+        </View>
         <View
           style={{
-            width: 60,
-            height: 2,
+            width: 80,
+            height: 4,
             backgroundColor: "#000000",
-            marginBottom: 6,
           }}
         />
       </View>

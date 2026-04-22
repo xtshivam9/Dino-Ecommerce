@@ -14,24 +14,24 @@ export default function OutputScreens() {
   return (
     <BookPageLayout chapterTitle="Output & Screenshots" chapterNum="11">
       {/* Chapter Title */}
-      <View style={{ alignItems: "center", marginBottom: 12 }}>
+      <View style={{ alignItems: "center", marginBottom: 24 }}>
         <Text
           style={{
             fontSize: 12,
             fontFamily: "Times-Roman",
             color: "#666666",
             letterSpacing: 3,
-            marginBottom: 4,
+            marginBottom: 6,
           }}
         >
           CHAPTER 11
         </Text>
         <Text
           style={{
-            fontSize: 24,
+            fontSize: 28,
             fontFamily: "Times-Bold",
             textAlign: "center",
-            marginBottom: 8,
+            marginBottom: 10,
             textTransform: "uppercase",
           }}
         >
@@ -41,9 +41,9 @@ export default function OutputScreens() {
       </View>
 
       <Text style={styles.paragraphIndent}>
-        This chapter presents the key screens and outputs of the dj-ecommerce
+        This chapter presents the key screens and outputs of the AROWAI
         platform. The application is deployed and accessible at{" "}
-        <Text style={styles.bold}>https://flowgent.app</Text>. Each screen is
+        <Text style={styles.bold}>https://arowai.app</Text>. Each screen is
         described with its purpose, layout, and key interactive elements. The
         application supports both <Text style={styles.bold}>Light</Text> and{" "}
         <Text style={styles.bold}>Dark</Text> themes.

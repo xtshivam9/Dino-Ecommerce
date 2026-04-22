@@ -150,14 +150,13 @@ export default function References() {
 
   return (
     <BookPageLayout chapterTitle="References" chapterNum="">
-      <View style={{ alignItems: "center", marginBottom: 8, marginBottom: 12 }}>
-        <Text style={styles.h1}>REFERENCES</Text>
+      <View style={{ alignItems: "center", marginBottom: 24 }}>
+        <Text style={[styles.h1, { marginBottom: 10 }]}>REFERENCES</Text>
         <View
           style={{
             width: 60,
             height: 3,
             backgroundColor: "#000000",
-            marginBottom: 4,
           }}
         />
       </View>

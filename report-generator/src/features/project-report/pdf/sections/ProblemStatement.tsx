@@ -13,31 +13,41 @@ export default function ProblemStatement() {
   return (
     <BookPageLayout chapterTitle="Problem Statement" chapterNum="02">
       {/* Chapter Title */}
-      <View style={{ alignItems: "center", marginBottom: 16 }}>
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
         <Text
           style={{
             fontSize: 12,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 3,
-            marginBottom: 4,
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            marginBottom: 12,
           }}
         >
           CHAPTER 2
         </Text>
-        <Text
+        <View style={{ marginBottom: 16 }}>
+          <Text
+            style={{
+              fontSize: 32,
+              fontFamily: "Times-Bold",
+              textAlign: "center",
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "#000000",
+              lineHeight: 1.1,
+            }}
+          >
+            PROBLEM STATEMENT
+          </Text>
+        </View>
+        <View
           style={{
-            fontSize: 28,
-            fontFamily: "Times-Bold",
-            textAlign: "center",
-            marginBottom: 8,
-            textTransform: "uppercase",
-            letterSpacing: 1.5,
+            width: 80,
+            height: 4,
+            backgroundColor: "#000000",
           }}
-        >
-          PROBLEM STATEMENT
-        </Text>
-        <View style={{ width: 60, height: 3, backgroundColor: "#000000" }} />
+        />
       </View>
 
       {/* 2.1 Introduction */}
@@ -51,15 +61,15 @@ export default function ProblemStatement() {
         orders and integrate disparate systems.
       </Text>
       <Text style={styles.paragraphIndent}>
-        While numerous e-commerce platforms exist in the market, each
+        While numerous workflow automation platforms exist in the market, each
         comes with its own set of limitations that prevent widespread adoption
         among non-technical users. This chapter provides a comprehensive
-        analysis of the current challenges in e-commerce, examines
+        analysis of the current challenges in automation, examines
         existing solutions and their shortcomings, and establishes the
-        foundation for the proposed dj-ecommerce platform.
+        foundation for the proposed AROWAI platform.
       </Text>
       <Text style={styles.paragraphIndent}>
-        The need for accessible, reliable, and intelligent e-commerce
+        The need for accessible, reliable, and advanced workflow automation
         has never been greater. Organizations that fail to adopt automation face
         reduced productivity, increased operational costs, and diminished
         competitive advantage in an increasingly digital marketplace.

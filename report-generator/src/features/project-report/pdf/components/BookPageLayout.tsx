@@ -49,7 +49,8 @@ export default function BookPageLayout({
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "flex-end",
+            paddingBottom: 6,
           }}
         >
           <Text
@@ -77,8 +78,8 @@ export default function BookPageLayout({
         <View
           style={{
             height: 1,
-            marginBottom: 4,
             backgroundColor: "#cccccc",
+            marginBottom: 8,
           }}
         />
       </View>
@@ -111,7 +112,7 @@ export default function BookPageLayout({
           color: "#666666",
         }}
       >
-        dj-ecommerce — Project Report
+        AROWAI — Project Report
       </Text>
     </Page>
   );

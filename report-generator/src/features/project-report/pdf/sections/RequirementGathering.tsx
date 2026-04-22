@@ -21,7 +21,7 @@ export default function RequirementGathering() {
         user dissatisfaction.
       </Text>
       <Text style={styles.paragraphIndent}>
-        For the dj-ecommerce platform, a multi-method approach to requirement
+        For the AROWAI platform, a multi-method approach to requirement
         gathering was employed, combining questionnaires, interviews,
         competitive analysis, and prototype evaluation. This comprehensive
         approach ensured that requirements captured not only explicit user needs
@@ -48,7 +48,7 @@ export default function RequirementGathering() {
         </Text>
         <Text style={{ fontSize: 11, marginBottom: 3, lineHeight: 1.5 }}>
           <Text style={styles.bold}>3. Competitive Analysis:</Text> Existing
-          e-commerce platforms were analyzed to understand industry
+          workflow automation platforms were analyzed to understand industry
           standards, common features, and areas for differentiation.
         </Text>
       </View>
@@ -83,7 +83,7 @@ export default function RequirementGathering() {
             textAlign: "center",
           }}
         >
-          FLOWGENT USER REQUIREMENTS QUESTIONNAIRE
+          AROWAI USER REQUIREMENTS QUESTIONNAIRE
         </Text>
 
         <Text
@@ -139,7 +139,7 @@ export default function RequirementGathering() {
             apply)
           </Text>
           <Text style={{ fontSize: 9, marginBottom: 2 }}>
-            9. How important is AI integration in orders? (1-Not Important to
+            9. How important is advanced logic integration in workflows? (1-Not Important to
             5-Critical)
           </Text>
           <Text style={{ fontSize: 9, marginBottom: 2 }}>
@@ -660,7 +660,7 @@ export default function RequirementGathering() {
       <Text style={styles.h3}>6.3.5 Key Findings</Text>
       <Text style={styles.paragraphIndent}>
         Analysis of the questionnaire responses and interview transcripts
-        revealed several significant findings that shaped the dj-ecommerce
+        revealed several significant findings that shaped the AROWAI
         requirements:
       </Text>
 
@@ -692,14 +692,14 @@ export default function RequirementGathering() {
 
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>
-          Finding 3: AI Features are Increasingly Desired (65%)
+          Finding 3: Advanced Logic Features are Increasingly Desired (65%)
         </Text>
       </Text>
       <Text style={styles.paragraphIndent}>
-        65% of respondents expressed interest in AI-powered automation features.
+        65% of respondents expressed interest in automated workflow features.
         Use cases included content generation, data analysis, intelligent
-        routing, and natural language processing. This finding validated the
-        decision to include native AI integration as a core feature.
+        routing, and structured data processing. This finding validated the
+        decision to include native service integration as a core feature.
       </Text>
 
       <Text style={styles.paragraph}>

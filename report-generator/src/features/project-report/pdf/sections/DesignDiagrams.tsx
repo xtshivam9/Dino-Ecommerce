@@ -18,37 +18,48 @@ import DatabaseSchemaSection from "../components/DatabaseSchemaSection";
 export default function DesignDiagrams() {
   return (
     <BookPageLayout chapterTitle="System Design" chapterNum="07">
-      <View style={{ alignItems: "center", marginBottom: 12 }}>
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
         <Text
           style={{
             fontSize: 12,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 3,
-            marginBottom: 4,
-          }}
-        >
-          CHAPTER 6
-        </Text>
-        <Text
-          style={{
-            fontSize: 26,
-            fontFamily: "Times-Bold",
-            textAlign: "center",
-            marginBottom: 8,
+            letterSpacing: 4,
             textTransform: "uppercase",
+            marginBottom: 12,
           }}
         >
-          SYSTEM DESIGN
+          CHAPTER 7
         </Text>
-        <View style={{ width: 60, height: 3, backgroundColor: "#000000" }} />
+        <View style={{ marginBottom: 16 }}>
+          <Text
+            style={{
+              fontSize: 32,
+              fontFamily: "Times-Bold",
+              textAlign: "center",
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "#000000",
+              lineHeight: 1.1,
+            }}
+          >
+            SYSTEM DESIGN
+          </Text>
+        </View>
+        <View
+          style={{
+            width: 80,
+            height: 4,
+            backgroundColor: "#000000",
+          }}
+        />
       </View>
 
       <Text style={styles.h2}>7.1 Introduction</Text>
       <Text style={styles.paragraphIndent}>
         System design translates the requirements specification into a detailed
         technical blueprint. This chapter presents the design artifacts for
-        dj-ecommerce including Data Flow Diagrams, Use Case Diagrams,
+        AROWAI including Data Flow Diagrams, Use Case Diagrams,
         Entity-Relationship Diagrams, and System Architecture.
       </Text>
 

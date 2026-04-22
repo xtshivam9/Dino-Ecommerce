@@ -15,32 +15,41 @@ import FeasibilityScorecard from "../diagrams/FeasibilityScorecard";
 export default function FeasibilityStudy() {
   return (
     <BookPageLayout chapterTitle="Feasibility Study" chapterNum="04">
-      <View style={{ alignItems: "center", marginBottom: 16 }}>
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
         <Text
           style={{
             fontSize: 12,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 3,
-            marginBottom: 4,
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            marginBottom: 12,
           }}
         >
           CHAPTER 4
         </Text>
-        <Text
+        <View style={{ marginBottom: 16 }}>
+          <Text
+            style={{
+              fontSize: 32,
+              fontFamily: "Times-Bold",
+              textAlign: "center",
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "#000000",
+              lineHeight: 1.1,
+            }}
+          >
+            FEASIBILITY STUDY
+          </Text>
+        </View>
+        <View
           style={{
-            fontSize: 26,
-            fontFamily: "Times-Bold",
-            textAlign: "center",
-            marginBottom: 8,
-            textTransform: "uppercase",
-            lineHeight: 1.5,
-            letterSpacing: 1,
+            width: 80,
+            height: 4,
+            backgroundColor: "#000000",
           }}
-        >
-          FEASIBILITY STUDY
-        </Text>
-        <View style={{ width: 60, height: 3, backgroundColor: "#000000" }} />
+        />
       </View>
 
       <Text style={styles.h2}>4.1 Introduction</Text>
@@ -49,7 +58,7 @@ export default function FeasibilityStudy() {
         committing resources to a project. It evaluates whether the proposed
         project is technically possible, economically viable, and operationally
         practical. This section presents the comprehensive feasibility analysis
-        conducted for the dj-ecommerce e-commerce platform.
+        conducted for the AROWAI workflow automation platform.
       </Text>
       <Text style={styles.paragraphIndent}>
         The feasibility study examines five dimensions: technical feasibility

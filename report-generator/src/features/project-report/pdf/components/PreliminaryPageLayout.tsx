@@ -38,7 +38,7 @@ export default function PreliminaryPageLayout({
         fixed
         style={{
           position: "absolute",
-          bottom: 20,
+          bottom: FOOTER_BOTTOM,
           left: 0,
           right: 0,
           alignItems: "center",

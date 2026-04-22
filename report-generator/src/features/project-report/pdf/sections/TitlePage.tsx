@@ -11,222 +11,195 @@ export default function TitlePage() {
     <Page
       size="A4"
       style={{
-        padding: 48,
+        padding: 60,
         fontFamily: "Times-Bold",
         backgroundColor: "#ffffff",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
       }}
     >
-      {/* Header Section */}
-      <View style={{ alignItems: "center", }}>
+      {/* TOP SECTION: Project Title */}
+      <View style={{ alignItems: "center", width: "100%" }}>
         <Text
           style={{
-            fontSize: 12,
+            fontSize: 14,
             textTransform: "uppercase",
-            letterSpacing: 3,
-            color: "#444444",
-            marginBottom: 16,
+            letterSpacing: 4,
+            color: "#666666",
+            marginBottom: 15,
           }}
         >
           A Project Report on
         </Text>
 
-        {/* Title Box */}
-        <View
-          style={{
-            paddingHorizontal: 40,
-            paddingVertical: 20,
-            marginBottom: 12,
-          }}
-        >
+        <View style={{ marginVertical: 10 }}>
           <Text
             style={{
-              fontSize: 28,
+              fontSize: 48,
               fontFamily: "Times-Bold",
-              fontWeight: "bold",
-              letterSpacing: 2,
+              letterSpacing: 8,
+              color: "#000000",
             }}
           >
-            dj-ecommerce
+            AROWAI
           </Text>
         </View>
 
-        {/* Underline */}
         <View
           style={{
-            width: 80,
+            width: 120,
             height: 4,
             backgroundColor: "#000000",
-            marginBottom: 16,
+            marginVertical: 15,
           }}
         />
 
         <Text
           style={{
-            fontSize: 14,
+            fontSize: 16,
             fontFamily: "Times-Italic",
             color: "#444444",
           }}
         >
-          Comprehensive Django E-Commerce Platform
+          Comprehensive E-Commerce Platform
         </Text>
       </View>
 
-      {/* Project Logo */}
-      <View style={{ alignItems: "center", marginBottom: 16 }}>
+      {/* MIDDLE SECTION: Brand Logo */}
+      <View style={{ alignItems: "center", marginVertical: 20 }}>
         <Image
-          src="/DNP.WA-64981705.png"
-          style={{ height: 60, width: "auto" }}
+          src="/brand-logo.png"
+          style={{ height: 140, width: "auto" }}
         />
       </View>
 
-      {/* Submission Text */}
-      <View
-        style={{
-          alignItems: "center",
-          marginBottom: 24,
-        }}
-      >
-        <View
+      {/* SUBMISSION INFO */}
+      <View style={{ alignItems: "center", width: "100%" }}>
+        <Text
           style={{
-            padding: 16,
-            alignItems: "center",
+            fontSize: 11,
+            textTransform: "uppercase",
+            letterSpacing: 1.5,
+            color: "#333333",
+            marginBottom: 10,
+            textAlign: "center",
           }}
         >
-          <Text
-            style={{
-              fontSize: 10,
-              textTransform: "uppercase",
-              letterSpacing: 1,
-              color: "#333333",
-            }}
-          >
-            Submitted in Partial Fulfillment for the Award of Degree of
-          </Text>
-          <Text
-            style={{
-              fontSize: 18,
-              fontFamily: "Times-Bold",
-              fontWeight: "bold",
-              marginBottom: 8,
-            }}
-          >
-            Bachelor of Computer Applications
-          </Text>
-          <Text style={{ fontSize: 12, color: "#666666", marginBottom: 2 }}>
-            (BCA)
-          </Text>
-        </View>
+          Submitted in Partial Fulfillment for the Award of Degree of
+        </Text>
+        <Text
+          style={{
+            fontSize: 22,
+            fontFamily: "Times-Bold",
+            marginBottom: 5,
+            textAlign: "center",
+          }}
+        >
+          Bachelor of Computer Applications
+        </Text>
+        <Text style={{ fontSize: 14, color: "#666666" }}>(BCA)</Text>
       </View>
 
-      {/* Student & Guide Details */}
+      {/* DETAILS SECTION: Student & Guide */}
       <View
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
-          marginBottom: 24,
-          paddingHorizontal: 16,
+          width: "100%",
+          paddingHorizontal: 20,
+          marginVertical: 20,
         }}
       >
-        {/* Student */}
-        <View style={{ paddingLeft: 12 }}>
+        <View>
           <Text
             style={{
-              fontSize: 10,
+              fontSize: 11,
               textTransform: "uppercase",
               letterSpacing: 1,
               color: "#666666",
-              marginBottom: 4,
+              marginBottom: 5,
             }}
           >
             Submitted By
           </Text>
-          <Text style={{ fontSize: 16, fontFamily: "Times-Bold", fontWeight: "bold" }}>
-            Kanish Kumar
-          </Text>
-          <Text style={{ fontSize: 11, color: "#444444" }}>
-            Roll No: 11792312331
-          </Text>
+          <View style={{ marginBottom: 8 }}>
+            <Text style={{ fontSize: 16, fontFamily: "Times-Bold" }}>
+              Rutashman Sharma
+            </Text>
+            <Text style={{ fontSize: 11, color: "#444444" }}>
+              Roll No: 11792314708
+            </Text>
+          </View>
+          <View>
+            <Text style={{ fontSize: 16, fontFamily: "Times-Bold" }}>
+              Lovejinder Singh
+            </Text>
+            <Text style={{ fontSize: 11, color: "#444444" }}>
+              Roll No: 11792314706
+            </Text>
+          </View>
         </View>
-
-        {/* Guides */}
-        <View style={{ paddingLeft: 12 }}>
+        <View style={{ alignItems: "flex-end" }}>
           <Text
             style={{
-              fontSize: 10,
+              fontSize: 11,
               textTransform: "uppercase",
               letterSpacing: 1,
               color: "#666666",
-              marginBottom: 4,
+              marginBottom: 5,
             }}
           >
             Under the Guidance of
           </Text>
-          <Text style={{ fontSize: 14, fontFamily: "Times-Bold", fontWeight: "bold" }}>
-            Mr. Anshuman Sharma
+          <Text style={{ fontSize: 16, fontFamily: "Times-Bold" }}>
+            Amarbir Singh
           </Text>
-          <Text style={{ fontSize: 11, color: "#444444" }}>&</Text>
-          <Text style={{ fontSize: 14, fontFamily: "Times-Bold", fontWeight: "bold" }}>
-            Dr. Sunny Sharma
+          <Text style={{ fontSize: 11, color: "#444444" }}>
+            Project Mentor
           </Text>
         </View>
       </View>
 
-      {/* College Details */}
-      <View
-        style={{
-          alignItems: "center",
-          paddingTop: 32,
-        }}
-      >
-        {/* GNDU Logo */}
+      {/* BOTTOM SECTION: College & University */}
+      <View style={{ alignItems: "center", width: "100%" }}>
         <Image
           src="/gndu.png"
-          style={{ height: 100, width: "auto", marginBottom: 16 }}
+          style={{ height: 80, width: "auto", marginBottom: 15 }}
         />
-
-        <View
+        <Text
           style={{
-            padding: 16,
-            alignItems: "center",
+            fontSize: 20,
+            fontFamily: "Times-Bold",
+            textTransform: "uppercase",
+            letterSpacing: 2,
+            textAlign: "center",
           }}
         >
+          Hindu College, Amritsar
+        </Text>
+        <Text style={{ fontSize: 11, color: "#666666", marginTop: 5 }}>
+          Affiliated to Guru Nanak Dev University, Amritsar
+        </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginTop: 15,
+          }}
+        >
+          <View style={{ width: 60, height: 1, backgroundColor: "#cccccc" }} />
           <Text
             style={{
-              fontSize: 16,
-              fontFamily: "Times-Bold",
-              fontWeight: "bold",
-              textTransform: "uppercase",
-              letterSpacing: 1,
-            }}
-          >
-            Hindu College, Amritsar
-          </Text>
-          <Text style={{ fontSize: 10, color: "#666666", marginBottom: 4 }}>
-            Dhab Khatikan, Amritsar - 143001, Punjab
-          </Text>
-          <Text
-            style={{
-              fontSize: 10,
-              fontFamily: "Times-Italic",
+              fontSize: 12,
+              marginHorizontal: 15,
               color: "#444444",
-              marginBottom: 8,
             }}
           >
-            Affiliated to Guru Nanak Dev University, Amritsar
+            Academic Year: 2025-2026
           </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginBottom: 12,
-            }}
-          >
-            <View style={{ width: 48, height: 1, backgroundColor: "#999999" }} />
-            <Text style={{ fontSize: 11, marginHorizontal: 12, color: "#444444" }}>
-              Academic Year: 2025-2026
-            </Text>
-            <View style={{ width: 48, height: 1, backgroundColor: "#999999" }} />
-          </View>
+          <View style={{ width: 60, height: 1, backgroundColor: "#cccccc" }} />
         </View>
       </View>
     </Page>

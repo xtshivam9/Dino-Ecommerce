@@ -11,31 +11,41 @@ export default function Objectives() {
   return (
     <BookPageLayout chapterTitle="Project Objectives" chapterNum="03">
       {/* Chapter Title */}
-      <View style={{ alignItems: "center", marginBottom: 16 }}>
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
         <Text
           style={{
             fontSize: 12,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 3,
-            marginBottom: 4,
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            marginBottom: 12,
           }}
         >
           CHAPTER 3
         </Text>
-        <Text
+        <View style={{ marginBottom: 16 }}>
+          <Text
+            style={{
+              fontSize: 32,
+              fontFamily: "Times-Bold",
+              textAlign: "center",
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "#000000",
+              lineHeight: 1.1,
+            }}
+          >
+            PROJECT OBJECTIVES
+          </Text>
+        </View>
+        <View
           style={{
-            fontSize: 28,
-            fontFamily: "Times-Bold",
-            textAlign: "center",
-            marginBottom: 8,
-            textTransform: "uppercase",
-            letterSpacing: 1.5,
+            width: 80,
+            height: 4,
+            backgroundColor: "#000000",
           }}
-        >
-          PROJECT OBJECTIVES
-        </Text>
-        <View style={{ width: 60, height: 3, backgroundColor: "#000000" }} />
+        />
       </View>
 
       {/* 3.1 Introduction */}
@@ -66,7 +76,7 @@ export default function Objectives() {
       <Text style={styles.h2}>3.2 Primary Objectives</Text>
       <Text style={styles.paragraphIndent}>
         The primary objectives define the essential capabilities that the
-        dj-ecommerce platform must deliver to address the core problems identified
+        AROWAI platform must deliver to address the core problems identified
         in Chapter 2. These objectives directly address the automation
         accessibility gap, integration complexity, and reliability concerns.
       </Text>
@@ -82,7 +92,7 @@ export default function Objectives() {
         <Text style={styles.bold}>Rationale:</Text> The technical barrier to
         automation identified in Chapter 2 stems primarily from the programming
         requirements of traditional solutions. A visual interface democratizes
-        e-commerce by allowing business users, not just developers, to
+        automation by allowing business users, not just developers, to
         create and manage automated processes.
       </Text>
       <Text style={styles.paragraph}>

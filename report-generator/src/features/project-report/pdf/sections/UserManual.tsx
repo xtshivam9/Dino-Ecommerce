@@ -30,13 +30,20 @@ export default function UserManual() {
             fontSize: 24,
             fontFamily: "Times-Bold",
             textAlign: "center",
-            marginBottom: 8,
+            marginBottom: 10,
             textTransform: "uppercase",
           }}
         >
           USER MANUAL
         </Text>
-        <View style={{ width: 60, height: 3, backgroundColor: "#000000" }} />
+        <View
+          style={{
+            width: 60,
+            height: 3,
+            backgroundColor: "#000000",
+            marginTop: 4,
+          }}
+        />
       </View>
 
       <Text style={styles.paragraphIndent}>
@@ -283,27 +290,27 @@ export default function UserManual() {
         </Text>
       </View>
 
-      <Text style={styles.h3}>10.4.3 AI Models</Text>
+      <Text style={styles.h3}>10.4.3 Cloud Services</Text>
       <View style={{ paddingLeft: 24, marginBottom: 4 }}>
         <Text style={styles.paragraph}>
-          <Text style={styles.bold}>• OpenAI:</Text> Generate text using GPT
-          models (GPT-4o, GPT-4o-mini). Requires OpenAI API key credential
+          <Text style={styles.bold}>• Automated Logic:</Text> Generate text and 
+          process data using advanced cloud models. Requires API key credentials.
         </Text>
         <Text style={styles.paragraph}>
-          <Text style={styles.bold}>• Anthropic:</Text> Use Claude models
-          (Claude 3.5 Sonnet, Claude 3 Haiku) for text generation
+          <Text style={styles.bold}>• Data Analytics:</Text> Perform sentiment 
+          analysis and complex data classification using external processors.
         </Text>
         <Text style={styles.paragraph}>
-          <Text style={styles.bold}>• Google Gemini:</Text> Leverage Gemini
-          models for multimodal AI capabilities
+          <Text style={styles.bold}>• Multi-modal Processing:</Text> Leverage 
+          advanced models for processing images and unstructured data.
         </Text>
         <Text style={styles.paragraph}>
-          <Text style={styles.bold}>• Text Classifier:</Text> Classify input
-          text into predefined categories using AI
+          <Text style={styles.bold}>• Text Classifier:</Text> Classify input 
+          text into predefined categories using automated logic.
         </Text>
         <Text style={styles.paragraph}>
-          <Text style={styles.bold}>• Summarizer:</Text> Generate concise
-          summaries of lengthy text inputs
+          <Text style={styles.bold}>• Summarizer:</Text> Generate concise 
+          summaries of lengthy text inputs using advanced processing nodes.
         </Text>
       </View>
 
@@ -377,7 +384,7 @@ export default function UserManual() {
         </Text>
         <Text style={styles.paragraph}>
           <Text style={styles.bold}>Step 3:</Text> Select the credential type
-          (e.g., OpenAI API Key, Slack Bot Token, GitHub Personal Access Token)
+          (e.g., External API Key, Slack Bot Token, GitHub Personal Access Token)
         </Text>
         <Text style={styles.paragraph}>
           <Text style={styles.bold}>Step 4:</Text> Enter the required fields —
@@ -390,9 +397,9 @@ export default function UserManual() {
         </Text>
       </View>
 
-      <Text style={styles.h3}>10.5.2 Using Credentials in Models</Text>
+      <Text style={styles.h3}>10.5.2 Using Credentials in Workflow Nodes</Text>
       <Text style={styles.paragraphIndent}>
-        When configuring a product that requires authentication (e.g., OpenAI,
+        When configuring a product that requires authentication (e.g., Cloud Service,
         Slack), a <Text style={styles.bold}>Credential</Text> dropdown appears
         in the product configuration panel. Select the previously saved credential
         from the list. Credentials are scoped to the user (personal) or team
@@ -850,7 +857,7 @@ export default function UserManual() {
             "Check the cron expression validity, timezone setting, and that the schedule status is active",
           ],
           [
-            "Model connection fails",
+            "Service connection fails",
             "Ensure you drag from an output handle (right) to an input handle (left). Check that the connection path is valid",
           ],
           [

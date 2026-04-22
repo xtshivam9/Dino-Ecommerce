@@ -1,7 +1,7 @@
 "use client";
 
 import { Page, View, Text } from "@react-pdf/renderer";
-import { toRoman, PAGE_MARGINS } from "../styles";
+import { toRoman, PAGE_MARGINS, FOOTER_BOTTOM } from "../styles";
 
 
 
@@ -77,7 +77,7 @@ export default function ListOfFigures() {
   };
 
   const renderHeader = (isContd: boolean = false) => (
-    <View style={{ marginBottom: 18, marginTop: 0 }}>
+    <View style={{ marginBottom: 24, marginTop: 0 }}>
       <Text
         style={{
           fontSize: 10,
@@ -85,7 +85,7 @@ export default function ListOfFigures() {
           color: "#888888",
           letterSpacing: 4,
           textTransform: "uppercase" as const,
-          marginBottom: 4,
+          marginBottom: 6,
           textAlign: "center" as const,
         }}
       >
@@ -98,6 +98,7 @@ export default function ListOfFigures() {
           textAlign: "center" as const,
           letterSpacing: 1.5,
           textTransform: "uppercase" as const,
+          marginBottom: 10,
         }}
       >
         {isContd ? "List of Figures (continued)" : "List of Figures"}
@@ -105,10 +106,9 @@ export default function ListOfFigures() {
       <View
         style={{
           width: 40,
-          height: 1,
+          height: 2,
           backgroundColor: "#000000",
           alignSelf: "center" as const,
-          marginBottom: 8,
         }}
       />
     </View>
@@ -183,7 +183,7 @@ export default function ListOfFigures() {
     <View
       style={{
         position: "absolute",
-        bottom: 20,
+        bottom: FOOTER_BOTTOM,
         left: 0,
         right: 0,
         textAlign: "center",

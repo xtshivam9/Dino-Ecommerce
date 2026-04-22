@@ -6,7 +6,6 @@ import { toRoman, PAGE_MARGINS, FOOTER_BOTTOM } from "../styles";
 
 
 const acronyms = [
-  { abbr: "AI", full: "Artificial Intelligence" },
   { abbr: "API", full: "Application Programming Interface" },
   { abbr: "BCA", full: "Bachelor of Computer Applications" },
   { abbr: "CI/CD", full: "Continuous Integration / Continuous Deployment" },
@@ -20,7 +19,6 @@ const acronyms = [
   { abbr: "HTTP", full: "HyperText Transfer Protocol" },
   { abbr: "JSON", full: "JavaScript Object Notation" },
   { abbr: "JWT", full: "JSON Web Token" },
-  { abbr: "LLM", full: "Large Language Model" },
   { abbr: "OAuth", full: "Open Authorization" },
   { abbr: "ORM", full: "Object-Relational Mapping" },
   { abbr: "PDF", full: "Portable Document Format" },
@@ -63,7 +61,7 @@ export default function Acronyms() {
   }
 
   const renderHeader = (isContd: boolean) => (
-    <View style={{ marginBottom: 18, marginTop: 0 }}>
+    <View style={{ marginBottom: 24, marginTop: 0 }}>
       <Text
         style={{
           fontSize: 10,
@@ -71,7 +69,7 @@ export default function Acronyms() {
           color: "#888888",
           letterSpacing: 4,
           textTransform: "uppercase",
-          marginBottom: 4,
+          marginBottom: 6,
           textAlign: "center",
         }}
       >
@@ -84,6 +82,7 @@ export default function Acronyms() {
           textAlign: "center",
           letterSpacing: 1.5,
           textTransform: "uppercase",
+          marginBottom: 10,
         }}
       >
         {isContd ? "Acronyms (Contd.)" : "List of Acronyms"}
@@ -91,10 +90,9 @@ export default function Acronyms() {
       <View
         style={{
           width: 40,
-          height: 1,
+          height: 2,
           backgroundColor: "#000000",
           alignSelf: "center",
-          marginBottom: 8,
         }}
       />
     </View>
@@ -146,7 +144,7 @@ export default function Acronyms() {
           <View
             style={{
               position: "absolute",
-              bottom: 20,
+              bottom: FOOTER_BOTTOM,
               left: 0,
               right: 0,
               textAlign: "center",

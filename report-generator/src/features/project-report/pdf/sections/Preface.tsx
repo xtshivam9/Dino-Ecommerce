@@ -14,8 +14,8 @@ export default function Preface() {
   return (
     <PreliminaryPageLayout>
       {/* Title */}
-      <View style={{ alignItems: "center", marginBottom: 14 }}>
-        <Text style={styles.h1}>PREFACE</Text>
+      <View style={{ alignItems: "center", marginBottom: 24 }}>
+        <Text style={[styles.h1, { marginBottom: 10 }]}>PREFACE</Text>
         <View style={{ width: 80, height: 4, backgroundColor: "#000000" }} />
       </View>
 
@@ -23,7 +23,7 @@ export default function Preface() {
       <View>
         <Text style={styles.paragraphIndent}>
           This project report presents the development of{" "}
-          <Text style={styles.bold}>dj-ecommerce</Text>, a visual order
+          <Text style={styles.bold}>AROWAI</Text>, a visual workflow
           automation platform designed to simplify complex business process
           automation for users of all technical backgrounds. The project was
           undertaken as part of the academic requirements for the degree of{" "}
@@ -57,7 +57,6 @@ export default function Preface() {
             borderColor: "#999999",
             padding: 7,
             marginBottom: 7,
-            marginBottom: 7,
           }}
         >
           <Text style={{ fontFamily: "Times-Bold", marginBottom: 4 }}>
@@ -86,7 +85,7 @@ export default function Preface() {
               • Better Auth for Authentication
             </Text>
             <Text style={{ fontSize: 10, width: "50%", marginBottom: 2 }}>
-              • AI SDKs (OpenAI, Anthropic)
+              • Cloud Integrations & APIs
             </Text>
           </View>
         </View>
@@ -95,7 +94,7 @@ export default function Preface() {
           The implementation chapter includes carefully selected code snippets
           that demonstrate key concepts, covering the full technology stack from
           frontend React Flow integration to backend tRPC routers and the
-          Inngest order state management. The testing chapter provides comprehensive
+          Inngest workflow management. The testing chapter provides comprehensive
           test cases and methodology. The output chapter describes all
           application screens and interfaces. The report concludes with an
           honest assessment of the project&apos;s limitations and a roadmap for
@@ -104,8 +103,8 @@ export default function Preface() {
 
         <Text style={[styles.paragraph, { marginBottom: 6 }]}>
           Every effort has been made to present the information in a clear,
-          well-organized manner while adhering to academic standards. I hope
-          this report serves as both documentation of my learning journey and a
+          well-organized manner while adhering to academic standards. We hope
+          this report serves as both documentation of our learning journey and a
           useful reference for anyone interested in building similar full-stack
           applications.
         </Text>

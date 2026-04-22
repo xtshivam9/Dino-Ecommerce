@@ -45,10 +45,10 @@ import InnerCover from "./sections/InnerCover";
 export default function ProjectReportDocument() {
   return (
     <Document
-      title="dj-ecommerce - Project Report"
-      author="dj-ecommerce Team"
+      title="AROWAI - Project Report"
+      author="AROWAI Team"
       subject="BCA Final Year Project Report"
-      keywords="e-commerce, django, stripe, project report, BCA"
+      keywords="e-commerce, AROWAI, automation, project report, BCA"
     >
       {/* ========== Preliminary Pages (Roman Numerals) ========== */}
       <TitlePage />

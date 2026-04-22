@@ -14,82 +14,76 @@ export default function Acknowledgement() {
   return (
     <PreliminaryPageLayout>
       {/* Title */}
-      <View style={{ alignItems: "center", marginBottom: 14 }}>
-        <Text style={styles.h1}>ACKNOWLEDGEMENT</Text>
-        <View style={{ width: 80, height: 4, backgroundColor: "#000000" }} />
+      <View style={{ alignItems: "center", marginBottom: 35, marginTop: 20 }}>
+        <Text style={{ fontSize: 24, fontFamily: "Times-Bold", marginBottom: 12 }}>ACKNOWLEDGEMENT</Text>
+        <View
+          style={{
+            width: 120,
+            height: 4,
+            backgroundColor: "#000000",
+          }}
+        />
       </View>
 
       {/* Content */}
-      <View>
-        <Text style={styles.paragraphIndent}>
+      <View style={{ paddingHorizontal: 10 }}>
+        <Text style={{ fontSize: 12.5, lineHeight: 1.6, textAlign: "justify", marginBottom: 15, textIndent: 30 }}>
           The success and final outcome of this project required a lot of
-          guidance and assistance from many people, and I am extremely
-          privileged to have got this all along the completion of my project.
-          All that I have done is only due to such supervision and assistance,
-          and I would not forget to thank them.
+          guidance and assistance from many people, and we are extremely
+          privileged to have got this all along the completion of our project.
+          All that we have done is only due to such supervision and assistance,
+          and we would not forget to thank them.
         </Text>
 
-        <Text style={[styles.paragraph, { marginBottom: 7 }]}>
-          I express my heartfelt gratitude to my project guides{" "}
-          <Text style={styles.bold}>Mr. Anshuman Sharma</Text> and{" "}
-          <Text style={styles.bold}>Dr. Sunny Sharma</Text> for their valuable
+        <Text style={{ fontSize: 12.5, lineHeight: 1.6, textAlign: "justify", marginBottom: 15 }}>
+          We express our heartfelt gratitude to our project mentor{" "}
+          <Text style={{ fontFamily: "Times-Bold" }}>Amarbir Singh</Text> for his valuable
           guidance, constant encouragement, and constructive criticism
-          throughout the development of this project. Their expertise and
+          throughout the development of this project. His expertise and
           insights have been instrumental in shaping this work.
         </Text>
 
-        <Text style={[styles.paragraph, { marginBottom: 7 }]}>
-          I would like to express my sincere thanks to the Head of Department,{" "}
-          <Text style={styles.bold}>Dr. Rama Sharma</Text>, PG Department of
+        <Text style={{ fontSize: 12.5, lineHeight: 1.6, textAlign: "justify", marginBottom: 15 }}>
+          We would like to express our sincere thanks to the Head of Department,{" "}
+          <Text style={{ fontFamily: "Times-Bold" }}>Dr. Rama Sharma</Text>, PG Department of
           Computer Science & Applications, for providing this opportunity and
           for the necessary support and facilities during the project work.
         </Text>
 
-        <Text style={[styles.paragraph, { marginBottom: 7 }]}>
-          I am also thankful to the Principal,{" "}
-          <Text style={styles.bold}>Dr. Rakesh Kumar</Text>, Hindu College,
+        <Text style={{ fontSize: 12.5, lineHeight: 1.6, textAlign: "justify", marginBottom: 15 }}>
+          We are also thankful to the Principal,{" "}
+          <Text style={{ fontFamily: "Times-Bold" }}>Dr. Rakesh Kumar</Text>, Hindu College,
           Amritsar, for providing the required infrastructure and resources that
           made this project possible.
         </Text>
 
-        <Text style={[styles.paragraph, { marginBottom: 7 }]}>
-          Special thanks to all the faculty members of the Department of
-          Computer Applications for their support and encouragement. Their
-          teaching and knowledge throughout the BCA program have laid the
-          foundation for this project.
+        <Text style={{ fontSize: 12.5, lineHeight: 1.6, textAlign: "justify", marginBottom: 15 }}>
+          Every effort has been made to present the information in a clear,
+          well-organized manner while adhering to academic standards. We hope
+          this report serves as both documentation of our learning journey and a
+          useful reference for anyone interested in building similar full-stack
+          applications.
         </Text>
 
-        <Text style={[styles.paragraph, { marginBottom: 7 }]}>
-          I extend my appreciation to my classmates and friends for their
-          cooperation, suggestions, and moral support during the entire project
-          period.
-        </Text>
-
-        <Text style={[styles.paragraph, { marginBottom: 7 }]}>
-          Last but not least, I would like to express my deepest gratitude to my{" "}
-          <Text style={styles.bold}>family</Text> for their unconditional love,
-          support, and encouragement. Their belief in me has been my greatest
+        <Text style={{ fontSize: 12.5, lineHeight: 1.6, textAlign: "justify", marginBottom: 15 }}>
+          Last but not least, we would like to express our deepest gratitude to our{" "}
+          <Text style={{ fontFamily: "Times-Bold" }}>families</Text> for their unconditional love,
+          support, and encouragement. Their belief in us has been our greatest
           strength throughout this journey.
         </Text>
       </View>
 
-      {/* Signature */}
-      <View style={{ alignItems: "flex-end", marginBottom: 20 }}>
+      {/* Signatures */}
+      <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 40, marginBottom: 20 }}>
         <View style={{ alignItems: "center" }}>
-          <View
-            style={{
-              width: 160,
-              borderTopWidth: 2,
-              borderTopColor: "#000000",
-              marginBottom: 2,
-            }}
-          />
-          <Text style={{ fontSize: 14, fontFamily: "Times-Bold" }}>
-            Kanish Kumar
-          </Text>
-          <Text style={{ fontSize: 11, color: "#666666" }}>
-            Roll No: 11792312331
-          </Text>
+          <View style={{ width: 160, borderTopWidth: 2, borderTopColor: "#000000", marginBottom: 5 }} />
+          <Text style={{ fontSize: 12, fontFamily: "Times-Bold" }}>Rutashman Sharma</Text>
+          <Text style={{ fontSize: 10, color: "#666666" }}>Roll No: 11792314708</Text>
+        </View>
+        <View style={{ alignItems: "center" }}>
+          <View style={{ width: 160, borderTopWidth: 2, borderTopColor: "#000000", marginBottom: 5 }} />
+          <Text style={{ fontSize: 12, fontFamily: "Times-Bold" }}>Lovejinder Singh</Text>
+          <Text style={{ fontSize: 10, color: "#666666" }}>Roll No: 11792314706</Text>
         </View>
       </View>
     </PreliminaryPageLayout>

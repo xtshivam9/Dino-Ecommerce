@@ -12,30 +12,41 @@ import GanttChart from "../diagrams/GanttChart";
 export default function COCOMOEstimation() {
   return (
     <BookPageLayout chapterTitle="Project Estimation" chapterNum="05">
-      <View style={{ alignItems: "center", marginBottom: 12 }}>
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
         <Text
           style={{
             fontSize: 12,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 3,
-            marginBottom: 4,
-          }}
-        >
-          CHAPTER 7
-        </Text>
-        <Text
-          style={{
-            fontSize: 24,
-            fontFamily: "Times-Bold",
-            textAlign: "center",
-            marginBottom: 8,
+            letterSpacing: 4,
             textTransform: "uppercase",
+            marginBottom: 12,
           }}
         >
-          PROJECT ESTIMATION
+          CHAPTER 5
         </Text>
-        <View style={{ width: 60, height: 3, backgroundColor: "#000000" }} />
+        <View style={{ marginBottom: 16 }}>
+          <Text
+            style={{
+              fontSize: 32,
+              fontFamily: "Times-Bold",
+              textAlign: "center",
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "#000000",
+              lineHeight: 1.1,
+            }}
+          >
+            PROJECT ESTIMATION
+          </Text>
+        </View>
+        <View
+          style={{
+            width: 80,
+            height: 4,
+            backgroundColor: "#000000",
+          }}
+        />
       </View>
 
       <Text style={styles.h2}>5.1 Introduction to COCOMO</Text>
@@ -43,13 +54,13 @@ export default function COCOMOEstimation() {
         The Constructive Cost Model (COCOMO) is a procedural software cost
         estimation model developed by Barry Boehm in 1981. This chapter uses
         COCOMO I (also known as COCOMO 81), specifically the Basic and
-        Intermediate variants, to estimate dj-ecommerce's development effort. COCOMO
+        Intermediate variants, to estimate AROWAI's development effort. COCOMO
         I uses a regression formula with parameters derived from historical
         project data and remains widely used in academic software engineering
         coursework.
       </Text>
       <Text style={styles.paragraphIndent}>
-        dj-ecommerce is classified as an Organic project - characterized by a small
+        AROWAI is classified as an Organic project - characterized by a small
         team with good experience working in a familiar environment with
         relatively relaxed requirements. This classification affects the model
         coefficients used in calculations.

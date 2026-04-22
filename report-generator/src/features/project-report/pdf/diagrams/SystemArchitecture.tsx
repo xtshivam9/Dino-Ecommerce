@@ -65,7 +65,7 @@ export default function SystemArchitecture() {
 
   const externals = [
     { label: "Inngest (Durable Exec)", color: "#059669", yIdx: 1 },
-    { label: "OpenAI / Anthropic / Gemini", color: "#7c3aed", yIdx: 2 },
+    { label: "Cloud Services & External APIs", color: "#7c3aed", yIdx: 2 },
     { label: "Slack / GitHub / Notion", color: "#d97706", yIdx: 3 },
     { label: "Resend (Email Service)", color: "#dc2626", yIdx: 4 },
   ];

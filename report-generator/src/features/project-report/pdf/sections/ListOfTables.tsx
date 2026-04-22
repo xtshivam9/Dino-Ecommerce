@@ -152,7 +152,7 @@ export default function ListOfTables() {
   // List of Tables starts at page xiv (14 in Roman numerals)
   const startPage = 14;
   const renderHeader = (isContd: boolean) => (
-    <View style={{ marginBottom: isContd ? 28 : 36, marginTop: 0 }}>
+    <View style={{ marginBottom: 24, marginTop: 0 }}>
       <Text
         style={{
           fontSize: 10,
@@ -160,7 +160,7 @@ export default function ListOfTables() {
           color: "#888888",
           letterSpacing: 4,
           textTransform: "uppercase",
-          marginBottom: 4,
+          marginBottom: 6,
           textAlign: "center",
         }}
       >
@@ -173,6 +173,7 @@ export default function ListOfTables() {
           textAlign: "center",
           letterSpacing: 1.5,
           textTransform: "uppercase",
+          marginBottom: 10,
         }}
       >
         {isContd ? "List of Tables (Continued)" : "List of Tables"}
@@ -180,10 +181,9 @@ export default function ListOfTables() {
       <View
         style={{
           width: 40,
-          height: 1,
+          height: 2,
           backgroundColor: "#000000",
           alignSelf: "center",
-          marginBottom: 8,
         }}
       />
     </View>
@@ -255,7 +255,7 @@ export default function ListOfTables() {
     <View
       style={{
         position: "absolute",
-        bottom: 20,
+        bottom: FOOTER_BOTTOM,
         left: 0,
         right: 0,
         textAlign: "center",

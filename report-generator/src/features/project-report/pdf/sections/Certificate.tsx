@@ -16,8 +16,8 @@ export default function Certificate() {
       {/* Content Container */}
       <View style={{ flex: 1 }}>
         {/* Title */}
-        <View style={{ alignItems: "center", marginBottom: 12 }}>
-          <Text style={styles.h1}>CERTIFICATE</Text>
+        <View style={{ alignItems: "center", marginBottom: 24 }}>
+          <Text style={[styles.h1, { marginBottom: 10 }]}>CERTIFICATE</Text>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <View
               style={{ width: 64, height: 2, backgroundColor: "#000000" }}
@@ -30,27 +30,28 @@ export default function Certificate() {
         </View>
 
         {/* Certificate Text */}
-        <View>
-          <Text style={styles.paragraph}>
+        <View style={{ paddingHorizontal: 10 }}>
+          <Text style={{ fontSize: 13, lineHeight: 1.8, textAlign: "justify", marginBottom: 20 }}>
             This is to certify that the project report entitled{" "}
-            <Text style={styles.bold}>
-              "FLOWGENT 1.0 - Django E-Commerce Platform"
+            <Text style={{ fontFamily: "Times-Bold" }}>
+              "AROWAI 1.0 - Comprehensive E-Commerce Platform"
             </Text>{" "}
-            submitted by <Text style={styles.bold}>Kanish Kumar</Text> (Roll No:{" "}
-            <Text style={styles.bold}>11792312331</Text>) is a bonafide work
-            carried out by the candidate under our supervision and guidance.
+            submitted by <Text style={{ fontFamily: "Times-Bold" }}>Rutashman Sharma</Text> (Roll No:{" "}
+            <Text style={{ fontFamily: "Times-Bold" }}>11792314708</Text>) and <Text style={{ fontFamily: "Times-Bold" }}>Lovejinder Singh</Text> (Roll No:{" "}
+            <Text style={{ fontFamily: "Times-Bold" }}>11792314706</Text>) is a bonafide work
+            carried out by the candidates under our supervision and guidance.
           </Text>
 
-          <Text style={[styles.paragraph, { marginBottom: 8 }]}>
+          <Text style={{ fontSize: 13, lineHeight: 1.8, textAlign: "justify", marginBottom: 20 }}>
             This project is submitted in partial fulfillment of the requirements
             for the award of the degree of{" "}
-            <Text style={styles.bold}>
+            <Text style={{ fontFamily: "Times-Bold" }}>
               Bachelor of Computer Applications (BCA)
             </Text>{" "}
-            from <Text style={styles.bold}>Hindu College, Amritsar</Text>.
+            from <Text style={{ fontFamily: "Times-Bold" }}>Hindu College, Amritsar</Text>.
           </Text>
 
-          <Text style={[styles.paragraph, { marginBottom: 8 }]}>
+          <Text style={{ fontSize: 13, lineHeight: 1.8, textAlign: "justify", marginBottom: 20 }}>
             To the best of our knowledge, the work presented in this project
             report is original and has not been submitted previously for any
             other degree or diploma.
@@ -58,15 +59,16 @@ export default function Certificate() {
 
           <View
             style={{
-              borderWidth: 1,
-              borderColor: "#cccccc",
-              padding: 6,
-              marginBottom: 10,
+              borderWidth: 1.5,
+              borderColor: "#000000",
+              padding: 10,
+              marginBottom: 20,
               alignItems: "center",
+              backgroundColor: "#f9f9f9",
             }}
           >
-            <Text style={{ fontSize: 11, fontFamily: "Times-Italic" }}>
-              We wish the candidate all the best for future endeavors.
+            <Text style={{ fontSize: 12, fontFamily: "Times-Italic" }}>
+              We wish the candidates all the best for future endeavors.
             </Text>
           </View>
         </View>
@@ -75,41 +77,24 @@ export default function Certificate() {
         <View
           style={{
             flexDirection: "row",
-            justifyContent: "space-around",
+            justifyContent: "center",
             marginBottom: 20,
           }}
         >
           <View style={{ alignItems: "center" }}>
             <View
               style={{
-                width: 140,
+                width: 200,
                 borderTopWidth: 2,
                 borderTopColor: "#000000",
                 marginBottom: 2,
               }}
             />
-            <Text style={{ fontSize: 12, fontFamily: "Times-Bold" }}>
-              Mr. Anshuman Sharma
+            <Text style={{ fontSize: 14, fontFamily: "Times-Bold" }}>
+              Amarbir Singh
             </Text>
-            <Text style={{ fontSize: 10, color: "#666666" }}>
-              Project Guide
-            </Text>
-          </View>
-
-          <View style={{ alignItems: "center" }}>
-            <View
-              style={{
-                width: 140,
-                borderTopWidth: 2,
-                borderTopColor: "#000000",
-                marginBottom: 2,
-              }}
-            />
-            <Text style={{ fontSize: 12, fontFamily: "Times-Bold" }}>
-              Dr. Sunny Sharma
-            </Text>
-            <Text style={{ fontSize: 10, color: "#666666" }}>
-              Project Guide
+            <Text style={{ fontSize: 11, color: "#666666" }}>
+              Project Mentor
             </Text>
           </View>
         </View>

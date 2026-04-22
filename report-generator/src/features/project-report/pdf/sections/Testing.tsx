@@ -12,24 +12,24 @@ import TestingPyramid from "../diagrams/TestingPyramid";
 export default function Testing() {
   return (
     <BookPageLayout chapterTitle="Testing" chapterNum="09">
-      <View style={{ alignItems: "center", marginBottom: 12 }}>
+      <View style={{ alignItems: "center", marginBottom: 24 }}>
         <Text
           style={{
             fontSize: 11,
             fontFamily: "Times-Roman",
             color: "#666666",
             letterSpacing: 3,
-            marginBottom: 4,
+            marginBottom: 6,
           }}
         >
           CHAPTER 9
         </Text>
         <Text
           style={{
-            fontSize: 24,
+            fontSize: 28,
             fontFamily: "Times-Bold",
             textAlign: "center",
-            marginBottom: 8,
+            marginBottom: 10,
             textTransform: "uppercase",
           }}
         >
@@ -103,7 +103,7 @@ export default function Testing() {
           [
             "S - SRP",
             "Single Responsibility",
-            "Each product executor handles only one type of operation (HTTP, AI, Slack)",
+            "Each product executor handles only one type of operation (HTTP, Cloud API, Slack)",
           ],
           [
             "O - OCP",
@@ -281,7 +281,7 @@ export default function Testing() {
           [
             "Strategy",
             "Execution logic",
-            "Different strategies for HTTP, AI, Slack products",
+            "Different strategies for HTTP, Cloud API, Slack products",
           ],
           [
             "Observer",
@@ -1097,7 +1097,7 @@ export default function Testing() {
           [
             "ST-04",
             "Error recovery",
-            "Model fails → Auto retry → Succeed",
+            "API fails → Auto retry → Succeed",
             "Recovered",
             "Pass",
           ],

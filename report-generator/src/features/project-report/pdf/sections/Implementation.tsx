@@ -14,36 +14,47 @@ export default function Implementation() {
   return (
     <BookPageLayout chapterTitle="Implementation" chapterNum="08">
       {/* Chapter Title */}
-      <View style={{ alignItems: "center", marginBottom: 12 }}>
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
         <Text
           style={{
             fontSize: 12,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 3,
-            marginBottom: 4,
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            marginBottom: 12,
           }}
         >
           CHAPTER 8
         </Text>
-        <Text
+        <View style={{ marginBottom: 16 }}>
+          <Text
+            style={{
+              fontSize: 32,
+              fontFamily: "Times-Bold",
+              textAlign: "center",
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "#000000",
+              lineHeight: 1.1,
+            }}
+          >
+            IMPLEMENTATION
+          </Text>
+        </View>
+        <View
           style={{
-            fontSize: 24,
-            fontFamily: "Times-Bold",
-            textAlign: "center",
-            marginBottom: 8,
-            textTransform: "uppercase",
+            width: 80,
+            height: 4,
+            backgroundColor: "#000000",
           }}
-        >
-          IMPLEMENTATION
-        </Text>
-        <View style={{ width: 60, height: 3, backgroundColor: "#000000" }} />
+        />
       </View>
 
       {/* 8.1 Introduction */}
       <Text style={styles.h2}>8.1 Introduction</Text>
       <Text style={styles.paragraphIndent}>
-        This chapter presents the implementation details of dj-ecommerce,
+        This chapter presents the implementation details of AROWAI,
         covering the project structure, module-wise development approach, key
         code patterns, and the implementation of all major features. The
         platform was developed using <Text style={styles.bold}>TypeScript</Text>{" "}
@@ -51,10 +62,10 @@ export default function Implementation() {
         (App Router) as the full-stack framework. The source code is hosted on
         GitHub at{" "}
         <Text style={styles.bold}>
-          https://github.com/kanishKumar11/flowgent
+          https://github.com/Rutashman/arowai
         </Text>{" "}
         and the production deployment is accessible at{" "}
-        <Text style={styles.bold}>https://flowgent.app</Text>.
+        <Text style={styles.bold}>https://arowai.app</Text>.
       </Text>
       <Text style={styles.paragraphIndent}>
         The implementation follows a modular architecture with clear separation

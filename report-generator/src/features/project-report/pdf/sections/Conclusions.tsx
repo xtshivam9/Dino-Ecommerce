@@ -10,46 +10,57 @@ import BookPageLayout from "../components/BookPageLayout";
 export default function Conclusions() {
   return (
     <BookPageLayout chapterTitle="Conclusions" chapterNum="12">
-      <View style={{ alignItems: "center", marginBottom: 12 }}>
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
         <Text
           style={{
             fontSize: 12,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 3,
-            marginBottom: 4,
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            marginBottom: 12,
           }}
         >
           CHAPTER 12
         </Text>
-        <Text
+        <View style={{ marginBottom: 16 }}>
+          <Text
+            style={{
+              fontSize: 32,
+              fontFamily: "Times-Bold",
+              textAlign: "center",
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "#000000",
+              lineHeight: 1.1,
+            }}
+          >
+            CONCLUSIONS & FUTURE SCOPE
+          </Text>
+        </View>
+        <View
           style={{
-            fontSize: 24,
-            fontFamily: "Times-Bold",
-            textAlign: "center",
-            marginBottom: 8,
-            textTransform: "uppercase",
+            width: 80,
+            height: 4,
+            backgroundColor: "#000000",
           }}
-        >
-          CONCLUSIONS & FUTURE SCOPE
-        </Text>
-        <View style={{ width: 60, height: 3, backgroundColor: "#000000" }} />
+        />
       </View>
 
       <Text style={styles.h2}>12.1 Project Summary</Text>
       <Text style={styles.paragraphIndent}>
-        dj-ecommerce has been successfully developed as a comprehensive visual
-        e-commerce platform. The project achieved its primary
-        objectives of creating an intuitive, accessible tool for order
-        automation that bridges the gap between no-code simplicity and developer
-        flexibility.
+        <Text style={styles.bold}>AROWAI</Text> has been successfully developed
+        as a comprehensive visual workflow automation platform. The project
+        achieved its primary objectives of creating an intuitive, accessible
+        tool for process automation that bridges the gap between no-code
+        simplicity and developer flexibility.
       </Text>
       <Text style={styles.paragraphIndent}>
         The platform enables users to visually design, execute, and monitor
-        automated orders through an intuitive drag-and-drop interface. By
+        automated workflows through an intuitive drag-and-drop interface. By
         leveraging modern web technologies and cloud-native architecture,
-        dj-ecommerce provides a robust, scalable solution for personal and
-        team-based e-commerce.
+        AROWAI provides a robust, scalable solution for personal and
+        team-based automation.
       </Text>
 
       <Text style={styles.h2}>12.2 Key Achievements</Text>
@@ -116,8 +127,8 @@ export default function Conclusions() {
           ["Team Collaboration", "RBAC with 4 role levels", "Completed"],
           ["Credential Security", "AES-256 encrypted storage", "Completed"],
           [
-            "24 Model Types",
-            "HTTP, AI, Slack, GitHub, Notion, Stripe, Twilio, logic products",
+            "24 Service Types",
+            "HTTP, Cloud Services, Slack, GitHub, Notion, Stripe, Twilio, logic nodes",
             "Completed",
           ],
           [
@@ -217,8 +228,8 @@ export default function Conclusions() {
           (Google, GitHub), RBAC, AES-256 encrypted credentials
         </Text>
         <Text style={{ fontSize: 10, marginBottom: 2 }}>
-          <Text style={styles.bold}>Integrations:</Text> 24 product types including
-          Slack, Google Sheets, GitHub, Notion, Stripe, Twilio, AI providers
+          <Text style={styles.bold}>Integrations:</Text> 24 service types including
+          Slack, Google Sheets, GitHub, Notion, Stripe, Twilio, Cloud APIs
         </Text>
         <Text style={{ fontSize: 10, marginBottom: 2 }}>
           <Text style={styles.bold}>Deployment:</Text> Netlify hosting, Neon
@@ -549,18 +560,18 @@ export default function Conclusions() {
       <Text style={styles.h3}>12.6.2 Long-Term Vision (v2.0+)</Text>
       <View style={{ marginLeft: 24, marginBottom: 6 }}>
         <Text style={{ fontSize: 10, marginBottom: 3 }}>
-          <Text style={styles.bold}>AI Workflow Builder:</Text> Natural language
-          to order generation using LLMs. Users describe automation in plain
-          English and receive a complete order draft.
+          <Text style={styles.bold}>Natural Language Interface:</Text> Natural language
+          to workflow generation using advanced language models. Users describe 
+          automation in plain English and receive a complete workflow draft.
         </Text>
         <Text style={{ fontSize: 10, marginBottom: 3 }}>
-          <Text style={styles.bold}>Model Marketplace:</Text>{" "}
-          Community-contributed custom products and templates with rating and
+          <Text style={styles.bold}>Integration Marketplace:</Text>{" "}
+          Community-contributed custom nodes and templates with rating and
           review system.
         </Text>
         <Text style={{ fontSize: 10, marginBottom: 3 }}>
           <Text style={styles.bold}>Mobile Applications:</Text> Native iOS and
-          Android apps for order monitoring, execution control, and push
+          Android apps for workflow monitoring, execution control, and push
           notifications.
         </Text>
         <Text style={{ fontSize: 10, marginBottom: 3 }}>
@@ -584,7 +595,7 @@ export default function Conclusions() {
 
       <Text style={styles.h2}>12.7 Conclusion</Text>
       <Text style={styles.paragraphIndent}>
-        The development of dj-ecommerce has been a comprehensive journey through
+        The development of AROWAI has been a comprehensive journey through
         modern full-stack web development, from requirements gathering through
         deployment. The project successfully demonstrates the feasibility of
         building accessible automation tools using open-source technologies that
@@ -615,44 +626,19 @@ export default function Conclusions() {
         <Text
           style={{ fontSize: 11, fontFamily: "Times-Italic", lineHeight: 1.6 }}
         >
-          "dj-ecommerce represents not just an academic project submission, but a
+          "AROWAI represents not just an academic project submission, but a
           solid foundation for continued learning and potential commercial
-          development in the e-commerce space. The skills gained
+          development in the automation space. The skills gained
           through this project—modern React development, cloud-native
           architecture, security implementation, and full-stack deployment—are
           directly applicable to industry positions."
         </Text>
       </View>
 
-      <View
-        style={{
-          marginBottom: 12,
-          padding: 7,
-          borderWidth: 2,
-          borderColor: "#006600",
-          backgroundColor: "#f0fff0",
-          alignItems: "center",
-        }}
-      >
-        <Text
-          style={{ fontSize: 14, fontFamily: "Times-Bold", color: "#006600" }}
-        >
-          PROJECT COMPLETED SUCCESSFULLY
-        </Text>
-        <Text style={{ fontSize: 10, marginBottom: 4, textAlign: "center" }}>
-          dj-ecommerce v1.0 | Django E-Commerce Platform
-        </Text>
-        <Text style={{ fontSize: 10, marginBottom: 2, textAlign: "center" }}>
-          Deployed: https://flowgent.app | GitHub:
-          https://github.com/kanishKumar11/flowgent
-        </Text>
-        <Text style={{ fontSize: 10, marginBottom: 2, textAlign: "center" }}>
-          All objectives achieved | Submitted: March 15, 2026
-        </Text>
-      </View>
+
 
       <Text style={[styles.paragraphIndent, { marginBottom: 12 }]}>
-        The author extends gratitude to the project guide, faculty members, and
+        The authors extend gratitude to the project mentor, faculty members, and
         all who contributed to making this project a success. Special thanks to
         the open-source community whose tools and libraries made this project
         possible.

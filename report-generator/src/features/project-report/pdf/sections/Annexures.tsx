@@ -12,13 +12,13 @@ export default function Annexures() {
   return (
     <BookPageLayout chapterTitle="Annexures">
       {/* Title */}
-      <View style={{ alignItems: "center", marginBottom: 12 }}>
+      <View style={{ alignItems: "center", marginBottom: 24 }}>
         <Text
           style={{
-            fontSize: 24,
+            fontSize: 28,
             fontFamily: "Times-Bold",
             textAlign: "center",
-            marginBottom: 8,
+            marginBottom: 10,
             textTransform: "uppercase",
           }}
         >
@@ -31,7 +31,7 @@ export default function Annexures() {
       <Text style={styles.h2}>Annexure A: Complete Database Schema</Text>
       <Text style={styles.paragraphIndent}>
         The following is the complete list of all 14 Prisma models used in
-        dj-ecommerce, hosted on a{" "}
+        AROWAI, hosted on a{" "}
         <Text style={styles.bold}>Neon PostgreSQL</Text> database. The schema is
         managed via Prisma ORM with migration support.
       </Text>
@@ -601,13 +601,13 @@ export default function Annexures() {
           ["BETTER_AUTH_SECRET", "Session encryption secret for Better Auth"],
           [
             "BETTER_AUTH_URL",
-            "Base URL for auth callbacks (https://flowgent.app)",
+            "Base URL for auth callbacks (https://arowai.app)",
           ],
           ["GOOGLE_CLIENT_ID / SECRET", "Google OAuth2 credentials"],
           ["GITHUB_CLIENT_ID / SECRET", "GitHub OAuth2 credentials"],
-          ["OPENAI_API_KEY", "OpenAI GPT API access key"],
-          ["ANTHROPIC_API_KEY", "Anthropic Claude API access key"],
-          ["GOOGLE_AI_API_KEY", "Google Gemini API access key"],
+          ["EXTERNAL_LOGIC_API_KEY", "External service access key"],
+          ["EXTERNAL_ANALYTICS_API_KEY", "External analytics access key"],
+          ["EXTERNAL_MODAL_API_KEY", "External multi-modal access key"],
           ["SLACK_CLIENT_ID / SECRET", "Slack OAuth2 app credentials"],
           ["NOTION_CLIENT_ID / SECRET", "Notion integration credentials"],
           ["INNGEST_EVENT_KEY", "Inngest event ingestion key"],
@@ -657,9 +657,8 @@ export default function Annexures() {
 </View>
 
       {/* ===== Annexure E: Model Type Reference ===== */}
-      <Text style={styles.h2}>Annexure E: Complete Model Type Reference</Text>
       <Text style={styles.paragraphIndent}>
-        All 24 product types available in dj-ecommerce, categorized by function.
+        All 24 service types available in AROWAI, categorized by function.
       </Text>
 
       <View wrap={false}>
@@ -761,9 +760,9 @@ export default function Annexures() {
             "Email (Resend)",
             "Sends emails via Resend API with templates",
           ],
-          ["AI", "OpenAI", "GPT-4/3.5 text generation and chat completion"],
-          ["AI", "Anthropic", "Claude model text generation"],
-          ["AI", "Google Gemini", "Gemini model text generation"],
+          ["Automated Logic", "Logic Node", "Text generation and automated processing"],
+          ["Data Analytics", "Analytics Node", "Complex data analysis and classification"],
+          ["Multi-modal", "Processing Node", "Multi-modal data processing"],
           [
             "Integration",
             "Slack",

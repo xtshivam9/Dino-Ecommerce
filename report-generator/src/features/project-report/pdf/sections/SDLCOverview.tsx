@@ -12,32 +12,41 @@ export default function SDLCOverview() {
   return (
     <BookPageLayout chapterTitle="SDLC" chapterNum="06">
       {/* Chapter Title */}
-      <View style={{ alignItems: "center", marginBottom: 16 }}>
+      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
         <Text
           style={{
             fontSize: 12,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 3,
-            marginBottom: 4,
-          }}
-        >
-          CHAPTER 5
-        </Text>
-        <Text
-          style={{
-            fontSize: 26,
-            fontFamily: "Times-Bold",
-            textAlign: "center",
-            marginBottom: 8,
+            letterSpacing: 4,
             textTransform: "uppercase",
-            lineHeight: 1.5,
-            letterSpacing: 1,
+            marginBottom: 12,
           }}
         >
-          SOFTWARE DEVELOPMENT{"\n"}LIFE CYCLE
+          CHAPTER 6
         </Text>
-        <View style={{ width: 60, height: 3, backgroundColor: "#000000" }} />
+        <View style={{ marginBottom: 16 }}>
+          <Text
+            style={{
+              fontSize: 32,
+              fontFamily: "Times-Bold",
+              textAlign: "center",
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "#000000",
+              lineHeight: 1.1,
+            }}
+          >
+            SOFTWARE DEVELOPMENT{"\n"}LIFE CYCLE
+          </Text>
+        </View>
+        <View
+          style={{
+            width: 80,
+            height: 4,
+            backgroundColor: "#000000",
+          }}
+        />
       </View>
 
       {/* 6.1 Introduction */}
@@ -51,7 +60,7 @@ export default function SDLCOverview() {
         standards.
       </Text>
       <Text style={styles.paragraphIndent}>
-        For the dj-ecommerce platform, adherence to a well-defined SDLC was
+        For the AROWAI platform, adherence to a well-defined SDLC was
         essential given the complexity of the system and the need for reliable,
         production-grade software. This chapter provides an overview of the SDLC
         phases implemented in this project, followed by detailed coverage of

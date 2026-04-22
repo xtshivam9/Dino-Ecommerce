@@ -531,11 +531,12 @@ export default function TableOfContents() {
       </Text>
       <View
         style={{
-          width: 40,
-          height: 1,
+          width: 60,
+          height: 3,
           backgroundColor: "#000000",
           alignSelf: "center",
-          marginBottom: 8,
+          marginTop: 8,
+          marginBottom: 12,
         }}
       />
     </View>

@@ -5,15 +5,15 @@ import { StyleSheet, Font } from "@react-pdf/renderer";
 // A4 dimensions: 210mm x 297mm = 595pt x 842pt
 // Premium report margins - consistent across ALL pages
 export const PAGE_MARGINS = {
-  top: 20,
-  bottom: 20,
-  left: 20,
-  right: 20,
+  top: 50,
+  bottom: 50,
+  left: 50,
+  right: 50,
 };
 
 // Header/Footer positioning
-export const HEADER_TOP = 10;
-export const FOOTER_BOTTOM = 10;
+export const HEADER_TOP = 25;
+export const FOOTER_BOTTOM = 25;
 
 
 // Roman numeral converter
@@ -78,10 +78,11 @@ export const styles = StyleSheet.create({
   h2: {
     fontSize: 12,
     fontFamily: "Times-Bold",
-    marginBottom: 4,
-    paddingBottom: 2,
-    borderBottomWidth: 1,
-    borderBottomColor: "#222222",
+    marginTop: 16,
+    marginBottom: 8,
+    paddingBottom: 6,
+    borderBottomWidth: 1.5,
+    borderBottomColor: "#000000",
   },
   h3: {
     fontSize: 10,
@@ -141,10 +142,12 @@ export const styles = StyleSheet.create({
 
   // Decorative elements
   underline: {
-    width: 80,
+    width: 60,
     height: 3,
     backgroundColor: "#000000",
-    marginTop: 12,
+    marginTop: 6,
+    marginBottom: 12,
+    alignSelf: "center",
   },
   divider: {
     width: "100%",
@@ -157,7 +160,7 @@ export const styles = StyleSheet.create({
   // Footer
   footer: {
     position: "absolute",
-    bottom: 20,
+    bottom: FOOTER_BOTTOM,
     left: 0,
     right: 0,
     textAlign: "center",
@@ -179,10 +182,12 @@ export const styles = StyleSheet.create({
   },
   tableHeader: {
     flexDirection: "row",
-    borderBottomWidth: 1,
-    borderBottomColor: "#222222",
-    backgroundColor: "#f5f5f5",
+    borderBottomWidth: 1.5,
+    borderBottomColor: "#000000",
+    backgroundColor: "#f0f0f0",
     fontFamily: "Times-Bold",
+    paddingTop: 4,
+    paddingBottom: 4,
   },
   tableCell: {
     padding: 2,
