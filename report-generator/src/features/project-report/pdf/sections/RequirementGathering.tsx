@@ -225,8 +225,8 @@ export default function RequirementGathering() {
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Interview Participants:</Text>
       </Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -367,7 +367,7 @@ export default function RequirementGathering() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -377,6 +377,7 @@ export default function RequirementGathering() {
       >
         Table 6.6: Interview Participants and Use Cases
       </Text>
+</View>
 
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Interview Structure:</Text>
@@ -413,8 +414,8 @@ export default function RequirementGathering() {
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Respondent Demographics:</Text>
       </Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -523,7 +524,7 @@ export default function RequirementGathering() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -533,12 +534,13 @@ export default function RequirementGathering() {
       >
         Table 6.7: Questionnaire Respondent Demographics
       </Text>
+</View>
 
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Tool Usage and Satisfaction:</Text>
       </Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -642,7 +644,7 @@ export default function RequirementGathering() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -652,6 +654,7 @@ export default function RequirementGathering() {
       >
         Table 6.8: Current Tool Usage and Satisfaction Levels
       </Text>
+</View>
 
       {/* 6.3.5 Key Findings */}
       <Text style={styles.h3}>6.3.5 Key Findings</Text>
@@ -742,8 +745,8 @@ export default function RequirementGathering() {
         cases were identified for the dj-ecommerce platform:
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -890,7 +893,7 @@ export default function RequirementGathering() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -900,6 +903,7 @@ export default function RequirementGathering() {
       >
         Table 6.9: Primary Use Cases Identified
       </Text>
+</View>
 
       {/* 6.3.7 Stakeholder Analysis */}
       <Text style={styles.h3}>6.3.7 Stakeholder Analysis</Text>
@@ -909,8 +913,8 @@ export default function RequirementGathering() {
         key stakeholder groups and their primary concerns.
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1028,7 +1032,7 @@ export default function RequirementGathering() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1038,6 +1042,7 @@ export default function RequirementGathering() {
       >
         Table 6.10: Stakeholder Analysis
       </Text>
+</View>
 
       {/* 6.3.8 Requirement Prioritization */}
       <Text style={styles.h3}>
@@ -1152,8 +1157,8 @@ export default function RequirementGathering() {
         for validation.
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1345,7 +1350,7 @@ export default function RequirementGathering() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1356,6 +1361,7 @@ export default function RequirementGathering() {
         Table 6.11: Requirements Traceability Matrix (Q=Questionnaire,
         I=Interview)
       </Text>
+</View>
 
       {/* 6.3.10 Validation of Requirements */}
       <Text style={styles.h3}>6.3.10 Validation of Requirements</Text>

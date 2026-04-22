@@ -71,8 +71,8 @@ export default function FeasibilityStudy() {
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Technology Stack Assessment:</Text>
       </Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -207,7 +207,7 @@ export default function FeasibilityStudy() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -217,6 +217,7 @@ export default function FeasibilityStudy() {
       >
         Table 4.1: Technology Stack Feasibility Assessment
       </Text>
+</View>
 
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Third-Party Integration Assessment:</Text>
@@ -353,8 +354,8 @@ export default function FeasibilityStudy() {
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Technical Risk Analysis:</Text>
       </Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -501,7 +502,7 @@ export default function FeasibilityStudy() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -511,6 +512,7 @@ export default function FeasibilityStudy() {
       >
         Table 4.2: Technical Risk Analysis
       </Text>
+</View>
 
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Skills Assessment:</Text>
@@ -695,8 +697,8 @@ export default function FeasibilityStudy() {
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Infrastructure Cost Analysis (Monthly):</Text>
       </Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -862,7 +864,7 @@ export default function FeasibilityStudy() {
           </Text>
         </View>
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -872,6 +874,7 @@ export default function FeasibilityStudy() {
       >
         Table 4.3: Infrastructure Cost Analysis
       </Text>
+</View>
 
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Cost-Benefit Analysis:</Text>
@@ -1632,8 +1635,8 @@ export default function FeasibilityStudy() {
       </View>
 
       <Text style={styles.h3}>4.8 Feasibility Summary</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1737,7 +1740,7 @@ export default function FeasibilityStudy() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1747,6 +1750,7 @@ export default function FeasibilityStudy() {
       >
         Table 4.4: Feasibility Summary
       </Text>
+</View>
 
       <View
         wrap={false}

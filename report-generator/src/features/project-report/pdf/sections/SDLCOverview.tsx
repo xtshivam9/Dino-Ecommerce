@@ -138,8 +138,8 @@ export default function SDLCOverview() {
       </View>
 
       {/* Phases Overview Table */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -262,7 +262,7 @@ export default function SDLCOverview() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -272,6 +272,7 @@ export default function SDLCOverview() {
       >
         Table 5.1: SDLC Phases and Deliverables Overview
       </Text>
+</View>
 
       {/* 6.1.3 Phase Descriptions */}
       <Text style={styles.h3}>6.1.3 Phase Descriptions</Text>
@@ -567,8 +568,8 @@ export default function SDLCOverview() {
       </Text>
 
       {/* Timeline Table */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -696,7 +697,7 @@ export default function SDLCOverview() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -706,6 +707,7 @@ export default function SDLCOverview() {
       >
         Table 5.2: SDLC Phase Duration and Timeline
       </Text>
+</View>
 
       {/* 6.1.5 Summary */}
       <Text style={styles.h3}>6.1.5 Summary</Text>

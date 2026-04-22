@@ -71,8 +71,8 @@ export default function Implementation() {
         concerns into distinct areas for maintainability and scalability.
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -151,7 +151,7 @@ export default function Implementation() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -161,6 +161,7 @@ export default function Implementation() {
       >
         Table 8.1: Project Directory Structure
       </Text>
+</View>
 
       {/* 8.3 Frontend Implementation */}
       <Text style={styles.h2}>8.3 Frontend Implementation</Text>
@@ -300,8 +301,8 @@ export function useWorkflowEditor(orderId: string) {
         total of <Text style={styles.bold}>59 procedures</Text>.
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -455,7 +456,7 @@ export function useWorkflowEditor(orderId: string) {
           <Text style={{ width: "65%", padding: 2, fontSize: 9 }}></Text>
         </View>
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -465,6 +466,7 @@ export function useWorkflowEditor(orderId: string) {
       >
         Table 8.2: tRPC Router Summary
       </Text>
+</View>
 
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Code Snippet — tRPC Router Definition:</Text>
@@ -859,7 +861,8 @@ export const pollSchedules = inngest.createFunction(
         schema, and a backend executor.
       </Text>
 
-      <View
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1057,7 +1060,7 @@ export const pollSchedules = inngest.createFunction(
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1067,6 +1070,7 @@ export const pollSchedules = inngest.createFunction(
       >
         Table 8.3: Complete Model Types Implementation (24 Total)
       </Text>
+</View>
 
       {/* 8.7 Integration Implementation */}
       <Text style={styles.h2}>8.7 Integration Implementation</Text>
@@ -1313,8 +1317,8 @@ export function WorkflowEditor({ orderId }: { orderId: string }) {
         Five built-in order templates are provided in src/lib/templates.ts to
         help users get started quickly:
       </Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1416,7 +1420,7 @@ export function WorkflowEditor({ orderId }: { orderId: string }) {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1426,6 +1430,7 @@ export function WorkflowEditor({ orderId }: { orderId: string }) {
       >
         Table 8.4: Built-in Workflow Templates
       </Text>
+</View>
 
       <Text style={styles.h3}>8.8.5 Error Alerting</Text>
       <Text style={styles.paragraphIndent}>
@@ -1518,8 +1523,8 @@ export async function requireTeamRole(
         that requires standard HTTP endpoints:
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1647,7 +1652,7 @@ export async function requireTeamRole(
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1657,6 +1662,7 @@ export async function requireTeamRole(
       >
         Table 8.5: Next.js API Routes
       </Text>
+</View>
 
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Code Snippet — Webhook Handler Route:</Text>

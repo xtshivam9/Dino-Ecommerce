@@ -47,8 +47,8 @@ export default function Testing() {
       </Text>
 
       <Text style={styles.h3}>9.1.1 SOLID Principles Applied</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -163,7 +163,7 @@ export default function Testing() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -173,6 +173,7 @@ export default function Testing() {
       >
         Table 9.1: SOLID Principles Implementation
       </Text>
+</View>
 
       <Text style={styles.h3}>9.1.2 DRY Principle</Text>
       <Text style={styles.paragraphIndent}>
@@ -219,8 +220,8 @@ export default function Testing() {
       </View>
 
       <Text style={styles.h3}>9.1.4 Design Patterns Used</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -331,7 +332,7 @@ export default function Testing() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -341,6 +342,7 @@ export default function Testing() {
       >
         Table 9.2: Design Patterns Used
       </Text>
+</View>
 
       <Text style={styles.h2}>9.2 Testing Strategy</Text>
       <Text style={styles.paragraphIndent}>
@@ -364,8 +366,8 @@ export default function Testing() {
       </View>
 
       <Text style={styles.h3}>9.2.1 Testing Levels</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -499,7 +501,7 @@ export default function Testing() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -509,6 +511,7 @@ export default function Testing() {
       >
         Table 9.3: Testing Levels and Coverage
       </Text>
+</View>
 
       <Text style={styles.h2}>9.3 Unit Testing</Text>
       <Text style={styles.paragraphIndent}>
@@ -518,8 +521,8 @@ export default function Testing() {
       </Text>
 
       <Text style={styles.h3}>9.3.1 Unit Test Cases</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -733,7 +736,7 @@ export default function Testing() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -743,6 +746,7 @@ export default function Testing() {
       >
         Table 9.4: Unit Test Cases
       </Text>
+</View>
 
       <Text style={styles.h3}>9.3.2 Testing Tools for Unit Tests</Text>
       <View style={{ marginLeft: 24, marginBottom: 4 }}>
@@ -772,8 +776,8 @@ export default function Testing() {
       </Text>
 
       <Text style={styles.h3}>9.4.1 Integration Test Cases</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -973,7 +977,7 @@ export default function Testing() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -983,6 +987,7 @@ export default function Testing() {
       >
         Table 9.5: Integration Test Cases
       </Text>
+</View>
 
       <Text style={styles.h2}>9.5 System Testing</Text>
       <Text style={styles.paragraphIndent}>
@@ -991,8 +996,8 @@ export default function Testing() {
       </Text>
 
       <Text style={styles.h3}>9.5.1 System Test Cases</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1171,7 +1176,7 @@ export default function Testing() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1181,10 +1186,11 @@ export default function Testing() {
       >
         Table 9.6: System Test Cases
       </Text>
+</View>
 
       <Text style={styles.h2}>9.6 UI/UX Testing</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1370,7 +1376,7 @@ export default function Testing() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1380,10 +1386,11 @@ export default function Testing() {
       >
         Table 9.7: UI/UX Test Cases
       </Text>
+</View>
 
       <Text style={styles.h2}>9.7 Security Testing</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1583,7 +1590,7 @@ export default function Testing() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1593,6 +1600,7 @@ export default function Testing() {
       >
         Table 9.8: Security Test Cases
       </Text>
+</View>
 
       <Text style={styles.h2}>9.8 Performance Testing</Text>
       <Text style={styles.paragraphIndent}>
@@ -1600,8 +1608,8 @@ export default function Testing() {
         throughput requirements under expected load conditions.
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1772,7 +1780,7 @@ export default function Testing() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1782,10 +1790,11 @@ export default function Testing() {
       >
         Table 9.9: Performance Test Results
       </Text>
+</View>
 
       <Text style={styles.h2}>9.9 Defect Tracking</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1964,7 +1973,7 @@ export default function Testing() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1974,10 +1983,11 @@ export default function Testing() {
       >
         Table 9.10: Defect Tracking Log
       </Text>
+</View>
 
       <Text style={styles.h2}>9.10 Test Results Summary</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -2199,7 +2209,7 @@ export default function Testing() {
           </Text>
         </View>
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -2209,6 +2219,7 @@ export default function Testing() {
       >
         Table 9.11: Complete Test Results Summary
       </Text>
+</View>
 
       <Text style={styles.h2}>9.11 Testing Conclusion</Text>
       <Text style={styles.paragraphIndent}>

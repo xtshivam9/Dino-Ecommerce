@@ -61,8 +61,8 @@ export default function COCOMOEstimation() {
         following table breaks down the estimated lines of code by module.
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -226,7 +226,7 @@ export default function COCOMOEstimation() {
           <Text style={{ width: "25%", padding: 2, fontSize: 9 }}>-</Text>
         </View>
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -236,6 +236,7 @@ export default function COCOMOEstimation() {
       >
         Table 5.1: Lines of Code by Module
       </Text>
+</View>
 
       <Text style={styles.h2}>5.3 Basic COCOMO Model</Text>
       <Text style={styles.paragraphIndent}>
@@ -647,8 +648,8 @@ export default function COCOMOEstimation() {
         </Text>
       </View>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -800,7 +801,7 @@ export default function COCOMOEstimation() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -810,6 +811,7 @@ export default function COCOMOEstimation() {
       >
         Table 5.2: Risk Analysis Matrix
       </Text>
+</View>
 
       <Text style={styles.h2}>5.6 Actual vs Estimated Comparison</Text>
       <Text style={styles.paragraphIndent}>

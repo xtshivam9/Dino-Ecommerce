@@ -137,8 +137,8 @@ export default function ProcessModel() {
       </View>
 
       {/* Sprint Structure Table */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -285,7 +285,7 @@ export default function ProcessModel() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -295,6 +295,7 @@ export default function ProcessModel() {
       >
         Table 6.3: Sprint Structure and Ceremonies
       </Text>
+</View>
 
       {/* 6.2.4 Agile Artifacts */}
       <Text style={styles.h3}>6.2.4 Agile Artifacts</Text>
@@ -369,8 +370,8 @@ export default function ProcessModel() {
       </Text>
 
       {/* Sprints Table */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -518,7 +519,7 @@ export default function ProcessModel() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -528,6 +529,7 @@ export default function ProcessModel() {
       >
         Table 6.4: Sprint Overview and Deliverables
       </Text>
+</View>
 
       {/* 6.2.6 Detailed Sprint Descriptions */}
       <Text style={styles.h3}>6.2.6 Detailed Sprint Descriptions</Text>
@@ -663,8 +665,8 @@ export default function ProcessModel() {
       </Text>
 
       {/* Methodology Comparison Table */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -803,7 +805,7 @@ export default function ProcessModel() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -813,6 +815,7 @@ export default function ProcessModel() {
       >
         Table 6.5: Comparison of Development Methodologies
       </Text>
+</View>
 
       <Text style={styles.paragraphIndent}>
         Given the nature of the dj-ecommerce project—with evolving requirements,

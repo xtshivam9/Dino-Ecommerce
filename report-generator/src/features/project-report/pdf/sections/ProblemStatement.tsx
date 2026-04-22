@@ -517,8 +517,8 @@ export default function ProblemStatement() {
       </Text>
 
       {/* Comparison Table */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -729,7 +729,7 @@ export default function ProblemStatement() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -740,6 +740,7 @@ export default function ProblemStatement() {
         Table 2.1: Comprehensive Feature Comparison of Workflow Automation
         Platforms
       </Text>
+</View>
 
       <Text style={styles.h3}>2.5.1 Detailed Comparison: dj-ecommerce vs Shopify</Text>
       <Text style={styles.paragraphIndent}>
@@ -747,8 +748,8 @@ export default function ProblemStatement() {
         capability and visual editor approach, a detailed feature-by-feature
         comparison is presented below.
       </Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -905,7 +906,7 @@ export default function ProblemStatement() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -915,6 +916,7 @@ export default function ProblemStatement() {
       >
         Table 2.2: Detailed Feature Comparison — dj-ecommerce vs Shopify
       </Text>
+</View>
 
       <View
         wrap={false}
