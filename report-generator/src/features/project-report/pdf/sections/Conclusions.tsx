@@ -53,8 +53,8 @@ export default function Conclusions() {
       </Text>
 
       <Text style={styles.h2}>12.2 Key Achievements</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -186,7 +186,7 @@ export default function Conclusions() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -196,6 +196,7 @@ export default function Conclusions() {
       >
         Table 12.1: Project Objectives Achievement
       </Text>
+</View>
 
       <Text style={styles.h2}>12.3 Technical Accomplishments</Text>
       <View style={{ marginLeft: 24, marginBottom: 4 }}>
@@ -232,8 +233,8 @@ export default function Conclusions() {
         development.
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -348,7 +349,7 @@ export default function Conclusions() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -358,6 +359,7 @@ export default function Conclusions() {
       >
         Table 12.2: Current Limitations
       </Text>
+</View>
 
       <Text style={styles.h2}>12.5 Lessons Learned</Text>
       <View style={{ marginLeft: 24, marginBottom: 6 }}>

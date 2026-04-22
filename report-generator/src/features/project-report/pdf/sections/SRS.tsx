@@ -1720,8 +1720,8 @@ export default function SRS() {
         The system shall manage the following primary data entities:
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -1830,7 +1830,7 @@ export default function SRS() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1840,6 +1840,7 @@ export default function SRS() {
       >
         Table 6.12: Primary Data Entities
       </Text>
+</View>
 
       <Text style={styles.h3}>6.4.7 Interface Requirements</Text>
       <Text style={styles.paragraph}>
@@ -2105,8 +2106,8 @@ export default function SRS() {
       </View>
 
       <Text style={styles.h3}>6.4.11 Requirements Summary</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -2240,7 +2241,7 @@ export default function SRS() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -2250,6 +2251,7 @@ export default function SRS() {
       >
         Table 6.13: Requirements Summary by Category
       </Text>
+</View>
 
       <Text style={styles.h3}>6.4.12 Requirements Traceability Matrix</Text>
       <Text style={styles.paragraphIndent}>
@@ -2259,7 +2261,8 @@ export default function SRS() {
         traceability from requirements through delivery.
       </Text>
 
-      <View style={{ borderWidth: 1, borderColor: "#333333", marginBottom: 6 }}>
+      <View wrap={false}>
+<View style={{ borderWidth: 1, borderColor: "#333333", marginBottom: 6 }}>
         <View
           style={{
             flexDirection: "row",
@@ -2487,7 +2490,7 @@ export default function SRS() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -2498,6 +2501,7 @@ export default function SRS() {
       >
         Table 6.14: Requirements Traceability Matrix
       </Text>
+</View>
 
       <Text style={styles.h3}>6.4.13 Summary</Text>
       <Text style={styles.paragraphIndent}>

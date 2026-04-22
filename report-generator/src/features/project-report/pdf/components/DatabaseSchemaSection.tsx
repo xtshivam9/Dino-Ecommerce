@@ -14,8 +14,8 @@ const SchemaTable = ({
   fields: string[][];
 }) => (
   <View style={{ marginBottom: 2 }}>
-    <View
-      wrap={false}
+    <View wrap={false}>
+<View
       style={{
         borderWidth: 1,
         borderColor: "#d1d5db",
@@ -134,7 +134,7 @@ const SchemaTable = ({
         </View>
       ))}
     </View>
-    <Text
+<Text
       style={{
         fontSize: 9,
         fontFamily: "Times-Italic",
@@ -144,6 +144,7 @@ const SchemaTable = ({
     >
       Table {tableNum}: {tableName} Table Structure
     </Text>
+</View>
   </View>
 );
 
@@ -158,8 +159,8 @@ const EnumTable = ({
   values: string[][];
 }) => (
   <View style={{ marginBottom: 2 }}>
-    <View
-      wrap={false}
+    <View wrap={false}>
+<View
       style={{
         borderWidth: 1,
         borderColor: "#d1d5db",
@@ -251,7 +252,7 @@ const EnumTable = ({
         </View>
       ))}
     </View>
-    <Text
+<Text
       style={{
         fontSize: 9,
         fontFamily: "Times-Italic",
@@ -261,6 +262,7 @@ const EnumTable = ({
     >
       Table {tableNum}: {enumName} Enum Values
     </Text>
+</View>
   </View>
 );
 
@@ -601,14 +603,15 @@ export default function DatabaseSchemaSection() {
 
       {/* ─── F. Entity Relationship Summary ─────────────────────────── */}
       <GroupHeading>F. Entity Relationship Summary</GroupHeading>
-      <Text style={styles.paragraphIndent}>
+      <View wrap={false}>
+<Text style={styles.paragraphIndent}>
         Table 7.22 provides a consolidated view of all foreign key relationships
         between database entities, including cardinality and referential
         integrity constraints configured in the Prisma schema.
       </Text>
-
-      <View style={{ marginBottom: 2 }}>
-        <View
+<View style={{ marginBottom: 2 }}>
+        <View wrap={false}>
+<View
           style={{
             borderWidth: 1,
             borderColor: "#333333",
@@ -618,7 +621,6 @@ export default function DatabaseSchemaSection() {
         >
           {/* Header row */}
           <View
-            wrap={false}
             style={{
               flexDirection: "row",
               backgroundColor: "#e8e8e8",
@@ -640,7 +642,6 @@ export default function DatabaseSchemaSection() {
           </View>
           {/* Column headers */}
           <View
-            wrap={false}
             style={{
               flexDirection: "row",
               backgroundColor: "#f0f0f0",
@@ -728,7 +729,6 @@ export default function DatabaseSchemaSection() {
           ].map((row, i, arr) => (
             <View
               key={i}
-              wrap={false}
               style={{
                 flexDirection: "row",
                 borderBottomWidth: i < arr.length - 1 ? 1 : 0,
@@ -788,7 +788,7 @@ export default function DatabaseSchemaSection() {
             </View>
           ))}
         </View>
-        <Text
+<Text
           style={{
             fontSize: 9,
             fontFamily: "Times-Italic",
@@ -798,7 +798,9 @@ export default function DatabaseSchemaSection() {
         >
           Table 7.22: Entity Relationship Summary
         </Text>
+</View>
       </View>
+</View>
     </View>
   );
 }

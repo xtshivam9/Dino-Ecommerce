@@ -450,8 +450,8 @@ export default function Objectives() {
       </Text>
 
       {/* Technology Stack Table */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -563,7 +563,7 @@ export default function Objectives() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -573,6 +573,7 @@ export default function Objectives() {
       >
         Table 3.1: Technology Stack Selection and Justification
       </Text>
+</View>
 
       {/* Technical Objective 2 */}
       <Text style={styles.h3}>3.4.2 Type-Safe Architecture</Text>

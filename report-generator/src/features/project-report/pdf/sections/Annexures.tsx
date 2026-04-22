@@ -37,8 +37,8 @@ export default function Annexures() {
       </Text>
 
       {/* Table: All models */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -239,7 +239,7 @@ export default function Annexures() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 8,
           fontFamily: "Times-Italic",
@@ -250,6 +250,7 @@ export default function Annexures() {
       >
         Table A.1: Complete Prisma Database Schema — 14 Models
       </Text>
+</View>
 
       {/* ===== Annexure B: API Endpoints ===== */}
       <Text style={styles.h2}>Annexure B: API Endpoint Reference</Text>
@@ -258,8 +259,8 @@ export default function Annexures() {
         application, separate from the tRPC procedures.
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -385,7 +386,7 @@ export default function Annexures() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 8,
           fontFamily: "Times-Italic",
@@ -396,6 +397,7 @@ export default function Annexures() {
       >
         Table B.1: HTTP API Endpoints
       </Text>
+</View>
 
       {/* ===== Annexure C: tRPC Routers ===== */}
       <Text style={styles.h2}>Annexure C: tRPC Router Procedures</Text>
@@ -404,8 +406,8 @@ export default function Annexures() {
         procedures. The following table summarizes each router.
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -532,7 +534,7 @@ export default function Annexures() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 8,
           fontFamily: "Times-Italic",
@@ -543,6 +545,7 @@ export default function Annexures() {
       >
         Table C.1: tRPC Router Summary — 59 Total Procedures
       </Text>
+</View>
 
       {/* ===== Annexure D: Environment Configuration ===== */}
       <Text style={styles.h2}>Annexure D: Environment Configuration</Text>
@@ -552,7 +555,8 @@ export default function Annexures() {
         variable management.
       </Text>
 
-      <View
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -639,7 +643,7 @@ export default function Annexures() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 8,
           fontFamily: "Times-Italic",
@@ -650,6 +654,7 @@ export default function Annexures() {
       >
         Table D.1: Required Environment Variables
       </Text>
+</View>
 
       {/* ===== Annexure E: Model Type Reference ===== */}
       <Text style={styles.h2}>Annexure E: Complete Model Type Reference</Text>
@@ -657,7 +662,8 @@ export default function Annexures() {
         All 24 product types available in dj-ecommerce, categorized by function.
       </Text>
 
-      <View
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -823,7 +829,7 @@ export default function Annexures() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 8,
           fontFamily: "Times-Italic",
@@ -834,6 +840,7 @@ export default function Annexures() {
       >
         Table E.1: Complete Model Type Reference — 24 Model Types
       </Text>
+</View>
 
       {/* Summary box */}
       <View

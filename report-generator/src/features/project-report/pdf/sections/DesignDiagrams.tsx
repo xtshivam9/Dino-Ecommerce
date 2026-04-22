@@ -80,8 +80,8 @@ export default function DesignDiagrams() {
         </Text>
       </View>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -183,7 +183,7 @@ export default function DesignDiagrams() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -193,6 +193,7 @@ export default function DesignDiagrams() {
       >
         Table 7.1: Context Diagram Data Flows
       </Text>
+</View>
 
       <Text style={styles.h3}>7.2.2 Level 1 DFD</Text>
       <Text style={styles.paragraphIndent}>
@@ -378,8 +379,8 @@ export default function DesignDiagrams() {
       </View>
 
       <Text style={styles.h3}>7.3.2 Use Case Specifications</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -552,7 +553,7 @@ export default function DesignDiagrams() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -562,6 +563,7 @@ export default function DesignDiagrams() {
       >
         Table 7.2: Use Case Specifications
       </Text>
+</View>
 
       <Text style={styles.h2}>7.4 Entity-Relationship Diagram</Text>
       <Text style={styles.paragraphIndent}>
@@ -705,8 +707,8 @@ export default function DesignDiagrams() {
       </View>
 
       <Text style={styles.h3}>7.4.2 Entity Relationships</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#333333",
@@ -804,7 +806,7 @@ export default function DesignDiagrams() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -814,6 +816,7 @@ export default function DesignDiagrams() {
       >
         Table 7.3: Entity Relationships
       </Text>
+</View>
 
       <Text style={styles.h2}>7.5 System Architecture</Text>
       <Text style={styles.paragraphIndent}>

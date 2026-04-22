@@ -493,8 +493,8 @@ export default function UserManual() {
       <Text style={styles.paragraphIndent}>Common schedule examples:</Text>
 
       {/* Schedule Examples Table */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#000000",
@@ -574,7 +574,7 @@ export default function UserManual() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -584,6 +584,7 @@ export default function UserManual() {
       >
         Table 10.1: Common Cron Schedule Examples
       </Text>
+</View>
 
       {/* ── 10.8 Team Management ── */}
       <Text style={styles.h2}>10.8 Team Collaboration</Text>
@@ -615,8 +616,8 @@ export default function UserManual() {
       <Text style={styles.h3}>10.8.2 Role Permissions</Text>
 
       {/* Roles Table */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#000000",
@@ -706,7 +707,7 @@ export default function UserManual() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -716,6 +717,7 @@ export default function UserManual() {
       >
         Table 10.2: Team Role Permissions Matrix
       </Text>
+</View>
 
       <Text style={styles.h3}>10.8.3 Inviting Members</Text>
       <Text style={styles.paragraphIndent}>
@@ -790,8 +792,8 @@ export default function UserManual() {
       <Text style={styles.h2}>10.11 Troubleshooting & FAQ</Text>
 
       {/* FAQ Table */}
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{
           borderWidth: 1,
           borderColor: "#000000",
@@ -889,7 +891,7 @@ export default function UserManual() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -899,6 +901,7 @@ export default function UserManual() {
       >
         Table 10.3: Common Issues & Resolutions
       </Text>
+</View>
 
       {/* ── 10.12 Summary ── */}
       <Text style={styles.h2}>10.12 Summary</Text>

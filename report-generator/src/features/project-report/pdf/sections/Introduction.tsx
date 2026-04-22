@@ -340,7 +340,8 @@ export default function Introduction() {
         development. The following table details each technology, its role, and
         its license.
       </Text>
-      <View style={{ borderWidth: 1, borderColor: "#333333", marginBottom: 6 }}>
+      <View wrap={false}>
+<View style={{ borderWidth: 1, borderColor: "#333333", marginBottom: 6 }}>
         <View
           style={{
             flexDirection: "row",
@@ -516,7 +517,7 @@ export default function Introduction() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -526,6 +527,7 @@ export default function Introduction() {
       >
         Table 1.1: Technology Stack
       </Text>
+</View>
 
       <View style={{ marginBottom: 8, marginBottom: 4 }}>
         <ProjectStructure />
@@ -550,7 +552,8 @@ export default function Introduction() {
         justification for each choice.
       </Text>
 
-      <View
+      <View wrap={false}>
+<View
         style={{ borderWidth: 1, borderColor: "#333333", marginBottom: 6 }}
         break
       >
@@ -696,7 +699,7 @@ export default function Introduction() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -706,6 +709,7 @@ export default function Introduction() {
       >
         Table 1.2: Technology Justification
       </Text>
+</View>
 
       <Text style={styles.h2}>1.9 Scope of the Project</Text>
       <Text style={styles.paragraphIndent}>
@@ -770,8 +774,8 @@ export default function Introduction() {
       </View>
 
       <Text style={styles.h2}>1.10 Key Features Summary</Text>
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{ borderWidth: 1, borderColor: "#333333", marginBottom: 6 }}
       >
         <View
@@ -851,7 +855,7 @@ export default function Introduction() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -861,6 +865,7 @@ export default function Introduction() {
       >
         Table 1.3: Key Features Summary
       </Text>
+</View>
 
       <Text style={styles.h2}>1.11 Report Organization</Text>
       <Text style={styles.paragraphIndent}>
@@ -868,8 +873,8 @@ export default function Introduction() {
         aspect of the project development lifecycle.
       </Text>
 
-      <View
-        wrap={false}
+      <View wrap={false}>
+<View
         style={{ borderWidth: 1, borderColor: "#333333", marginBottom: 8 }}
       >
         <View
@@ -1005,7 +1010,7 @@ export default function Introduction() {
           </View>
         ))}
       </View>
-      <Text
+<Text
         style={{
           fontSize: 9,
           fontFamily: "Times-Italic",
@@ -1015,6 +1020,7 @@ export default function Introduction() {
       >
         Table 1.4: Report Organization
       </Text>
+</View>
 
       <View
         style={{
