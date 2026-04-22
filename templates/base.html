@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% include "header.html" %}
+
+  <title>{% block head_title %}{% endblock %}</title>
+  {% block extra_head %} {% endblock %}
+  <style type="text/css">
+    .form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da !important;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+  /* Premium Product Card Styles (Global) */
+  .premium-product-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    border: 1px solid #f3f4f6;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .premium-product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .premium-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: #fdfdfd;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .premium-img-wrapper img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .premium-product-card:hover .premium-img-wrapper img {
+    transform: scale(1.05);
+  }
+  
+  .premium-content {
+    padding: 24px 20px;
+    text-align: center;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .premium-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    display: block;
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+  
+  .premium-title:hover {
+    color: #717fe0;
+  }
+  
+  .premium-prices {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 8px;
+  }
+  
+  .premium-old-price {
+    font-size: 14px;
+    color: #9ca3af;
+    text-decoration: line-through;
+  }
+  
+  .premium-current-price {
+    font-size: 18px;
+    color: #111827;
+    font-weight: 700;
+  }
+  
+  .premium-add-to-cart {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #111827;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 85%;
+    text-align: center;
+    text-decoration: none;
+    z-index: 10;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  .premium-product-card:hover .premium-add-to-cart {
+    bottom: 24px;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .premium-add-to-cart:hover {
+    background: #717fe0;
+    color: white;
+    box-shadow: 0 6px 16px rgba(113, 127, 224, 0.3);
+  }
+  
+  .premium-stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .premium-stars i {
+    color: #f59e0b;
+    font-size: 13px;
+    margin: 0 2px;
+  }
+
+  .premium-review-count {
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 6px;
+  }
+
+  /* Fix for content being hidden behind fixed header on desktop */
+  @media (min-width: 992px) {
+    main {
+      padding-top: 125px;
+    }
+  }
+  </style>
+  <body style="overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh;">
+    {% include "nav.html"%}
+    
+    {% if messages %}
+    <div class="mt-2 container">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %} 
+    </div>
+    {% endif %} 
+
+    <main style="flex: 1;">
+      {% block content %} 
+      {% endblock content %}
+
+      {% block extra_body %} 
+      {% endblock %} 
+    </main>
+
+    {% include "footer.html"%} 
+    {% include "script.html"%}
+
+    {% block extra_scripts %}
+    {% endblock extra_scripts %}
+  </body>
+</html>

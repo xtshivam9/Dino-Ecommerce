@@ -1,0 +1,369 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  
+  .premium-checkout-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+
+  .premium-card-header {
+    padding: 24px 30px;
+    border-bottom: 1px solid #f3f4f6;
+    background: #fff;
+  }
+
+  .premium-card-header h4 {
+    margin: 0;
+    font-weight: 700;
+    color: #111827;
+    font-size: 20px;
+  }
+
+  .premium-card-body {
+    padding: 30px;
+  }
+
+  .form-control {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1f2937;
+    background-color: #f9fafb;
+    background-clip: padding-box;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+
+  .form-control:focus {
+    background-color: #fff;
+    border-color: #717fe0 !important;
+    box-shadow: 0 0 0 4px rgba(113, 127, 224, 0.1);
+    outline: none;
+  }
+
+  label {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+</style>
+
+<div class="container" style="margin-top: 60px; padding-bottom: 100px;">
+  <div class="py-5 text-center">
+    <div style="width: 70px; height: 70px; background: #f3f4f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#111827" class="bi bi-shield-check" viewBox="0 0 16 16">
+        <path d="M8 14.933a.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 1 2.287-1.4c.063-.03.111-.053.14-.067l.11-.05a.423.423 0 0 0 .192-.412v-6.3a.42.42 0 0 0-.258-.386L8.14 3.033A.423.423 0 0 0 7.86 3.033L4.14 4.847a.42.42 0 0 0-.258.386v6.3a.423.423 0 0 0 .192.412l.11.05c.029.014.077.037.14.067a10.726 10.726 0 0 1 2.287 1.4c.346.243.653.42.893.533.12.057.218.095.294.118a.615.615 0 0 0 .1.025zM8 16a2 2 0 0 1-.954-.24s-.019-.01-.059-.033c-.04-.025-.102-.061-.183-.112a13.34 13.34 0 0 1-1.393-.984c-.381-.29-.894-.689-1.432-1.127a11.754 11.754 0 0 1-2.433-2.673A4.54 4.54 0 0 1 1 5.96V5.42a2 2 0 0 1 1.233-1.84L7.027 1.4a2 2 0 0 1 1.946 0l4.794 2.18A2 2 0 0 1 15 5.42v.54a4.54 4.54 0 0 1-1.63 3.447 11.754 11.754 0 0 1-2.433 2.673c-.538.438-1.05.836-1.432 1.127a13.344 13.344 0 0 1-1.393.984c-.081.051-.142.087-.183.112a1.867 1.867 0 0 1-.059.033A2 2 0 0 1 8 16z"/>
+        <path d="M10.854 7.146a.5.5 0 0 0-.708-.708L7.5 9.172 6.354 8.025a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+      </svg>
+    </div>
+    <h2 style="font-weight: 800; letter-spacing: -0.5px;">Secure Checkout</h2>
+    <p class="text-muted" style="max-width: 600px; margin: 0 auto;">Finalize your order by providing your shipping details and selecting a premium payment method.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 order-lg-1">
+      <div class="premium-checkout-card">
+        <div class="premium-card-header">
+          <h4>Shipping Information</h4>
+        </div>
+        <div class="premium-card-body">
+          <form method="POST" id="checkout-form" class="needs-validation">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="address">Street Address</label>
+              {{ form.street_address }}
+            </div>
+
+            <div class="mb-3">
+              <label for="address2">Apartment / Suite <span class="text-muted" style="font-weight: 400;">(Optional)</span></label>
+              {{ form.apartment_address }}
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="country">Country</label>
+                {{ form.country }}
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="state">City / State</label>
+                <input type="text" class="form-control" id="state" placeholder="e.g. New York" required>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="zip">Zip Code</label>
+                {{ form.zip }}
+              </div>
+            </div>
+            
+            <hr class="my-4" style="border-color: #f3f4f6;">
+            
+            <div class="custom-control custom-checkbox mb-2">
+              <input {% if form.same_shipping_address.value %}checked{% endif %} type="checkbox" name="same_shipping_address" class="custom-control-input" id="same_shipping_address">
+              <label class="custom-control-label" for="same_shipping_address" style="font-weight: 500; cursor: pointer;">Shipping address is the same as my billing</label>
+            </div>
+            
+            <div class="custom-control custom-checkbox">
+              <input {% if form.save_info.value %}checked{% endif %} type="checkbox" name="save_info" class="custom-control-input" id="save-info">
+              <label class="custom-control-label" for="save-info" style="font-weight: 500; cursor: pointer;">Save information for faster checkout next time</label>
+            </div>
+            
+            <hr class="my-4" style="border-color: #f3f4f6;">
+            
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="openPaymentModal()" style="border-radius: 12px; font-weight: 700; padding: 16px; background: #111827; border: none; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); transition: all 0.3s; height: 60px;">
+              Complete Your Order
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Premium Payment Modal -->
+    <div id="premiumPaymentModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); z-index: 9999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
+      <div style="background: white; border-radius: 24px; padding: 40px; width: 100%; max-width: 480px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;">
+        <button type="button" onclick="closePaymentModal()" style="position: absolute; top: 20px; right: 25px; background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; color: #4b5563; transition: all 0.2s;">&times;</button>
+        
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div style="width: 60px; height: 60px; background: #eff6ff; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#3b82f6" class="bi bi-wallet2" viewBox="0 0 16 16">
+                    <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.5-1.5H2V1.78a1.5 1.5 0 0 1 1.864-1.454L12.136.326zM14 5.5v-4h-.5L3.3 3.3L3 3v2h10l.3-.3.7.3zM15 13.5v-7h-11v7h11z"/>
+                </svg>
+            </div>
+            <h3 style="font-weight: 800; color: #111827; margin: 0; font-size: 24px; letter-spacing: -0.5px;">Choose Payment</h3>
+            <p style="color: #6b7280; font-size: 14px; margin: 8px 0 0;">Select your preferred secure payment engine</p>
+        </div>
+        
+        <div class="payment-options" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;">
+          {% for value, name in form.fields.payment_option.choices %}
+          <label class="payment-option-label" style="display: flex; align-items: center; padding: 20px; border: 2px solid #f3f4f6; border-radius: 16px; cursor: pointer; transition: all 0.3s; font-weight: 600; color: #374151; margin: 0; position: relative; {% if value == 'D' %}border-color: #3b82f6; background: #f0f9ff;{% endif %}">
+            <input type="radio" name="modal_payment_option" value="{{ value }}" {% if value == 'D' %}checked{% endif %} style="width: 20px; height: 20px; margin-right: 15px; accent-color: #3b82f6;">
+            <div style="flex: 1;">
+                <div style="font-size: 16px;">{{ name }}</div>
+                {% if value == 'D' %}
+                    <div style="font-size: 12px; color: #3b82f6; font-weight: 700;">Recommended for Testing <i class="fas fa-certificate ml-1"></i></div>
+                {% else %}
+                    <div style="font-size: 12px; color: #9ca3af; font-weight: 400;">Secure encryption dynamic</div>
+                {% endif %}
+            </div>
+          </label>
+          {% endfor %}
+        </div>
+        
+        <button type="button" onclick="confirmPayment()" style="width: 100%; border-radius: 12px; font-weight: 700; padding: 18px; background: #3b82f6; color: white; border: none; font-size: 16px; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);">
+            Make Payment <span style="margin-left: 8px;">$\rightarrow$</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Premium Success Modal (Moved here for immediate display) -->
+    <div id="paymentSuccessModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); z-index: 10000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.5s ease;">
+        <div style="background: white; border-radius: 24px; padding: 40px; width: 100%; max-width: 450px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); transform: scale(0.9); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+            <div style="width: 100px; height: 100px; background: #ecfdf5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                <div style="width: 70px; height: 70px; background: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-check-lg" viewBox="0 0 16 16">
+                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.037a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.42-6.446a.24.24 0 0 1 .012-.012z"/>
+                    </svg>
+                </div>
+            </div>
+            <h2 style="font-weight: 800; color: #111827; margin-bottom: 12px; font-size: 28px; letter-spacing: -1px;">Payment Successful!</h2>
+            <p style="color: #6b7280; font-size: 16px; line-height: 1.6; margin-bottom: 32px;">Your order has been placed successfully. You can now track it in your order history.</p>
+            <a href="/my-orders/" style="display: block; width: 100%; background: #111827; color: white; text-decoration: none; padding: 16px; border-radius: 12px; font-weight: 700; font-size: 16px; transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                View My Orders
+            </a>
+        </div>
+    </div>
+
+    <!-- Processing Overlay -->
+    <div id="processingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); z-index: 10001; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem; color: #3b82f6 !important;">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <p style="margin-top: 20px; font-weight: 700; color: #111827; font-size: 18px;">Verifying Payment...</p>
+    </div>
+
+    <!-- Stripe Checkout Script (Restoring old functionality) -->
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+
+    <script>
+      var stripeTotal = Math.round(parseFloat('{{ order.get_total }}') * 100);
+      
+      var handler = StripeCheckout.configure({
+        key: 'pk_test_lX3r6OMjOU2yzFsNSHq6belT00EY82kZmH',
+        image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+        locale: 'auto',
+        token: function(token) {
+          // This callback runs after the user successfully enters card info in the Stripe popup
+          sendAJAXPayment('S', token.id);
+        }
+      });
+
+      function openPaymentModal() {
+        const form = document.getElementById('checkout-form');
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        
+        const modal = document.getElementById('premiumPaymentModal');
+        modal.style.display = 'flex';
+        setTimeout(() => {
+          modal.style.opacity = '1';
+          modal.firstElementChild.style.transform = 'scale(1)';
+        }, 10);
+      }
+
+      function closePaymentModal() {
+        const modal = document.getElementById('premiumPaymentModal');
+        modal.style.opacity = '0';
+        modal.firstElementChild.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          modal.style.display = 'none';
+        }, 400);
+      }
+
+      function confirmPayment() {
+        const selected = document.querySelector('input[name="modal_payment_option"]:checked');
+        if (!selected) {
+          alert('Please select a payment method before confirming.');
+          return;
+        }
+
+        if (selected.value === 'S') {
+            // Close selection modal so Stripe popup is visible/clear
+            closePaymentModal();
+            // Open Legacy Stripe Popup (The "Proper Old Working Way")
+            handler.open({
+                name: 'Dino Shop',
+                description: 'Complete Your Order',
+                amount: stripeTotal,
+                currency: 'usd'
+            });
+        } else {
+            // Dummy or other payment - proceed immediately
+            sendAJAXPayment(selected.value);
+        }
+      }
+
+      function sendAJAXPayment(paymentOption, stripeToken = null) {
+        const form = document.getElementById('checkout-form');
+        const formData = new FormData(form);
+        formData.append('payment_option', paymentOption);
+        if (stripeToken) {
+            formData.append('stripeToken', stripeToken);
+        }
+
+        // Show Processing Overlay
+        const overlay = document.getElementById('processingOverlay');
+        overlay.style.display = 'flex';
+        setTimeout(() => overlay.style.opacity = '1', 10);
+
+        // Close selection modal if it's still open (for non-Stripe)
+        closePaymentModal();
+
+        // Perform AJAX Submission
+        let url = "";
+        if (paymentOption === "D") {
+            url = "/dummy-payment/?ajax=1";
+        } else {
+            url = "/payment/" + (paymentOption === "S" ? "stripe" : "paypal") + "/?ajax=1";
+        }
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(text => {
+                    throw new Error(`Server ${response.status}: ${text.substring(0, 100)}`);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Hide Processing Overlay
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.style.display = 'none', 300);
+
+            if (data.status === 'success') {
+                showSuccessPopup();
+            } else {
+                alert("Payment Error: " + (data.message || "An unknown error occurred."));
+            }
+        })
+        .catch(error => {
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.style.display = 'none', 300);
+            alert("Checkout Error: " + error.message);
+            console.error('Checkout Error:', error);
+        });
+      }
+
+      function showSuccessPopup() {
+        const modal = document.getElementById('paymentSuccessModal');
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.style.opacity = '1';
+            modal.querySelector('div').style.transform = 'scale(1)';
+        }, 10);
+      }
+
+      // Re-close stripe handler on back button
+      window.addEventListener('popstate', function() {
+        if (typeof handler !== 'undefined') handler.close();
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const labels = document.querySelectorAll('.payment-options label');
+        labels.forEach(label => {
+          label.addEventListener('click', function() {
+            labels.forEach(l => {
+              l.style.borderColor = '#f3f4f6';
+              l.style.background = 'transparent';
+            });
+            this.style.borderColor = '#3b82f6';
+            this.style.background = '#f0f9ff';
+          });
+        });
+      });
+    </script>
+
+    <div class="col-lg-4 order-lg-2">
+      {% include "order_snippet.html" %}
+    </div>
+
+  </div>
+</div>
+{% endblock content %}

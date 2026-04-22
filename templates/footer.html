@@ -1,0 +1,56 @@
+{% load static %}
+<!-- ------------------------------footer sub end---------------------------------- -->
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Abel|Lato|Open+Sans&display=swap" rel="stylesheet">
+<style>
+  /* footer */
+#footer-main{
+	background: #111;
+	color: #e0e0e0;
+	font-size: 0.85rem;
+	padding: 2rem 0 1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+#footer-main a{
+	display: inline-block;
+	color: #b0b0b0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+#footer-main a:hover{
+	color: white;
+}
+
+#footer-main hr {
+    margin: 1.5rem 0;
+    border: 0;
+    border-top: 1px solid #333;
+}
+</style>
+
+<footer id="footer-main">
+    <div class="container">
+      <!-- Single Line Footer Links -->
+      <div class="d-flex justify-content-center flex-wrap" style="gap: 20px;">
+          <a href="">FIND A STORE</a>
+          <a href="">SIGN UP FOR EMAIL</a>
+          <a href="">BECOME A MEMBER</a>
+          <a href="">GET HELP</a>
+          <a href="">ABOUT US</a>
+          <a href="">CAREERS</a>
+          <a href="">CONTACT US</a>
+      </div>
+      
+      <hr>
+      
+      <div class="row align-items-center">
+        <div class="col-sm-12 text-center">
+          <p style="font-size: 13px; color: #b0b0b0;">Privacy Policy | © {% now "Y" %} Ecommerce Store. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+<!-- ------------------------------footer end---------------------------------- -->
+

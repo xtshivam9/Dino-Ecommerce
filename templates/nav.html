@@ -1,0 +1,318 @@
+{% load static %} 
+{% load cart_template_tags %} 
+{% load category_template_tags %}
+
+<style>
+  .topbar {
+    background-color: #111827 !important;
+    color: white !important;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .topbar a {
+    color: #e5e7eb;
+    transition: color 0.3s;
+  }
+
+  .topbar a:hover {
+    color: #fff;
+  }
+
+  .topbar-child1 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.4;
+  }
+
+  .mobile-topbar {
+    display: none;
+  }
+
+  @media (max-width: 992px) {
+    .mobile-topbar {
+      display: flex !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .topbar-child1 {
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+  }
+</style>
+<style>
+  .header-wrapicon1 { position: relative; }
+  .header-wrapicon1:hover .user-dropdown { display: block !important; }
+  .user-dropdown a { font-size: 14px; display: block; }
+  .user-dropdown a:hover { color: #717fe0 !important; }
+
+  /* Align all header icons in a single flex row */
+  .header-icons {
+    display: flex !important;
+    align-items: center !important;
+  }
+  .header-icons-mobile {
+    display: flex !important;
+    align-items: center !important;
+  }
+  .header-wrapicon1,
+  .header-wrapicon2 {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* My Orders icon wrapper — matches height of img icon wrappers */
+  .icon-my-orders-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative;
+    width: 35px;
+    height: 35px;
+  }
+  .icon-my-orders-wrap a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #333;
+    transition: color 0.2s;
+  }
+  .icon-my-orders-wrap a:hover { color: #717fe0; }
+  .icon-my-orders-wrap .fa-box { font-size: 20px; }
+
+  /* Mobile variant */
+  .icon-my-orders-wrap-sm {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative;
+    width: 30px;
+    height: 30px;
+  }
+  .icon-my-orders-wrap-sm a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #333;
+    transition: color 0.2s;
+  }
+  .icon-my-orders-wrap-sm a:hover { color: #717fe0; }
+  .icon-my-orders-wrap-sm .fa-box { font-size: 18px; }
+</style>
+<!-- Header -->
+<header class="header1">
+  <!-- Header desktop -->
+  <div class="container-menu-header">
+    <div class="topbar">
+      <span class="topbar-child1">
+        🎉 SPECIAL OFFER: Get 20% off your first order with code WELCOME20!
+      </span>
+    </div>
+
+    <div class="wrap_header">
+      <!-- Logo -->
+      <a href="/" class="logo">
+        <img src="{% static 'images/icons/shop_logo.png' %}" alt="Logo" style="max-height: 45px; width: auto;">
+      </a>
+
+      <!-- Menu -->
+      <div class="wrap_menu">
+        <nav class="menu">
+          <ul class="main_menu">
+            <li>
+              <a href="/">Home</a>
+              
+            </li>
+            <li>
+              <a href="{% url 'core:about_us' %}">About Us</a>
+            </li>
+
+            <li>
+              <a href="/shop/">Shop</a>
+            </li>
+            {% categories %}
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Header Icon -->
+      <div class="header-icons">
+        {% if request.user.is_authenticated %}
+          <!-- My Orders Icon -->
+          <div class="icon-my-orders-wrap">
+            <a href="{% url 'core:my-orders' %}" title="My Orders">
+              <i class="fas fa-box"></i>
+            </a>
+          </div>
+          <span class="linedivide1"></span>
+          <!-- Authenticated User Menu -->
+          <div class="header-wrapicon1 dis-block">
+            <a href="javascript:void(0);">
+              <img
+                src="{% static 'images/icons/icon-header-01.png' %}"
+                class="header-icon1"
+                alt="ICON"
+              />
+            </a>
+            <!-- Dropdown for User -->
+            <ul class="sub_menu user-dropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; padding: 10px 15px; width: 150px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 1000; list-style: none; border-radius: 8px;">
+              <li style="padding: 5px 0;"><a href="{% url 'core:logout' %}" style="color: black; text-decoration: none;">Logout</a></li>
+            </ul>
+          </div>
+        {% else %}
+          <!-- Unauthenticated User Menu -->
+          <div class="header-wrapicon1 dis-block">
+            <a href="{% url 'core:login' %}">
+              <img
+                src="{% static 'images/icons/icon-header-01.png' %}"
+                class="header-icon1"
+                alt="ICON"
+              />
+            </a>
+            <!-- Dropdown for Login -->
+            <ul class="sub_menu user-dropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; padding: 10px 15px; width: 150px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 1000; list-style: none; border-radius: 8px;">
+              <li style="padding: 5px 0;"><a href="{% url 'core:login' %}" style="color: black; text-decoration: none;">Login</a></li>
+              <li style="padding: 5px 0; border-top: 1px solid #eee; margin-top: 5px;"><a href="/accounts/signup/" style="color: black; text-decoration: none;">Sign Up</a></li>
+            </ul>
+          </div>
+        {% endif %}
+
+        <span class="linedivide1"></span>
+
+        <div class="header-wrapicon2">
+          <a href="{% if request.user.is_authenticated %}{% url 'core:order-summary' %}{% else %}{% url 'core:login' %}{% endif %}">
+            <img
+              src="{% static 'images/icons/icon-header-02.png' %}"
+              class="header-icon1"
+              alt="ICON"
+            />
+            <span class="header-icons-noti">{% if request.user.is_authenticated %}{{ request.user|cart_item_count }}{% else %}0{% endif %}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Mobile -->
+  <div class="topbar mobile-topbar">
+    <span class="topbar-child1">
+      🎉 SPECIAL OFFER: Get 20% off your first order with code WELCOME20!
+    </span>
+  </div>
+  <div class="wrap_header_mobile">
+    <!-- Logo moblie -->
+    <a href="/" class="logo-mobile">
+      <img src="{% static 'images/icons/shop_logo.png' %}" alt="Logo" style="max-height: 38px; width: auto;">
+    </a>
+
+    <!-- Button show menu -->
+    <div class="btn-show-menu">
+      <!-- Header Icon mobile -->
+        <div class="header-icons-mobile" style="overflow: visible;">
+        {% if request.user.is_authenticated %}
+        <!-- My Orders Icon (mobile) -->
+        <div class="icon-my-orders-wrap-sm">
+          <a href="{% url 'core:my-orders' %}" title="My Orders">
+            <i class="fas fa-box"></i>
+          </a>
+        </div>
+        <span class="linedivide2"></span>
+        <div class="header-wrapicon1 dis-block">
+          <a href="javascript:void(0);">
+            <img
+              src="{% static 'images/icons/icon-header-01.png' %}"
+              class="header-icon1"
+              alt="ICON"
+            />
+          </a>
+          <ul class="sub_menu user-dropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; padding: 10px 15px; width: 120px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 1000; list-style: none; border-radius: 8px;">
+            <li style="padding: 5px 0;"><a href="{% url 'core:logout' %}" style="color: black; text-decoration: none;">Logout</a></li>
+          </ul>
+        </div>
+        {% else %}
+        <div class="header-wrapicon1 dis-block">
+          <a href="{% url 'core:login' %}">
+            <img
+              src="{% static 'images/icons/icon-header-01.png' %}"
+              class="header-icon1"
+              alt="ICON"
+            />
+          </a>
+        </div>
+        {% endif %}
+
+        <span class="linedivide2"></span>
+
+        <div class="header-wrapicon2">
+          <a href="{% if request.user.is_authenticated %}{% url 'core:order-summary' %}{% else %}{% url 'core:login' %}{% endif %}">
+            <img
+              src="{% static 'images/icons/icon-header-02.png' %}"
+              class="header-icon1"
+              alt="ICON"
+            />
+            <span class="header-icons-noti">{% if request.user.is_authenticated %}{{ request.user|cart_item_count }}{% else %}0{% endif %}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Mobile -->
+  <div class="wrap-side-menu">
+    <nav class="side-menu">
+      <ul class="main-menu">
+        
+
+        <li class="item-menu-mobile">
+          <a href="/">Home</a>
+        </li>
+
+        <li class="item-menu-mobile">
+          <a href="{% url 'core:about_us' %}">About Us</a>
+        </li>
+
+        <li class="item-menu-mobile">
+          <a href="/shop">Shop</a>
+        </li>
+
+        {% categories_mobile %}
+        {% if request.user.is_authenticated %}
+        <li class="item-menu-mobile">
+          <a href="{% url 'core:my-orders' %}">
+            <i class="fas fa-box mr-2" style="color: #717fe0;"></i>My Orders
+          </a>
+        </li>
+        <li class="item-menu-mobile">
+          <a href="{% url 'core:logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="item-menu-mobile">
+          <a href="{% url 'core:login' %}">Login</a>
+        </li>
+        <li class="item-menu-mobile">
+          <a href="/accounts/signup/">Sign Up</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>

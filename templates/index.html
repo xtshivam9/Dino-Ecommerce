@@ -1,0 +1,922 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% load category_template_tags %} 
+{%load slide_template_tags %} 
+{% block content %}
+<style>
+  /*[ Block2 ]
+///////////////////////////////////////////////////////////
+*/
+  .block2-labelpromotion::before,
+  .block2-labelsale::before,
+  .block2-labelnew::before {
+    z-index: 100;
+    font-family: Montserrat-Regular;
+    font-size: 12px;
+    color: white;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 22px;
+    border-radius: 11px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+
+  .block2-labelsale::before {
+    background-color: white;
+    color: #000;
+    content: "Sale";
+  }
+
+  .block2-labelnew::before {
+    background-color: #007bff;
+    content: "New";
+  }
+
+  .block2-labelpromotion::before {
+    background-color: #000;
+    content: "Promotion";
+    width: 70px;
+  }
+
+  .btn-dark {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+  }
+
+  .btn-outline-dark {
+    color: #000;
+    border-color: #000;
+  }
+</style>
+
+<!-- Slide1 -->
+<section class="slide1">
+  <div class="wrap-slick1">
+    <div class="slick1">
+      {% slides %}
+
+      <!-- <div class="item-slick1 item2-slick1" style="background-image: url({% static 'images/master-slide-03.webp' %});">-->
+      <!--					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">-->
+      <!--						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rollIn">-->
+      <!--							Women Collection 2018-->
+      <!--						</span>-->
+      <!--						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">-->
+      <!--							New arrivals-->
+      <!--						</h2>-->
+      <!--						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">-->
+      <!--							&lt;!&ndash; Button &ndash;&gt;-->
+      <!--							<a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">-->
+      <!--								Shop Now-->
+      <!--							</a>-->
+      <!--						</div>-->
+      <!--					</div>-->
+      <!--				</div> -->
+    </div>
+  </div>
+</section>
+
+<!-- Category start -->
+<style>
+  .hov1 {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  .category-tight-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 300px);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .tight-gallery-item {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  .tight-gallery-item .block1 {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0 !important;
+  }
+
+  .tight-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  
+  .tight-gallery-item:hover img {
+    transform: scale(1.1);
+  }
+
+  /* Masonry / Bento specific alignments for 5 items */
+  /* First item big */
+  .tight-gallery-item.item-0 {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+  /* The rest fill in smaller squares */
+  .tight-gallery-item.item-1 { grid-column: 3 / 4; grid-row: 1 / 2; }
+  .tight-gallery-item.item-2 { grid-column: 4 / 5; grid-row: 1 / 2; }
+  .tight-gallery-item.item-3 { grid-column: 3 / 4; grid-row: 2 / 3; }
+  .tight-gallery-item.item-4 { grid-column: 4 / 5; grid-row: 2 / 3; }
+
+  @media (max-width: 992px) {
+    .category-tight-gallery {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+      grid-auto-rows: 250px;
+    }
+    .tight-gallery-item.item-0 { grid-column: 1 / 3; grid-row: 1 / 3; }
+    .tight-gallery-item.item-1 { grid-column: 1 / 2; grid-row: 3 / 4; }
+    .tight-gallery-item.item-2 { grid-column: 2 / 3; grid-row: 3 / 4; }
+    .tight-gallery-item.item-3 { grid-column: 1 / 2; grid-row: 4 / 5; }
+    .tight-gallery-item.item-4 { grid-column: 2 / 3; grid-row: 4 / 5; }
+  }
+
+  @media (max-width: 576px) {
+    .category-tight-gallery {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 300px;
+    }
+    .tight-gallery-item {
+      grid-column: 1 / 2 !important;
+      grid-row: auto !important;
+    }
+  }
+</style>
+<section class="banner bgwhite p-t-40 p-b-40" style="overflow: hidden;">
+  <div class="container-fluid p-0">
+    {% categories_div %}
+
+      <!--				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">-->
+      <!--					-->
+      <!--					<div class="block1 hov-img-zoom pos-relative m-b-30">-->
+      <!--						<img src="{% static 'images/banner-02.webp' %}" alt="IMG-BENNER">-->
+      <!--						<div class="block1-wrapbtn w-size2">-->
+      <!--							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">-->
+      <!--								Dresses-->
+      <!--							</a>-->
+      <!--						</div>-->
+      <!--					</div>-->
+      <!--					-->
+      <!--					<div class="block1 hov-img-zoom pos-relative m-b-30">-->
+      <!--						<img src="{% static 'images/banner-05.webp' %}" alt="IMG-BENNER">-->
+      <!--						<div class="block1-wrapbtn w-size2">-->
+      <!--							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">-->
+      <!--								Sunglasses-->
+      <!--							</a>-->
+      <!--						</div>-->
+      <!--					</div>-->
+      <!--					-->
+      <!--				</div>-->
+  </div>
+</section>
+
+<!-- New Product -->
+<style>
+  .newproduct {
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+  }
+  
+  .premium-product-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    border: 1px solid #f3f4f6;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .premium-product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .premium-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: #fdfdfd;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .premium-img-wrapper img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .premium-product-card:hover .premium-img-wrapper img {
+    transform: scale(1.05);
+  }
+  
+  .premium-content {
+    padding: 24px 20px;
+    text-align: center;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .premium-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    display: block;
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+  
+  .premium-title:hover {
+    color: #717fe0;
+  }
+  
+  .premium-prices {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 8px;
+  }
+  
+  .premium-old-price {
+    font-size: 14px;
+    color: #9ca3af;
+    text-decoration: line-through;
+  }
+  
+  .premium-current-price {
+    font-size: 18px;
+    color: #111827;
+    font-weight: 700;
+  }
+  
+  .premium-add-to-cart {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #111827;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 85%;
+    text-align: center;
+    text-decoration: none;
+    z-index: 10;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  .premium-product-card:hover .premium-add-to-cart {
+    bottom: 24px;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .premium-add-to-cart:hover {
+    background: #717fe0;
+    color: white;
+    box-shadow: 0 6px 16px rgba(113, 127, 224, 0.3);
+  }
+  
+  .premium-stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .premium-stars i {
+    color: #f59e0b;
+    font-size: 13px;
+    margin: 0 2px;
+  }
+
+  .premium-review-count {
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 6px;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
+<section class="newproduct bgwhite p-t-45 p-b-105" style="overflow: hidden;">
+  <div class="container">
+    <div class="sec-title p-b-60" style="animation: slideInLeft 1s ease-out;">
+      <h3 class="m-text5" style="font-size: 36px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-align: left;">Featured Products</h3>
+    </div>
+
+    <!-- Slide2 -->
+    <div class="wrap-slick2">
+      <div class="slick2">
+        {% for item in object_list %}
+
+        <div class="item-slick2 p-l-15 p-r-15 p-b-20">
+          <div class="premium-product-card">
+            <div class="premium-img-wrapper block2-label{{item.get_label_display}}">
+              <a href="{{item.get_absolute_url}}">
+                <img src="{{ item.image.url }}" alt="{{ item.title }}" />
+              </a>
+              <a href="{{item.get_add_to_cart_url}}" class="premium-add-to-cart">Add to Cart</a>
+            </div>
+
+            <div class="premium-content">
+              <a href="{{item.get_absolute_url}}" class="premium-title">
+                {{ item.title }}
+              </a>
+
+              <div class="premium-stars">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+                <span class="premium-review-count">4.5 (128)</span>
+              </div>
+
+              <div class="premium-prices">
+                {% if item.discount_price %}
+                  <span class="premium-old-price">${{ item.price }}</span>
+                  <span class="premium-current-price">${{ item.discount_price }}</span>
+                {% else %}
+                  <span class="premium-current-price">${{ item.price }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------Banner2  start ------------------------>
+<style>
+  .banner2 {
+    background-color: #fff;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .ban_img {
+    height: 700px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .pos-relative-hover {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+
+  .pos-relative-hover:hover .ban_img {
+    transform: scale(1.05);
+  }
+
+  .ban5_img {
+    height: 580px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .pos-relative-hover:hover .ban5_img {
+    transform: scale(1.05);
+  }
+
+  .btn-light {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+    border-radius: 20px;
+  }
+
+  .wrap-btn-slide1 a:hover {
+    background-color: whitesmoke;
+    color: #000 !important;
+    opacity: 0.7;
+  }
+  
+  .section-premium-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #111827;
+    margin-bottom: 25px;
+    position: relative;
+  }
+</style>
+<section class="banner2 bg5 p-t-55 p-b-55" style="overflow: hidden;">
+  <h4 class="section-premium-title">Season's Essentials</h4>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+        <div class="pos-relative pos-relative-hover">
+          <img
+            src="https://static.nike.com/a/images/f_auto/dpr_2.0/h_700,c_limit/c85699cb-2813-4acd-8822-c3344fe07f17/nike-just-do-it.jpg"
+            alt="IMG-BANNER"
+            class="ban_img"
+          />
+
+          <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+            <br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
+            <span class="m-text9 p-t-45 fs-20-sm"> Bold, Brights Looks </span>
+
+            <br />
+
+            <div
+              class="wrap-btn-slide1 w-size1 animated"
+              data-appear="slideInUp"
+            >
+              <a
+                href="/shop/"
+                class="flex-c-m size2 bo-rad-23 s-text2 bgwhite trans-0-4"
+              >
+                Shop Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+        <div class="pos-relative pos-relative-hover">
+          <img
+            src="https://static.nike.com/a/images/f_auto/dpr_2.0/h_700,c_limit/3d8a771b-0fd0-49b0-a9ad-1c688b192bf9/nike-just-do-it.jpg"
+            alt="IMG-BANNER"
+            class="ban_img"
+          />
+
+          <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+            <br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
+            <span class="m-text9 p-t-45 fs-20-sm"> Stay Active </span>
+
+            <br />
+
+            <div
+              class="wrap-btn-slide1 w-size1 animated"
+              data-appear="slideInUp"
+            >
+              <a
+                href="/shop/"
+                class="flex-c-m size2 bo-rad-23 s-text2 bgwhite trans-0-4"
+              >
+                Shop Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ------------------Banner2  start ------------------------>
+
+<!-- ------------------Banner4  start ------------------------>
+<!-- Slide1 -->
+
+<style>
+  .slide1 button:hover {
+    background-color: white !important;
+    color: black;
+  }
+</style>
+<br /><br />
+<section class="slide1">
+  <div class="wrap-slick2">
+    <div class="slick1">
+      <div
+        class="item-slick1 item2-slick1"
+        style="
+          background-image: url('https://static.nike.com/a/images/f_auto/dpr_2.0/w_1407,c_limit/a01665bf-08e7-4d5d-8fb6-841382e3f900/nike-just-do-it.jpg');
+        "
+      >
+        <div
+          class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170"
+        >
+          <span
+            class="caption1-slide1 m-text1 t-center m-b-15"
+            data-appear="rollIn"
+          >
+            Nike ZoomX Vaporfly NEXT%
+          </span>
+          <h2
+            class="caption2-slide1 xl-text1 t-center m-b-37"
+            data-appear="lightSpeedIn"
+          >
+            FAST IS BACK
+          </h2>
+          <div class="wrap-btn-slide1 w-size1" data-appear="slideInUp">
+            <a
+              href="/shop/"
+              class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4"
+            >
+              Shop Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------Banner4  end ------------------------>
+
+<!-- ------------------Banner3  start ------------------------>
+
+<section class="banner2 bg5 p-t-55 p-b-55" style="overflow: hidden;">
+  <h4 class="section-premium-title">Training's Essentials</h4>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+        <div class="pos-relative pos-relative-hover">
+          <img
+            src="https://static.nike.com/a/images/f_auto/dpr_2.0/h_700,c_limit/24fb4f53-ba07-46fa-934e-bcb35b0cc021/nike-just-do-it.jpg"
+            alt="IMG-BANNER"
+            class="ban_img"
+          />
+
+          <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+            <br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
+            <span class="m-text9 p-t-45 fs-20-sm"> SuperRe Go </span>
+
+            <br />
+
+            <div
+              class="wrap-btn-slide1 w-size1 animated"
+              data-appear="slideInUp"
+            >
+              <a
+                href="/shop/"
+                class="flex-c-m size2 bo-rad-23 s-text2 bgwhite trans-0-4"
+              >
+                Shop Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+        <div class="pos-relative pos-relative-hover">
+          <img
+            src="https://static.nike.com/a/images/f_auto/dpr_2.0/h_700,c_limit/f33275db-0cbb-406a-8ac9-430ff07433b7/nike-just-do-it.jpg"
+            alt="IMG-BANNER"
+            class="ban_img"
+          />
+
+          <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+            <br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
+            <span class="m-text9 p-t-45 fs-20-sm" style="color: black">
+              Bras and Leggings
+            </span>
+
+            <br />
+
+            <div
+              class="wrap-btn-slide2 w-size1 animated"
+              data-appear="slideInUp"
+            >
+              <a
+                href="/shop/"
+                class="flex-c-m size2 bo-rad-23 s-text2 trans-0-4"
+                style="background-color: black; color: white"
+              >
+                Shop Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ------------------Banner3  end ------------------------>
+
+<!-- ------------------Banner5  start ------------------------>
+
+<section class="banner2 bg5 p-t-55 p-b-55" style="overflow: hidden;">
+  <h4 class="section-premium-title">More Products</h4>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto p-t-15 p-b-15">
+        <div class="pos-relative pos-relative-hover">
+          <img
+            src="https://static.nike.com/a/images/f_auto/dpr_2.0/h_573,c_limit/0bafb728-2ae2-416f-bb18-5935801c8071/nike-just-do-it.png"
+            alt="IMG-BANNER"
+            class="ban5_img"
+          />
+
+          <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+            <br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
+
+            <br />
+
+            <div
+              class="wrap-btn-slide1 w-size1 animated"
+              data-appear="slideInUp"
+            >
+              <a
+                href="/shop/"
+                class="flex-c-m size2 bo-rad-23 s-text2 bgwhite trans-0-4"
+              >
+                Men's
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto p-t-15 p-b-15">
+        <div class="pos-relative pos-relative-hover">
+          <img
+            src="https://static.nike.com/a/images/f_auto/dpr_2.0/h_573,c_limit/2c8754ce-6287-4e77-a198-1ad483fba257/nike-just-do-it.png"
+            alt="IMG-BANNER"
+            class="ban5_img"
+          />
+
+          <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+            <br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
+
+            <br />
+
+            <div
+              class="wrap-btn-slide1 w-size1 animated"
+              data-appear="slideInUp"
+            >
+              <a
+                href="/shop/"
+                class="flex-c-m size2 bo-rad-23 s-text2 bgwhite trans-0-4"
+              >
+                Women's
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto p-t-15 p-b-15">
+        <div class="pos-relative pos-relative-hover">
+          <img
+            src="https://static.nike.com/a/images/f_auto/dpr_2.0/h_573,c_limit/414db494-7ebc-4d53-bbff-58d50b380a24/nike-just-do-it.png"
+            alt="IMG-BANNER"
+            class="ban5_img"
+          />
+
+          <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+            <br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
+            <br /><br /><br /><br /><br />
+
+            <br />
+
+            <div
+              class="wrap-btn-slide1 w-size1 animated"
+              data-appear="slideInUp"
+            >
+              <a
+                href="/shop/"
+                class="flex-c-m size2 bo-rad-23 s-text2 bgwhite trans-0-4"
+              >
+                Kids'
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ------------------Banner2  start ------------------------>
+
+<!-- Shipping -->
+<section class="shipping bgwhite p-t-62 p-b-46">
+  <div class="flex-w p-l-15 p-r-15">
+    <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+      <h4 class="m-text12 t-center">Free Delivery Worldwide</h4>
+
+      <a href="#" class="s-text11 t-center"> Click here for more info </a>
+    </div>
+
+    <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
+      <h4 class="m-text12 t-center">30 Days Return</h4>
+
+      <span class="s-text11 t-center">
+        Simply return it within 30 days for an exchange.
+      </span>
+    </div>
+
+    <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+      <h4 class="m-text12 t-center">Store Opening</h4>
+
+      <span class="s-text11 t-center"> Shop open from Monday to Sunday </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    background-color: #f9fafb;
+    padding: 80px 0;
+  }
+  .contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+  .contact-info {
+    flex: 1;
+    min-width: 300px;
+    padding: 50px;
+    background: #111827;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-info h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  .contact-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #d1d5db;
+    margin-bottom: 20px;
+  }
+  .contact-form-container {
+    flex: 1.5;
+    min-width: 350px;
+    padding: 50px;
+  }
+  .contact-form-container h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 30px;
+  }
+  .contact-form-container .form-group {
+    margin-bottom: 20px;
+  }
+  .contact-form-container label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .contact-form-container input[type="text"],
+  .contact-form-container input[type="email"],
+  .contact-form-container textarea {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 15px;
+    color: #111827;
+    background: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+  }
+  .contact-form-container textarea {
+    height: 120px;
+    resize: none;
+  }
+  .contact-form-container input:focus,
+  .contact-form-container textarea:focus {
+    border-color: #111827;
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
+  }
+  .contact-form-container button {
+    background: #111827;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .contact-form-container button:hover {
+    background: #374151;
+  }
+  .contact-form-container button:active {
+    transform: scale(0.98);
+  }
+
+  @media (max-width: 768px) {
+    .contact-wrapper {
+      flex-direction: column;
+    }
+    .contact-info, .contact-form-container {
+      padding: 30px 20px;
+    }
+  }
+</style>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-wrapper">
+      
+      <!-- Left Side -->
+      <div class="contact-info">
+        <h2>Contact Us</h2>
+        <p>We're here to assist you! If you have any questions or need assistance, please feel free to reach out to us.</p>
+        <p>We use VeilMail.io to protect your email address from spam.</p>
+      </div>
+
+      <!-- Right Side -->
+      <div class="contact-form-container">
+        <h2>Drop Us A Message</h2>
+        <form action="{% url 'core:send_contact_message' %}" method="post" id="submit-contact-form">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
+          </div>
+          <button type="submit">Send Message ✉</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

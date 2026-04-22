@@ -1,0 +1,84 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load crispy_forms_tags %}
+
+{% block extra_head %}
+<style>
+/* ... removed unnecessary styles to declutter ... */
+.payment-btn {
+  background-color: #111827;
+  color: white;
+  border-radius: 8px;
+  padding: 14px;
+  font-weight: 600;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+.payment-btn:hover {
+  background-color: #374151;
+}
+.payment-container {
+  padding: 40px 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+</style>
+{% endblock extra_head %}
+
+{% block content %}
+<div class="container" style="margin-top: 80px; margin-bottom: 80px;">
+  <div class="row">
+    <div class="col-md-8 order-md-1">
+      <div class="payment-container">
+    	  <h4 class="mb-4">Complete Your Payment</h4>
+        <p class="text-muted mb-4">You will be securely redirected to our payment popup to complete your transaction using Stripe.</p>
+        
+        <form action="." method="post" id="stripe-form">
+            {% csrf_token %}
+            <input type="hidden" id="stripeToken" name="stripeToken" />
+            <input type="hidden" id="stripeEmail" name="stripeEmail" />
+            <button id="customButton" class="payment-btn">💳 Pay with Card Element</button>
+        </form>
+      </div>
+    </div>
+    {% include "order_snippet.html" %}
+  </div>
+</div>
+{% endblock content %}
+
+{% block extra_scripts %}
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script>
+  var stripeTotal = Math.round(parseFloat('{{ order.get_total }}') * 100);
+  
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_lX3r6OMjOU2yzFsNSHq6belT00EY82kZmH',
+    image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+    locale: 'auto',
+    token: function(token) {
+      document.getElementById('stripeToken').value = token.id;
+      document.getElementById('stripeEmail').value = token.email;
+      document.getElementById('customButton').disabled = true;
+      document.getElementById('customButton').innerText = "Processing...";
+      document.getElementById('stripe-form').submit();
+    }
+  });
+
+  document.getElementById('customButton').addEventListener('click', function(e) {
+    handler.open({
+      name: 'Dino Shop',
+      description: 'Cart Checkout',
+      amount: stripeTotal,
+      currency: 'usd'
+    });
+    e.preventDefault();
+  });
+
+  window.addEventListener('popstate', function() {
+    handler.close();
+  });
+</script>
+{% endblock extra_scripts %}
