@@ -1,7 +1,7 @@
 "use client";
 
 import { Page, View, Text } from "@react-pdf/renderer";
-import { PAGE_MARGINS, HEADER_TOP, FOOTER_BOTTOM } from "../styles";
+import { PAGE_MARGINS, HEADER_TOP, FOOTER_BOTTOM, styles } from "../styles";
 
 interface BookPageLayoutProps {
   children: React.ReactModel;
@@ -23,17 +23,8 @@ export default function BookPageLayout({
     <Page
       size="A4"
       wrap
-      style={{
-        paddingTop: PAGE_MARGINS.top,
-        paddingBottom: PAGE_MARGINS.bottom,
-        paddingLeft: PAGE_MARGINS.left,
-        paddingRight: PAGE_MARGINS.right,
-        fontFamily: "Times-Roman",
-        fontSize: 8,
-        lineHeight: 1.1,
-        color: "#000000",
-        backgroundColor: "#ffffff",
-      }}
+      style={styles.page}
+
     >
       {/* Header — absolute positioned, repeats on every page */}
       <View

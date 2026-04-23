@@ -61,8 +61,6 @@ const PAGE_1_COUNT = 18;
 export default function ListOfFigures() {
   // List of Figures starts at page xiii (13 in Roman numerals)
   const startPage = 13;
-  const page1Figures = figures.slice(0, PAGE_1_COUNT);
-  const page2Figures = figures.slice(PAGE_1_COUNT);
 
   const pageStyle = {
     paddingTop: 50,
@@ -76,7 +74,7 @@ export default function ListOfFigures() {
     backgroundColor: "#ffffff",
   };
 
-  const renderHeader = (isContd: boolean = false) => (
+  const renderHeader = () => (
     <View style={{ marginBottom: 24, marginTop: 0 }}>
       <Text
         style={{
@@ -101,14 +99,15 @@ export default function ListOfFigures() {
           marginBottom: 10,
         }}
       >
-        {isContd ? "List of Figures (continued)" : "List of Figures"}
+        List of Figures
       </Text>
       <View
         style={{
           width: 40,
           height: 2,
           backgroundColor: "#000000",
-          alignSelf: "center" as const,
+          alignSelf: "center",
+          marginTop: 8,
         }}
       />
     </View>
@@ -179,44 +178,26 @@ export default function ListOfFigures() {
     </View>
   );
 
-  const renderFooter = (pageNum: number) => (
-    <View
-      style={{
-        position: "absolute",
-        bottom: FOOTER_BOTTOM,
-        left: 0,
-        right: 0,
-        textAlign: "center",
-      }}
-      fixed
-    >
-      <Text
-        style={{ fontSize: 10, fontFamily: "Times-Roman", color: "#444444" }}
-      >
-        {toRoman(pageNum)}
-      </Text>
-    </View>
-  );
-
   return (
-    <>
-      {/* Page 1 */}
-      <Page size="A4" style={pageStyle}>
-        {renderHeader()}
-        <View>{page1Figures.map(renderFigureEntry)}</View>
-        {renderFooter(startPage)}
-      </Page>
-
-      {/* Page 2 */}
-      <Page size="A4" style={pageStyle}>
-        {renderHeader(true)}
-        <View style={{ marginBottom: 5 }}>
-          {page2Figures.map((fig, i) =>
-            renderFigureEntry(fig, i + PAGE_1_COUNT),
-          )}
-        </View>
-        {renderFooter(startPage + 1)}
-      </Page>
-    </>
+    <Page size="A4" style={pageStyle}>
+      {renderHeader()}
+      <View>{figures.map(renderFigureEntry)}</View>
+      <View
+        style={{
+          position: "absolute",
+          bottom: FOOTER_BOTTOM,
+          left: 0,
+          right: 0,
+          textAlign: "center",
+        }}
+        fixed
+      >
+        <Text
+          style={{ fontSize: 10, fontFamily: "Times-Roman", color: "#444444" }}
+        >
+          {toRoman(startPage)}
+        </Text>
+      </View>
+    </Page>
   );
 }

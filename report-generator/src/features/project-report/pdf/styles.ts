@@ -5,10 +5,10 @@ import { StyleSheet, Font } from "@react-pdf/renderer";
 // A4 dimensions: 210mm x 297mm = 595pt x 842pt
 // Premium report margins - consistent across ALL pages
 export const PAGE_MARGINS = {
-  top: 50,
-  bottom: 50,
-  left: 50,
-  right: 50,
+  top: 45,
+  bottom: 45,
+  left: 40, // Increased for binding
+  right: 35,
 };
 
 // Header/Footer positioning
@@ -53,55 +53,59 @@ export const styles = StyleSheet.create({
     paddingLeft: PAGE_MARGINS.left,
     paddingRight: PAGE_MARGINS.right,
     fontFamily: "Times-Roman",
-    fontSize: 8,
-    lineHeight: 1.1,
+    fontSize: 9, // Increased from 7.5
+    lineHeight: 1.3, // Increased from 1.0 to fix overlapping
     color: "#000000",
     backgroundColor: "#ffffff",
   },
   pageNoMargin: {
     fontFamily: "Times-Roman",
-    fontSize: 8,
-    lineHeight: 1.1,
+    fontSize: 9,
+    lineHeight: 1.3,
     color: "#000000",
     backgroundColor: "#ffffff",
   },
 
   // Typography
   h1: {
-    fontSize: 14,
-    fontFamily: "Times-Bold",
-    textAlign: "center",
-    marginBottom: 8,
-    textTransform: "uppercase",
-    letterSpacing: 1.0,
-  },
-  h2: {
     fontSize: 12,
     fontFamily: "Times-Bold",
-    marginTop: 16,
-    marginBottom: 8,
-    paddingBottom: 6,
-    borderBottomWidth: 1.5,
+    marginTop: 6,
+    marginBottom: 4,
+    lineHeight: 1.2,
+    textTransform: "uppercase",
+    textAlign: "center",
+  },
+  h2: {
+    fontSize: 10.5,
+    fontFamily: "Times-Bold",
+    marginTop: 5,
+    marginBottom: 2,
+    lineHeight: 1.2,
+    borderBottomWidth: 0.5,
     borderBottomColor: "#000000",
   },
   h3: {
-    fontSize: 10,
+    fontSize: 9.5,
     fontFamily: "Times-Bold",
+    marginTop: 4,
     marginBottom: 2,
-    marginTop: 2,
+    lineHeight: 1.2,
   },
   paragraph: {
-    fontSize: 8,
+    fontSize: 8.5, // Increased from 7
+    fontFamily: "Times-Roman",
+    lineHeight: 1.35, // Increased from 1.0 to fix overlapping
+    marginBottom: 3,
     textAlign: "justify",
-    marginBottom: 2,
-    lineHeight: 1.1,
   },
   paragraphIndent: {
-    fontSize: 8,
+    fontSize: 8.5,
+    fontFamily: "Times-Roman",
+    lineHeight: 1.35,
+    marginBottom: 3,
+    textIndent: 12,
     textAlign: "justify",
-    marginBottom: 2,
-    lineHeight: 1.1,
-    textIndent: 20,
   },
 
   // Layout utilities
@@ -153,8 +157,8 @@ export const styles = StyleSheet.create({
     width: "100%",
     height: 0.5,
     backgroundColor: "#444444",
-    marginTop: 18,
-    marginBottom: 18,
+    marginTop: 10,
+    marginBottom: 10,
   },
 
   // Footer
@@ -172,8 +176,8 @@ export const styles = StyleSheet.create({
   // Tables
   table: {
     width: "100%",
-    marginTop: 2,
-    marginBottom: 2,
+    marginTop: 4,
+    marginBottom: 4,
   },
   tableRow: {
     flexDirection: "row",
@@ -182,17 +186,17 @@ export const styles = StyleSheet.create({
   },
   tableHeader: {
     flexDirection: "row",
-    borderBottomWidth: 1.5,
+    borderBottomWidth: 1.2,
     borderBottomColor: "#000000",
     backgroundColor: "#f0f0f0",
     fontFamily: "Times-Bold",
-    paddingTop: 4,
-    paddingBottom: 4,
+    paddingTop: 3,
+    paddingBottom: 3,
   },
   tableCell: {
-    padding: 2,
-    fontSize: 7,
-    lineHeight: 1.0,
+    padding: 2.5,
+    fontSize: 7.5,
+    lineHeight: 1.25,
   },
 
   // Bold text
@@ -205,20 +209,30 @@ export const styles = StyleSheet.create({
 
   // Border box
   borderBox: {
-    borderWidth: 1.5,
+    borderWidth: 1.2,
     borderColor: "#000000",
-    padding: 16,
+    padding: 10,
   },
 
-  // Signature section
-  signatureBlock: {
-    marginTop: 48,
-    alignItems: "flex-end",
+  // Chapter Headings
+  chapterHeader: {
+    alignItems: "center",
+    marginBottom: 25,
+    marginTop: 10,
   },
-  signatureLine: {
-    width: 180,
-    borderTopWidth: 1.5,
-    borderTopColor: "#000000",
-    marginBottom: 6,
+  chapterTitle: {
+    fontSize: 24,
+    fontFamily: "Times-Bold",
+    textAlign: "center",
+    textTransform: "uppercase",
+    marginBottom: 2,
+  },
+  underline: {
+    width: 60,
+    height: 3,
+    backgroundColor: "#000000",
+    marginTop: 8,
+    alignSelf: "center",
   },
 });
+

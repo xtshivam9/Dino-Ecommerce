@@ -15,26 +15,26 @@ import FeasibilityScorecard from "../diagrams/FeasibilityScorecard";
 export default function FeasibilityStudy() {
   return (
     <BookPageLayout chapterTitle="Feasibility Study" chapterNum="04">
-      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
+      <View style={{ alignItems: "center", marginBottom: 20, marginTop: 5 }}>
         <Text
           style={{
-            fontSize: 12,
+            fontSize: 10,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 4,
+            letterSpacing: 3,
             textTransform: "uppercase",
-            marginBottom: 12,
+            marginBottom: 8,
           }}
         >
           CHAPTER 4
         </Text>
-        <View style={{ marginBottom: 16 }}>
+        <View style={{ marginBottom: 12 }}>
           <Text
             style={{
-              fontSize: 32,
+              fontSize: 24,
               fontFamily: "Times-Bold",
               textAlign: "center",
-              letterSpacing: 2,
+              letterSpacing: 1.5,
               textTransform: "uppercase",
               color: "#000000",
               lineHeight: 1.1,
@@ -45,8 +45,8 @@ export default function FeasibilityStudy() {
         </View>
         <View
           style={{
-            width: 80,
-            height: 4,
+            width: 60,
+            height: 3,
             backgroundColor: "#000000",
           }}
         />
@@ -535,6 +535,7 @@ export default function FeasibilityStudy() {
       </Text>
 
       <View
+        wrap={false}
         style={{
           marginBottom: 6,
           padding: 5,
@@ -983,6 +984,7 @@ export default function FeasibilityStudy() {
       </Text>
 
       <View
+        wrap={false}
         style={{
           marginBottom: 6,
           padding: 5,
@@ -1213,6 +1215,7 @@ export default function FeasibilityStudy() {
       </View>
 
       <View
+        wrap={false}
         style={{
           marginBottom: 4,
           padding: 5,
@@ -1398,6 +1401,7 @@ export default function FeasibilityStudy() {
       </View>
 
       <View
+        wrap={false}
         style={{
           marginBottom: 4,
           padding: 5,
@@ -1598,6 +1602,7 @@ export default function FeasibilityStudy() {
       </View>
 
       <View
+        wrap={false}
         style={{
           marginBottom: 4,
           padding: 5,
@@ -1803,17 +1808,24 @@ export default function FeasibilityStudy() {
       </Text>
 
       <View
+        wrap={false}
         style={{
-          marginBottom: 8,
-          padding: 7,
-          borderWidth: 3,
+          marginBottom: 10,
+          padding: 15,
+          borderWidth: 2,
           borderColor: "#006600",
           backgroundColor: "#f0fff0",
           alignItems: "center",
         }}
+
       >
         <Text
-          style={{ fontSize: 14, fontFamily: "Times-Bold", color: "#006600" }}
+          style={{
+            fontSize: 14,
+            fontFamily: "Times-Bold",
+            color: "#006600",
+            lineHeight: 1.2,
+          }}
         >
           OVERALL FEASIBILITY ASSESSMENT
         </Text>
@@ -1823,6 +1835,8 @@ export default function FeasibilityStudy() {
             fontFamily: "Times-Bold",
             color: "#006600",
             marginBottom: 4,
+            lineHeight: 1.2,
+            marginTop: 5,
           }}
         >
           PROJECT APPROVED

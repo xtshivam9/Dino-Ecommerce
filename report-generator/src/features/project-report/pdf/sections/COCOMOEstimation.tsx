@@ -12,26 +12,26 @@ import GanttChart from "../diagrams/GanttChart";
 export default function COCOMOEstimation() {
   return (
     <BookPageLayout chapterTitle="Project Estimation" chapterNum="05">
-      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
+      <View style={{ alignItems: "center", marginBottom: 20, marginTop: 5 }}>
         <Text
           style={{
-            fontSize: 12,
+            fontSize: 10,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 4,
+            letterSpacing: 3,
             textTransform: "uppercase",
-            marginBottom: 12,
+            marginBottom: 8,
           }}
         >
           CHAPTER 5
         </Text>
-        <View style={{ marginBottom: 16 }}>
+        <View style={{ marginBottom: 12 }}>
           <Text
             style={{
-              fontSize: 32,
+              fontSize: 24,
               fontFamily: "Times-Bold",
               textAlign: "center",
-              letterSpacing: 2,
+              letterSpacing: 1.5,
               textTransform: "uppercase",
               color: "#000000",
               lineHeight: 1.1,
@@ -42,8 +42,8 @@ export default function COCOMOEstimation() {
         </View>
         <View
           style={{
-            width: 80,
-            height: 4,
+            width: 60,
+            height: 3,
             backgroundColor: "#000000",
           }}
         />
@@ -353,6 +353,7 @@ export default function COCOMOEstimation() {
 
       <Text style={styles.h3}>5.3.2 Effort Calculation</Text>
       <View
+        wrap={false}
         style={{
           backgroundColor: "#f0f8ff",
           borderWidth: 1,
@@ -382,6 +383,7 @@ export default function COCOMOEstimation() {
 
       <Text style={styles.h3}>5.3.3 Development Time Calculation</Text>
       <View
+        wrap={false}
         style={{
           backgroundColor: "#f0f8ff",
           borderWidth: 1,
@@ -957,7 +959,8 @@ export default function COCOMOEstimation() {
         ))}
       </View>
 
-      <Text style={styles.h2}>5.7 Summary</Text>
+      <Text style={styles.h2}>5.8 Summary</Text>
+
       <Text style={styles.paragraphIndent}>
         This chapter applied COCOMO estimation models to the dj-ecommerce project.
         The Basic COCOMO model estimated 42.6 person-months of effort over 10.8
@@ -1044,29 +1047,35 @@ export default function COCOMOEstimation() {
         environments can be 10x or higher compared to traditional development
         approaches.
       </Text>
-      <Text style={styles.h2}>5.6 Cost Estimation (CAPEX & OPEX)</Text>
-      <Text style={styles.paragraphIndent}>
-        In addition to the development effort modeled by COCOMO, the long-term
-        financial viability of dj-ecommerce depends on its operational and structural
-        hosting costs.
-      </Text>
-      <Text style={styles.paragraphIndent}>
-        <Text style={styles.bold}>CAPEX (Capital Expenditure): </Text>
-        Zero. By utilizing open-source frameworks (Django, React) and cloud-agnostic
-        deployment, structural upfront software licensing costs are avoided.
-      </Text>
-      <Text style={styles.paragraphIndent}>
-        <Text style={styles.bold}>OPEX (Operational Expenditure): </Text>
-        Estimated at $25/month for continuous hosting:
-        - Railway PostgreSQL Database: ~/month
-        - Vercel (Next.js Report App): Free tier
-        - Heroku/Render (Django App hosting): ~0/month
-        - Stripe Transaction Fees: 2.9% + /usr/bin/bash.30 per successful card charge
-      </Text>
-      <Text style={styles.paragraphIndent}>
-        This cost model scales linearly, avoiding the massive monthly base subscription
-        fees of platforms like Shopify while maintaining similar transactional overhead.
-      </Text>
+      <View wrap={false}>
+        <Text style={styles.h2}>5.7 Cost Estimation (CAPEX & OPEX)</Text>
+        <Text style={styles.paragraphIndent}>
+          In addition to the development effort modeled by COCOMO, the long-term
+          financial viability of dj-ecommerce depends on its operational and structural
+          hosting costs.
+        </Text>
+        <Text style={styles.paragraphIndent}>
+          <Text style={styles.bold}>CAPEX (Capital Expenditure): </Text>
+          Zero. By utilizing open-source frameworks (Django, React) and cloud-agnostic
+          deployment, structural upfront software licensing costs are avoided.
+        </Text>
+        <Text style={styles.paragraphIndent}>
+          <Text style={styles.bold}>OPEX (Operational Expenditure): </Text>
+          Estimated at $25/month for continuous hosting:
+        </Text>
+        <View style={{ marginLeft: 24, marginBottom: 4 }}>
+          <Text style={{ fontSize: 8.5, marginBottom: 2 }}>• Railway PostgreSQL Database: ~$10/month</Text>
+          <Text style={{ fontSize: 8.5, marginBottom: 2 }}>• Vercel (Next.js Report App): Free tier</Text>
+          <Text style={{ fontSize: 8.5, marginBottom: 2 }}>• Heroku/Render (Django App hosting): ~$15/month</Text>
+          <Text style={{ fontSize: 8.5, marginBottom: 2 }}>• Stripe Transaction Fees: 2.9% + $0.30 per successful charge</Text>
+        </View>
+
+        <Text style={styles.paragraphIndent}>
+          This cost model scales linearly, avoiding the massive monthly base subscription
+          fees of platforms like Shopify while maintaining similar transactional overhead.
+        </Text>
+      </View>
+
 
     </BookPageLayout>
   );

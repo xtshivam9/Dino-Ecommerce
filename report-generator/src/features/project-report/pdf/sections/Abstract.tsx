@@ -13,18 +13,11 @@ export default function Abstract() {
   return (
     <PreliminaryPageLayout>
       {/* Title */}
-      <View style={{ alignItems: "center", marginBottom: 24 }}>
-        <View style={{ marginBottom: 12 }}>
-          <Text style={[styles.h1, { marginBottom: 0 }]}>ABSTRACT</Text>
-        </View>
-        <View
-          style={{
-            width: 80,
-            height: 4,
-            backgroundColor: "#000000",
-          }}
-        />
+      <View style={styles.chapterHeader}>
+        <Text style={styles.chapterTitle}>ABSTRACT</Text>
+        <View style={styles.underline} />
       </View>
+
 
       {/* Content */}
       <View>

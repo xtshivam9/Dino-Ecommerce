@@ -161,74 +161,49 @@ export default function References() {
         />
       </View>
 
-      <Text
-        style={{ fontSize: 12, fontFamily: "Times-Bold", marginBottom: 6 }}
-      >
+      <Text style={{ fontSize: 9, fontFamily: "Times-Bold", marginBottom: 3 }}>
         Books
       </Text>
       {books.map((ref) => (
-        <View key={ref.num} style={{ flexDirection: "row", marginBottom: 5 }}>
-          <Text style={{ width: 30, fontSize: 10 }}>[{ref.num}]</Text>
-          <Text style={{ flex: 1, fontSize: 10, lineHeight: 1.5 }}>
-            {ref.text}
-          </Text>
+        <View key={ref.num} style={{ flexDirection: "row", marginBottom: 2 }}>
+          <Text style={{ width: 20, fontSize: 8 }}>[{ref.num}]</Text>
+          <Text style={{ flex: 1, fontSize: 8, lineHeight: 1.1 }}>{ref.text}</Text>
         </View>
       ))}
 
-      <Text
-        style={{
-          fontSize: 12,
-          fontFamily: "Times-Bold",
-          marginBottom: 8,
-          marginBottom: 6,
-        }}
-      >
+      <Text style={{ fontSize: 9, fontFamily: "Times-Bold", marginTop: 4, marginBottom: 3 }}>
         Web Resources & Documentation
       </Text>
       {webResources.map((ref) => (
-        <View key={ref.num} style={{ flexDirection: "row", marginBottom: 5 }}>
-          <Text style={{ width: 30, fontSize: 10 }}>[{ref.num}]</Text>
-          <Text style={{ flex: 1, fontSize: 10, lineHeight: 1.5 }}>
-            {ref.text}
-          </Text>
+        <View key={ref.num} style={{ flexDirection: "row", marginBottom: 2 }}>
+          <Text style={{ width: 20, fontSize: 8 }}>[{ref.num}]</Text>
+          <Text style={{ flex: 1, fontSize: 8, lineHeight: 1.1 }}>{ref.text}</Text>
         </View>
       ))}
 
-      <Text
-        style={{ fontSize: 12, fontFamily: "Times-Bold", marginBottom: 6 }}
-      >
+      <Text style={{ fontSize: 9, fontFamily: "Times-Bold", marginTop: 4, marginBottom: 3 }}>
         API Documentation
       </Text>
       {apiDocs.map((ref) => (
-        <View key={ref.num} style={{ flexDirection: "row", marginBottom: 5 }}>
-          <Text style={{ width: 30, fontSize: 10 }}>[{ref.num}]</Text>
-          <Text style={{ flex: 1, fontSize: 10, lineHeight: 1.5 }}>
-            {ref.text}
-          </Text>
+        <View key={ref.num} style={{ flexDirection: "row", marginBottom: 2 }}>
+          <Text style={{ width: 20, fontSize: 8 }}>[{ref.num}]</Text>
+          <Text style={{ flex: 1, fontSize: 8, lineHeight: 1.1 }}>{ref.text}</Text>
         </View>
       ))}
 
-      <Text
-        style={{
-          fontSize: 12,
-          fontFamily: "Times-Bold",
-          marginBottom: 8,
-          marginBottom: 6,
-        }}
-      >
+      <Text style={{ fontSize: 9, fontFamily: "Times-Bold", marginTop: 4, marginBottom: 3 }}>
         Research Papers & Standards
       </Text>
       {papers.map((ref) => (
-        <View key={ref.num} style={{ flexDirection: "row", marginBottom: 5 }}>
-          <Text style={{ width: 30, fontSize: 10 }}>[{ref.num}]</Text>
-          <Text style={{ flex: 1, fontSize: 10, lineHeight: 1.5 }}>
-            {ref.text}
-          </Text>
+        <View key={ref.num} style={{ flexDirection: "row", marginBottom: 2 }}>
+          <Text style={{ width: 20, fontSize: 8 }}>[{ref.num}]</Text>
+          <Text style={{ flex: 1, fontSize: 8, lineHeight: 1.1 }}>{ref.text}</Text>
         </View>
       ))}
 
       <View
         style={{
+          marginTop: 8,
           marginBottom: 12,
           padding: 6,
           backgroundColor: "#f8f8f8",

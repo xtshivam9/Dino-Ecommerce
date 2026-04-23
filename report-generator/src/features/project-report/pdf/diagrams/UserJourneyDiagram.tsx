@@ -13,7 +13,8 @@ import {
  */
 export default function UserJourneyDiagram() {
   const width = 495;
-  const height = 320;
+  const height = 250;
+
 
   const steps = [
     { label: "Sign Up /\nLog In", icon: "1", color: "#3b82f6" },
@@ -29,7 +30,8 @@ export default function UserJourneyDiagram() {
   const gap = 12;
   const totalW = steps.length * stepW + (steps.length - 1) * gap;
   const startX = (width - totalW) / 2;
-  const rowY = 80;
+  const rowY = 60;
+
 
   // Bottom row: additional features
   const features = [
@@ -43,7 +45,8 @@ export default function UserJourneyDiagram() {
   const featGap = 16;
   const featTotalW = features.length * featW + (features.length - 1) * featGap;
   const featStartX = (width - featTotalW) / 2;
-  const featY = 220;
+  const featY = 175;
+
 
   return (
     <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
@@ -156,20 +159,22 @@ export default function UserJourneyDiagram() {
       {/* Divider line */}
       <SvgText
         x={width / 2}
-        y={175}
+        y={145}
         textAnchor="middle"
         style={{ fontSize: 7, fontFamily: "Times-Bold", fill: "#999" }}
       >
         — ADVANCED FEATURES —
       </SvgText>
+
       <Line
         x1={60}
-        y1={180}
+        y1={150}
         x2={width - 60}
-        y2={180}
+        y2={150}
         stroke="#e5e7eb"
         strokeWidth={0.5}
       />
+
 
       {/* Connector lines from primary flow to features */}
       <Line
@@ -223,12 +228,13 @@ export default function UserJourneyDiagram() {
       {/* Bottom note */}
       <SvgText
         x={width / 2}
-        y={height - 20}
+        y={height - 10}
         textAnchor="middle"
-        style={{ fontSize: 7, fill: "#999" }}
+        style={{ fontSize: 6.5, fill: "#999" }}
       >
         All features accessible via the web browser — no installation required
       </SvgText>
+
     </Svg>
   );
 }

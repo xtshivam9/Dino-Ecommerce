@@ -131,19 +131,13 @@ const tables = [
 ];
 
 // Split items across pages
-const ITEMS_PER_PAGE_1 = 22; // First page (with header)
-const ITEMS_PER_PAGE_N = 22; // Continuation pages
+const ITEMS_PER_PAGE_1 = 45;
+const ITEMS_PER_PAGE_N = 50;
 
 const page1Items = tables.slice(0, ITEMS_PER_PAGE_1);
-const page2Items = tables.slice(
-  ITEMS_PER_PAGE_1,
-  ITEMS_PER_PAGE_1 + ITEMS_PER_PAGE_N,
-);
-const page3Items = tables.slice(
-  ITEMS_PER_PAGE_1 + ITEMS_PER_PAGE_N,
-  ITEMS_PER_PAGE_1 + ITEMS_PER_PAGE_N * 2,
-);
-const page4Items = tables.slice(ITEMS_PER_PAGE_1 + ITEMS_PER_PAGE_N * 2);
+const page2Items = tables.slice(ITEMS_PER_PAGE_1);
+const page3Items: any[] = [];
+const page4Items: any[] = [];
 
 /**
  * List of Tables - Multi-page editorial design with consistent margins
@@ -184,8 +178,10 @@ export default function ListOfTables() {
           height: 2,
           backgroundColor: "#000000",
           alignSelf: "center",
+          marginTop: 8,
         }}
       />
+
     </View>
   );
 
@@ -195,57 +191,21 @@ export default function ListOfTables() {
       style={{
         flexDirection: "row",
         alignItems: "flex-end",
-        marginBottom: 5,
+        marginBottom: 3,
       }}
     >
-      {/* Table Number */}
-      <View style={{ width: 40 }}>
-        <Text
-          style={{
-            fontFamily: "Times-Bold",
-            fontSize: 12,
-            color: "#888888",
-          }}
-        >
+      <View style={{ width: 30 }}>
+        <Text style={{ fontFamily: "Times-Bold", fontSize: 9, color: "#666666" }}>
           {tbl.number}
         </Text>
       </View>
-
-      {/* Title & Dot Leader */}
       <View style={{ flex: 1, flexDirection: "row", alignItems: "flex-end" }}>
-        <Text
-          style={{
-            fontFamily: "Times-Bold",
-            fontSize: 11,
-            color: "#444444",
-          }}
-        >
+        <Text style={{ fontFamily: "Times-Roman", fontSize: 9, color: "#333333" }}>
           {tbl.title}
         </Text>
-
-        <View
-          style={{
-            flex: 1,
-            borderBottomWidth: 1,
-            borderBottomColor: "#f0f0f0",
-            borderBottomStyle: "dotted",
-            marginBottom: 2,
-            marginLeft: 8,
-            marginRight: 8,
-          }}
-        />
+        <View style={{ flex: 1, borderBottomWidth: 1, borderBottomColor: "#f0f0f0", borderBottomStyle: "dotted", marginBottom: 2, marginLeft: 4, marginRight: 4 }} />
       </View>
-
-      {/* Page Number */}
-      <Text
-        style={{
-          fontFamily: "Times-Roman",
-          fontSize: 11,
-          color: "#444444",
-          width: 20,
-          textAlign: "right",
-        }}
-      >
+      <Text style={{ fontFamily: "Times-Roman", fontSize: 9, color: "#333333", width: 20, textAlign: "right" }}>
         {tbl.page}
       </Text>
     </View>

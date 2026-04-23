@@ -18,26 +18,26 @@ import DatabaseSchemaSection from "../components/DatabaseSchemaSection";
 export default function DesignDiagrams() {
   return (
     <BookPageLayout chapterTitle="System Design" chapterNum="07">
-      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
+      <View style={{ alignItems: "center", marginBottom: 20, marginTop: 5 }}>
         <Text
           style={{
-            fontSize: 12,
+            fontSize: 10,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 4,
+            letterSpacing: 3,
             textTransform: "uppercase",
-            marginBottom: 12,
+            marginBottom: 8,
           }}
         >
           CHAPTER 7
         </Text>
-        <View style={{ marginBottom: 16 }}>
+        <View style={{ marginBottom: 12 }}>
           <Text
             style={{
-              fontSize: 32,
+              fontSize: 24,
               fontFamily: "Times-Bold",
               textAlign: "center",
-              letterSpacing: 2,
+              letterSpacing: 1.5,
               textTransform: "uppercase",
               color: "#000000",
               lineHeight: 1.1,
@@ -48,8 +48,8 @@ export default function DesignDiagrams() {
         </View>
         <View
           style={{
-            width: 80,
-            height: 4,
+            width: 60,
+            height: 3,
             backgroundColor: "#000000",
           }}
         />
@@ -96,8 +96,8 @@ export default function DesignDiagrams() {
         style={{
           borderWidth: 1,
           borderColor: "#333333",
-          marginBottom: 6,
           marginBottom: 4,
+
         }}
       >
         <View
@@ -230,7 +230,8 @@ export default function DesignDiagrams() {
         </Text>
       </View>
 
-      <View style={{ marginBottom: 8, marginBottom: 4 }}>
+      <View style={{ marginBottom: 4 }}>
+
         <Level1DFD />
         <Text
           style={{
@@ -396,7 +397,7 @@ export default function DesignDiagrams() {
           borderWidth: 1,
           borderColor: "#333333",
           marginBottom: 4,
-          marginBottom: 4,
+
         }}
       >
         <View
@@ -558,22 +559,23 @@ export default function DesignDiagrams() {
             >
               {row[2]}
             </Text>
-            <Text style={{ width: "50%", padding: 2, fontSize: 7 }}>
+            <Text style={{ width: "50%", padding: 1.5, fontSize: 6.5 }}>
               {row[3]}
             </Text>
           </View>
         ))}
       </View>
-<Text
+      <Text
         style={{
-          fontSize: 9,
+          fontSize: 8,
           fontFamily: "Times-Italic",
           textAlign: "center",
-          marginBottom: 6,
+          marginBottom: 4,
         }}
       >
         Table 7.2: Use Case Specifications
       </Text>
+
 </View>
 
       <Text style={styles.h2}>7.4 Entity-Relationship Diagram</Text>
@@ -582,7 +584,8 @@ export default function DesignDiagrams() {
         attributes, and relationships.
       </Text>
 
-      <View style={{ marginBottom: 8, marginBottom: 4 }}>
+      <View style={{ marginBottom: 4 }}>
+
         <ERDiagram />
         <Text
           style={{

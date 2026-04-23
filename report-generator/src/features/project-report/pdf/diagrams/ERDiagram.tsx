@@ -6,7 +6,8 @@ import { Svg, G, Rect, Text as SvgText, Line } from "@react-pdf/renderer";
  */
 export default function ERDiagram() {
   const width = 495;
-  const height = 560;
+  const height = 440;
+
   const cx = width / 2;
 
   const headerH = 22;
@@ -47,8 +48,9 @@ export default function ERDiagram() {
     {
       name: "OrderItem",
       x: 90,
-      y: 190,
+      y: 150,
       w: 130,
+
       attrs: [
         { name: "id", type: "Int", pk: true },
         { name: "user_id", type: "Int (FK)", pk: false, fk: true },
@@ -76,7 +78,7 @@ export default function ERDiagram() {
     {
       name: "BillingAddress",
       x: 360,
-      y: 200,
+      y: 155,
       w: 140,
       attrs: [
         { name: "id", type: "Int", pk: true },
@@ -91,7 +93,7 @@ export default function ERDiagram() {
     {
       name: "Payment",
       x: 185,
-      y: 350,
+      y: 285,
       w: 135,
       attrs: [
         { name: "id", type: "Int", pk: true },
@@ -105,7 +107,7 @@ export default function ERDiagram() {
     {
       name: "Coupon",
       x: 10,
-      y: 350,
+      y: 285,
       w: 135,
       attrs: [
         { name: "id", type: "Int", pk: true },
@@ -117,7 +119,7 @@ export default function ERDiagram() {
     {
       name: "Refund",
       x: 360,
-      y: 375,
+      y: 300,
       w: 130,
       attrs: [
         { name: "id", type: "Int", pk: true },
@@ -128,6 +130,7 @@ export default function ERDiagram() {
       ],
       color: "#db2777",
     },
+
   ];
 
   function getEntityH(entity: (typeof entities)[number]) {

@@ -12,20 +12,11 @@ export default function Annexures() {
   return (
     <BookPageLayout chapterTitle="Annexures">
       {/* Title */}
-      <View style={{ alignItems: "center", marginBottom: 24 }}>
-        <Text
-          style={{
-            fontSize: 28,
-            fontFamily: "Times-Bold",
-            textAlign: "center",
-            marginBottom: 10,
-            textTransform: "uppercase",
-          }}
-        >
-          ANNEXURES
-        </Text>
-        <View style={{ width: 60, height: 3, backgroundColor: "#000000" }} />
+      <View style={styles.chapterHeader}>
+        <Text style={styles.chapterTitle}>ANNEXURES</Text>
+        <View style={styles.underline} />
       </View>
+
 
       {/* ===== Annexure A: Database Schema ===== */}
       <Text style={styles.h2}>Annexure A: Complete Database Schema</Text>
@@ -105,90 +96,20 @@ export default function Annexures() {
         </View>
         {/* Rows */}
         {[
-          [
-            "1",
-            "User",
-            "id, name, email, emailVerified, image, createdAt",
-            "User accounts & authentication",
-          ],
-          [
-            "2",
-            "Session",
-            "id, userId, token, expiresAt, ipAddress, userAgent",
-            "Session management for Better Auth",
-          ],
-          [
-            "3",
-            "Account",
-            "id, userId, providerId, accountId, accessToken",
-            "OAuth provider account linkage",
-          ],
-          [
-            "4",
-            "Verification",
-            "id, identifier, value, expiresAt",
-            "Email verification tokens",
-          ],
-          [
-            "5",
-            "Team",
-            "id, name, slug, planId, createdById, customerId",
-            "Organization / team workspace",
-          ],
-          [
-            "6",
-            "TeamMember",
-            "id, teamId, userId, role (OWNER/ADMIN/MEMBER/VIEWER)",
-            "Team membership with RBAC roles",
-          ],
-          [
-            "7",
-            "Invitation",
-            "id, teamId, email, role, token, expiresAt, status",
-            "Team invite tokens (7-day expiry)",
-          ],
-          [
-            "8",
-            "Workflow",
-            "id, name, description, products (JSON), edges (JSON), isActive, teamId",
-            "Workflow definitions with graph data",
-          ],
-          [
-            "9",
-            "WorkflowVersion",
-            "id, orderId, version, products, edges, settings, message",
-            "Versioned snapshots for rollback",
-          ],
-          [
-            "10",
-            "Execution",
-            "id, orderId, status, mode, triggerData, result, duration",
-            "Execution records & outcomes",
-          ],
-          [
-            "11",
-            "Credential",
-            "id, name, type, data (encrypted), provider, teamId",
-            "Encrypted credential storage",
-          ],
-          [
-            "12",
-            "Schedule",
-            "id, orderId, cron, timezone, isActive, nextRunAt",
-            "Cron-based scheduling metadata",
-          ],
-          [
-            "13",
-            "WebhookEndpoint",
-            "id, orderId, method, secret, isActive, callCount",
-            "Auto-generated checkout receivers",
-          ],
-          [
-            "14",
-            "AuditLog",
-            "id, teamId, userId, action, resource, details, ipAddress",
-            "Activity audit trail",
-          ],
+          ["1", "User", "id, name, email, emailVerified, image, createdAt", "User accounts & auth"],
+          ["2", "Session", "id, userId, token, expiresAt, ipAddress", "Session management"],
+          ["3", "Account", "id, userId, providerId, accountId", "OAuth linkages"],
+          ["4", "Verification", "id, identifier, value, expiresAt", "Email tokens"],
+          ["5", "Team", "id, name, slug, planId, createdById", "Team workspace"],
+          ["6", "TeamMember", "id, teamId, userId, role", "RBAC membership"],
+          ["7", "Invitation", "id, teamId, email, role, token", "Team invites"],
+          ["8", "Workflow", "id, name, description, products, edges, isActive", "Workflow graph"],
+          ["9", "WorkflowVersion", "id, orderId, version, products, edges", "Rollback snapshots"],
+          ["10", "Execution", "id, orderId, status, mode, result", "Execution records"],
+          ["11", "Credential", "id, name, type, data, provider, teamId", "Encrypted storage"],
+          ["12", "Schedule", "id, orderId, cron, timezone, isActive", "Cron metadata"],
+          ["13", "WebhookEndpoint", "id, orderId, method, secret, isActive", "Checkout receivers"],
+          ["14", "AuditLog", "id, teamId, userId, action, resource", "Audit trail"],
         ].map((row, i) => (
           <View
             key={i}
@@ -198,44 +119,10 @@ export default function Annexures() {
               borderBottomColor: "#cccccc",
             }}
           >
-            <Text
-              style={{
-                width: "5%",
-                padding: 2,
-                fontSize: 7,
-                textAlign: "center",
-                borderRightWidth: 1,
-                borderRightColor: "#cccccc",
-              }}
-            >
-              {row[0]}
-            </Text>
-            <Text
-              style={{
-                width: "20%",
-                padding: 2,
-                fontSize: 7,
-                fontFamily: "Times-Bold",
-                borderRightWidth: 1,
-                borderRightColor: "#cccccc",
-              }}
-            >
-              {row[1]}
-            </Text>
-            <Text
-              style={{
-                width: "40%",
-                padding: 2,
-                fontSize: 7,
-                borderRightWidth: 1,
-                borderRightColor: "#cccccc",
-              }}
-            >
-              {row[2]}
-            </Text>
-            <Text style={{ width: "35%", padding: 2, fontSize: 7 }}>
-              {row[3]}
-            </Text>
+            <Text style={{ width: "5%", padding: 1, fontSize: 6, textAlign: "center", borderRightWidth: 1, borderRightColor: "#cccccc" }}>{row[0]}</Text>
+            <Text style={{ width: "20%", padding: 1, fontSize: 6, fontFamily: "Times-Bold", borderRightWidth: 1, borderRightColor: "#cccccc" }}>{row[1]}</Text>
+            <Text style={{ width: "40%", padding: 1, fontSize: 6, borderRightWidth: 1, borderRightColor: "#cccccc" }}>{row[2]}</Text>
+            <Text style={{ width: "35%", padding: 1, fontSize: 6 }}>{row[3]}</Text>
           </View>
         ))}
       </View>

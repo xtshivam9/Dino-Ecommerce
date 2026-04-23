@@ -13,26 +13,26 @@ export default function ProblemStatement() {
   return (
     <BookPageLayout chapterTitle="Problem Statement" chapterNum="02">
       {/* Chapter Title */}
-      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
+      <View style={{ alignItems: "center", marginBottom: 20, marginTop: 5 }}>
         <Text
           style={{
-            fontSize: 12,
+            fontSize: 10,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 4,
+            letterSpacing: 3,
             textTransform: "uppercase",
-            marginBottom: 12,
+            marginBottom: 8,
           }}
         >
           CHAPTER 2
         </Text>
-        <View style={{ marginBottom: 16 }}>
+        <View style={{ marginBottom: 12 }}>
           <Text
             style={{
-              fontSize: 32,
+              fontSize: 24,
               fontFamily: "Times-Bold",
               textAlign: "center",
-              letterSpacing: 2,
+              letterSpacing: 1.5,
               textTransform: "uppercase",
               color: "#000000",
               lineHeight: 1.1,
@@ -43,8 +43,8 @@ export default function ProblemStatement() {
         </View>
         <View
           style={{
-            width: 80,
-            height: 4,
+            width: 60,
+            height: 3,
             backgroundColor: "#000000",
           }}
         />

@@ -14,10 +14,11 @@ export default function Preface() {
   return (
     <PreliminaryPageLayout>
       {/* Title */}
-      <View style={{ alignItems: "center", marginBottom: 24 }}>
-        <Text style={[styles.h1, { marginBottom: 10 }]}>PREFACE</Text>
-        <View style={{ width: 80, height: 4, backgroundColor: "#000000" }} />
+      <View style={styles.chapterHeader}>
+        <Text style={styles.chapterTitle}>PREFACE</Text>
+        <View style={styles.underline} />
       </View>
+
 
       {/* Content */}
       <View>

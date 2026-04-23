@@ -93,8 +93,10 @@ export default function Acronyms() {
           height: 2,
           backgroundColor: "#000000",
           alignSelf: "center",
+          marginTop: 8,
         }}
       />
+
     </View>
   );
 

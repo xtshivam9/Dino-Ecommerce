@@ -14,26 +14,26 @@ export default function Implementation() {
   return (
     <BookPageLayout chapterTitle="Implementation" chapterNum="08">
       {/* Chapter Title */}
-      <View style={{ alignItems: "center", marginBottom: 40, marginTop: 10 }}>
+      <View style={{ alignItems: "center", marginBottom: 20, marginTop: 5 }}>
         <Text
           style={{
-            fontSize: 12,
+            fontSize: 10,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 4,
+            letterSpacing: 3,
             textTransform: "uppercase",
-            marginBottom: 12,
+            marginBottom: 8,
           }}
         >
           CHAPTER 8
         </Text>
-        <View style={{ marginBottom: 16 }}>
+        <View style={{ marginBottom: 12 }}>
           <Text
             style={{
-              fontSize: 32,
+              fontSize: 24,
               fontFamily: "Times-Bold",
               textAlign: "center",
-              letterSpacing: 2,
+              letterSpacing: 1.5,
               textTransform: "uppercase",
               color: "#000000",
               lineHeight: 1.1,
@@ -44,8 +44,8 @@ export default function Implementation() {
         </View>
         <View
           style={{
-            width: 80,
-            height: 4,
+            width: 60,
+            height: 3,
             backgroundColor: "#000000",
           }}
         />
@@ -224,11 +224,11 @@ export default function Implementation() {
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/features/editor/hooks/useWorkflowEditor.ts
 import { useCallback, useRef } from "react";
 import {
@@ -487,11 +487,11 @@ export function useWorkflowEditor(orderId: string) {
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/trpc/routers/_app.ts
 import { router } from "../init";
 import { ordersRouter } from "./orders";
@@ -526,11 +526,11 @@ export type AppRouter = typeof appRouter;`}
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/trpc/init.ts
 import { initTRPC, TRPCError } from "@trpc/server";
 import { auth } from "@/lib/auth";
@@ -559,11 +559,11 @@ export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/trpc/routers/order.ts
 export const orderRouter = createTRPCRouter({
   create: protectedProcedure
@@ -609,11 +609,11 @@ export const orderRouter = createTRPCRouter({
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`model Workflow {
   id          String   @id @default(cuid())
   name        String
@@ -661,11 +661,11 @@ export const orderRouter = createTRPCRouter({
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/lib/auth.ts
 export const auth = betterAuth({
   database: prismaAdapter(db, {
@@ -711,11 +711,11 @@ export const auth = betterAuth({
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/inngest/functions.ts
 export const executeWorkflow = inngest.createFunction(
   { id: "execute-order", retries: 3 },
@@ -769,11 +769,11 @@ export const executeWorkflow = inngest.createFunction(
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/inngest/executors/httpRequestExecutor.ts
 import type { ModelData, ExecutionResult } from "@/types";
 
@@ -825,11 +825,11 @@ export async function executeHttpRequest(
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/inngest/functions.ts
 export const pollSchedules = inngest.createFunction(
   { id: "poll-schedules" },
@@ -1224,11 +1224,11 @@ export const pollSchedules = inngest.createFunction(
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/features/credentials/credential-utils.ts
 import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
 
@@ -1287,11 +1287,11 @@ export function decryptCredential(stored: { iv: string; encrypted: string; tag: 
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/features/editor/components/WorkflowEditor.tsx
 "use client";
 import { ReactFlow, Background, Controls, MiniMap } from "@xyflow/react";
@@ -1489,11 +1489,11 @@ export function WorkflowEditor({ orderId }: { orderId: string }) {
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/lib/auth-utils.ts
 import { db } from "./db";
 
@@ -1683,11 +1683,11 @@ export async function requireTeamRole(
           backgroundColor: "#f5f5f5",
           borderWidth: 1,
           borderColor: "#cccccc",
-          padding: 5,
-          marginBottom: 6,
+          padding: 4,
+          marginBottom: 4,
         }}
       >
-        <Text style={{ fontSize: 7.5, fontFamily: "Courier", lineHeight: 1.4 }}>
+        <Text style={{ fontSize: 6.5, fontFamily: "Courier", lineHeight: 1.1 }}>
           {`// src/app/api/checkout/[orderId]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";

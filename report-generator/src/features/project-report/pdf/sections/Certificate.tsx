@@ -16,18 +16,16 @@ export default function Certificate() {
       {/* Content Container */}
       <View style={{ flex: 1 }}>
         {/* Title */}
-        <View style={{ alignItems: "center", marginBottom: 24 }}>
-          <Text style={[styles.h1, { marginBottom: 10 }]}>CERTIFICATE</Text>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <View
-              style={{ width: 64, height: 2, backgroundColor: "#000000" }}
-            />
+        {/* Title */}
+        <View style={styles.chapterHeader}>
+          <Text style={styles.chapterTitle}>CERTIFICATE</Text>
+          <View style={[styles.flexRow, { alignItems: "center", marginTop: 8 }]}>
+            <View style={{ width: 64, height: 2, backgroundColor: "#000000" }} />
             <Text style={{ marginHorizontal: 16 }}>*</Text>
-            <View
-              style={{ width: 64, height: 2, backgroundColor: "#000000" }}
-            />
+            <View style={{ width: 64, height: 2, backgroundColor: "#000000" }} />
           </View>
         </View>
+
 
         {/* Certificate Text */}
         <View style={{ paddingHorizontal: 10 }}>

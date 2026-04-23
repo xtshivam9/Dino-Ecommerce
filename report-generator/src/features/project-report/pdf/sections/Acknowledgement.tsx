@@ -14,16 +14,11 @@ export default function Acknowledgement() {
   return (
     <PreliminaryPageLayout>
       {/* Title */}
-      <View style={{ alignItems: "center", marginBottom: 35, marginTop: 20 }}>
-        <Text style={{ fontSize: 24, fontFamily: "Times-Bold", marginBottom: 12 }}>ACKNOWLEDGEMENT</Text>
-        <View
-          style={{
-            width: 120,
-            height: 4,
-            backgroundColor: "#000000",
-          }}
-        />
+      <View style={styles.chapterHeader}>
+        <Text style={styles.chapterTitle}>ACKNOWLEDGEMENT</Text>
+        <View style={styles.underline} />
       </View>
+
 
       {/* Content */}
       <View style={{ paddingHorizontal: 10 }}>
