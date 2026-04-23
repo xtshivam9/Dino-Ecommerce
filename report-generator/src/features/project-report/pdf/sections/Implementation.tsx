@@ -1526,154 +1526,154 @@ export async function requireTeamRole(
         </Text>
       </View>
 
-      {/* 8.9 API Routes */}
-      <Text style={styles.h2}>8.9 API Routes</Text>
-      <Text style={styles.paragraphIndent}>
-        In addition to the tRPC API, dj-ecommerce exposes{" "}
-        <Text style={styles.bold}>8 Next.js API routes</Text> for functionality
-        that requires standard HTTP endpoints:
-      </Text>
-
       <View wrap={false}>
-<View
-        style={{
-          borderWidth: 1,
-          borderColor: "#333333",
-          marginBottom: 6,
-          marginBottom: 4,
-        }}
-      >
+        <Text style={styles.h2}>8.9 API Routes</Text>
+        <Text style={styles.paragraphIndent}>
+          In addition to the tRPC API, dj-ecommerce exposes{" "}
+          <Text style={styles.bold}>8 Next.js API routes</Text> for functionality
+          that requires standard HTTP endpoints:
+        </Text>
+
         <View
           style={{
-            flexDirection: "row",
-            backgroundColor: "#f0f0f0",
-            borderBottomWidth: 1,
-            borderBottomColor: "#333333",
+            borderWidth: 1,
+            borderColor: "#333333",
+            marginBottom: 6,
+            marginBottom: 4,
           }}
         >
-          <Text
-            style={{
-              width: "35%",
-              padding: 2,
-              fontSize: 8,
-              fontFamily: "Times-Bold",
-              borderRightWidth: 1,
-              borderRightColor: "#333333",
-            }}
-          >
-            Route
-          </Text>
-          <Text
-            style={{
-              width: "15%",
-              padding: 2,
-              fontSize: 8,
-              fontFamily: "Times-Bold",
-              borderRightWidth: 1,
-              borderRightColor: "#333333",
-            }}
-          >
-            Methods
-          </Text>
-          <Text
-            style={{
-              width: "50%",
-              padding: 2,
-              fontSize: 8,
-              fontFamily: "Times-Bold",
-            }}
-          >
-            Purpose
-          </Text>
-        </View>
-        {[
-          [
-            "/api/auth/[...all]",
-            "ALL",
-            "Better Auth catch-all (login, signup, session, OAuth)",
-          ],
-          [
-            "/api/trpc/[trpc]",
-            "ALL",
-            "tRPC endpoint handler for all 59 procedures",
-          ],
-          [
-            "/api/checkouts/[path]",
-            "ALL",
-            "Dynamic checkout receiver — triggers order executions",
-          ],
-          [
-            "/api/checkouts/polar",
-            "POST",
-            "Polar payment checkout for subscription events",
-          ],
-          [
-            "/api/oauth/[provider]/connect",
-            "GET",
-            "Initiates OAuth2 authorization code flow",
-          ],
-          [
-            "/api/oauth/[provider]/callback",
-            "GET",
-            "OAuth2 callback — exchanges code for tokens",
-          ],
-          [
-            "/api/inngest",
-            "POST",
-            "Inngest event receiver for background job processing",
-          ],
-        ].map((row, i) => (
           <View
-            key={i}
             style={{
               flexDirection: "row",
-              borderBottomWidth: i < 6 ? 1 : 0,
-              borderBottomColor: "#cccccc",
+              backgroundColor: "#f0f0f0",
+              borderBottomWidth: 1,
+              borderBottomColor: "#333333",
             }}
           >
             <Text
               style={{
                 width: "35%",
                 padding: 2,
-                fontSize: 7,
+                fontSize: 8,
                 fontFamily: "Times-Bold",
                 borderRightWidth: 1,
-                borderRightColor: "#cccccc",
+                borderRightColor: "#333333",
               }}
             >
-              {row[0]}
+              Route
             </Text>
             <Text
               style={{
                 width: "15%",
                 padding: 2,
-                fontSize: 7,
-                textAlign: "center",
+                fontSize: 8,
+                fontFamily: "Times-Bold",
                 borderRightWidth: 1,
-                borderRightColor: "#cccccc",
+                borderRightColor: "#333333",
               }}
             >
-              {row[1]}
+              Methods
             </Text>
             <Text
-              style={{ width: "50%", padding: 2, fontSize: 7, lineHeight: 1.3 }}
+              style={{
+                width: "50%",
+                padding: 2,
+                fontSize: 8,
+                fontFamily: "Times-Bold",
+              }}
             >
-              {row[2]}
+              Purpose
             </Text>
           </View>
-        ))}
+          {[
+            [
+              "/api/auth/[...all]",
+              "ALL",
+              "Better Auth catch-all (login, signup, session, OAuth)",
+            ],
+            [
+              "/api/trpc/[trpc]",
+              "ALL",
+              "tRPC endpoint handler for all 59 procedures",
+            ],
+            [
+              "/api/checkouts/[path]",
+              "ALL",
+              "Dynamic checkout receiver — triggers order executions",
+            ],
+            [
+              "/api/checkouts/polar",
+              "POST",
+              "Polar payment checkout for subscription events",
+            ],
+            [
+              "/api/oauth/[provider]/connect",
+              "GET",
+              "Initiates OAuth2 authorization code flow",
+            ],
+            [
+              "/api/oauth/[provider]/callback",
+              "GET",
+              "OAuth2 callback — exchanges code for tokens",
+            ],
+            [
+              "/api/inngest",
+              "POST",
+              "Inngest event receiver for background job processing",
+            ],
+          ].map((row, i) => (
+            <View
+              key={i}
+              style={{
+                flexDirection: "row",
+                borderBottomWidth: i < 6 ? 1 : 0,
+                borderBottomColor: "#cccccc",
+              }}
+            >
+              <Text
+                style={{
+                  width: "35%",
+                  padding: 2,
+                  fontSize: 7,
+                  fontFamily: "Times-Bold",
+                  borderRightWidth: 1,
+                  borderRightColor: "#cccccc",
+                }}
+              >
+                {row[0]}
+              </Text>
+              <Text
+                style={{
+                  width: "15%",
+                  padding: 2,
+                  fontSize: 7,
+                  textAlign: "center",
+                  borderRightWidth: 1,
+                  borderRightColor: "#cccccc",
+                }}
+              >
+                {row[1]}
+              </Text>
+              <Text
+                style={{ width: "50%", padding: 2, fontSize: 7, lineHeight: 1.3 }}
+              >
+                {row[2]}
+              </Text>
+            </View>
+          ))}
+        </View>
+        <Text
+          style={{
+            fontSize: 9,
+            fontFamily: "Times-Italic",
+            textAlign: "center",
+            marginBottom: 6,
+          }}
+        >
+          Table 8.5: Next.js API Routes
+        </Text>
       </View>
-<Text
-        style={{
-          fontSize: 9,
-          fontFamily: "Times-Italic",
-          textAlign: "center",
-          marginBottom: 6,
-        }}
-      >
-        Table 8.5: Next.js API Routes
-      </Text>
-</View>
+
 
       <Text style={styles.paragraph}>
         <Text style={styles.bold}>Code Snippet — Webhook Handler Route:</Text>
