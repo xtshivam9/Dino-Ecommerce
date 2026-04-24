@@ -33,7 +33,6 @@ import {
   Sparkles,
   User,
   Users,
-  Workflow,
   Zap,
 } from "lucide-react";
 import Link from "next/link";
@@ -47,24 +46,24 @@ const mainMenuItems = [
     icon: FolderKanban,
   },
   {
-    label: "Workflows",
-    href: "/workflows",
-    icon: Workflow,
+    label: "Products",
+    href: "/products",
+    icon: FolderKanban,
   },
   {
-    label: "Executions",
-    href: "/executions",
+    label: "Orders",
+    href: "/orders",
     icon: History,
   },
   {
-    label: "Credentials",
-    href: "/credentials",
-    icon: KeyRound,
+    label: "Customers",
+    href: "/customers",
+    icon: Users,
   },
   {
-    label: "Teams",
-    href: "/teams",
-    icon: Users,
+    label: "Payments",
+    href: "/payments",
+    icon: KeyRound,
   },
   {
     label: "Settings",
@@ -111,7 +110,7 @@ export function AppSidebar() {
               {!isCollapsed && (
                 <div className="flex flex-col">
                   <span className="font-heading text-lg tracking-tight uppercase leading-none">
-                    FLOWGENT
+                    DINO-ECOM
                   </span>
                   <span className="font-mono text-[10px] text-(--arch-muted) tracking-widest">
                     V2.0.4

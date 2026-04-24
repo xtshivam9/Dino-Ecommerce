@@ -31,8 +31,8 @@ export default function RiskMatrix() {
   // Risk items plotted on the matrix [row, col, label]
   const risks: [number, number, string][] = [
     [2, 2, "API Rate Limits"],
-    [3, 1, "React Flow\nLimits"],
-    [3, 0, "Inngest\nOutage"],
+    [3, 1, "Bootstrap\nLimits"],
+    [3, 0, "Stripe\nOutage"],
     [3, 1, "DB Scale"],
     [2, 2, "Security\nVulnerabilities"],
     [3, 2, "Schedule\nOverrun"],
@@ -275,7 +275,7 @@ export default function RiskMatrix() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: Risk Assessment Matrix — dj-ecommerce Project
+        Figure: Risk Assessment Matrix — Dino-Ecommerce Project
       </SvgText>
     </Svg>
   );

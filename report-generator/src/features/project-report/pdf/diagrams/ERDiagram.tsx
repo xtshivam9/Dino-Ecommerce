@@ -6,57 +6,52 @@ import { Svg, G, Rect, Text as SvgText, Line } from "@react-pdf/renderer";
  */
 export default function ERDiagram() {
   const width = 495;
-  const height = 440;
-
+  const height = 560;
   const cx = width / 2;
 
   const headerH = 22;
   const attrLineH = 13;
 
   // Entity definitions with data types
-      const entities = [
+  const entities = [
     {
-      name: "User (Django)",
+      name: "User",
       x: 10,
       y: 20,
       w: 130,
       attrs: [
-        { name: "id", type: "Int", pk: true },
-        { name: "username", type: "String", pk: false },
+        { name: "id", type: "String (cuid)", pk: true },
         { name: "email", type: "String", pk: false },
-        { name: "password", type: "String", pk: false },
-        { name: "is_staff", type: "Boolean", pk: false },
-        { name: "date_joined", type: "DateTime", pk: false },
+        { name: "name", type: "String", pk: false },
+        { name: "image", type: "String?", pk: false },
+        { name: "role", type: "Enum", pk: false },
+        { name: "createdAt", type: "DateTime", pk: false },
       ],
       color: "#2563eb",
     },
     {
-      name: "Item",
+      name: "Team",
       x: 185,
       y: 20,
       w: 125,
       attrs: [
-        { name: "id", type: "Int", pk: true },
-        { name: "title", type: "String", pk: false },
-        { name: "price", type: "Float", pk: false },
-        { name: "discount_price", type: "Float?", pk: false },
-        { name: "category", type: "String", pk: false },
-        { name: "stock_no", type: "String", pk: false },
+        { name: "id", type: "String (cuid)", pk: true },
+        { name: "name", type: "String", pk: false },
+        { name: "plan", type: "Enum", pk: false },
+        { name: "createdAt", type: "DateTime", pk: false },
       ],
       color: "#7c3aed",
     },
     {
-      name: "OrderItem",
+      name: "Customer",
       x: 90,
-      y: 150,
+      y: 180,
       w: 130,
-
       attrs: [
-        { name: "id", type: "Int", pk: true },
-        { name: "user_id", type: "Int (FK)", pk: false, fk: true },
-        { name: "item_id", type: "Int (FK)", pk: false, fk: true },
-        { name: "quantity", type: "Int", pk: false },
-        { name: "ordered", type: "Boolean", pk: false },
+        { name: "userId", type: "String (FK)", pk: false, fk: true },
+        { name: "teamId", type: "String (FK)", pk: false, fk: true },
+        { name: "role", type: "Enum", pk: false },
+        { name: "joinedAt", type: "DateTime", pk: false },
       ],
       color: "#6366f1",
     },
@@ -66,71 +61,72 @@ export default function ERDiagram() {
       y: 20,
       w: 130,
       attrs: [
-        { name: "id", type: "Int", pk: true },
-        { name: "user_id", type: "Int (FK)", pk: false, fk: true },
-        { name: "ref_code", type: "String", pk: false },
-        { name: "start_date", type: "DateTime", pk: false },
-        { name: "ordered", type: "Boolean", pk: false },
-        { name: "coupon_id", type: "Int (FK)?", pk: false, fk: true },
+        { name: "id", type: "String (cuid)", pk: true },
+        { name: "name", type: "String", pk: false },
+        { name: "status", type: "Enum", pk: false },
+        { name: "teamId", type: "String (FK)", pk: false, fk: true },
+        { name: "creatorId", type: "String (FK)", pk: false, fk: true },
+        { name: "createdAt", type: "DateTime", pk: false },
       ],
       color: "#059669",
     },
     {
-      name: "BillingAddress",
-      x: 360,
-      y: 155,
+      name: "OrderVersion",
+      x: 350,
+      y: 195,
       w: 140,
       attrs: [
-        { name: "id", type: "Int", pk: true },
-        { name: "user_id", type: "Int (FK)", pk: false, fk: true },
-        { name: "street_address", type: "String", pk: false },
-        { name: "apartment_address", type: "String", pk: false },
-        { name: "country", type: "String", pk: false },
-        { name: "zip", type: "String", pk: false },
+        { name: "id", type: "String (cuid)", pk: true },
+        { name: "version", type: "Int", pk: false },
+        { name: "definition", type: "JSON", pk: false },
+        { name: "orderId", type: "String (FK)", pk: false, fk: true },
+        { name: "createdAt", type: "DateTime", pk: false },
       ],
       color: "#0891b2",
     },
     {
       name: "Payment",
       x: 185,
-      y: 285,
+      y: 335,
       w: 135,
       attrs: [
-        { name: "id", type: "Int", pk: true },
-        { name: "stripe_charge_id", type: "String", pk: false },
-        { name: "user_id", type: "Int (FK)", pk: false, fk: true },
-        { name: "amount", type: "Float", pk: false },
-        { name: "timestamp", type: "DateTime", pk: false },
+        { name: "id", type: "String (cuid)", pk: true },
+        { name: "status", type: "Enum", pk: false },
+        { name: "startedAt", type: "DateTime", pk: false },
+        { name: "completedAt", type: "DateTime?", pk: false },
+        { name: "orderId", type: "String (FK)", pk: false, fk: true },
+        { name: "trigger", type: "Enum", pk: false },
       ],
       color: "#d97706",
     },
     {
-      name: "Coupon",
+      name: "Product",
       x: 10,
-      y: 285,
+      y: 335,
       w: 135,
       attrs: [
-        { name: "id", type: "Int", pk: true },
-        { name: "code", type: "String", pk: false },
-        { name: "amount", type: "Float", pk: false },
+        { name: "id", type: "String (cuid)", pk: true },
+        { name: "name", type: "String", pk: false },
+        { name: "type", type: "String", pk: false },
+        { name: "encryptedValue", type: "String", pk: false },
+        { name: "teamId", type: "String (FK)", pk: false, fk: true },
       ],
       color: "#dc2626",
     },
     {
-      name: "Refund",
+      name: "Schedule",
       x: 360,
-      y: 300,
+      y: 370,
       w: 130,
       attrs: [
-        { name: "id", type: "Int", pk: true },
-        { name: "order_id", type: "Int (FK)", pk: false, fk: true },
-        { name: "reason", type: "Text", pk: false },
-        { name: "accepted", type: "Boolean", pk: false },
-        { name: "email", type: "String", pk: false },
+        { name: "id", type: "String (cuid)", pk: true },
+        { name: "cron", type: "String", pk: false },
+        { name: "timezone", type: "String", pk: false },
+        { name: "enabled", type: "Boolean", pk: false },
+        { name: "orderId", type: "String (FK)", pk: false, fk: true },
       ],
-      color: "#db2777",
+      color: "#be185d",
     },
-
   ];
 
   function getEntityH(entity: (typeof entities)[number]) {
@@ -410,7 +406,7 @@ export default function ERDiagram() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: Entity-Relationship Diagram — dj-ecommerce Database
+        Figure: Entity-Relationship Diagram — Dino-Ecommerce Database
       </SvgText>
     </Svg>
   );

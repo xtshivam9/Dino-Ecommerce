@@ -9,7 +9,7 @@ import {
 } from "@react-pdf/renderer";
 
 /**
- * Context Diagram (Level 0 DFD) - Django E-Commerce System
+ * Context Diagram (Level 0 DFD) - Dino-Ecommerce System
  * Redesigned with better visual hierarchy, colored entities, and clear flow labels
  */
 export default function ContextDFD() {
@@ -33,7 +33,7 @@ export default function ContextDFD() {
       stroke: "#3b82f6",
     },
     {
-      label: "Payment Gateway",
+      label: "E-commerce Providers",
       x: 345,
       y: 40,
       w: 110,
@@ -42,7 +42,7 @@ export default function ContextDFD() {
       stroke: "#f59e0b",
     },
     {
-      label: "Shipping Carriers",
+      label: "Third-Party APIs",
       x: 370,
       y: 190,
       w: 110,
@@ -52,7 +52,7 @@ export default function ContextDFD() {
     },
     {
       label: "Database",
-      sublabel: "(PostgreSQL)",
+      sublabel: "(SQLite)",
       x: 320,
       y: 320,
       w: 120,
@@ -79,14 +79,14 @@ export default function ContextDFD() {
     label: string;
     offset?: number;
   }[] = [
-    { from: 0, to: -1, label: "Browsing, Cart actions, Payment info", offset: -8 },
-    { from: -1, to: 0, label: "Product catalog, Order status", offset: 8 },
-    { from: -1, to: 1, label: "Stripe Tokens, Charge Intent", offset: -8 },
-    { from: 1, to: -1, label: "Payment Success/Failure", offset: 8 },
-    { from: -1, to: 2, label: "Shipping/Tracking queries", offset: 0 },
+    { from: 0, to: -1, label: "Order definitions, Commands", offset: -8 },
+    { from: -1, to: 0, label: "Dashboard data, Results", offset: 8 },
+    { from: -1, to: 1, label: "E-commerce prompts, Parameters", offset: -8 },
+    { from: 1, to: -1, label: "E-commerce responses, Completions", offset: 8 },
+    { from: -1, to: 2, label: "Integration requests", offset: 0 },
     { from: -1, to: 3, label: "CRUD operations, Logs", offset: -8 },
     { from: 3, to: -1, label: "Stored data, Query results", offset: 8 },
-    { from: -1, to: 4, label: "Order Receipts, Refund updates", offset: 0 },
+    { from: -1, to: 4, label: "Email, Email alerts", offset: 0 },
   ];
 
   function getEntityCenter(idx: number) {
@@ -103,7 +103,7 @@ export default function ContextDFD() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Context Diagram (Level 0 DFD) — Django E-Commerce System
+        Context Diagram (Level 0 DFD) — Dino-Ecommerce System
       </SvgText>
 
       {/* Central process — double ellipse per DFD convention */}
@@ -131,7 +131,7 @@ export default function ContextDFD() {
         textAnchor="middle"
         style={{ fontSize: 11, fontFamily: "Times-Bold", fill: "white" }}
       >
-        dj-ecommerce
+        Dino-Ecommerce
       </SvgText>
       <SvgText
         x={cx}
@@ -299,7 +299,7 @@ export default function ContextDFD() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: Context Diagram (Level 0 DFD) — Django E-Commerce System
+        Figure: Context Diagram (Level 0 DFD) — Dino-Ecommerce System
       </SvgText>
     </Svg>
   );

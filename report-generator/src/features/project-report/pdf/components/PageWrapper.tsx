@@ -2,10 +2,10 @@
 
 import { Page, View, Text } from "@react-pdf/renderer";
 import { styles, toRoman, PAGE_MARGINS } from "../styles";
-import type { ReactModel } from "react";
+import type { ReactNode } from "react";
 
 interface PageWrapperProps {
-  children: ReactModel;
+  children: ReactNode;
   pageNumber: number;
   isRoman?: boolean; // true for preliminary pages (i, ii, iii...)
   showHeader?: boolean;
@@ -39,7 +39,7 @@ export default function PageWrapper({
             borderBottomWidth: 1,
             borderBottomColor: "#333333",
             paddingBottom: 8,
-            marginBottom: 8,
+            marginBottom: 16,
           }}
         >
           <Text

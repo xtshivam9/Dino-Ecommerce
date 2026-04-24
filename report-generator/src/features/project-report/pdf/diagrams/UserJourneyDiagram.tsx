@@ -8,19 +8,18 @@ import {
 } from "@react-pdf/renderer";
 
 /**
- * User Workflow Journey — Step-by-step flow diagram showing user journey through dj-ecommerce
+ * User Order Journey — Step-by-step flow diagram showing user journey through Dino-Ecommerce
  * Used in User Manual chapter
  */
 export default function UserJourneyDiagram() {
   const width = 495;
-  const height = 250;
-
+  const height = 320;
 
   const steps = [
     { label: "Sign Up /\nLog In", icon: "1", color: "#3b82f6" },
-    { label: "Create\nWorkflow", icon: "2", color: "#6366f1" },
-    { label: "Add &\nConnect Models", icon: "3", color: "#8b5cf6" },
-    { label: "Configure\nCredentials", icon: "4", color: "#a855f7" },
+    { label: "Create\nOrder", icon: "2", color: "#6366f1" },
+    { label: "Add &\nConnect Products", icon: "3", color: "#8b5cf6" },
+    { label: "Configure\nProducts", icon: "4", color: "#a855f7" },
     { label: "Test &\nExecute", icon: "5", color: "#06b6d4" },
     { label: "Monitor\nResults", icon: "6", color: "#10b981" },
   ];
@@ -30,8 +29,7 @@ export default function UserJourneyDiagram() {
   const gap = 12;
   const totalW = steps.length * stepW + (steps.length - 1) * gap;
   const startX = (width - totalW) / 2;
-  const rowY = 60;
-
+  const rowY = 80;
 
   // Bottom row: additional features
   const features = [
@@ -45,8 +43,7 @@ export default function UserJourneyDiagram() {
   const featGap = 16;
   const featTotalW = features.length * featW + (features.length - 1) * featGap;
   const featStartX = (width - featTotalW) / 2;
-  const featY = 175;
-
+  const featY = 220;
 
   return (
     <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
@@ -57,7 +54,7 @@ export default function UserJourneyDiagram() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        User Workflow Journey — From Sign-up to Automation
+        User Order Journey — From Sign-up to Automation
       </SvgText>
 
       {/* Subtitle */}
@@ -159,22 +156,20 @@ export default function UserJourneyDiagram() {
       {/* Divider line */}
       <SvgText
         x={width / 2}
-        y={145}
+        y={175}
         textAnchor="middle"
         style={{ fontSize: 7, fontFamily: "Times-Bold", fill: "#999" }}
       >
         — ADVANCED FEATURES —
       </SvgText>
-
       <Line
         x1={60}
-        y1={150}
+        y1={180}
         x2={width - 60}
-        y2={150}
+        y2={180}
         stroke="#e5e7eb"
         strokeWidth={0.5}
       />
-
 
       {/* Connector lines from primary flow to features */}
       <Line
@@ -228,13 +223,12 @@ export default function UserJourneyDiagram() {
       {/* Bottom note */}
       <SvgText
         x={width / 2}
-        y={height - 10}
+        y={height - 20}
         textAnchor="middle"
-        style={{ fontSize: 6.5, fill: "#999" }}
+        style={{ fontSize: 7, fill: "#999" }}
       >
         All features accessible via the web browser — no installation required
       </SvgText>
-
     </Svg>
   );
 }

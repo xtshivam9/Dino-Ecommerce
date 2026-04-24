@@ -9,7 +9,7 @@ import {
 } from "@react-pdf/renderer";
 
 /**
- * Level 2 DFD - Process 3.0 Order State Management decomposed
+ * Level 2 DFD - Process 3.0 Payment Gateway decomposed
  * Fixed: Proper spacing, no overlapping labels or arrows
  */
 export default function Level2DFD() {
@@ -20,19 +20,19 @@ export default function Level2DFD() {
   const processes = [
     {
       id: "3.1",
-      label: "Parse Workflow\nDefinition",
+      label: "Parse Order\nDefinition",
       x: 110,
       y: 55,
       color: "#059669",
     },
     {
       id: "3.2",
-      label: "Resolve Model\nDependencies",
+      label: "Resolve Product\nDependencies",
       x: 290,
       y: 55,
       color: "#0891b2",
     },
-    { id: "3.3", label: "Execute\nModel", x: 390, y: 165, color: "#2563eb" },
+    { id: "3.3", label: "Execute\nProduct", x: 390, y: 165, color: "#2563eb" },
     {
       id: "3.4",
       label: "Handle AI\nProcessing",
@@ -54,9 +54,9 @@ export default function Level2DFD() {
   const pRy = 24;
 
   const stores = [
-    { id: "D2", label: "Workflows", x: 10, y: 135, w: 90 },
-    { id: "D3", label: "Executions", x: 10, y: 340, w: 90 },
-    { id: "D4", label: "Credentials", x: 10, y: 240, w: 90 },
+    { id: "D2", label: "Orders", x: 10, y: 135, w: 90 },
+    { id: "D3", label: "Payments", x: 10, y: 340, w: 90 },
+    { id: "D4", label: "Products", x: 10, y: 240, w: 90 },
   ];
 
   const storeH = 22;
@@ -80,7 +80,7 @@ export default function Level2DFD() {
         y={25}
         style={{ fontSize: 8, fontFamily: "Times-Bold", fill: "#059669" }}
       >
-        Process 3.0: Order State Management
+        Process 3.0: Payment Gateway
       </SvgText>
 
       {/* Processes */}
@@ -192,10 +192,10 @@ export default function Level2DFD() {
         textAnchor="middle"
         style={{ fontSize: 6.5, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        AI Provider
+        E-commerce Provider
       </SvgText>
 
-      {/* Inngest label */}
+      {/* Stripe label */}
       <Rect
         x={320}
         y={105}
@@ -212,7 +212,7 @@ export default function Level2DFD() {
         textAnchor="middle"
         style={{ fontSize: 6, fontFamily: "Times-Bold", fill: "#059669" }}
       >
-        via Inngest
+        via Stripe
       </SvgText>
 
       {/* ---- Data flows ---- */}
@@ -225,7 +225,7 @@ export default function Level2DFD() {
         y={108}
         style={{ fontSize: 5.5, fontFamily: "Times-Italic", fill: "#888" }}
       >
-        Workflow JSON
+        Order JSON
       </SvgText>
 
       {/* 3.1 → 3.2 */}
@@ -258,10 +258,10 @@ export default function Level2DFD() {
         y={230}
         style={{ fontSize: 5.5, fontFamily: "Times-Italic", fill: "#888" }}
       >
-        AI products
+        E-commerce products
       </SvgText>
 
-      {/* 3.4 → AI Provider */}
+      {/* 3.4 → E-commerce Provider */}
       <Line x1={420} y1={310} x2={450} y2={355} stroke="#666" strokeWidth={1} />
       <Polygon points="450,355 444,350 450,347" fill="#666" />
 
@@ -273,7 +273,7 @@ export default function Level2DFD() {
         y={245}
         style={{ fontSize: 5.5, fontFamily: "Times-Italic", fill: "#888" }}
       >
-        Model results
+        Product results
       </SvgText>
 
       {/* 3.5 → D3 */}
@@ -340,7 +340,7 @@ export default function Level2DFD() {
         y={200}
         style={{ fontSize: 5.5, fontFamily: "Times-Italic", fill: "#888" }}
       >
-        Decrypted credentials
+        Decrypted products
       </SvgText>
 
       {/* Caption */}
@@ -350,7 +350,7 @@ export default function Level2DFD() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: Level 2 DFD — Workflow Execution Subsystem
+        Figure: Level 2 DFD — Order Payment Subsystem
       </SvgText>
     </Svg>
   );

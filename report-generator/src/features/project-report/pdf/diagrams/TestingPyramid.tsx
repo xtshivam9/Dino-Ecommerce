@@ -41,7 +41,7 @@ export default function TestingPyramid() {
       coverage: "85%",
       color: colors.unit,
       lightColor: colors.unitLight,
-      tools: "Vitest + React Testing Library",
+      tools: "Vitest + Templates Testing Library",
     },
     {
       label: "Integration Tests",
@@ -49,7 +49,7 @@ export default function TestingPyramid() {
       coverage: "78%",
       color: colors.integration,
       lightColor: colors.integrationLight,
-      tools: "Vitest + tRPC Mock",
+      tools: "Vitest + Views Mock",
     },
     {
       label: "System Tests",
@@ -273,7 +273,7 @@ export default function TestingPyramid() {
         y={352}
         style={{ fontSize: 6, fontFamily: "Times-Bold", fill: colors.label }}
       >
-        Faster Execution
+        Faster Payment
       </SvgText>
 
       <SvgText

@@ -5,7 +5,7 @@ import { styles, toRoman, PAGE_MARGINS, FOOTER_BOTTOM } from "../styles";
 
 interface PreliminaryPageLayoutProps {
   children: React.ReactNode;
-  pageNumber?: number;
+  pageNumber: number;
 }
 
 /**
@@ -14,6 +14,7 @@ interface PreliminaryPageLayoutProps {
  */
 export default function PreliminaryPageLayout({
   children,
+  pageNumber,
 }: PreliminaryPageLayoutProps) {
   return (
     <Page
@@ -38,7 +39,7 @@ export default function PreliminaryPageLayout({
         fixed
         style={{
           position: "absolute",
-          bottom: FOOTER_BOTTOM,
+          bottom: 20,
           left: 0,
           right: 0,
           alignItems: "center",
@@ -46,14 +47,14 @@ export default function PreliminaryPageLayout({
         }}
       >
         <Text
-          render={({ pageNumber }) => toRoman(pageNumber - 2)}
-          fixed
           style={{
             fontSize: 10,
             fontFamily: "Times-Roman",
             color: "#444444",
           }}
-        />
+        >
+          {toRoman(pageNumber)}
+        </Text>
       </View>
     </Page>
   );

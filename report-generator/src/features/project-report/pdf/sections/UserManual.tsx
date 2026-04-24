@@ -3,90 +3,128 @@
 import { View, Text } from "@react-pdf/renderer";
 import { styles } from "../styles";
 import BookPageLayout from "../components/BookPageLayout";
-import UserJourneyDiagram from "../diagrams/UserJourneyDiagram";
 
-/**
- * Chapter 10: User Manual
- * Aggressively condensed version.
- */
 export default function UserManual() {
   return (
     <BookPageLayout chapterTitle="User Manual" chapterNum="10">
-      <View style={{ alignItems: "center", marginBottom: 4 }}>
-        <Text style={{ fontSize: 13, fontFamily: "Times-Bold", textTransform: "uppercase" }}>Chapter 10: User Manual</Text>
-        <View style={{ width: 40, height: 2, backgroundColor: "#000000", marginTop: 2 }} />
+      <View style={{ marginBottom: 28, alignItems: "center", marginTop: 20 }}>
+        <Text
+          style={{
+            fontSize: 11,
+            fontFamily: "Times-Roman",
+            color: "#666666",
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            marginBottom: 8,
+          }}
+        >
+          Chapter 10
+        </Text>
+        <Text
+          style={{
+            fontSize: 26,
+            fontFamily: "Times-Bold",
+            textAlign: "center",
+            letterSpacing: 1.5,
+            textTransform: "uppercase",
+            color: "#000000",
+          }}
+        >
+          User Manual
+        </Text>
+        <View
+          style={{
+            width: 60,
+            height: 2,
+            backgroundColor: "#000000",
+            marginTop: 12,
+          }}
+        />
       </View>
-
-
-      <Text style={styles.paragraphIndent}>
-        This guide provides concise instructions for AROWAI. Access the platform at https://arowai.app.
-      </Text>
 
       <Text style={styles.h2}>10.1 Getting Started</Text>
-      <View style={{ paddingLeft: 10, marginBottom: 2 }}>
-        <Text style={styles.paragraph}>• <Text style={styles.bold}>Requirements:</Text> Modern browser (Chrome/Firefox), stable internet, 1280x720 min res.</Text>
-        <Text style={styles.paragraph}>• <Text style={styles.bold}>Registration:</Text> Sign up at /signup or use Google/GitHub OAuth. Verify email to activate.</Text>
-      </View>
+      <Text style={styles.paragraphIndent}>
+        This user manual provides step-by-step instructions on how to navigate and utilize the Dino-Ecommerce platform, both from the perspective of a customer and an administrator.
+      </Text>
 
-      <View wrap={false} style={{ alignItems: "center", marginBottom: 2, marginTop: 2 }}>
-        <UserJourneyDiagram />
-        <Text style={{ fontSize: 6.5, fontFamily: "Times-Italic", textAlign: "center" }}>Figure 10.1: User Journey Overview</Text>
-      </View>
-
-
-      <Text style={styles.h2}>10.2 Core Navigation & Workflow Editor</Text>
-      <Text style={styles.paragraph}>The dashboard offers real-time metrics, recent logs, and quick-access triggers. The visual editor uses a drag-and-drop canvas for flow construction.</Text>
+      <Text style={styles.h2}>10.2 Customer Guide</Text>
       
-      <View style={{ paddingLeft: 10, marginBottom: 2 }}>
-        <Text style={styles.paragraph}>• <Text style={styles.bold}>Adding Nodes:</Text> Drag from the sidebar palette or use the context menu.</Text>
-        <Text style={styles.paragraph}>• <Text style={styles.bold}>Connecting:</Text> Drag from output handles to input handles to define data flow.</Text>
-        <Text style={styles.paragraph}>• <Text style={styles.bold}>Auto-Save:</Text> Changes persist automatically via debounced cloud sync.</Text>
-      </View>
+      <Text style={styles.h3}>1. Registration & Login</Text>
+      <Text style={styles.paragraph}>
+        • Navigate to the <Text style={styles.bold}>Signup</Text> page via the top navigation bar.
+        {"\n"}• Enter a valid email address, create a strong password, and submit.
+        {"\n"}• Upon successful login, you will be redirected to the homepage.
+      </Text>
 
-      <Text style={styles.h2}>10.3 Configuration & Integration</Text>
-      <View wrap={false} style={{ marginBottom: 4, marginTop: 2 }}>
-        <View style={{ borderWidth: 0.5, borderColor: "#000000" }}>
-          <View style={{ flexDirection: "row", backgroundColor: "#f0f0f0", borderBottomWidth: 0.5 }}>
-            <Text style={{ width: "25%", fontSize: 8, fontFamily: "Times-Bold", padding: 2, borderRightWidth: 0.5 }}>Category</Text>
-            <Text style={{ width: "75%", fontSize: 8, fontFamily: "Times-Bold", padding: 2 }}>Models & Features</Text>
+      <Text style={styles.h3}>2. Browsing and Adding to Cart</Text>
+      <Text style={styles.paragraph}>
+        • The homepage displays a grid of featured products. Click on an item's title or image to view detailed specifications.
+        {"\n"}• Click the <Text style={styles.bold}>"Add to Cart"</Text> button on the product page.
+        {"\n"}• A success notification will appear at the top of the screen, and the cart icon counter in the navigation bar will increment.
+      </Text>
+
+      <Text style={styles.h3}>3. Cart Management</Text>
+      <Text style={styles.paragraph}>
+        • Click the <Text style={styles.bold}>Cart Icon</Text> to view your order summary.
+        {"\n"}• Use the <Text style={styles.bold}>+</Text> and <Text style={styles.bold}>-</Text> buttons to adjust item quantities. 
+        {"\n"}• To remove an item completely, click the trash can icon.
+        {"\n"}• Click <Text style={styles.bold}>"Proceed to Checkout"</Text> when ready.
+      </Text>
+
+      <Text style={styles.h3}>4. Checkout Process</Text>
+      <Text style={styles.paragraph}>
+        • Fill in the shipping and billing address forms. You may check "Billing address is same as shipping address" to save time.
+        {"\n"}• Optionally, check "Save this information for next time" to persist the address to your profile.
+        {"\n"}• Enter your credit card details into the secure Stripe input field.
+        {"\n"}• Click <Text style={styles.bold}>"Submit Payment"</Text>. Do not close the window while processing.
+      </Text>
+
+      <Text style={styles.h2}>10.3 Administrator Guide</Text>
+
+      <Text style={styles.h3}>1. Accessing the Admin Dashboard</Text>
+      <Text style={styles.paragraph}>
+        • Navigate to <Text style={styles.bold}>/admin</Text> in your browser URL.
+        {"\n"}• Log in using a superuser account product.
+      </Text>
+
+      <Text style={styles.h3}>2. Managing Products (Items)</Text>
+      <Text style={styles.paragraph}>
+        • Under the "Core" section, click on <Text style={styles.bold}>Items</Text>.
+        {"\n"}• Click "Add Item" in the top right corner.
+        {"\n"}• Fill in the Title, Price, Discount Price (optional), Category, and upload an Image.
+        {"\n"}• Click <Text style={styles.bold}>Save</Text>. The product will immediately appear on the storefront.
+      </Text>
+
+      <Text style={styles.h3}>3. Managing Orders & Refunds</Text>
+      <Text style={styles.paragraph}>
+        • Click on <Text style={styles.bold}>Orders</Text>.
+        {"\n"}• You can filter orders by status (e.g., Ordered, Being Delivered, Received) using the right sidebar.
+        {"\n"}• To process a refund, navigate to <Text style={styles.bold}>Refunds</Text>, review the user's request reason, check the "Accepted" box, and save to approve.
+      </Text>
+
+      <Text style={styles.h2}>10.4 Troubleshooting Common Issues</Text>
+      
+      {/* Troubleshooting Table */}
+      <View style={{ marginTop: 16, marginBottom: 24 }}>
+        <View style={{ flexDirection: "row", backgroundColor: "#f0f0f0", borderTopWidth: 1, borderBottomWidth: 1, borderColor: "#000000", paddingVertical: 6 }}>
+          <Text style={{ width: "40%", fontFamily: "Times-Bold", fontSize: 10, paddingLeft: 8 }}>Issue / Error Message</Text>
+          <Text style={{ width: "60%", fontFamily: "Times-Bold", fontSize: 10 }}>Resolution</Text>
+        </View>
+
+        {[
+          { issue: "\"Card was declined\"", res: "Verify funds and card number. Use Stripe test cards if in development." },
+          { issue: "\"Invalid Coupon Code\"", res: "The code may be expired or typed incorrectly. Codes are case-sensitive." },
+          { issue: "\"You do not have an active order\"", res: "Your cart is empty. Add items to cart before proceeding to checkout." },
+          { issue: "Admin panel returns 403 Forbidden", res: "Your account lacks superuser or staff permissions." }
+        ].map((row, i) => (
+          <View key={i} style={{ flexDirection: "row", borderBottomWidth: 1, borderColor: "#eeeeee", paddingVertical: 6 }}>
+            <Text style={{ width: "40%", fontFamily: "Times-Roman", fontSize: 10, paddingLeft: 8 }}>{row.issue}</Text>
+            <Text style={{ width: "60%", fontFamily: "Times-Roman", fontSize: 10 }}>{row.res}</Text>
           </View>
-          {[
-            ["Triggers", "Manual, Webhook (unique URL), Schedule (Cron)"],
-            ["Logic", "IF/Else branching, Switch routing, Loops, Merging"],
-            ["AI/Cloud", "Text Generation, Data Analytics, Classification"],
-            ["External", "Slack, Google Sheets, GitHub, Notion, Stripe, Twilio"],
-          ].map((row, i) => (
-            <View key={i} style={{ flexDirection: "row", borderBottomWidth: i < 3 ? 0.5 : 0 }}>
-              <Text style={{ width: "25%", fontSize: 7, padding: 1.5, borderRightWidth: 0.5 }}>{row[0]}</Text>
-              <Text style={{ width: "75%", fontSize: 7, padding: 1.5 }}>{row[1]}</Text>
-            </View>
-          ))}
-        </View>
-      </View>
-
-      <Text style={styles.h2}>10.4 Execution, Security & Teams</Text>
-      <Text style={styles.paragraph}>Monitor runs via the Executions tab. Sensitive data (API keys) must be stored in the encrypted Credential Manager (AES-256-GCM).</Text>
-      
-      <View wrap={false} style={{ marginBottom: 4, marginTop: 2 }}>
-        <View style={{ borderWidth: 0.5, borderColor: "#000000" }}>
-          {[
-            ["Owner", "Full admin & billing control"],
-            ["Admin", "Manage members, flows, and credentials"],
-            ["Member", "Create/Execute flows; view shared assets"],
-            ["Viewer", "Read-only access to logs and designs"],
-          ].map((row, i) => (
-            <View key={i} style={{ flexDirection: "row", borderBottomWidth: i < 3 ? 0.5 : 0 }}>
-              <Text style={{ width: "20%", fontSize: 7, fontFamily: "Times-Bold", padding: 1.5, borderRightWidth: 0.5 }}>{row[0]}</Text>
-              <Text style={{ width: "80%", fontSize: 7, padding: 1.5 }}>{row[1]}</Text>
-            </View>
-          ))}
-        </View>
-        <Text style={{ fontSize: 7, fontFamily: "Times-Italic", textAlign: "center", marginTop: 2 }}>Table 10.1: RBAC Permission Matrix</Text>
-      </View>
-
-      <View wrap={false}>
-        <Text style={styles.h3}>10.4.1 Versioning & Rollback</Text>
-        <Text style={styles.paragraph}>AROWAI maintains a complete snapshot history. Access the 'History' panel to compare versions or perform an instant rollback to any previous state.</Text>
+        ))}
+        <Text style={{ textAlign: "center", fontSize: 10, fontFamily: "Times-Italic", marginTop: 8, color: "#666666" }}>
+          Table 10.3: Common Issues & Resolutions
+        </Text>
       </View>
 
     </BookPageLayout>

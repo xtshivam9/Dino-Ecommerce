@@ -4,9 +4,8 @@ import { Document } from "@react-pdf/renderer";
 
 // Preliminary sections (Roman numerals)
 import TitlePage from "./sections/TitlePage";
-import InnerCover from "./sections/InnerCover";
-import Certificate from "./sections/Certificate";
 import Declaration from "./sections/Declaration";
+import Certificate from "./sections/Certificate";
 import Acknowledgement from "./sections/Acknowledgement";
 import Preface from "./sections/Preface";
 import Abstract from "./sections/Abstract";
@@ -19,65 +18,90 @@ import Acronyms from "./sections/Acronyms";
 import Introduction from "./sections/Introduction";
 import ProblemStatement from "./sections/ProblemStatement";
 import Objectives from "./sections/Objectives";
-import FeasibilityStudy from "./sections/FeasibilityStudy";
-import COCOMOEstimation from "./sections/COCOMOEstimation";
 import SDLCOverview from "./sections/SDLCOverview";
+import ProcessModel from "./sections/ProcessModel";
 import RequirementGathering from "./sections/RequirementGathering";
 import SRS from "./sections/SRS";
+import FeasibilityStudy from "./sections/FeasibilityStudy";
 import DesignDiagrams from "./sections/DesignDiagrams";
+import COCOMOEstimation from "./sections/COCOMOEstimation";
 import Implementation from "./sections/Implementation";
 import Testing from "./sections/Testing";
 import UserManual from "./sections/UserManual";
 import OutputScreens from "./sections/OutputScreens";
 import Conclusions from "./sections/Conclusions";
-
-// Back Matter
 import References from "./sections/References";
 import Annexures from "./sections/Annexures";
 
 /**
  * Main Project Report PDF Document
- * Composed version including all chapters and preliminary pages.
+ * Composes all sections into a single printable document
  */
 export default function ProjectReportDocument() {
   return (
     <Document
-      title="AROWAI - Project Report"
-      author="AROWAI Team"
+      title="Dino-Ecommerce - Project Report"
+      author="Rutashman Sharma & Lovejinder Singh"
       subject="BCA Final Year Project Report"
-      keywords="e-commerce, AROWAI, automation, project report, BCA"
+      keywords="ecommerce, django, project report, BCA"
     >
       {/* ========== Preliminary Pages (Roman Numerals) ========== */}
       <TitlePage />
-      <InnerCover />
-      <Certificate />
-      <Declaration />
-      <Acknowledgement />
-      <Preface />
-      <Abstract />
-      <TableOfContents />
-      <ListOfFigures />
-      <ListOfTables />
-      <Acronyms />
+      <Declaration pageNumber={1} />
+      <Certificate pageNumber={2} />
+      <Acknowledgement pageNumber={3} />
+      <Preface pageNumber={4} />
+      <Abstract pageNumber={5} />
+      <TableOfContents startPage={6} />
+      <ListOfFigures startPage={11} />
+      <ListOfTables startPage={12} />
+      <Acronyms startPage={13} />
 
-      {/* ========== Content Chapters (Arabic Numerals) ========== */}
+      {/* ========== Content Pages (Arabic Numerals) ========== */}
+
+      {/* Chapter 1: Introduction */}
       <Introduction />
+
+      {/* Chapter 2: Problem Statement */}
       <ProblemStatement />
+
+      {/* Chapter 3: Objectives */}
       <Objectives />
+
+      {/* Chapter 4: Feasibility Study */}
       <FeasibilityStudy />
+
+      {/* Chapter 5: Estimation & Planning (COCOMO) */}
       <COCOMOEstimation />
+
+      {/* Chapter 6: SDLC */}
       <SDLCOverview />
+      <ProcessModel />
       <RequirementGathering />
       <SRS />
+
+      {/* Chapter 7: System Design */}
       <DesignDiagrams />
+
+      {/* Chapter 8: Implementation */}
       <Implementation />
+
+      {/* Chapter 9: Testing */}
       <Testing />
+
+      {/* Chapter 10: User Manual */}
       <UserManual />
+
+      {/* Chapter 11: Output & Screenshots */}
       <OutputScreens />
+
+      {/* Chapter 12: Conclusions & Future Scope */}
       <Conclusions />
 
-      {/* ========== Back Matter ========== */}
+      {/* References */}
       <References />
+
+      {/* Annexures */}
       <Annexures />
     </Document>
   );

@@ -10,7 +10,7 @@ export default function InnerCoverPage() {
     <Page
       size="A4"
       style={{
-        padding: 30,
+        padding: 60,
         fontFamily: "Times-Roman",
         backgroundColor: "#ffffff",
       }}
@@ -23,7 +23,7 @@ export default function InnerCoverPage() {
               textTransform: "uppercase",
               letterSpacing: 3,
               color: "#666666",
-              marginBottom: 6,
+              marginBottom: 12,
             }}
           >
             Project Report
@@ -36,17 +36,17 @@ export default function InnerCoverPage() {
               color: "#111111",
             }}
           >
-            FLOWGENT 1.0
+            DINO-ECOMMERCE
           </Text>
           <Text
             style={{
               fontSize: 12,
               fontFamily: "Times-Italic",
               color: "#444444",
-              marginBottom: 3,
+              marginTop: 6,
             }}
           >
-            Django E-Commerce Platform
+            Django-Based Online Shopping Platform
           </Text>
         </View>
 
@@ -55,14 +55,14 @@ export default function InnerCoverPage() {
             style={{
               height: 1,
               backgroundColor: "#dddddd",
-              marginBottom: 9,
+              marginBottom: 18,
             }}
           />
           <Text style={{ fontSize: 10, color: "#666666" }}>
             Department of Computer Applications
           </Text>
           <Text style={{ fontSize: 10, color: "#666666", marginTop: 2 }}>
-            Hindu College, Amritsar
+            Baba Budha Sahib College
           </Text>
           <Text style={{ fontSize: 10, color: "#666666", marginTop: 2 }}>
             Academic Session 2025-26
@@ -82,7 +82,7 @@ export default function InnerCoverPage() {
           letterSpacing: 4,
         }}
       >
-        FLOWGENT
+        DINO-ECOM
       </Text>
     </Page>
   );

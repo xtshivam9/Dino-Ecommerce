@@ -13,14 +13,14 @@ const SchemaTable = ({
   tableNum: string;
   fields: string[][];
 }) => (
-  <View style={{ marginBottom: 2 }}>
-    <View wrap={false}>
-<View
+  <View style={{ marginBottom: 4 }}>
+    <View
+      wrap={false}
       style={{
         borderWidth: 1,
         borderColor: "#d1d5db",
+        marginTop: 8,
         marginBottom: 4,
-        marginBottom: 2,
         borderRadius: 2,
         overflow: "hidden",
       }}
@@ -37,7 +37,7 @@ const SchemaTable = ({
         <Text
           style={{
             width: "100%",
-            padding: 2,
+            padding: 5,
             fontSize: 9,
             fontFamily: "Times-Bold",
             textAlign: "center",
@@ -59,7 +59,7 @@ const SchemaTable = ({
         <Text
           style={{
             width: "25%",
-            padding: 2,
+            padding: 4,
             fontSize: 9,
             fontFamily: "Times-Bold",
             borderRightWidth: 1,
@@ -72,7 +72,7 @@ const SchemaTable = ({
         <Text
           style={{
             width: "25%",
-            padding: 2,
+            padding: 4,
             fontSize: 9,
             fontFamily: "Times-Bold",
             borderRightWidth: 1,
@@ -85,7 +85,7 @@ const SchemaTable = ({
         <Text
           style={{
             width: "50%",
-            padding: 2,
+            padding: 4,
             fontSize: 9,
             fontFamily: "Times-Bold",
             color: "#1e40af",
@@ -108,7 +108,7 @@ const SchemaTable = ({
           <Text
             style={{
               width: "25%",
-              padding: 2,
+              padding: 3,
               fontSize: 7,
               fontFamily: "Courier",
               borderRightWidth: 1,
@@ -120,7 +120,7 @@ const SchemaTable = ({
           <Text
             style={{
               width: "25%",
-              padding: 2,
+              padding: 3,
               fontSize: 7,
               borderRightWidth: 1,
               borderRightColor: "#e5e7eb",
@@ -128,27 +128,26 @@ const SchemaTable = ({
           >
             {row[1]}
           </Text>
-          <Text style={{ width: "50%", padding: 2, fontSize: 7 }}>
+          <Text style={{ width: "50%", padding: 3, fontSize: 7 }}>
             {row[2]}
           </Text>
         </View>
       ))}
     </View>
-<Text
+    <Text
       style={{
         fontSize: 9,
         fontFamily: "Times-Italic",
         textAlign: "center",
-        marginBottom: 4,
+        marginBottom: 8,
       }}
     >
       Table {tableNum}: {tableName} Table Structure
     </Text>
-</View>
   </View>
 );
 
-// ── Helper: render an enum table ───────────────────────────────────────────
+// ── Helper: render an enum/choices table ───────────────────────────────────
 const EnumTable = ({
   enumName,
   tableNum,
@@ -158,14 +157,14 @@ const EnumTable = ({
   tableNum: string;
   values: string[][];
 }) => (
-  <View style={{ marginBottom: 2 }}>
-    <View wrap={false}>
-<View
+  <View style={{ marginBottom: 4 }}>
+    <View
+      wrap={false}
       style={{
         borderWidth: 1,
         borderColor: "#d1d5db",
+        marginTop: 8,
         marginBottom: 4,
-        marginBottom: 2,
         borderRadius: 2,
         overflow: "hidden",
       }}
@@ -181,7 +180,7 @@ const EnumTable = ({
         <Text
           style={{
             width: "100%",
-            padding: 2,
+            padding: 5,
             fontSize: 9,
             fontFamily: "Times-Bold",
             textAlign: "center",
@@ -202,7 +201,7 @@ const EnumTable = ({
         <Text
           style={{
             width: "30%",
-            padding: 2,
+            padding: 4,
             fontSize: 9,
             fontFamily: "Times-Bold",
             borderRightWidth: 1,
@@ -215,7 +214,7 @@ const EnumTable = ({
         <Text
           style={{
             width: "70%",
-            padding: 2,
+            padding: 4,
             fontSize: 9,
             fontFamily: "Times-Bold",
             color: "#6d28d9",
@@ -237,7 +236,7 @@ const EnumTable = ({
           <Text
             style={{
               width: "30%",
-              padding: 2,
+              padding: 3,
               fontSize: 7,
               fontFamily: "Courier",
               borderRightWidth: 1,
@@ -246,23 +245,22 @@ const EnumTable = ({
           >
             {row[0]}
           </Text>
-          <Text style={{ width: "70%", padding: 2, fontSize: 7 }}>
+          <Text style={{ width: "70%", padding: 3, fontSize: 7 }}>
             {row[1]}
           </Text>
         </View>
       ))}
     </View>
-<Text
+    <Text
       style={{
         fontSize: 9,
         fontFamily: "Times-Italic",
         textAlign: "center",
-        marginBottom: 4,
+        marginBottom: 8,
       }}
     >
-      Table {tableNum}: {enumName} Enum Values
+      Table {tableNum}: {enumName} Choice Values
     </Text>
-</View>
   </View>
 );
 
@@ -272,8 +270,8 @@ const GroupHeading = ({ children }: { children: string }) => (
     style={{
       fontSize: 10,
       fontFamily: "Times-Bold",
-      marginBottom: 6,
-      marginBottom: 2,
+      marginTop: 12,
+      marginBottom: 4,
     }}
   >
     {children}
@@ -289,338 +287,205 @@ export default function DatabaseSchemaSection() {
       <Text style={styles.h3}>7.6.1 Complete Database Schema</Text>
       <Text style={styles.paragraphIndent}>
         The following tables define the complete database schema for the
-        dj-ecommerce platform, organized by functional domain. Each table includes
-        field names, data types, and constraints as specified in the Prisma
-        schema.
+        Dino-Ecommerce platform, organized by functional domain. Each table
+        includes field names, data types, and constraints as specified in the
+        Django models (models.py).
       </Text>
 
       {/* ─── A. Authentication Tables ───────────────────────────────── */}
-      <GroupHeading>A. Authentication Tables</GroupHeading>
+      <GroupHeading>A. Authentication (Django Allauth / Auth)</GroupHeading>
 
       <SchemaTable
-        tableName="User"
+        tableName="User (auth_user)"
         tableNum="7.4"
         fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["email", "String", "Unique, Not Null"],
-          ["name", "String", "Nullable"],
-          ["emailVerified", "Boolean", "Not Null, Default: false"],
-          ["image", "String", "Nullable"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-          ["updatedAt", "DateTime", "Not Null, Auto-update"],
+          ["id", "AutoField", "PK, Auto-increment"],
+          ["username", "CharField(150)", "Unique, Not Null"],
+          ["email", "EmailField", "Not Null"],
+          ["password", "CharField(128)", "Not Null, Hashed"],
+          ["first_name", "CharField(150)", "Nullable"],
+          ["last_name", "CharField(150)", "Nullable"],
+          ["is_active", "BooleanField", "Default: True"],
+          ["is_staff", "BooleanField", "Default: False"],
+          ["date_joined", "DateTimeField", "Auto: now()"],
         ]}
       />
 
       <SchemaTable
-        tableName="Session"
+        tableName="UserProfile"
         tableNum="7.5"
         fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["expiresAt", "DateTime", "Not Null"],
-          ["token", "String", "Unique, Not Null"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-          ["updatedAt", "DateTime", "Not Null, Auto-update"],
-          ["ipAddress", "String", "Nullable"],
-          ["userAgent", "String", "Nullable"],
-          ["userId", "String", "FK \u2192 User, Not Null, Indexed"],
+          ["id", "AutoField", "PK, Auto-increment"],
+          ["user", "OneToOneField", "FK → User, Unique, CASCADE"],
+          ["stripe_customer_id", "CharField(50)", "Nullable, Blank"],
+          ["one_click_purchasing", "BooleanField", "Default: False"],
         ]}
       />
 
+      {/* ─── B. Product Tables ─────────────────────────────────────── */}
+      <GroupHeading>B. Product Catalog</GroupHeading>
+
       <SchemaTable
-        tableName="Account"
+        tableName="Item"
         tableNum="7.6"
         fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["accountId", "String", "Not Null"],
-          ["providerId", "String", "Not Null"],
-          ["userId", "String", "FK \u2192 User, Not Null, Indexed"],
-          ["accessToken", "String", "Nullable"],
-          ["refreshToken", "String", "Nullable"],
-          ["idToken", "String", "Nullable"],
-          ["accessTokenExpiresAt", "DateTime", "Nullable"],
-          ["refreshTokenExpiresAt", "DateTime", "Nullable"],
-          ["scope", "String", "Nullable"],
-          ["password", "String", "Nullable"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-          ["updatedAt", "DateTime", "Not Null, Auto-update"],
+          ["id", "AutoField", "PK, Auto-increment"],
+          ["title", "CharField(100)", "Not Null"],
+          ["price", "FloatField", "Not Null"],
+          ["discount_price", "FloatField", "Nullable, Blank"],
+          ["category", "CharField(2)", "Choices: CATEGORY_CHOICES"],
+          ["label", "CharField(1)", "Choices: LABEL_CHOICES"],
+          ["slug", "SlugField", "Unique, Indexed"],
+          ["description", "TextField", "Not Null"],
+          ["image", "ImageField", "Not Null"],
         ]}
       />
 
+      {/* ─── C. Order Tables ──────────────────────────────────────── */}
+      <GroupHeading>C. Order Management</GroupHeading>
+
       <SchemaTable
-        tableName="Verification"
+        tableName="OrderItem"
         tableNum="7.7"
         fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["identifier", "String", "Not Null"],
-          ["value", "String", "Not Null"],
-          ["expiresAt", "DateTime", "Not Null"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-          ["updatedAt", "DateTime", "Not Null, Auto-update"],
+          ["id", "AutoField", "PK, Auto-increment"],
+          ["user", "ForeignKey", "FK → User, CASCADE"],
+          ["ordered", "BooleanField", "Default: False"],
+          ["item", "ForeignKey", "FK → Item, CASCADE"],
+          ["quantity", "IntegerField", "Default: 1"],
         ]}
       />
 
-      {/* ─── B. Workflow Tables ─────────────────────────────────────── */}
-      <GroupHeading>B. Workflow Tables</GroupHeading>
-
       <SchemaTable
-        tableName="Workflow"
+        tableName="Order"
         tableNum="7.8"
         fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["name", "String", "Not Null"],
-          ["description", "String", "Nullable"],
-          ["products", "Json", "Not Null"],
-          ["edges", "Json", "Not Null"],
-          ["viewport", "Json", "Nullable"],
-          ["settings", "Json", "Nullable"],
-          ["folder", "String", "Nullable"],
-          ["tags", "String[]", "Array"],
-          ["isFavorite", "Boolean", "Not Null, Default: false"],
-          ["errorAlertEmail", "String", "Nullable"],
-          ["errorAlertSlack", "String", "Nullable"],
-          ["errorAlertEnabled", "Boolean", "Not Null, Default: false"],
-          ["isActive", "Boolean", "Not Null, Default: true"],
-          ["version", "Int", "Not Null, Default: 1"],
-          ["userId", "String", "FK \u2192 User, Not Null, Indexed"],
-          ["teamId", "String", "FK \u2192 Team, Nullable, Indexed"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-          ["updatedAt", "DateTime", "Not Null, Auto-update"],
-          ["lastExecutedAt", "DateTime", "Nullable"],
+          ["id", "AutoField", "PK, Auto-increment"],
+          ["user", "ForeignKey", "FK → User, CASCADE"],
+          ["ref_code", "CharField(20)", "Nullable, Blank"],
+          ["items", "ManyToManyField", "M2M → OrderItem"],
+          ["start_date", "DateTimeField", "Auto: now()"],
+          ["ordered_date", "DateTimeField", "Not Null"],
+          ["ordered", "BooleanField", "Default: False"],
+          ["shipping_address", "ForeignKey", "FK → Address, SET_NULL"],
+          ["billing_address", "ForeignKey", "FK → Address, SET_NULL"],
+          ["payment", "ForeignKey", "FK → Payment, SET_NULL"],
+          ["coupon", "ForeignKey", "FK → Coupon, SET_NULL"],
+          ["being_delivered", "BooleanField", "Default: False"],
+          ["received", "BooleanField", "Default: False"],
+          ["refund_requested", "BooleanField", "Default: False"],
+          ["refund_granted", "BooleanField", "Default: False"],
         ]}
       />
 
+      {/* ─── D. Address & Payment Tables ─────────────────────────── */}
+      <GroupHeading>D. Address & Payment</GroupHeading>
+
       <SchemaTable
-        tableName="Execution"
+        tableName="Address"
         tableNum="7.9"
         fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["status", "ExecutionStatus", "Not Null, Enum, Default: PENDING"],
-          ["mode", "ExecutionMode", "Not Null, Enum"],
-          ["startedAt", "DateTime", "Not Null, Default: now()"],
-          ["finishedAt", "DateTime", "Nullable"],
-          ["duration", "Int", "Nullable"],
-          ["inputData", "Json", "Nullable"],
-          ["outputData", "Json", "Nullable"],
-          ["productResults", "Json", "Nullable"],
-          ["error", "Json", "Nullable"],
-          ["orderId", "String", "FK \u2192 Workflow, Not Null, Indexed"],
-          ["userId", "String", "FK \u2192 User, Nullable, Indexed"],
-          ["retryOf", "String", "Nullable"],
-          ["retryCount", "Int", "Not Null, Default: 0"],
+          ["id", "AutoField", "PK, Auto-increment"],
+          ["user", "ForeignKey", "FK → User, CASCADE"],
+          ["street_address", "CharField(100)", "Not Null"],
+          ["apartment_address", "CharField(100)", "Not Null"],
+          ["country", "CountryField", "Not Null"],
+          ["zip", "CharField(100)", "Not Null"],
+          ["address_type", "CharField(1)", "Choices: S(hipping)/B(illing)"],
+          ["default", "BooleanField", "Default: False"],
         ]}
       />
 
       <SchemaTable
-        tableName="AuditLog"
+        tableName="Payment"
         tableNum="7.10"
         fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["action", "String", "Not Null"],
-          ["entity", "String", "Not Null"],
-          ["entityId", "String", "Nullable"],
-          ["details", "Json", "Nullable"],
-          ["ipAddress", "String", "Nullable"],
-          ["userAgent", "String", "Nullable"],
-          ["userId", "String", "FK \u2192 User, Not Null, Indexed"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
+          ["id", "AutoField", "PK, Auto-increment"],
+          ["stripe_charge_id", "CharField(50)", "Not Null"],
+          ["user", "ForeignKey", "FK → User, SET_NULL"],
+          ["amount", "FloatField", "Not Null"],
+          ["timestamp", "DateTimeField", "Auto: now()"],
         ]}
       />
 
-      {/* ─── C. Integration Tables ──────────────────────────────────── */}
-      <GroupHeading>C. Integration Tables</GroupHeading>
-
       <SchemaTable
-        tableName="Credential"
+        tableName="Coupon"
         tableNum="7.11"
         fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["name", "String", "Not Null"],
-          ["type", "String", "Not Null"],
-          ["provider", "String", "Not Null"],
-          ["data", "String", "Not Null, Encrypted (AES-256)"],
-          ["expiresAt", "DateTime", "Nullable"],
-          ["refreshToken", "String", "Nullable"],
-          ["scope", "String", "Nullable"],
-          ["metadata", "Json", "Nullable"],
-          ["userId", "String", "FK \u2192 User, Not Null, Indexed"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-          ["updatedAt", "DateTime", "Not Null, Auto-update"],
-          ["lastUsedAt", "DateTime", "Nullable"],
+          ["id", "AutoField", "PK, Auto-increment"],
+          ["code", "CharField(15)", "Unique, Not Null"],
+          ["amount", "FloatField", "Not Null"],
         ]}
       />
 
       <SchemaTable
-        tableName="Schedule"
+        tableName="Refund"
         tableNum="7.12"
         fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["cronExpression", "String", "Not Null"],
-          ["timezone", "String", "Not Null, Default: UTC"],
-          ["isActive", "Boolean", "Not Null, Default: true"],
-          ["orderId", "String", "FK \u2192 Workflow, Unique, Not Null"],
-          ["nextRunAt", "DateTime", "Nullable"],
-          ["lastRunAt", "DateTime", "Nullable"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-          ["updatedAt", "DateTime", "Not Null, Auto-update"],
+          ["id", "AutoField", "PK, Auto-increment"],
+          ["order", "ForeignKey", "FK → Order, CASCADE"],
+          ["reason", "TextField", "Not Null"],
+          ["accepted", "BooleanField", "Default: False"],
+          ["email", "EmailField", "Not Null"],
         ]}
       />
 
-      <SchemaTable
-        tableName="WebhookEndpoint"
-        tableNum="7.13"
-        fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["path", "String", "Unique, Not Null"],
-          ["method", "HttpMethod", "Not Null, Enum, Default: POST"],
-          ["isActive", "Boolean", "Not Null, Default: true"],
-          ["secretHash", "String", "Nullable"],
-          ["ipAllowlist", "String[]", "Array"],
-          ["orderId", "String", "FK \u2192 Workflow, Not Null, Indexed"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-          ["lastCalledAt", "DateTime", "Nullable"],
-          ["callCount", "Int", "Not Null, Default: 0"],
-        ]}
-      />
-
-      {/* ─── D. Team Tables ─────────────────────────────────────────── */}
-      <GroupHeading>D. Team Tables</GroupHeading>
-
-      <SchemaTable
-        tableName="Team"
-        tableNum="7.14"
-        fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["name", "String", "Not Null"],
-          ["slug", "String", "Unique, Not Null"],
-          ["description", "String", "Nullable"],
-          ["image", "String", "Nullable"],
-          ["plan", "String", "Not Null, Default: free"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-          ["updatedAt", "DateTime", "Not Null, Auto-update"],
-        ]}
-      />
-
-      <SchemaTable
-        tableName="Invitation"
-        tableNum="7.15"
-        fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["email", "String", "Not Null"],
-          ["token", "String", "Unique, Not Null"],
-          ["teamId", "String", "FK \u2192 Team, Not Null, Indexed"],
-          ["role", "String", "Not Null"],
-          ["expiresAt", "DateTime", "Not Null"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-        ]}
-      />
-
-      <SchemaTable
-        tableName="TeamMember"
-        tableNum="7.16"
-        fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["role", "TeamRole", "Not Null, Enum, Default: MEMBER"],
-          ["teamId", "String", "FK \u2192 Team, Not Null, Indexed"],
-          ["userId", "String", "FK \u2192 User, Not Null, Indexed"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-        ]}
-      />
-
-      {/* ─── E. Versioning ──────────────────────────────────────────── */}
-      <GroupHeading>E. Versioning</GroupHeading>
-
-      <SchemaTable
-        tableName="WorkflowVersion"
-        tableNum="7.17"
-        fields={[
-          ["id", "String", "PK, Default: cuid()"],
-          ["versionNum", "Int", "Not Null"],
-          ["products", "Json", "Not Null"],
-          ["edges", "Json", "Not Null"],
-          ["viewport", "Json", "Nullable"],
-          ["settings", "Json", "Nullable"],
-          ["changeMessage", "String", "Nullable"],
-          ["orderId", "String", "FK \u2192 Workflow, Not Null, Indexed"],
-          ["createdById", "String", "FK \u2192 User, Nullable, Indexed"],
-          ["createdAt", "DateTime", "Not Null, Default: now()"],
-        ]}
-      />
-
-      {/* ─── 7.6.2 Enumerations ────────────────────────────────────── */}
-      <Text style={styles.h3}>7.6.2 Enumerations</Text>
+      {/* ─── 7.6.2 Choice Enumerations ────────────────────────────── */}
+      <Text style={styles.h3}>7.6.2 Choice Enumerations</Text>
       <Text style={styles.paragraphIndent}>
-        The following enumerated types define the valid values for key
+        The following Django choice tuples define the valid values for key
         categorical fields in the database schema.
       </Text>
 
       <EnumTable
-        enumName="ExecutionStatus"
-        tableNum="7.18"
+        enumName="CATEGORY_CHOICES"
+        tableNum="7.13"
         values={[
-          ["PENDING", "Execution is queued and awaiting processing"],
-          ["RUNNING", "Execution is currently in progress"],
-          ["SUCCESS", "Execution completed successfully"],
-          ["ERROR", "Execution terminated due to an error"],
-          ["CANCELLED", "Execution was cancelled by the user"],
-          ["WAITING", "Execution is paused waiting for external input"],
+          ["S", "Shirt"],
+          ["SW", "Sport Wear"],
+          ["OW", "Outwear"],
         ]}
       />
 
       <EnumTable
-        enumName="ExecutionMode"
-        tableNum="7.19"
+        enumName="LABEL_CHOICES"
+        tableNum="7.14"
         values={[
-          ["MANUAL", "Triggered manually by a user"],
-          ["SCHEDULED", "Triggered by a cron schedule"],
-          ["WEBHOOK", "Triggered by an incoming checkout request"],
-          ["TRIGGER", "Triggered by an external event or integration"],
-          ["SUBWORKFLOW", "Triggered as a child of another order"],
+          ["P", "Primary (Blue badge)"],
+          ["S", "Secondary (Grey badge)"],
+          ["D", "Danger (Red badge — Sale / Clearance)"],
         ]}
       />
 
       <EnumTable
-        enumName="HttpMethod"
-        tableNum="7.20"
+        enumName="ADDRESS_CHOICES"
+        tableNum="7.15"
         values={[
-          ["GET", "HTTP GET request (read-only)"],
-          ["POST", "HTTP POST request (create resource)"],
-          ["PUT", "HTTP PUT request (replace resource)"],
-          ["PATCH", "HTTP PATCH request (partial update)"],
-          ["DELETE", "HTTP DELETE request (remove resource)"],
-        ]}
-      />
-
-      <EnumTable
-        enumName="TeamRole"
-        tableNum="7.21"
-        values={[
-          ["OWNER", "Full control including team deletion and billing"],
-          ["ADMIN", "Manage members, orders, and settings"],
-          ["MEMBER", "Create and edit orders, view executions"],
-          ["VIEWER", "Read-only access to orders and executions"],
+          ["B", "Billing Address"],
+          ["S", "Shipping Address"],
         ]}
       />
 
       {/* ─── F. Entity Relationship Summary ─────────────────────────── */}
-      <GroupHeading>F. Entity Relationship Summary</GroupHeading>
-      <View wrap={false}>
-<Text style={styles.paragraphIndent}>
-        Table 7.22 provides a consolidated view of all foreign key relationships
+      <GroupHeading>E. Entity Relationship Summary</GroupHeading>
+      <Text style={styles.paragraphIndent}>
+        Table 7.16 provides a consolidated view of all foreign key relationships
         between database entities, including cardinality and referential
-        integrity constraints configured in the Prisma schema.
+        integrity constraints configured in the Django models.
       </Text>
-<View style={{ marginBottom: 2 }}>
-        <View wrap={false}>
-<View
+
+      <View style={{ marginBottom: 4 }}>
+        <View
           style={{
             borderWidth: 1,
             borderColor: "#333333",
+            marginTop: 8,
             marginBottom: 4,
-            marginBottom: 2,
           }}
         >
           {/* Header row */}
           <View
+            wrap={false}
             style={{
               flexDirection: "row",
               backgroundColor: "#e8e8e8",
@@ -631,7 +496,7 @@ export default function DatabaseSchemaSection() {
             <Text
               style={{
                 width: "100%",
-                padding: 2,
+                padding: 4,
                 fontSize: 9,
                 fontFamily: "Times-Bold",
                 textAlign: "center",
@@ -642,6 +507,7 @@ export default function DatabaseSchemaSection() {
           </View>
           {/* Column headers */}
           <View
+            wrap={false}
             style={{
               flexDirection: "row",
               backgroundColor: "#f0f0f0",
@@ -652,7 +518,7 @@ export default function DatabaseSchemaSection() {
             <Text
               style={{
                 width: "18%",
-                padding: 2,
+                padding: 4,
                 fontSize: 8,
                 fontFamily: "Times-Bold",
                 borderRightWidth: 1,
@@ -664,7 +530,7 @@ export default function DatabaseSchemaSection() {
             <Text
               style={{
                 width: "18%",
-                padding: 2,
+                padding: 4,
                 fontSize: 8,
                 fontFamily: "Times-Bold",
                 borderRightWidth: 1,
@@ -676,7 +542,7 @@ export default function DatabaseSchemaSection() {
             <Text
               style={{
                 width: "18%",
-                padding: 2,
+                padding: 4,
                 fontSize: 8,
                 fontFamily: "Times-Bold",
                 borderRightWidth: 1,
@@ -688,7 +554,7 @@ export default function DatabaseSchemaSection() {
             <Text
               style={{
                 width: "18%",
-                padding: 2,
+                padding: 4,
                 fontSize: 8,
                 fontFamily: "Times-Bold",
                 borderRightWidth: 1,
@@ -700,7 +566,7 @@ export default function DatabaseSchemaSection() {
             <Text
               style={{
                 width: "28%",
-                padding: 2,
+                padding: 4,
                 fontSize: 8,
                 fontFamily: "Times-Bold",
               }}
@@ -710,25 +576,21 @@ export default function DatabaseSchemaSection() {
           </View>
           {/* Data rows */}
           {[
-            ["User", "Session", "userId", "1 : N", "Cascade"],
-            ["User", "Account", "userId", "1 : N", "Cascade"],
-            ["User", "Verification", "identifier", "1 : N", "Cascade"],
-            ["User", "Workflow", "userId", "1 : N", "Cascade"],
-            ["User", "Credential", "userId", "1 : N", "Cascade"],
-            ["User", "AuditLog", "userId", "1 : N", "Cascade"],
-            ["User", "Invitation", "invitedById", "1 : N", "Cascade"],
-            ["User", "TeamMember", "userId", "1 : N", "Cascade"],
-            ["Workflow", "Execution", "orderId", "1 : N", "Cascade"],
-            ["Workflow", "WorkflowVersion", "orderId", "1 : N", "Cascade"],
-            ["Workflow", "Schedule", "orderId", "1 : 1", "Cascade"],
-            ["Workflow", "AuditLog", "orderId", "1 : N", "Set Null"],
-            ["Team", "Workflow", "teamId", "1 : N", "Set Null"],
-            ["Team", "Invitation", "teamId", "1 : N", "Cascade"],
-            ["Team", "TeamMember", "teamId", "1 : N", "Cascade"],
-            ["Team", "WebhookEndpoint", "teamId", "1 : N", "Cascade"],
+            ["User", "UserProfile", "user", "1 : 1", "Cascade"],
+            ["User", "OrderItem", "user", "1 : N", "Cascade"],
+            ["User", "Order", "user", "1 : N", "Cascade"],
+            ["User", "Address", "user", "1 : N", "Cascade"],
+            ["User", "Payment", "user", "1 : N", "Set Null"],
+            ["Item", "OrderItem", "item", "1 : N", "Cascade"],
+            ["Order", "OrderItem", "items (M2M)", "N : M", "—"],
+            ["Order", "Address", "shipping_address", "N : 1", "Set Null"],
+            ["Order", "Payment", "payment", "N : 1", "Set Null"],
+            ["Order", "Coupon", "coupon", "N : 1", "Set Null"],
+            ["Order", "Refund", "order", "1 : N", "Cascade"],
           ].map((row, i, arr) => (
             <View
               key={i}
+              wrap={false}
               style={{
                 flexDirection: "row",
                 borderBottomWidth: i < arr.length - 1 ? 1 : 0,
@@ -738,7 +600,7 @@ export default function DatabaseSchemaSection() {
               <Text
                 style={{
                   width: "18%",
-                  padding: 2,
+                  padding: 3,
                   fontSize: 7,
                   fontFamily: "Courier",
                   borderRightWidth: 1,
@@ -750,7 +612,7 @@ export default function DatabaseSchemaSection() {
               <Text
                 style={{
                   width: "18%",
-                  padding: 2,
+                  padding: 3,
                   fontSize: 7,
                   fontFamily: "Courier",
                   borderRightWidth: 1,
@@ -762,7 +624,7 @@ export default function DatabaseSchemaSection() {
               <Text
                 style={{
                   width: "18%",
-                  padding: 2,
+                  padding: 3,
                   fontSize: 7,
                   fontFamily: "Courier",
                   borderRightWidth: 1,
@@ -774,7 +636,7 @@ export default function DatabaseSchemaSection() {
               <Text
                 style={{
                   width: "18%",
-                  padding: 2,
+                  padding: 3,
                   fontSize: 7,
                   borderRightWidth: 1,
                   borderRightColor: "#cccccc",
@@ -782,25 +644,23 @@ export default function DatabaseSchemaSection() {
               >
                 {row[3]}
               </Text>
-              <Text style={{ width: "28%", padding: 2, fontSize: 7 }}>
+              <Text style={{ width: "28%", padding: 3, fontSize: 7 }}>
                 {row[4]}
               </Text>
             </View>
           ))}
         </View>
-<Text
+        <Text
           style={{
             fontSize: 9,
             fontFamily: "Times-Italic",
             textAlign: "center",
-            marginBottom: 4,
+            marginBottom: 8,
           }}
         >
-          Table 7.22: Entity Relationship Summary
+          Table 7.16: Entity Relationship Summary
         </Text>
-</View>
       </View>
-</View>
     </View>
   );
 }

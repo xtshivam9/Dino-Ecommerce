@@ -1,98 +1,91 @@
 "use client";
 
-import { View, Text, Image } from "@react-pdf/renderer";
-import { styles, PAGE_MARGINS } from "../styles";
+import { View, Text } from "@react-pdf/renderer";
+import { styles } from "../styles";
 import BookPageLayout from "../components/BookPageLayout";
 
-/**
- * Chapter 11: Output & Screenshots
- * Updated to use actual screenshots provided by the user.
- */
 export default function OutputScreens() {
-  const CONTENT_WIDTH = 595 - PAGE_MARGINS.left - PAGE_MARGINS.right;
-  
-  const ScreenshotBox = ({ title, src }: { title: string; src: string }) => (
-    <View wrap={false} style={{ marginBottom: 6, marginTop: 4 }}>
-      <View style={{ 
-        width: CONTENT_WIDTH, 
-        borderWidth: 1, 
-        borderColor: "#333333", 
-        backgroundColor: "#ffffff",
-        overflow: "hidden"
-      }}>
-        <Image src={src} style={{ width: "100%" }} />
-      </View>
-      <Text style={{ fontSize: 7, fontFamily: "Times-Italic", textAlign: "center", marginTop: 2 }}>
-        Figure 11.x: {title} View
-      </Text>
-    </View>
-  );
-
-  const ScreenDescription = ({ title, url, layout, elements }: any) => (
-    <View wrap={false} style={{ marginBottom: 3, padding: 3, backgroundColor: "#f9f9f9", borderWidth: 0.5, borderColor: "#dddddd" }}>
-      <Text style={{ fontSize: 8, fontFamily: "Times-Bold" }}>{title} ({url})</Text>
-      <Text style={{ fontSize: 7, lineHeight: 1.1 }}>
-        <Text style={styles.bold}>Layout:</Text> {layout}
-      </Text>
-      <Text style={{ fontSize: 7, lineHeight: 1.1 }}>
-        <Text style={styles.bold}>Elements:</Text> {elements}
-      </Text>
-    </View>
-  );
-
   return (
     <BookPageLayout chapterTitle="Output & Screenshots" chapterNum="11">
-      <View style={{ alignItems: "center", marginBottom: 10 }}>
-        <Text style={{ fontSize: 14, fontFamily: "Times-Bold", textTransform: "uppercase" }}>Chapter 11: Output & Screenshots</Text>
-        <View style={{ width: 40, height: 2, backgroundColor: "#000000", marginTop: 4 }} />
+      <View style={{ marginBottom: 28, alignItems: "center", marginTop: 20 }}>
+        <Text
+          style={{
+            fontSize: 11,
+            fontFamily: "Times-Roman",
+            color: "#666666",
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            marginBottom: 8,
+          }}
+        >
+          Chapter 11
+        </Text>
+        <Text
+          style={{
+            fontSize: 26,
+            fontFamily: "Times-Bold",
+            textAlign: "center",
+            letterSpacing: 1.5,
+            textTransform: "uppercase",
+            color: "#000000",
+          }}
+        >
+          Output & Screenshots
+        </Text>
+        <View
+          style={{
+            width: 60,
+            height: 2,
+            backgroundColor: "#000000",
+            marginTop: 12,
+          }}
+        />
       </View>
 
-      <Text style={styles.paragraph}>
-        This chapter presents the actual output screens of the AROWAI platform. The following screenshots demonstrate the user interface for the core shopping and transaction flows.
+      <Text style={styles.paragraphIndent}>
+        This chapter presents the visual output of the Dino-Ecommerce platform, illustrating the user interface and overall user experience from initial product discovery to final checkout. Note: Actual screenshot images are intended to be inserted here in the final compiled document.
       </Text>
 
-      {/* 11.1 Storefront */}
-      <Text style={styles.h2}>11.1 Storefront & Product Listing</Text>
-      
-      <ScreenDescription 
-        title="Home Screen" 
-        url="/" 
-        layout="Hero-centric landing page with categorized navigation and featured collections."
-        elements="AROWAI Branding, Global Search, Hero Banner, Dynamic Category Links."
-      />
-      <ScreenshotBox title="Home Page" src="/outputs/home.png" />
-
-      <ScreenDescription 
-        title="Product Listing" 
-        url="/shop" 
-        layout="Responsive grid layout with advanced filtering and sorting capabilities."
-        elements="Category sidebar, Price range filter, Color swatches, Product cards with ratings."
-      />
-      <ScreenshotBox title="Product Listing Page" src="/outputs/product.png" />
-
-      {/* 11.2 Transactional Flow */}
-      <Text style={styles.h2}>11.2 Shopping Cart & Checkout</Text>
-
-      <ScreenDescription 
-        title="Shopping Cart" 
-        url="/cart" 
-        layout="Tabular summary of selected items with real-time quantity adjustments and total calculation."
-        elements="Product thumbnails, Price breakdown, Quantity toggles, Checkout CTA."
-      />
-      <ScreenshotBox title="Cart Page" src="/outputs/cart.png" />
-
-      <ScreenDescription 
-        title="Checkout Page" 
-        url="/checkout" 
-        layout="Clean multi-section form for shipping details and order confirmation."
-        elements="Address fields, Order summary sidebar, Promo code input, Secure completion button."
-      />
-      <ScreenshotBox title="Checkout Page" src="/outputs/checkout.png" />
-
-      <View wrap={false} style={{ marginTop: 10, padding: 5, backgroundColor: "#f0f0f0", borderLeftWidth: 3, borderLeftColor: "#000000" }}>
-        <Text style={{ fontSize: 8, fontFamily: "Times-Bold" }}>Deployment Summary</Text>
-        <Text style={{ fontSize: 7 }}>Production: https://arowai.app | Status: Live | Coverage: Full Responsive</Text>
+      <Text style={styles.h2}>11.1 Home Page / Product Catalog</Text>
+      <Text style={styles.paragraph}>
+        The homepage acts as the primary storefront, featuring a responsive grid layout of available products built with Bootstrap 4 cards. It includes a promotional carousel banner at the top and category filtering options.
+      </Text>
+      <View style={{ height: 250, backgroundColor: "#f0f0f0", borderWidth: 1, borderColor: "#cccccc", borderStyle: "dashed", justifyContent: "center", alignItems: "center", marginBottom: 12, marginTop: 12 }}>
+        <Text style={{ fontFamily: "Times-Italic", color: "#888888", fontSize: 10 }}>[ Placeholder: Screenshot of Homepage with Product Grid ]</Text>
       </View>
+
+      <Text style={styles.h2}>11.2 Product Detail Page</Text>
+      <Text style={styles.paragraph}>
+        Clicking on a specific item opens the Product Detail page. This view provides high-resolution imagery, descriptive text, pricing (including strikethrough logic for discounted items), and the primary "Add to Cart" call-to-action button.
+      </Text>
+      <View style={{ height: 250, backgroundColor: "#f0f0f0", borderWidth: 1, borderColor: "#cccccc", borderStyle: "dashed", justifyContent: "center", alignItems: "center", marginBottom: 12, marginTop: 12 }}>
+        <Text style={{ fontFamily: "Times-Italic", color: "#888888", fontSize: 10 }}>[ Placeholder: Screenshot of Single Product Detail View ]</Text>
+      </View>
+
+      <Text style={styles.h2}>11.3 Order Summary (Shopping Cart)</Text>
+      <Text style={styles.paragraph}>
+        The Cart view displays a tabular summary of selected items. It features interactive controls to increment, decrement, or delete items, with the subtotal updating dynamically.
+      </Text>
+      <View style={{ height: 200, backgroundColor: "#f0f0f0", borderWidth: 1, borderColor: "#cccccc", borderStyle: "dashed", justifyContent: "center", alignItems: "center", marginBottom: 12, marginTop: 12 }}>
+        <Text style={{ fontFamily: "Times-Italic", color: "#888888", fontSize: 10 }}>[ Placeholder: Screenshot of Shopping Cart Table ]</Text>
+      </View>
+
+      <Text style={styles.h2}>11.4 Secure Checkout Form</Text>
+      <Text style={styles.paragraph}>
+        The checkout page is a streamlined form capturing shipping and billing details. It integrates Stripe Elements for secure credit card input, ensuring PCI compliance.
+      </Text>
+      <View style={{ height: 250, backgroundColor: "#f0f0f0", borderWidth: 1, borderColor: "#cccccc", borderStyle: "dashed", justifyContent: "center", alignItems: "center", marginBottom: 12, marginTop: 12 }}>
+        <Text style={{ fontFamily: "Times-Italic", color: "#888888", fontSize: 10 }}>[ Placeholder: Screenshot of Checkout Form with Stripe Element ]</Text>
+      </View>
+
+      <Text style={styles.h2}>11.5 Django Administration Panel</Text>
+      <Text style={styles.paragraph}>
+        The backend administrative interface, accessible only to superusers. It provides complete CRUD access to Orders, Items, Users, and Coupons, featuring robust filtering and search capabilities.
+      </Text>
+      <View style={{ height: 200, backgroundColor: "#f0f0f0", borderWidth: 1, borderColor: "#cccccc", borderStyle: "dashed", justifyContent: "center", alignItems: "center", marginBottom: 12, marginTop: 12 }}>
+        <Text style={{ fontFamily: "Times-Italic", color: "#888888", fontSize: 10 }}>[ Placeholder: Screenshot of Django Admin Dashboard ]</Text>
+      </View>
+
     </BookPageLayout>
   );
 }

@@ -1,6 +1,6 @@
 /**
- * Sequence Diagram - Workflow Execution Flow
- * Shows the step-by-step interaction between components during order execution
+ * Sequence Diagram - Order Payment Flow
+ * Shows the step-by-step interaction between components during order payment
  * For Chapter 6 (System Design)
  */
 import {
@@ -35,11 +35,11 @@ export default function SequenceDiagram() {
   // Participant positions (x centers)
   const parts = [
     { x: 50, label: "User" },
-    { x: 135, label: "React UI" },
-    { x: 220, label: "tRPC API" },
+    { x: 135, label: "Templates UI" },
+    { x: 220, label: "Views API" },
     { x: 305, label: "Database" },
-    { x: 390, label: "Inngest" },
-    { x: 460, label: "Model\nExecutor" },
+    { x: 390, label: "Stripe" },
+    { x: 460, label: "Product\nExecutor" },
   ];
 
   const topY = 50;
@@ -309,7 +309,7 @@ export default function SequenceDiagram() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: colors.text }}
       >
-        Workflow Execution Sequence Diagram
+        Order Payment Sequence Diagram
       </SvgText>
 
       {/* Participants */}
@@ -340,7 +340,7 @@ export default function SequenceDiagram() {
       <Activation partIdx={3} y1={420} y2={440} />
       <Activation partIdx={1} y1={450} y2={465} />
 
-      {/* Phase 1: Trigger Workflow */}
+      {/* Phase 1: Trigger Order */}
       <SvgText
         x={8}
         y={62}
@@ -352,13 +352,13 @@ export default function SequenceDiagram() {
       >
         1. TRIGGER
       </SvgText>
-      <SolidArrow from={0} to={1} y={68} label="Click 'Execute Workflow'" />
-      <SolidArrow from={1} to={2} y={78} label="executeWorkflow(id)" />
+      <SolidArrow from={0} to={1} y={68} label="Click 'Execute Order'" />
+      <SolidArrow from={1} to={2} y={78} label="executeOrder(id)" />
       <SolidArrow from={2} to={3} y={88} label="Load order + products" />
-      <DashedArrow from={3} to={2} y={96} label="Workflow data" />
-      <DashedArrow from={2} to={1} y={104} label="Execution started" />
+      <DashedArrow from={3} to={2} y={96} label="Order data" />
+      <DashedArrow from={2} to={1} y={104} label="Payment started" />
 
-      {/* Phase 2: Create Execution Record */}
+      {/* Phase 2: Create Payment Record */}
       <SvgText
         x={8}
         y={122}
@@ -371,12 +371,12 @@ export default function SequenceDiagram() {
         2. INIT
       </SvgText>
       <SolidArrow from={0} to={1} y={128} label="Show loading state" />
-      <SolidArrow from={1} to={2} y={138} label="createExecution()" />
-      <SolidArrow from={2} to={3} y={148} label="INSERT execution record" />
-      <DashedArrow from={3} to={2} y={156} label="Execution ID" />
-      <DashedArrow from={2} to={1} y={164} label="executionId" />
+      <SolidArrow from={1} to={2} y={138} label="createPayment()" />
+      <SolidArrow from={2} to={3} y={148} label="INSERT payment record" />
+      <DashedArrow from={3} to={2} y={156} label="Payment ID" />
+      <DashedArrow from={2} to={1} y={164} label="paymentId" />
 
-      {/* Phase 3: Queue to Inngest */}
+      {/* Phase 3: Queue to Stripe */}
       <SvgText
         x={8}
         y={182}
@@ -392,13 +392,13 @@ export default function SequenceDiagram() {
         from={2}
         to={4}
         y={195}
-        label="inngest.send('order/execute')"
+        label="stripe.send('order/execute')"
       />
       <DashedArrow from={4} to={2} y={208} label="Event acknowledged" />
 
       <Note x={10} y={215} text="Async processing begins" />
 
-      {/* Phase 4: BFS Execution Loop */}
+      {/* Phase 4: BFS Payment Loop */}
       <Fragment x={355} y={232} w={130} h={170} label="LOOP" />
       <SvgText
         x={360}
@@ -412,17 +412,17 @@ export default function SequenceDiagram() {
         For each product (BFS order)
       </SvgText>
 
-      <SolidArrow from={4} to={5} y={265} label="executeModel(product)" />
-      <SolidArrow from={5} to={3} y={280} label="Fetch credentials" />
+      <SolidArrow from={4} to={5} y={265} label="executeProduct(product)" />
+      <SolidArrow from={5} to={3} y={280} label="Fetch products" />
       <DashedArrow from={3} to={5} y={293} label="Decrypted creds" />
-      <DashedArrow from={5} to={4} y={308} label="Model result" />
+      <DashedArrow from={5} to={4} y={308} label="Product result" />
 
       <Note x={360} y={315} text="Next product in BFS queue" />
 
-      <SolidArrow from={4} to={5} y={340} label="executeModel(nextModel)" />
+      <SolidArrow from={4} to={5} y={340} label="executeProduct(nextProduct)" />
       <SolidArrow from={5} to={3} y={355} label="Call external API" />
       <DashedArrow from={3} to={5} y={368} label="API response" />
-      <DashedArrow from={5} to={4} y={383} label="Model result" />
+      <DashedArrow from={5} to={4} y={383} label="Product result" />
 
       {/* Phase 5: Complete */}
       <SvgText
@@ -436,7 +436,7 @@ export default function SequenceDiagram() {
       >
         5. COMPLETE
       </SvgText>
-      <SolidArrow from={4} to={2} y={418} label="Execution complete event" />
+      <SolidArrow from={4} to={2} y={418} label="Payment complete event" />
       <SolidArrow from={2} to={3} y={428} label="UPDATE status = 'completed'" />
       <DashedArrow from={3} to={2} y={438} label="Updated" />
       <SolidArrow from={2} to={1} y={450} label="Push notification" />

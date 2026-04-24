@@ -27,12 +27,12 @@ export default function Level1DFD() {
     },
     {
       id: "2.0",
-      label: "Workflow\nManagement",
+      label: "Order\nManagement",
       x: 250,
       y: 60,
       color: "#7c3aed",
     },
-    { id: "3.0", label: "Execution\nEngine", x: 400, y: 145, color: "#059669" },
+    { id: "3.0", label: "Payment\nGateway", x: 400, y: 145, color: "#059669" },
     {
       id: "4.0",
       label: "Integration\nLayer",
@@ -54,16 +54,16 @@ export default function Level1DFD() {
 
   const stores = [
     { id: "D1", label: "Users", x: 15, y: 165, w: 100 },
-    { id: "D2", label: "Workflows", x: 185, y: 165, w: 100 },
-    { id: "D3", label: "Executions", x: 185, y: 375, w: 100 },
-    { id: "D4", label: "Credentials", x: 15, y: 375, w: 100 },
+    { id: "D2", label: "Orders", x: 185, y: 165, w: 100 },
+    { id: "D3", label: "Payments", x: 185, y: 375, w: 100 },
+    { id: "D4", label: "Products", x: 15, y: 375, w: 100 },
   ];
 
   const storeH = 24;
 
   const extEntities = [
     { label: "User", x: 55, y: 5, w: 55, h: 20 },
-    { label: "AI Provider", x: 355, y: 370, w: 80, h: 20 },
+    { label: "E-commerce Provider", x: 355, y: 370, w: 80, h: 20 },
     { label: "Ext. Services", x: 355, y: 410, w: 85, h: 20 },
   ];
 
@@ -228,7 +228,7 @@ export default function Level1DFD() {
         y={122}
         style={{ fontSize: 5.5, fontFamily: "Times-Italic", fill: "#888" }}
       >
-        Workflow defs
+        Order defs
       </SvgText>
 
       {/* P2 → P3 */}
@@ -264,7 +264,7 @@ export default function Level1DFD() {
         Exec logs
       </SvgText>
 
-      {/* P4 → AI Provider */}
+      {/* P4 → E-commerce Provider */}
       <Line x1={410} y1={305} x2={410} y2={370} stroke="#666" strokeWidth={1} />
       <Polygon points="410,370 406,363 414,363" fill="#666" />
 
@@ -309,7 +309,7 @@ export default function Level1DFD() {
         y={225}
         style={{ fontSize: 5.5, fontFamily: "Times-Italic", fill: "#888" }}
       >
-        Fetch credentials
+        Fetch products
       </SvgText>
 
       {/* Caption */}
@@ -319,7 +319,7 @@ export default function Level1DFD() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: Level 1 Data Flow Diagram — Django E-Commerce System
+        Figure: Level 1 Data Flow Diagram — Dino-Ecommerce System
       </SvgText>
     </Svg>
   );

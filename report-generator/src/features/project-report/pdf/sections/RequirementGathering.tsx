@@ -4,70 +4,73 @@ import { View, Text } from "@react-pdf/renderer";
 import { styles } from "../styles";
 import BookPageLayout from "../components/BookPageLayout";
 
-/**
- * Chapter 6.3: Requirement Gathering
- * Radical condensation into summary grids.
- */
 export default function RequirementGathering() {
   return (
-    <BookPageLayout chapterTitle="SDLC" chapterNum="06">
-      <Text style={styles.h2}>6.3 Requirement Gathering Methodology</Text>
-      <Text style={styles.paragraph}>
-        AROWAI employed a multi-method approach combining questionnaires (47 respondents), stakeholder interviews (8 participants), and competitive analysis to define its core feature set.
+    <BookPageLayout chapterTitle="Requirement Gathering" chapterNum="06" isContinued>
+      <Text style={styles.h2}>6.7 Requirement Gathering Process</Text>
+      <Text style={styles.paragraphIndent}>
+        Requirement gathering is the process of defining exactly what the software must do to satisfy the needs of its stakeholders. For an e-commerce platform, these stakeholders primarily include end-users (shoppers) and administrators (store owners). The goal of this phase was to identify both the explicit functional requirements and the implicit non-functional constraints that Dino-Ecommerce needed to address.
       </Text>
 
-      <Text style={styles.h3}>6.3.1 Key Findings & Priorities</Text>
-      <View wrap={false} style={{ marginBottom: 4, marginTop: 2 }}>
-        <View style={{ borderWidth: 0.5, borderColor: "#000000" }}>
-          <View style={{ flexDirection: "row", backgroundColor: "#f0f0f0", borderBottomWidth: 0.5 }}>
-            <Text style={{ width: "25%", fontSize: 7, fontFamily: "Times-Bold", padding: 1.5, borderRightWidth: 0.5 }}>Metric</Text>
-            <Text style={{ width: "15%", fontSize: 7, fontFamily: "Times-Bold", padding: 1.5, textAlign: "center", borderRightWidth: 0.5 }}>Importance</Text>
-            <Text style={{ width: "60%", fontSize: 7, fontFamily: "Times-Bold", padding: 1.5 }}>Observation</Text>
-          </View>
-          {[
-            ["Visual Interface", "85%", "Strong preference for drag-and-drop over code-first automation."],
-            ["API Integration", "70%", "Essential for connecting disparate SaaS tools via HTTP."],
-            ["Team Collab", "80%", "Need for RBAC and shared workspaces in multi-tenant environments."],
-            ["Monitoring", "90%", "Real-time execution logs and error alerts are non-negotiable."],
-            ["AI Capability", "65%", "Growing demand for LLM integration for automated data processing."],
-          ].map((row, i) => (
-            <View key={i} style={{ flexDirection: "row", borderBottomWidth: i < 4 ? 0.5 : 0 }}>
-              <Text style={{ width: "25%", fontSize: 6.5, padding: 1.2, borderRightWidth: 0.5 }}>{row[0]}</Text>
-              <Text style={{ width: "15%", fontSize: 6.5, padding: 1.2, textAlign: "center", borderRightWidth: 0.5 }}>{row[1]}</Text>
-              <Text style={{ width: "60%", fontSize: 6.5, padding: 1.2 }}>{row[2]}</Text>
-            </View>
-          ))}
-        </View>
-      </View>
-
-      <Text style={styles.h3}>6.3.2 Use Case Matrix</Text>
-      <View wrap={false} style={{ marginBottom: 4 }}>
-        <View style={{ borderWidth: 0.5, borderColor: "#000000" }}>
-          <View style={{ flexDirection: "row", backgroundColor: "#f0f0f0", borderBottomWidth: 0.5 }}>
-            <Text style={{ width: "10%", fontSize: 7, fontFamily: "Times-Bold", padding: 1.5, borderRightWidth: 0.5 }}>UC#</Text>
-            <Text style={{ width: "30%", fontSize: 7, fontFamily: "Times-Bold", padding: 1.5, borderRightWidth: 0.5 }}>Use Case</Text>
-            <Text style={{ width: "60%", fontSize: 7, fontFamily: "Times-Bold", padding: 1.5 }}>Scenario Description</Text>
-          </View>
-          {[
-            ["UC-01", "Order Creation", "User adds products to cart and connects them to define transactional logic."],
-            ["UC-02", "Checkout Flow", "System executes order graph, processes payment, and syncs data to external APIs."],
-            ["UC-03", "Auth / RBAC", "User registers, creates a team, and assigns roles (Admin, Member, Viewer)."],
-            ["UC-04", "Integration", "Connecting third-party platforms (Slack, Sheets, GitHub) via OAuth2."],
-            ["UC-05", "Monitoring", "Reviewing execution history and re-running failed steps via history panel."],
-          ].map((row, i) => (
-            <View key={i} style={{ flexDirection: "row", borderBottomWidth: i < 4 ? 0.5 : 0 }}>
-              <Text style={{ width: "10%", fontSize: 6.5, padding: 1.2, borderRightWidth: 0.5 }}>{row[0]}</Text>
-              <Text style={{ width: "30%", fontSize: 6.5, padding: 1.2, borderRightWidth: 0.5 }}>{row[1]}</Text>
-              <Text style={{ width: "60%", fontSize: 6.5, padding: 1.2 }}>{row[2]}</Text>
-            </View>
-          ))}
-        </View>
-      </View>
-
-      <Text style={styles.h3}>6.3.3 Competitive Advantage</Text>
-      <Text style={styles.paragraph}>
-        AROWAI differentiates itself from competitors (Zapier, Shopify, Integromat) by offering <Text style={styles.bold}>Durable Execution</Text> (zero-loss state) and <Text style={styles.bold}>Zero-Fee Scalability</Text> on edge networks.
+      <Text style={styles.h3}>6.7.1 Methodology</Text>
+      <Text style={styles.paragraphIndent}>
+        Unlike bespoke enterprise software where requirements are gathered via extensive client interviews, a platform like Dino-Ecommerce targets broad market needs. Therefore, requirement gathering was conducted through a combination of:
       </Text>
+      <View style={{ paddingLeft: 16, marginBottom: 16 }}>
+        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>1. <Text style={styles.bold}>Competitor Analysis:</Text> Analyzing platforms like Shopify and WooCommerce to identify baseline expectations for modern shopping carts.</Text>
+        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>2. <Text style={styles.bold}>Persona Development:</Text> Creating hypothetical user profiles to trace the expected journey from product discovery to final purchase.</Text>
+        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>3. <Text style={styles.bold}>Technical Constraint Analysis:</Text> Evaluating the limitations of the chosen framework (Django) and third-party APIs (Stripe) to define technical boundaries.</Text>
+      </View>
+
+      <Text style={styles.h3}>6.7.2 Key Findings & Identified Needs</Text>
+      <Text style={styles.paragraphIndent}>
+        The analysis yielded several critical insights that directly shaped the architecture of the application:
+      </Text>
+      
+      <Text style={styles.paragraph}>
+        <Text style={styles.bold}>Session Persistence is Paramount:</Text>
+        {"\n"}A major pain point in poor e-commerce implementations is the loss of cart data when a user navigates away or refreshes the page. The system must utilize robust session management or database-backed cart instances (linked to the user) to ensure cart state survives session interruptions.
+      </Text>
+
+      <Text style={styles.paragraph}>
+        <Text style={styles.bold}>Frictionless Checkout:</Text>
+        {"\n"}Every additional step in a checkout process increases cart abandonment rates. The requirement is to consolidate the checkout into a minimal-step process, capturing billing addresses and payment details securely without unnecessary redirects, which justified the use of Stripe Elements.
+      </Text>
+
+      <Text style={styles.paragraph}>
+        <Text style={styles.bold}>Transparent Order Tracking:</Text>
+        {"\n"}Post-purchase anxiety is common. Users require immediate confirmation of their order and a persistent location (a profile dashboard) to track order status and request refunds if needed.
+      </Text>
+
+      <Text style={styles.h2}>6.8 Feasibility of Requirements</Text>
+      <Text style={styles.paragraphIndent}>
+        Once gathered, the requirements were cross-referenced against technical feasibility. For instance, while a feature like "Real-time AI product recommendations" was identified as desirable during competitor analysis, it was deemed out-of-scope due to time constraints and the complexity of training a recommendation engine, thus focusing the MVP strictly on core transactional reliability.
+      </Text>
+
+      {/* Stakeholder Table */}
+      <View style={{ marginTop: 16, marginBottom: 24 }}>
+        <View style={{ flexDirection: "row", backgroundColor: "#f0f0f0", borderTopWidth: 1, borderBottomWidth: 1, borderColor: "#000000", paddingVertical: 6 }}>
+          <Text style={{ width: "25%", fontFamily: "Times-Bold", fontSize: 10, paddingLeft: 8 }}>Stakeholder Type</Text>
+          <Text style={{ width: "35%", fontFamily: "Times-Bold", fontSize: 10 }}>Primary Goals</Text>
+          <Text style={{ width: "40%", fontFamily: "Times-Bold", fontSize: 10 }}>Derived System Requirement</Text>
+        </View>
+
+        {[
+          { type: "Customer (User)", goals: "Find products quickly, checkout securely", req: "Categorized views, Stripe integration, Cart logic" },
+          { type: "Store Owner (Admin)", goals: "Manage inventory, process orders", req: "Django Admin configuration, Order status models" },
+          { type: "Developer", goals: "Maintain code, deploy updates", req: "MVT architecture, clean templating, Vercel config" }
+        ].map((row, i) => (
+          <View key={i} style={{ flexDirection: "row", borderBottomWidth: 1, borderColor: "#eeeeee", paddingVertical: 6 }}>
+            <Text style={{ width: "25%", fontFamily: "Times-Roman", fontSize: 10, paddingLeft: 8 }}>{row.type}</Text>
+            <Text style={{ width: "35%", fontFamily: "Times-Roman", fontSize: 10 }}>{row.goals}</Text>
+            <Text style={{ width: "40%", fontFamily: "Times-Roman", fontSize: 10 }}>{row.req}</Text>
+          </View>
+        ))}
+        <Text style={{ textAlign: "center", fontSize: 10, fontFamily: "Times-Italic", marginTop: 8, color: "#666666" }}>
+          Table 6.10: Stakeholder Analysis & Derived Requirements
+        </Text>
+      </View>
+
     </BookPageLayout>
   );
 }

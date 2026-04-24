@@ -23,12 +23,12 @@ export default function SWOTDiagram() {
       x: startX,
       y: startY,
       items: [
-        "Modern technology stack (Next.js 16, React 19)",
-        "Visual-first drag-and-drop design",
-        "Native AI integration (3 providers)",
-        "Cloud-native serverless architecture",
-        "Type-safe end-to-end (TypeScript + tRPC)",
-        "Self-hosted deployment capability",
+        "Modern tech stack (Django 5.0, Bootstrap 4)",
+        "Secure payment via Stripe integration",
+        "Built-in Django Admin for management",
+        "Django's robust security (CSRF, XSS, SQL Inj.)",
+        "Open-source with full data ownership",
+        "Responsive mobile-friendly design",
       ],
     },
     {
@@ -38,11 +38,11 @@ export default function SWOTDiagram() {
       x: startX + quadW + gap,
       y: startY,
       items: [
-        "Limited integrations initially (5 services)",
-        "No mobile application",
-        "Single developer resources",
-        "New entrant, no brand recognition",
-        "No offline mode support",
+        "Single-vendor architecture initially",
+        "No dedicated mobile application",
+        "Limited to single developer resources",
+        "No real-time inventory sync",
+        "Basic search (no Elasticsearch)",
       ],
     },
     {
@@ -52,11 +52,11 @@ export default function SWOTDiagram() {
       x: startX,
       y: startY + quadH + gap,
       items: [
-        "Growing automation market ($46B by 2030)",
-        "AI adoption rapidly accelerating",
-        "SaaS business model potential",
-        "API economy growth",
-        "Enterprise order digitization trend",
+        "Growing Indian e-commerce market ($325B by 2030)",
+        "SME digital adoption rapidly accelerating",
+        "REST API expansion for mobile apps",
+        "Multi-vendor marketplace extension",
+        "ML-based product recommendation engine",
       ],
     },
     {
@@ -66,11 +66,11 @@ export default function SWOTDiagram() {
       x: startX + quadW + gap,
       y: startY + quadH + gap,
       items: [
-        "Established competitors (WooCommerce, Magento, Shopify)",
-        "Rapid technology changes",
-        "API provider pricing changes",
-        "Enterprise security requirements",
-        "Market saturation risk",
+        "Established competitors (Shopify, WooCommerce)",
+        "Rapid technology changes in frontend",
+        "Stripe API pricing / policy changes",
+        "PCI-DSS compliance complexities",
+        "Market saturation in e-commerce platforms",
       ],
     },
   ];
@@ -193,7 +193,7 @@ export default function SWOTDiagram() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: SWOT Analysis — dj-ecommerce Project
+        Figure: SWOT Analysis — Dino-Ecommerce Project
       </SvgText>
     </Svg>
   );

@@ -11,129 +11,145 @@ export default function TitlePage() {
     <Page
       size="A4"
       style={{
-        padding: 60,
+        padding: 48,
         fontFamily: "Times-Bold",
         backgroundColor: "#ffffff",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "center",
       }}
     >
-      {/* TOP SECTION: Project Title */}
-      <View style={{ alignItems: "center", width: "100%" }}>
+      {/* Header Section */}
+      <View style={{ alignItems: "center" }}>
         <Text
           style={{
-            fontSize: 14,
+            fontSize: 10,
             textTransform: "uppercase",
-            letterSpacing: 4,
-            color: "#666666",
-            marginBottom: 15,
+            letterSpacing: 3,
+            color: "#444444",
+            marginBottom: 16,
           }}
         >
           A Project Report on
         </Text>
 
-        <View style={{ marginVertical: 10 }}>
+        {/* Title Box */}
+        <View
+          style={{
+            borderWidth: 2,
+            borderColor: "#000000",
+            paddingHorizontal: 40,
+            paddingVertical: 20,
+            marginBottom: 12,
+          }}
+        >
           <Text
             style={{
-              fontSize: 48,
+              fontSize: 28,
               fontFamily: "Times-Bold",
-              letterSpacing: 8,
-              color: "#000000",
+              fontWeight: "bold",
+              letterSpacing: 2,
             }}
           >
-            AROWAI
+            DINO-ECOMMERCE
           </Text>
         </View>
 
+        {/* Underline */}
         <View
           style={{
-            width: 120,
+            width: 80,
             height: 4,
             backgroundColor: "#000000",
-            marginVertical: 15,
+            marginBottom: 16,
           }}
         />
 
         <Text
           style={{
-            fontSize: 16,
+            fontSize: 14,
             fontFamily: "Times-Italic",
             color: "#444444",
           }}
         >
-          Comprehensive E-Commerce Platform
+          Online Shopping Platform
         </Text>
       </View>
 
-      {/* MIDDLE SECTION: Brand Logo */}
-      <View style={{ alignItems: "center", marginVertical: 20 }}>
-        <Image
-          src="/brand-logo.png"
-          style={{ height: 140, width: "auto" }}
-        />
-      </View>
-
-      {/* SUBMISSION INFO */}
-      <View style={{ alignItems: "center", width: "100%" }}>
-        <Text
+      {/* Submission Text */}
+      <View
+        style={{
+          alignItems: "center",
+          marginTop: 60,
+        }}
+      >
+        <View
           style={{
-            fontSize: 11,
-            textTransform: "uppercase",
-            letterSpacing: 1.5,
-            color: "#333333",
-            marginBottom: 10,
-            textAlign: "center",
+            borderWidth: 1,
+            borderColor: "#666666",
+            padding: 16,
+            alignItems: "center",
           }}
         >
-          Submitted in Partial Fulfillment for the Award of Degree of
-        </Text>
-        <Text
-          style={{
-            fontSize: 22,
-            fontFamily: "Times-Bold",
-            marginBottom: 5,
-            textAlign: "center",
-          }}
-        >
-          Bachelor of Computer Applications
-        </Text>
-        <Text style={{ fontSize: 14, color: "#666666" }}>(BCA)</Text>
+          <Text
+            style={{
+              fontSize: 10,
+              textTransform: "uppercase",
+              letterSpacing: 1,
+              color: "#333333",
+            }}
+          >
+            Submitted in Partial Fulfillment for the Award of Degree of
+          </Text>
+          <Text
+            style={{
+              fontSize: 18,
+              fontFamily: "Times-Bold",
+              fontWeight: "bold",
+              marginTop: 8,
+            }}
+          >
+            Bachelor of Computer Applications
+          </Text>
+          <Text style={{ fontSize: 12, color: "#666666", marginTop: 4 }}>
+            (BCA)
+          </Text>
+        </View>
       </View>
 
-      {/* DETAILS SECTION: Student & Guide */}
+      {/* Student & Guide Details */}
       <View
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
-          width: "100%",
-          paddingHorizontal: 20,
-          marginVertical: 20,
+          marginTop: 60,
+          paddingHorizontal: 16,
         }}
       >
-        <View>
+        {/* Students */}
+        <View style={{ borderLeftWidth: 4, borderLeftColor: "#000000", paddingLeft: 12 }}>
           <Text
             style={{
-              fontSize: 11,
+              fontSize: 8,
               textTransform: "uppercase",
               letterSpacing: 1,
               color: "#666666",
-              marginBottom: 5,
+              marginBottom: 8,
             }}
           >
             Submitted By
           </Text>
-          <View style={{ marginBottom: 8 }}>
-            <Text style={{ fontSize: 16, fontFamily: "Times-Bold" }}>
+          
+          {/* Student 1 */}
+          <View style={{ marginBottom: 12 }}>
+            <Text style={{ fontSize: 14, fontFamily: "Times-Bold", fontWeight: "bold" }}>
               Rutashman Sharma
             </Text>
             <Text style={{ fontSize: 11, color: "#444444" }}>
               Roll No: 11792314708
             </Text>
           </View>
+
+          {/* Student 2 */}
           <View>
-            <Text style={{ fontSize: 16, fontFamily: "Times-Bold" }}>
+            <Text style={{ fontSize: 14, fontFamily: "Times-Bold", fontWeight: "bold" }}>
               Lovejinder Singh
             </Text>
             <Text style={{ fontSize: 11, color: "#444444" }}>
@@ -141,65 +157,69 @@ export default function TitlePage() {
             </Text>
           </View>
         </View>
-        <View style={{ alignItems: "flex-end" }}>
+
+        {/* Guides */}
+        <View style={{ borderLeftWidth: 4, borderLeftColor: "#000000", paddingLeft: 12 }}>
           <Text
             style={{
-              fontSize: 11,
+              fontSize: 8,
               textTransform: "uppercase",
               letterSpacing: 1,
               color: "#666666",
-              marginBottom: 5,
+              marginBottom: 8,
             }}
           >
             Under the Guidance of
           </Text>
-          <Text style={{ fontSize: 16, fontFamily: "Times-Bold" }}>
-            Amarbir Singh
+          <Text style={{ fontSize: 14, fontFamily: "Times-Bold", fontWeight: "bold" }}>
+            Dr. Amarbir Singh
           </Text>
-          <Text style={{ fontSize: 11, color: "#444444" }}>
-            Project Mentor
+          <Text style={{ fontSize: 11, color: "#444444", marginTop: 2 }}>
+            Project Mentor & HOD
           </Text>
         </View>
       </View>
 
-      {/* BOTTOM SECTION: College & University */}
-      <View style={{ alignItems: "center", width: "100%" }}>
-        <Image
-          src="/gndu.png"
-          style={{ height: 80, width: "auto", marginBottom: 15 }}
-        />
-        <Text
-          style={{
-            fontSize: 20,
-            fontFamily: "Times-Bold",
-            textTransform: "uppercase",
-            letterSpacing: 2,
-            textAlign: "center",
-          }}
-        >
-          Hindu College, Amritsar
-        </Text>
-        <Text style={{ fontSize: 11, color: "#666666", marginTop: 5 }}>
-          Affiliated to Guru Nanak Dev University, Amritsar
-        </Text>
+      {/* College Details */}
+      <View
+        style={{
+          alignItems: "center",
+          paddingTop: 60,
+        }}
+      >
         <View
           style={{
-            flexDirection: "row",
+            borderWidth: 1,
+            borderColor: "#cccccc",
+            padding: 16,
             alignItems: "center",
-            marginTop: 15,
+            width: "100%",
           }}
         >
-          <View style={{ width: 60, height: 1, backgroundColor: "#cccccc" }} />
           <Text
             style={{
-              fontSize: 12,
-              marginHorizontal: 15,
-              color: "#444444",
+              fontSize: 16,
+              fontFamily: "Times-Bold",
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              letterSpacing: 1,
             }}
           >
-            Academic Year: 2025-2026
+            Baba Budha Sahib College
           </Text>
-          <View style={{ width: 60, height: 1, backgroundColor: "#cccccc" }} />
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: 12,
+            }}
+          >
+            <View style={{ width: 48, height: 1, backgroundColor: "#999999" }} />
+            <Text style={{ fontSize: 11, marginHorizontal: 12, color: "#444444" }}>
+              Academic Year: 2025-2026
+            </Text>
+            <View style={{ width: 48, height: 1, backgroundColor: "#999999" }} />
+          </View>
         </View>
       </View>
     </Page>

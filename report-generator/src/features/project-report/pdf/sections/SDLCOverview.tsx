@@ -3,731 +3,99 @@
 import { View, Text } from "@react-pdf/renderer";
 import { styles } from "../styles";
 import BookPageLayout from "../components/BookPageLayout";
-import SDLCDiagram from "../diagrams/SDLCDiagram";
 
-/**
- * Chapter 5: Software Development Life Cycle Overview (4 pages)
- */
 export default function SDLCOverview() {
   return (
-    <BookPageLayout chapterTitle="SDLC" chapterNum="06">
-      {/* Chapter Title */}
-      <View style={{ alignItems: "center", marginBottom: 20, marginTop: 5 }}>
+    <BookPageLayout chapterTitle="Software Development Life Cycle" chapterNum="06">
+      <View style={{ marginBottom: 28, alignItems: "center", marginTop: 20 }}>
         <Text
           style={{
-            fontSize: 10,
+            fontSize: 11,
             fontFamily: "Times-Roman",
             color: "#666666",
-            letterSpacing: 3,
+            letterSpacing: 4,
             textTransform: "uppercase",
             marginBottom: 8,
           }}
         >
-          CHAPTER 6
+          Chapter 06
         </Text>
-        <View style={{ marginBottom: 12 }}>
-          <Text
-            style={{
-              fontSize: 24,
-              fontFamily: "Times-Bold",
-              textAlign: "center",
-              letterSpacing: 1.5,
-              textTransform: "uppercase",
-              color: "#000000",
-              lineHeight: 1.1,
-            }}
-          >
-            SDLC OVERVIEW
-          </Text>
-        </View>
+        <Text
+          style={{
+            fontSize: 26,
+            fontFamily: "Times-Bold",
+            textAlign: "center",
+            letterSpacing: 1.5,
+            textTransform: "uppercase",
+            color: "#000000",
+          }}
+        >
+          Software Development Life Cycle
+        </Text>
         <View
           style={{
             width: 60,
-            height: 3,
+            height: 2,
             backgroundColor: "#000000",
+            marginTop: 12,
           }}
         />
       </View>
 
-      {/* 6.1 Introduction */}
       <Text style={styles.h2}>6.1 Introduction to SDLC</Text>
       <Text style={styles.paragraphIndent}>
-        The Software Development Life Cycle (SDLC) is a comprehensive framework
-        that defines the processes and activities involved in developing
-        high-quality software systems. It provides a structured approach to
-        planning, creating, testing, and deploying software applications,
-        ensuring that the final product meets specified requirements and quality
-        standards.
+        The Software Development Life Cycle (SDLC) is a structured, methodological framework utilized by software engineering teams to design, develop, test, and deploy high-quality software applications. It provides a standardized sequence of phases that ensures the final product meets or exceeds client expectations, is completed within schedule and budget estimates, and possesses structural integrity.
       </Text>
-      <Text style={styles.paragraphIndent}>
-        For the AROWAI platform, adherence to a well-defined SDLC was
-        essential given the complexity of the system and the need for reliable,
-        production-grade software. This chapter provides an overview of the SDLC
-        phases implemented in this project, followed by detailed coverage of
-        each phase in subsequent sections.
-      </Text>
-      <Text style={styles.paragraphIndent}>
-        The SDLC methodology chosen for this project balances thorough planning
-        and documentation with the flexibility to adapt to evolving
-        requirements. This approach recognizes that software development is
-        inherently iterative and that early feedback is valuable for producing
-        software that truly meets user needs.
+      <Text style={styles.paragraph}>
+        For the Dino-Ecommerce project, adhering to a rigorous SDLC was imperative to manage the complexities of integrating payment gateways, securing user data, and managing state across sessions. The life cycle acted as a blueprint, guiding the transition from abstract business requirements to a fully functional Django web application.
       </Text>
 
-      {/* 6.1.1 Importance of SDLC */}
-      <Text style={styles.h3}>6.1.1 Importance of SDLC</Text>
+      <Text style={styles.h2}>6.2 Importance of SDLC</Text>
       <Text style={styles.paragraphIndent}>
-        Following a structured SDLC methodology provides numerous benefits that
-        contribute to project success. These benefits are particularly relevant
-        for complex systems like dj-ecommerce that involve multiple technologies,
-        integration points, and user-facing features.
+        Implementing a defined SDLC provided several critical advantages for the development of Dino-Ecommerce:
       </Text>
-
-      <Text style={styles.h3}>6.1.1.1 Quality Assurance</Text>
-      <Text style={styles.paragraphIndent}>
-        A structured SDLC incorporates quality checkpoints at each phase,
-        ensuring that defects are identified and addressed early when they are
-        less expensive to fix. Testing is not relegated to the end of
-        development but is woven throughout the lifecycle. For dj-ecommerce, this
-        meant continuous testing during development, reducing the risk of
-        critical bugs in production.
-      </Text>
-
-      <Text style={styles.h3}>6.1.1.2 Risk Management</Text>
-      <Text style={styles.paragraphIndent}>
-        By requiring feasibility analysis and careful planning before
-        implementation, the SDLC helps identify and mitigate risks early.
-        Technical risks (such as technology selection), schedule risks
-        (realistic timeline estimation), and resource risks (skill requirements)
-        are all addressed systematically rather than discovered during
-        implementation.
-      </Text>
-
-      <Text style={styles.h3}>6.1.1.3 Resource Optimization</Text>
-      <Text style={styles.paragraphIndent}>
-        Clear phase definitions and deliverables enable efficient allocation of
-        time and effort. Rather than pursuing multiple directions
-        simultaneously, the team can focus on phase-appropriate activities.
-        Requirements gathering precedes design, which precedes
-        implementation—each phase building on the outputs of the previous phase.
-      </Text>
-
-      <Text style={styles.h3}>
-        6.1.1.4 Documentation and Knowledge Transfer
-      </Text>
-      <Text style={styles.paragraphIndent}>
-        SDLC phases produce documentation artifacts that capture decisions,
-        designs, and implementation details. This documentation serves multiple
-        purposes: guiding development, enabling review and feedback, supporting
-        maintenance, and facilitating knowledge transfer to future maintainers.
-      </Text>
-
-      {/* 6.1.2 SDLC Phases Overview */}
-      <Text style={styles.h3}>6.1.2 SDLC Phases Overview</Text>
-      <Text style={styles.paragraphIndent}>
-        The development of dj-ecommerce followed a six-phase SDLC model, each phase
-        producing specific deliverables that informed and enabled subsequent
-        phases. The following table summarizes these phases, their duration, and
-        key outputs.
-      </Text>
-
-      <View style={{ marginBottom: 8, marginBottom: 4 }}>
-        <SDLCDiagram />
-        <Text
-          style={{
-            fontSize: 9,
-            fontFamily: "Times-Italic",
-            textAlign: "center",
-            marginBottom: 2,
-            marginBottom: 6,
-          }}
-        >
-          Figure 5.1: SDLC Phases Flow Diagram
-        </Text>
+      <View style={{ paddingLeft: 16, marginBottom: 16 }}>
+        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>1. <Text style={styles.bold}>Risk Mitigation:</Text> Early identification of potential security vulnerabilities in payment flows before implementation.</Text>
+        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>2. <Text style={styles.bold}>Resource Allocation:</Text> Efficient distribution of tasks, ensuring database design was completed before view implementation.</Text>
+        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>3. <Text style={styles.bold}>Quality Assurance:</Text> Structured testing phases ensured that critical bugs (e.g., cart desynchronization) were caught prior to deployment.</Text>
+        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>4. <Text style={styles.bold}>Documentation:</Text> Provided a clear paper trail of architectural decisions and system configurations.</Text>
       </View>
 
-      {/* Phases Overview Table */}
-      <View wrap={false}>
-<View
-        style={{
-          borderWidth: 1,
-          borderColor: "#333333",
-          marginBottom: 8,
-          marginBottom: 4,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            backgroundColor: "#f0f0f0",
-            borderBottomWidth: 1,
-            borderBottomColor: "#333333",
-          }}
-        >
-          <Text
-            style={{
-              width: "20%",
-              padding: 3,
-              fontSize: 10,
-              fontFamily: "Times-Bold",
-              borderRightWidth: 1,
-              borderRightColor: "#333333",
-            }}
-          >
-            Phase
-          </Text>
-          <Text
-            style={{
-              width: "35%",
-              padding: 3,
-              fontSize: 10,
-              fontFamily: "Times-Bold",
-              borderRightWidth: 1,
-              borderRightColor: "#333333",
-            }}
-          >
-            Key Activities
-          </Text>
-          <Text
-            style={{
-              width: "45%",
-              padding: 3,
-              fontSize: 10,
-              fontFamily: "Times-Bold",
-            }}
-          >
-            Deliverables
-          </Text>
-        </View>
-        {[
-          [
-            "Requirements",
-            "Stakeholder interviews, questionnaires, use case identification",
-            "SRS Document, Use Case Specifications",
-          ],
-          [
-            "Feasibility",
-            "Technical assessment, cost-benefit analysis, risk identification",
-            "Feasibility Report, Technology Selection",
-          ],
-          [
-            "Design",
-            "Architecture design, database modeling, UI/UX design",
-            "System Architecture, DFD, ER Diagrams",
-          ],
-          [
-            "Development",
-            "Coding, code review, continuous integration",
-            "Source Code, API Documentation",
-          ],
-          [
-            "Testing",
-            "Unit testing, integration testing, user acceptance testing",
-            "Test Reports, Bug Fixes",
-          ],
-          [
-            "Deployment",
-            "Environment setup, production deployment, monitoring",
-            "Production System, Deployment Guide",
-          ],
-        ].map((row, i) => (
-          <View
-            key={i}
-            style={{
-              flexDirection: "row",
-              borderBottomWidth: i < 5 ? 1 : 0,
-              borderBottomColor: "#cccccc",
-            }}
-          >
-            <Text
-              style={{
-                width: "20%",
-                padding: 3,
-                fontSize: 9,
-                fontFamily: "Times-Bold",
-                borderRightWidth: 1,
-                borderRightColor: "#cccccc",
-              }}
-            >
-              {row[0]}
-            </Text>
-            <Text
-              style={{
-                width: "35%",
-                padding: 3,
-                fontSize: 9,
-                lineHeight: 1.4,
-                borderRightWidth: 1,
-                borderRightColor: "#cccccc",
-              }}
-            >
-              {row[1]}
-            </Text>
-            <Text
-              style={{ width: "45%", padding: 3, fontSize: 9, lineHeight: 1.4 }}
-            >
-              {row[2]}
-            </Text>
-          </View>
-        ))}
-      </View>
-<Text
-        style={{
-          fontSize: 9,
-          fontFamily: "Times-Italic",
-          textAlign: "center",
-          marginBottom: 8,
-        }}
-      >
-        Table 5.1: SDLC Phases and Deliverables Overview
-      </Text>
-</View>
-
-      {/* 6.1.3 Phase Descriptions */}
-      <Text style={styles.h3}>6.1.3 Phase Descriptions</Text>
-
-      {/* Phase 1: Requirements */}
-      <Text style={styles.h3}>
-        6.1.3.1 Phase 1: Requirement Gathering and Analysis
-      </Text>
+      <Text style={styles.h2}>6.3 SDLC Phases Overview</Text>
       <Text style={styles.paragraphIndent}>
-        The requirements phase focused on understanding the problem domain,
-        identifying stakeholders, and capturing both functional and
-        non-functional requirements for the dj-ecommerce platform. This phase was
-        critical for establishing a clear scope and ensuring that subsequent
-        phases addressed actual user needs.
-      </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Activities Performed:</Text>
-      </Text>
-      <View style={{ marginLeft: 24, marginBottom: 4 }}>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Analysis of existing e-commerce solutions
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Development and distribution of user questionnaires
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Identification of functional requirements (features, integrations)
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Identification of non-functional requirements (performance,
-          security)
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Use case development for different user roles
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Requirement prioritization using MoSCoW method
-        </Text>
-      </View>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Deliverables:</Text> Software Requirements
-        Specification (SRS) document, Use Case Specifications, Requirements
-        Traceability Matrix
-      </Text>
-      <Text
-        style={{
-          fontSize: 10,
-          fontFamily: "Times-Italic",
-          color: "#666666",
-          marginLeft: 24,
-          marginBottom: 6,
-        }}
-      >
-        Detailed coverage: Section 6.3 (Requirement Gathering), Section 6.4
-        (SRS)
+        The development of Dino-Ecommerce proceeded through the following standard SDLC phases:
       </Text>
 
-      {/* Phase 2: Feasibility */}
-      <Text style={styles.h3}>6.1.3.2 Phase 2: Feasibility Study</Text>
-      <Text style={styles.paragraphIndent}>
-        The feasibility study evaluated whether the project could be completed
-        successfully given the available resources, technologies, and timeline.
-        This phase assessed technical, economic, and operational feasibility to
-        ensure project viability before committing to full development.
+      <Text style={styles.h3}>Phase 1: Requirement Gathering and Analysis</Text>
+      <Text style={styles.paragraph}>
+        This initial phase involved defining the precise scope of the e-commerce platform. We identified the need for user authentication, product catalogs, cart management, and secure checkout. The outputs of this phase were documented in a comprehensive Software Requirement Specification (SRS) document, establishing the functional and non-functional requirements.
       </Text>
 
+      <Text style={styles.h3}>Phase 2: System Design</Text>
       <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Activities Performed:</Text>
-      </Text>
-      <View style={{ marginLeft: 24, marginBottom: 4 }}>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Technical feasibility assessment of proposed technology stack
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Economic feasibility analysis (development cost, infrastructure
-          cost)
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Operational feasibility evaluation (user adoption, maintenance)
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Risk identification and mitigation planning
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Technology selection and evaluation
-        </Text>
-      </View>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Deliverables:</Text> Feasibility Report,
-        Technology Assessment Document, Cost-Benefit Analysis
-      </Text>
-      <Text
-        style={{
-          fontSize: 10,
-          fontFamily: "Times-Italic",
-          color: "#666666",
-          marginLeft: 24,
-          marginBottom: 6,
-        }}
-      >
-        Detailed coverage: Chapter 4 (Feasibility Study)
+        During the design phase, the abstract requirements were translated into a technical blueprint. We adopted the Model-View-Template (MVT) architecture inherent to Django. Database schemas (Entity-Relationship diagrams) were drafted to model Users, Items, Orders, and Payments. UI/UX wireframes were sketched to plan the customer journey from the homepage to checkout.
       </Text>
 
-      {/* Phase 3: Design */}
-      <Text style={styles.h3}>6.1.3.3 Phase 3: System Design</Text>
-      <Text style={styles.paragraphIndent}>
-        The design phase translated requirements into a detailed technical
-        blueprint for the system. This included high-level architecture design,
-        database modeling, user interface design, and detailed component
-        specifications that would guide implementation.
-      </Text>
+      <Text style={styles.h3}>Phase 3: Implementation (Coding)</Text>
       <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Activities Performed:</Text>
-      </Text>
-      <View style={{ marginLeft: 24, marginBottom: 4 }}>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • System architecture design (frontend, backend, database, execution
-          engine)
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Data Flow Diagram (DFD) creation at multiple levels
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Entity-Relationship (ER) diagram and database schema design
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Use Case diagram development
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Component interface specification
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • UI/UX wireframing and prototyping
-        </Text>
-      </View>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Deliverables:</Text> System Architecture
-        Document, DFD Diagrams, ER Diagrams, Database Schema, UI Wireframes
-      </Text>
-      <Text
-        style={{
-          fontSize: 10,
-          fontFamily: "Times-Italic",
-          color: "#666666",
-          marginLeft: 24,
-          marginBottom: 6,
-        }}
-      >
-        Detailed coverage: Chapter 6 (System Design)
+        This phase involved the actual translation of the system design into executable code. Python was used to define Django models and views. HTML templates were integrated with Bootstrap for styling. The Stripe API was integrated into the checkout view to handle payment processing securely.
       </Text>
 
-      {/* Phase 4: Development */}
-      <Text style={styles.h3}>6.1.3.4 Phase 4: Development (Coding)</Text>
-      <Text style={styles.paragraphIndent}>
-        The development phase implemented the designed system following the
-        Agile methodology with iterative sprints. This phase produced the actual
-        source code, tests, and documentation that comprise the dj-ecommerce
-        platform.
-      </Text>
+      <Text style={styles.h3}>Phase 4: Testing</Text>
       <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Activities Performed:</Text>
-      </Text>
-      <View style={{ marginLeft: 24, marginBottom: 4 }}>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Sprint planning and backlog management
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Frontend development (React components, pages, hooks)
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Backend development (tRPC routers, services, database operations)
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Visual editor implementation (React Flow integration)
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Model executor implementation (Inngest functions)
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Integration development (HTTP, Slack, AI providers)
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Code review and quality assurance
-        </Text>
-      </View>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Deliverables:</Text> Source Code Repository,
-        API Documentation, Component Library, Developer Documentation
-      </Text>
-      <Text
-        style={{
-          fontSize: 10,
-          fontFamily: "Times-Italic",
-          color: "#666666",
-          marginLeft: 24,
-          marginBottom: 6,
-        }}
-      >
-        Detailed coverage: Section 6.2 (Process Model), Chapter 8
-        (Implementation)
+        Rigorous testing was conducted to ensure system stability. This included unit testing individual Django views, integration testing the connection to the Stripe API, and system-wide UI testing to ensure responsive behavior across different devices.
       </Text>
 
-      {/* Phase 5: Testing */}
-      <Text style={styles.h3}>6.1.3.5 Phase 5: Testing</Text>
-      <Text style={styles.paragraphIndent}>
-        The testing phase validated that the implemented system met its
-        requirements and functioned correctly under various conditions. Testing
-        was performed at multiple levels to ensure comprehensive coverage.
-      </Text>
+      <Text style={styles.h3}>Phase 5: Deployment</Text>
       <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Activities Performed:</Text>
-      </Text>
-      <View style={{ marginLeft: 24, marginBottom: 4 }}>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Unit testing of individual functions and components
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Integration testing of subsystem interactions
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • End-to-end testing of complete user orders
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Performance testing under load
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Security testing for common vulnerabilities
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Bug tracking and resolution
-        </Text>
-      </View>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Deliverables:</Text> Test Plans, Test Cases,
-        Test Reports, Bug Fix Documentation
-      </Text>
-      <Text
-        style={{
-          fontSize: 10,
-          fontFamily: "Times-Italic",
-          color: "#666666",
-          marginLeft: 24,
-          marginBottom: 6,
-        }}
-      >
-        Detailed coverage: Chapter 9 (Testing)
+        Once testing concluded, the application was prepared for production. Static files were collected, database migrations were finalized, and the application was deployed using a cloud provider (e.g., Vercel or Heroku), making the Dino-Ecommerce platform accessible to end-users via the internet.
       </Text>
 
-      {/* Phase 6: Deployment */}
-      <Text style={styles.h3}>6.1.3.6 Phase 6: Deployment</Text>
-      <Text style={styles.paragraphIndent}>
-        The deployment phase prepared the application for production use,
-        establishing the necessary infrastructure, configuration, and monitoring
-        to ensure reliable operation.
-      </Text>
+      <Text style={styles.h3}>Phase 6: Maintenance</Text>
       <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Activities Performed:</Text>
-      </Text>
-      <View style={{ marginLeft: 24, marginBottom: 4 }}>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Production environment configuration on Netlify
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • PostgreSQL database setup on Neon
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Inngest cloud configuration for order state management
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Environment variable management and secrets
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Domain configuration and SSL certificates
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Monitoring and logging setup
-        </Text>
-        <Text style={{ fontSize: 11, marginBottom: 2 }}>
-          • Deployment pipeline automation
-        </Text>
-      </View>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Deliverables:</Text> Production Environment,
-        Deployment Documentation, Monitoring Dashboard
+        The final phase involves ongoing monitoring of the deployed application, patching any discovered security vulnerabilities, updating dependencies (like Django and Stripe SDK versions), and potentially adding new features based on user feedback.
       </Text>
 
-      {/* 6.1.4 Phase Duration and Timeline */}
-      <Text style={styles.h3}>6.1.4 Phase Duration and Timeline</Text>
-      <Text style={styles.paragraphIndent}>
-        The project was completed over a 12-week period, with time allocated to
-        each phase based on its complexity and dependencies. The following table
-        shows the approximate duration and timeline for each phase.
-      </Text>
-
-      {/* Timeline Table */}
-      <View wrap={false}>
-<View
-        style={{
-          borderWidth: 1,
-          borderColor: "#333333",
-          marginBottom: 6,
-          marginBottom: 4,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            backgroundColor: "#f0f0f0",
-            borderBottomWidth: 1,
-            borderBottomColor: "#333333",
-          }}
-        >
-          <Text
-            style={{
-              width: "30%",
-              padding: 3,
-              fontSize: 10,
-              fontFamily: "Times-Bold",
-              borderRightWidth: 1,
-              borderRightColor: "#333333",
-            }}
-          >
-            Phase
-          </Text>
-          <Text
-            style={{
-              width: "20%",
-              padding: 3,
-              fontSize: 10,
-              fontFamily: "Times-Bold",
-              borderRightWidth: 1,
-              borderRightColor: "#333333",
-            }}
-          >
-            Duration
-          </Text>
-          <Text
-            style={{
-              width: "25%",
-              padding: 3,
-              fontSize: 10,
-              fontFamily: "Times-Bold",
-              borderRightWidth: 1,
-              borderRightColor: "#333333",
-            }}
-          >
-            Weeks
-          </Text>
-          <Text
-            style={{
-              width: "25%",
-              padding: 3,
-              fontSize: 10,
-              fontFamily: "Times-Bold",
-            }}
-          >
-            % Effort
-          </Text>
-        </View>
-        {[
-          ["Requirements", "1 week", "Jan 6–10", "8%"],
-          ["Feasibility", "1 week", "Jan 13–17", "8%"],
-          ["Design", "2 weeks", "Jan 20–Feb 1", "17%"],
-          ["Development", "6 weeks", "Feb 3–Mar 7", "50%"],
-          ["Testing", "1 week", "Mar 8–12", "8%"],
-          ["Deployment", "1 week", "Mar 13–15", "9%"],
-        ].map((row, i) => (
-          <View
-            key={i}
-            style={{
-              flexDirection: "row",
-              borderBottomWidth: i < 5 ? 1 : 0,
-              borderBottomColor: "#cccccc",
-            }}
-          >
-            <Text
-              style={{
-                width: "30%",
-                padding: 3,
-                fontSize: 9,
-                fontFamily: "Times-Bold",
-                borderRightWidth: 1,
-                borderRightColor: "#cccccc",
-              }}
-            >
-              {row[0]}
-            </Text>
-            <Text
-              style={{
-                width: "20%",
-                padding: 3,
-                fontSize: 9,
-                textAlign: "center",
-                borderRightWidth: 1,
-                borderRightColor: "#cccccc",
-              }}
-            >
-              {row[1]}
-            </Text>
-            <Text
-              style={{
-                width: "25%",
-                padding: 3,
-                fontSize: 9,
-                textAlign: "center",
-                borderRightWidth: 1,
-                borderRightColor: "#cccccc",
-              }}
-            >
-              {row[2]}
-            </Text>
-            <Text
-              style={{
-                width: "25%",
-                padding: 3,
-                fontSize: 9,
-                textAlign: "center",
-              }}
-            >
-              {row[3]}
-            </Text>
-          </View>
-        ))}
-      </View>
-<Text
-        style={{
-          fontSize: 9,
-          fontFamily: "Times-Italic",
-          textAlign: "center",
-          marginBottom: 6,
-        }}
-      >
-        Table 5.2: SDLC Phase Duration and Timeline
-      </Text>
-</View>
-
-      {/* 6.1.5 Summary */}
-      <Text style={styles.h3}>6.1.5 Summary</Text>
-      <Text style={styles.paragraphIndent}>
-        This section has provided an overview of the Software Development Life
-        Cycle followed in the development of the dj-ecommerce platform. The
-        six-phase approach—Requirements, Feasibility, Design, Development,
-        Testing, and Deployment—provided a structured framework that ensured
-        quality, managed risk, and produced comprehensive documentation. The
-        following sections provide detailed coverage of each phase.
-      </Text>
     </BookPageLayout>
   );
 }

@@ -1,12 +1,13 @@
 "use client";
 
 import { Page, View, Text } from "@react-pdf/renderer";
-import { PAGE_MARGINS, HEADER_TOP, FOOTER_BOTTOM, styles } from "../styles";
+import { PAGE_MARGINS, HEADER_TOP, FOOTER_BOTTOM } from "../styles";
 
 interface BookPageLayoutProps {
-  children: React.ReactModel;
+  children: React.ReactNode;
   chapterTitle?: string;
   chapterNum?: string;
+  isContinued?: boolean;
 }
 
 /**
@@ -23,8 +24,17 @@ export default function BookPageLayout({
     <Page
       size="A4"
       wrap
-      style={styles.page}
-
+      style={{
+        paddingTop: PAGE_MARGINS.top,
+        paddingBottom: PAGE_MARGINS.bottom,
+        paddingLeft: PAGE_MARGINS.left,
+        paddingRight: PAGE_MARGINS.right,
+        fontFamily: "Times-Roman",
+        fontSize: 12,
+        lineHeight: 1.5,
+        color: "#000000",
+        backgroundColor: "#ffffff",
+      }}
     >
       {/* Header — absolute positioned, repeats on every page */}
       <View
@@ -40,8 +50,7 @@ export default function BookPageLayout({
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            alignItems: "flex-end",
-            paddingBottom: 6,
+            alignItems: "center",
           }}
         >
           <Text
@@ -69,8 +78,8 @@ export default function BookPageLayout({
         <View
           style={{
             height: 1,
+            marginTop: 8,
             backgroundColor: "#cccccc",
-            marginBottom: 8,
           }}
         />
       </View>
@@ -103,7 +112,7 @@ export default function BookPageLayout({
           color: "#666666",
         }}
       >
-        AROWAI — Project Report
+        Dino-Ecommerce — Project Report
       </Text>
     </Page>
   );

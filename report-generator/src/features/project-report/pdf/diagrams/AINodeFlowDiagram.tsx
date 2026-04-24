@@ -1,10 +1,10 @@
 import { Svg, G, Rect, Text as SvgText, Line } from "@react-pdf/renderer";
 
 /**
- * AI Model Execution Flow — Shows how an AI product processes data through the pipeline
- * Used in Chapter 8 Implementation (AI Models section)
+ * E-commerce Product Payment Flow — Shows how an E-commerce product processes data through the pipeline
+ * Used in Chapter 8 Implementation (E-commerce Products section)
  */
-export default function AIModelFlowDiagram() {
+export default function AIProductFlowDiagram() {
   const width = 460;
   const height = 200;
   const cx = width / 2;
@@ -21,8 +21,8 @@ export default function AIModelFlowDiagram() {
   const boxY = 55;
 
   const providers = [
-    { label: "OpenAI", y: 120 },
-    { label: "Anthropic", y: 145 },
+    { label: "Stripe", y: 120 },
+    { label: "Payment", y: 145 },
     { label: "Google", y: 170 },
   ];
 
@@ -43,7 +43,7 @@ export default function AIModelFlowDiagram() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        AI Model Execution Pipeline
+        E-commerce Product Payment Pipeline
       </SvgText>
 
       {/* Flow direction */}

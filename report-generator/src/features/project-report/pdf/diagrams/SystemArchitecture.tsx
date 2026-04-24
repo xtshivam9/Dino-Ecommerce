@@ -8,14 +8,13 @@ import {
 } from "@react-pdf/renderer";
 
 /**
- * System Architecture Diagram - 5-Layer architecture with external services
- * Fits within 495pt page content width with no overlapping
+ * System Architecture Diagram - 5-Layer architecture for Dino-Ecommerce
+ * Django MVT e-commerce platform with Stripe integration
  */
 export default function SystemArchitecture() {
   const width = 495;
   const height = 440;
 
-  // Main layers
   const layerX = 10;
   const layerW = 310;
   const layerH = 52;
@@ -25,7 +24,6 @@ export default function SystemArchitecture() {
   const compGap = 5;
   const compStartX = layerX + labelW + 5;
 
-  // External services column
   const extX = 345;
   const extW = 140;
   const extH = 38;
@@ -35,39 +33,39 @@ export default function SystemArchitecture() {
       label: "Client Layer",
       color: "#2563eb",
       bgColor: "#eff6ff",
-      components: ["Web Browser", "React 19 SPA", "Responsive UI"],
+      components: ["Web Browser", "HTML/CSS/JS", "Bootstrap 4"],
     },
     {
       label: "Presentation",
       color: "#7c3aed",
       bgColor: "#f5f3ff",
-      components: ["Next.js 16", "Server Comp.", "Shadcn/UI"],
+      components: ["Django Templates", "Template Tags", "Static Files"],
     },
     {
-      label: "API Layer",
+      label: "URL Routing",
       color: "#0891b2",
       bgColor: "#ecfeff",
-      components: ["tRPC Router", "REST Routes", "Auth Middleware"],
+      components: ["URL Dispatcher", "View Functions", "Middleware"],
     },
     {
       label: "Business Logic",
       color: "#059669",
       bgColor: "#f0fdf4",
-      components: ["Workflow Eng.", "Model Executor", "Cred. Manager"],
+      components: ["Cart Manager", "Order Processor", "Coupon Engine"],
     },
     {
       label: "Data Layer",
       color: "#d97706",
       bgColor: "#fffbeb",
-      components: ["Prisma ORM", "PostgreSQL", "Conn. Pooling"],
+      components: ["Django ORM", "SQLite / PostgreSQL", "Migrations"],
     },
   ];
 
   const externals = [
-    { label: "Inngest (Durable Exec)", color: "#059669", yIdx: 1 },
-    { label: "Cloud Services & External APIs", color: "#7c3aed", yIdx: 2 },
-    { label: "Slack / GitHub / Notion", color: "#d97706", yIdx: 3 },
-    { label: "Resend (Email Service)", color: "#dc2626", yIdx: 4 },
+    { label: "Stripe Payment Gateway", color: "#6366f1", yIdx: 1 },
+    { label: "Django Allauth (Auth)", color: "#059669", yIdx: 2 },
+    { label: "Pillow (Image Processing)", color: "#d97706", yIdx: 3 },
+    { label: "Email (SMTP / Console)", color: "#dc2626", yIdx: 4 },
   ];
 
   return (
@@ -95,7 +93,6 @@ export default function SystemArchitecture() {
         const y = 30 + i * (layerH + layerGap);
         return (
           <G key={i}>
-            {/* Layer background */}
             <Rect
               x={layerX}
               y={y}
@@ -106,7 +103,6 @@ export default function SystemArchitecture() {
               stroke={layer.color}
               strokeWidth={1.5}
             />
-            {/* Label colored area */}
             <Rect
               x={layerX}
               y={y}
@@ -122,7 +118,6 @@ export default function SystemArchitecture() {
               height={layerH}
               fill={layer.color}
             />
-            {/* Label text */}
             <SvgText
               x={layerX + labelW / 2}
               y={y + layerH / 2 + 3}
@@ -135,7 +130,6 @@ export default function SystemArchitecture() {
             >
               {layer.label}
             </SvgText>
-            {/* Component boxes */}
             {layer.components.map((comp, j) => {
               const cx = compStartX + j * (compW + compGap);
               return (
@@ -165,7 +159,6 @@ export default function SystemArchitecture() {
                 </G>
               );
             })}
-            {/* Down arrow */}
             {i < layers.length - 1 && (
               <G>
                 <Line
@@ -186,7 +179,7 @@ export default function SystemArchitecture() {
         );
       })}
 
-      {/* External service boxes aligned to corresponding layers */}
+      {/* External service boxes */}
       {externals.map((ext, i) => {
         const layerY = 30 + ext.yIdx * (layerH + layerGap);
         const ey = layerY + (layerH - extH) / 2;
@@ -214,7 +207,6 @@ export default function SystemArchitecture() {
             >
               {ext.label}
             </SvgText>
-            {/* Dashed connection line */}
             <Line
               x1={layerX + layerW + 2}
               y1={layerY + layerH / 2}
@@ -239,7 +231,7 @@ export default function SystemArchitecture() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: System Architecture — Layered Design
+        Figure: System Architecture — Django MVT Layered Design
       </SvgText>
     </Svg>
   );

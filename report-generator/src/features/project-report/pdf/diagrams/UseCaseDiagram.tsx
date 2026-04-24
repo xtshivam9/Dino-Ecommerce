@@ -76,19 +76,19 @@ export default function UseCaseDiagram() {
     // Auth (y: 55-90)
     { label: "Login", x: 230, y: 55 },
     { label: "Manage Profile", x: 230, y: 90 },
-    // Workflows (y: 135-255)
-    { label: "Create Workflow", x: 260, y: 135 },
-    { label: "Edit Workflow (Canvas)", x: 260, y: 170 },
-    { label: "Delete Workflow", x: 260, y: 205 },
+    // Orders (y: 135-255)
+    { label: "Create Order", x: 260, y: 135 },
+    { label: "Edit Order (Canvas)", x: 260, y: 170 },
+    { label: "Delete Order", x: 260, y: 205 },
     { label: "Version Control", x: 260, y: 240 },
-    // Execution (y: 285-355)
-    { label: "Run Workflow", x: 280, y: 285 },
-    { label: "View Execution Logs", x: 280, y: 320 },
-    { label: "Schedule Execution", x: 280, y: 355 },
+    // Payment (y: 285-355)
+    { label: "Run Order", x: 280, y: 285 },
+    { label: "View Payment Logs", x: 280, y: 320 },
+    { label: "Schedule Payment", x: 280, y: 355 },
     // Teams (y: 400-470)
     { label: "Manage Team", x: 230, y: 400 },
     { label: "Assign Roles (RBAC)", x: 230, y: 435 },
-    { label: "Manage Credentials", x: 260, y: 470 },
+    { label: "Manage Products", x: 260, y: 470 },
   ];
 
   const ucRx = 72;
@@ -114,12 +114,12 @@ export default function UseCaseDiagram() {
         textAnchor="middle"
         style={{ fontSize: 9, fontFamily: "Times-Bold", fill: "#2563eb" }}
       >
-        Django E-Commerce System
+        Dino-Ecommerce System
       </SvgText>
 
       {/* Actors */}
       {renderActor(55, 130, "User")}
-      {renderActor(55, 360, "Team Admin")}
+      {renderActor(55, 360, "Store Admin")}
       {renderActor(440, 300, "System")}
 
       {/* Use case ovals */}
@@ -158,7 +158,7 @@ export default function UseCaseDiagram() {
         />
       ))}
 
-      {/* Team Admin connections */}
+      {/* Store Admin connections */}
       {[9, 10, 2, 3, 4, 6, 7, 8, 11].map((idx) => (
         <Line
           key={`a-${idx}`}
@@ -254,7 +254,7 @@ export default function UseCaseDiagram() {
         textAnchor="middle"
         style={{ fontSize: 6, fontFamily: "Times-Bold", fill: "#059669" }}
       >
-        Workflows
+        Orders
       </SvgText>
 
       <Rect x={150} y={272} width={50} height={13} rx={2} fill="#fef9c3" />
@@ -264,7 +264,7 @@ export default function UseCaseDiagram() {
         textAnchor="middle"
         style={{ fontSize: 6, fontFamily: "Times-Bold", fill: "#a16207" }}
       >
-        Execution
+        Payment
       </SvgText>
 
       <Rect x={150} y={388} width={48} height={13} rx={2} fill="#fef2f2" />

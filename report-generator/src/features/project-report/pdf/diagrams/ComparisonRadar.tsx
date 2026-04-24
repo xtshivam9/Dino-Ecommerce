@@ -8,7 +8,7 @@ import {
 } from "@react-pdf/renderer";
 
 /**
- * dj-ecommerce vs Shopify Comparison Radar — Side-by-side radar showing each platform's strengths
+ * Dino-Ecommerce vs Competitors Comparison Radar
  * Used in Chapter 2 Problem Statement
  */
 export default function ComparisonRadar() {
@@ -19,14 +19,14 @@ export default function ComparisonRadar() {
   const maxR = 100;
 
   const dimensions = [
-    { label: "Ease of Use", flowgent: 8, Shopify: 5 },
-    { label: "Discount & Coupon Engine", flowgent: 9, Shopify: 5 },
-    { label: "Self-Hosting", flowgent: 8, Shopify: 9 },
-    { label: "Integrations", flowgent: 4, Shopify: 9 },
-    { label: "Team Features", flowgent: 8, Shopify: 4 },
-    { label: "Type Safety", flowgent: 9, Shopify: 6 },
-    { label: "Community", flowgent: 2, Shopify: 8 },
-    { label: "Modern Stack", flowgent: 9, Shopify: 6 },
+    { label: "Ease of Use", dino: 8, competitor: 5 },
+    { label: "Payment Integration", dino: 9, competitor: 5 },
+    { label: "Self-Hosting", dino: 8, competitor: 9 },
+    { label: "Product Management", dino: 7, competitor: 9 },
+    { label: "User Auth", dino: 8, competitor: 4 },
+    { label: "Django/Python", dino: 9, competitor: 6 },
+    { label: "Community", dino: 4, competitor: 8 },
+    { label: "Modern Stack", dino: 9, competitor: 6 },
   ];
 
   const n = dimensions.length;
@@ -41,8 +41,8 @@ export default function ComparisonRadar() {
 
   const rings = [2, 4, 6, 8, 10];
 
-  const flowgentPoints = dimensions.map((d, i) => getPoint(i, d.flowgent));
-  const ShopifyPoints = dimensions.map((d, i) => getPoint(i, d.Shopify));
+  const dinoPoints = dimensions.map((d, i) => getPoint(i, d.dino));
+  const competitorPoints = dimensions.map((d, i) => getPoint(i, d.competitor));
 
   return (
     <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
@@ -53,7 +53,7 @@ export default function ComparisonRadar() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Feature Comparison Radar: dj-ecommerce vs Shopify
+        Feature Comparison Radar: Dino-Ecommerce vs Shopify/WooCommerce
       </SvgText>
 
       {/* Grid rings */}
@@ -95,12 +95,12 @@ export default function ComparisonRadar() {
         );
       })}
 
-      {/* Shopify polygon (draw first so dj-ecommerce overlays) */}
-      {ShopifyPoints.map((p, i) => {
-        const next = ShopifyPoints[(i + 1) % n];
+      {/* Competitor polygon (draw first so Dino overlays) */}
+      {competitorPoints.map((p, i) => {
+        const next = competitorPoints[(i + 1) % n];
         return (
           <Line
-            key={`Shopify-line-${i}`}
+            key={`comp-line-${i}`}
             x1={p.x}
             y1={p.y}
             x2={next.x}
@@ -112,12 +112,12 @@ export default function ComparisonRadar() {
         );
       })}
 
-      {/* dj-ecommerce polygon */}
-      {flowgentPoints.map((p, i) => {
-        const next = flowgentPoints[(i + 1) % n];
+      {/* Dino-Ecommerce polygon */}
+      {dinoPoints.map((p, i) => {
+        const next = dinoPoints[(i + 1) % n];
         return (
           <Line
-            key={`fg-line-${i}`}
+            key={`dino-line-${i}`}
             x1={p.x}
             y1={p.y}
             x2={next.x}
@@ -128,16 +128,16 @@ export default function ComparisonRadar() {
         );
       })}
 
-      {/* Data points — Shopify */}
-      {ShopifyPoints.map((p, i) => (
-        <G key={`Shopify-pt-${i}`}>
+      {/* Data points — Competitor */}
+      {competitorPoints.map((p, i) => (
+        <G key={`comp-pt-${i}`}>
           <Circle cx={p.x} cy={p.y} r={3} fill="#f59e0b" />
         </G>
       ))}
 
-      {/* Data points — dj-ecommerce */}
-      {flowgentPoints.map((p, i) => (
-        <G key={`fg-pt-${i}`}>
+      {/* Data points — Dino-Ecommerce */}
+      {dinoPoints.map((p, i) => (
+        <G key={`dino-pt-${i}`}>
           <Circle cx={p.x} cy={p.y} r={3.5} fill="#3b82f6" />
           <Circle cx={p.x} cy={p.y} r={2} fill="#ffffff" />
         </G>
@@ -166,7 +166,7 @@ export default function ComparisonRadar() {
         y={height - 20}
         style={{ fontSize: 7, fontFamily: "Times-Bold", fill: "#3b82f6" }}
       >
-        dj-ecommerce
+        Dino-Ecommerce
       </SvgText>
       <Line
         x1={cx + 10}
@@ -182,7 +182,7 @@ export default function ComparisonRadar() {
         y={height - 20}
         style={{ fontSize: 7, fontFamily: "Times-Bold", fill: "#f59e0b" }}
       >
-        Shopify
+        Competitors
       </SvgText>
       <SvgText
         x={cx}

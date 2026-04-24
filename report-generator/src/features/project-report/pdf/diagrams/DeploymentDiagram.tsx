@@ -34,7 +34,7 @@ export default function DeploymentDiagram() {
   };
 
   // Helper: draw a deployment product box
-  const Model = ({
+  const Product = ({
     x,
     y,
     w,
@@ -216,7 +216,7 @@ export default function DeploymentDiagram() {
       />
 
       {/* Client Tier */}
-      <Model
+      <Product
         x={40}
         y={52}
         w={120}
@@ -224,9 +224,9 @@ export default function DeploymentDiagram() {
         fill={colors.client}
         stroke={colors.clientBorder}
         title="Web Browser"
-        items={["React 19 SPA", "Next.js 16 Client", "React Flow Editor"]}
+        items={["HTML5 / CSS3", "Bootstrap 4 UI", "jQuery / AJAX"]}
       />
-      <Model
+      <Product
         x={190}
         y={52}
         w={120}
@@ -234,128 +234,128 @@ export default function DeploymentDiagram() {
         fill={colors.client}
         stroke={colors.clientBorder}
         title="Mobile Browser"
-        items={["Responsive PWA", "Touch-optimized UI"]}
+        items={["Responsive Layout", "Touch-optimized UI"]}
       />
-      <Model
+      <Product
         x={340}
         y={52}
         w={120}
         h={65}
         fill={colors.client}
         stroke={colors.clientBorder}
-        title="External Systems"
-        items={["Webhook Callers", "API Consumers", "OAuth2 Providers"]}
+        title="Payment Gateway"
+        items={["Stripe Checkout", "Stripe Elements", "Card Validation"]}
       />
 
       {/* Edge / CDN */}
-      <Model
+      <Product
         x={100}
         y={142}
         w={150}
         h={65}
         fill={colors.cdn}
         stroke={colors.cdnBorder}
-        title="Vercel Edge Network"
-        items={["Global CDN", "Edge Middleware", "SSL/TLS Termination"]}
+        title="Web Server (Gunicorn)"
+        items={["WSGI Gateway", "Static File Serving", "SSL/TLS Termination"]}
       />
-      <Model
+      <Product
         x={280}
         y={142}
         w={150}
         h={65}
         fill={colors.cdn}
         stroke={colors.cdnBorder}
-        title="DNS & Routing"
-        items={["Custom Domain", "Geo-routing", "Load Balancing"]}
+        title="Nginx / CDN"
+        items={["Reverse Proxy", "Static Assets", "WhiteNoise"]}
       />
 
       {/* Application Tier */}
-      <Model
+      <Product
         x={20}
         y={235}
         w={130}
         h={80}
         fill={colors.server}
         stroke={colors.serverBorder}
-        title="Next.js App Server"
+        title="Django App Server"
         items={[
-          "Server Components",
-          "tRPC API Layer",
-          "Auth (Better Auth)",
-          "API Routes",
+          "Django Views",
+          "URL Dispatcher",
+          "Allauth (Auth)",
+          "Template Engine",
         ]}
       />
-      <Model
+      <Product
         x={170}
         y={235}
         w={130}
         h={80}
         fill={colors.server}
         stroke={colors.serverBorder}
-        title="Inngest Worker"
+        title="Order Processing"
         items={[
-          "Workflow Executor",
-          "BFS Graph Traversal",
-          "Scheduled Jobs",
-          "Event-driven Tasks",
+          "Cart Management",
+          "Stripe Charges",
+          "Coupon Validation",
+          "Refund Handler",
         ]}
       />
-      <Model
+      <Product
         x={320}
         y={235}
         w={150}
         h={80}
         fill={colors.server}
         stroke={colors.serverBorder}
-        title="Serverless Functions"
+        title="Background Tasks"
         items={[
-          "Webhook Handlers",
-          "OAuth2 Callbacks",
-          "Cron Triggers",
-          "Sentry Error Tracking",
+          "Email Notifications",
+          "Inventory Updates",
+          "Order Confirmations",
+          "Admin Alerts",
         ]}
       />
 
       {/* Data Tier */}
-      <Model
+      <Product
         x={20}
         y={345}
         w={110}
         h={60}
         fill={colors.db}
         stroke={colors.dbBorder}
-        title="Neon PostgreSQL"
-        items={["Primary Database", "Prisma ORM", "Connection Pooling"]}
+        title="SQLite / PostgreSQL"
+        items={["Primary Database", "Django ORM", "Migrations"]}
       />
-      <Model
+      <Product
         x={150}
         y={345}
         w={110}
         h={60}
         fill={colors.db}
         stroke={colors.dbBorder}
-        title="Blob Storage"
-        items={["Workflow Exports", "User Avatars", "Report Outputs"]}
+        title="Media Storage"
+        items={["Product Images", "User Uploads", "Static Assets"]}
       />
-      <Model
+      <Product
         x={280}
         y={345}
         w={100}
         h={60}
         fill={colors.queue}
         stroke={colors.queueBorder}
-        title="Inngest Cloud"
-        items={["Event Queue", "Job Scheduling", "Retry Logic"]}
+        title="Stripe API"
+        items={["Payment Intents", "Charge Objects", "Refund API"]}
       />
-      <Model
+      <Product
         x={400}
         y={345}
         w={80}
         h={60}
         fill={colors.db}
         stroke={colors.dbBorder}
-        title="External APIs"
-        items={["OpenAI", "Google", "Slack"]}
+        title="Third-Party"
+        items={["SMTP Email", "Allauth"]}
       />
 
       {/* Arrows - Client to Edge */}
@@ -382,7 +382,7 @@ export default function DeploymentDiagram() {
         y1={117}
         x2={380}
         y2={142}
-        label="Webhooks"
+        label="Stripe JS"
         labelX={405}
         labelY={130}
       />
@@ -422,7 +422,7 @@ export default function DeploymentDiagram() {
         y1={315}
         x2={75}
         y2={345}
-        label="Prisma"
+        label="Django ORM"
         labelX={65}
         labelY={332}
       />

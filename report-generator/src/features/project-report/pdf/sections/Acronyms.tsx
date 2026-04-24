@@ -3,14 +3,18 @@
 import { Page, View, Text } from "@react-pdf/renderer";
 import { toRoman, PAGE_MARGINS, FOOTER_BOTTOM } from "../styles";
 
-
+interface AcronymsProps {
+  startPage: number;
+}
 
 const acronyms = [
   { abbr: "API", full: "Application Programming Interface" },
   { abbr: "BCA", full: "Bachelor of Computer Applications" },
+  { abbr: "B2C", full: "Business to Consumer" },
   { abbr: "CI/CD", full: "Continuous Integration / Continuous Deployment" },
   { abbr: "COCOMO", full: "Constructive Cost Model" },
   { abbr: "CRUD", full: "Create, Read, Update, Delete" },
+  { abbr: "CSRF", full: "Cross-Site Request Forgery" },
   { abbr: "CSS", full: "Cascading Style Sheets" },
   { abbr: "DB", full: "Database" },
   { abbr: "DFD", full: "Data Flow Diagram" },
@@ -18,21 +22,20 @@ const acronyms = [
   { abbr: "HTML", full: "HyperText Markup Language" },
   { abbr: "HTTP", full: "HyperText Transfer Protocol" },
   { abbr: "JSON", full: "JavaScript Object Notation" },
-  { abbr: "JWT", full: "JSON Web Token" },
+  { abbr: "MVC", full: "Model-View-Controller" },
+  { abbr: "MVT", full: "Model-View-Template" },
   { abbr: "OAuth", full: "Open Authorization" },
   { abbr: "ORM", full: "Object-Relational Mapping" },
   { abbr: "PDF", full: "Portable Document Format" },
-  { abbr: "RBAC", full: "Role-Based Access Control" },
   { abbr: "REST", full: "Representational State Transfer" },
-  { abbr: "RPC", full: "Remote Procedure Call" },
   { abbr: "SDLC", full: "Software Development Life Cycle" },
+  { abbr: "SMTP", full: "Simple Mail Transfer Protocol" },
   { abbr: "SQL", full: "Structured Query Language" },
   { abbr: "SRS", full: "Software Requirement Specification" },
-  { abbr: "SSR", full: "Server-Side Rendering" },
-  { abbr: "tRPC", full: "TypeScript Remote Procedure Call" },
   { abbr: "UI", full: "User Interface" },
   { abbr: "URL", full: "Uniform Resource Locator" },
   { abbr: "UX", full: "User Experience" },
+  { abbr: "WYSIWYG", full: "What You See Is What You Get" },
 ];
 
 const pageStyle = {
@@ -50,18 +53,16 @@ const pageStyle = {
 /**
  * List of Acronyms - Editorial Design (Multi-page) with consistent margins
  */
-export default function Acronyms() {
+export default function Acronyms({ startPage }: AcronymsProps) {
   const itemsPerPage = 20;
   const pages = [];
-  // List of Acronyms starts at page xviii (18 in Roman numerals)
-  const startPage = 18;
 
   for (let i = 0; i < acronyms.length; i += itemsPerPage) {
     pages.push(acronyms.slice(i, i + itemsPerPage));
   }
 
   const renderHeader = (isContd: boolean) => (
-    <View style={{ marginBottom: 24, marginTop: 0 }}>
+    <View style={{ marginBottom: 36, marginTop: 0 }}>
       <Text
         style={{
           fontSize: 10,
@@ -69,7 +70,7 @@ export default function Acronyms() {
           color: "#888888",
           letterSpacing: 4,
           textTransform: "uppercase",
-          marginBottom: 6,
+          marginBottom: 8,
           textAlign: "center",
         }}
       >
@@ -82,7 +83,6 @@ export default function Acronyms() {
           textAlign: "center",
           letterSpacing: 1.5,
           textTransform: "uppercase",
-          marginBottom: 10,
         }}
       >
         {isContd ? "Acronyms (Contd.)" : "List of Acronyms"}
@@ -90,13 +90,12 @@ export default function Acronyms() {
       <View
         style={{
           width: 40,
-          height: 2,
+          height: 1,
           backgroundColor: "#000000",
           alignSelf: "center",
-          marginTop: 8,
+          marginTop: 16,
         }}
       />
-
     </View>
   );
 
@@ -106,7 +105,7 @@ export default function Acronyms() {
       style={{
         flexDirection: "row",
         alignItems: "flex-end",
-        marginBottom: 5,
+        marginBottom: 10,
       }}
     >
       {/* Abbreviation */}
@@ -146,7 +145,7 @@ export default function Acronyms() {
           <View
             style={{
               position: "absolute",
-              bottom: FOOTER_BOTTOM,
+              bottom: 20,
               left: 0,
               right: 0,
               textAlign: "center",

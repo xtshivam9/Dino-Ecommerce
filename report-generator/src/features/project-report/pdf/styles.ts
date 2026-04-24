@@ -5,15 +5,15 @@ import { StyleSheet, Font } from "@react-pdf/renderer";
 // A4 dimensions: 210mm x 297mm = 595pt x 842pt
 // Premium report margins - consistent across ALL pages
 export const PAGE_MARGINS = {
-  top: 45,
-  bottom: 45,
-  left: 40, // Increased for binding
-  right: 35,
+  top: 70,      // Space for header
+  bottom: 60,   // Space for footer
+  left: 50,     // Generous side margins for premium feel
+  right: 50,
 };
 
 // Header/Footer positioning
 export const HEADER_TOP = 25;
-export const FOOTER_BOTTOM = 25;
+export const FOOTER_BOTTOM = 30;
 
 
 // Roman numeral converter
@@ -53,59 +53,54 @@ export const styles = StyleSheet.create({
     paddingLeft: PAGE_MARGINS.left,
     paddingRight: PAGE_MARGINS.right,
     fontFamily: "Times-Roman",
-    fontSize: 9, // Increased from 7.5
-    lineHeight: 1.3, // Increased from 1.0 to fix overlapping
+    fontSize: 12,
+    lineHeight: 1.5,
     color: "#000000",
     backgroundColor: "#ffffff",
   },
   pageNoMargin: {
     fontFamily: "Times-Roman",
-    fontSize: 9,
-    lineHeight: 1.3,
+    fontSize: 12,
+    lineHeight: 1.5,
     color: "#000000",
     backgroundColor: "#ffffff",
   },
 
   // Typography
   h1: {
-    fontSize: 12,
+    fontSize: 26,
     fontFamily: "Times-Bold",
-    marginTop: 6,
-    marginBottom: 4,
-    lineHeight: 1.2,
-    textTransform: "uppercase",
     textAlign: "center",
+    marginBottom: 20,
+    textTransform: "uppercase",
+    letterSpacing: 1.2,
   },
   h2: {
-    fontSize: 10.5,
+    fontSize: 20,
     fontFamily: "Times-Bold",
-    marginTop: 5,
-    marginBottom: 2,
-    lineHeight: 1.2,
-    borderBottomWidth: 0.5,
-    borderBottomColor: "#000000",
+    marginBottom: 14,
+    paddingBottom: 8,
+    borderBottomWidth: 1.5,
+    borderBottomColor: "#222222",
   },
   h3: {
-    fontSize: 9.5,
+    fontSize: 16,
     fontFamily: "Times-Bold",
-    marginTop: 4,
-    marginBottom: 2,
-    lineHeight: 1.2,
+    marginBottom: 10,
+    marginTop: 6,
   },
   paragraph: {
-    fontSize: 8.5, // Increased from 7
-    fontFamily: "Times-Roman",
-    lineHeight: 1.35, // Increased from 1.0 to fix overlapping
-    marginBottom: 3,
+    fontSize: 12,
     textAlign: "justify",
+    marginBottom: 10,
+    lineHeight: 1.6, // Slightly clearer reading flow
   },
   paragraphIndent: {
-    fontSize: 8.5,
-    fontFamily: "Times-Roman",
-    lineHeight: 1.35,
-    marginBottom: 3,
-    textIndent: 12,
+    fontSize: 12,
     textAlign: "justify",
+    marginBottom: 10,
+    lineHeight: 1.6,
+    textIndent: 42,
   },
 
   // Layout utilities
@@ -135,36 +130,34 @@ export const styles = StyleSheet.create({
   },
 
   // Spacing
-  mt4: { marginTop: 2 },
-  mt8: { marginTop: 4 },
-  mt12: { marginTop: 6 },
-  mb4: { marginBottom: 2 },
-  mb8: { marginBottom: 4 },
-  mb12: { marginBottom: 6 },
-  py4: { paddingTop: 2, paddingBottom: 2 },
-  px4: { paddingLeft: 2, paddingRight: 2 },
+  mt4: { marginTop: 16 },
+  mt8: { marginTop: 32 },
+  mt12: { marginTop: 48 },
+  mb4: { marginBottom: 16 },
+  mb8: { marginBottom: 32 },
+  mb12: { marginBottom: 48 },
+  py4: { paddingTop: 16, paddingBottom: 16 },
+  px4: { paddingLeft: 16, paddingRight: 16 },
 
   // Decorative elements
   underline: {
-    width: 60,
+    width: 80,
     height: 3,
     backgroundColor: "#000000",
-    marginTop: 6,
-    marginBottom: 12,
-    alignSelf: "center",
+    marginTop: 12,
   },
   divider: {
     width: "100%",
     height: 0.5,
     backgroundColor: "#444444",
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 18,
+    marginBottom: 18,
   },
 
   // Footer
   footer: {
     position: "absolute",
-    bottom: FOOTER_BOTTOM,
+    bottom: 20,
     left: 0,
     right: 0,
     textAlign: "center",
@@ -176,8 +169,8 @@ export const styles = StyleSheet.create({
   // Tables
   table: {
     width: "100%",
-    marginTop: 4,
-    marginBottom: 4,
+    marginTop: 14,
+    marginBottom: 14,
   },
   tableRow: {
     flexDirection: "row",
@@ -186,17 +179,15 @@ export const styles = StyleSheet.create({
   },
   tableHeader: {
     flexDirection: "row",
-    borderBottomWidth: 1.2,
-    borderBottomColor: "#000000",
-    backgroundColor: "#f0f0f0",
+    borderBottomWidth: 1.5,
+    borderBottomColor: "#222222",
+    backgroundColor: "#f5f5f5",
     fontFamily: "Times-Bold",
-    paddingTop: 3,
-    paddingBottom: 3,
   },
   tableCell: {
-    padding: 2.5,
-    fontSize: 7.5,
-    lineHeight: 1.25,
+    padding: 10,
+    fontSize: 11,
+    lineHeight: 1.4,
   },
 
   // Bold text
@@ -209,30 +200,20 @@ export const styles = StyleSheet.create({
 
   // Border box
   borderBox: {
-    borderWidth: 1.2,
+    borderWidth: 1.5,
     borderColor: "#000000",
-    padding: 10,
+    padding: 16,
   },
 
-  // Chapter Headings
-  chapterHeader: {
-    alignItems: "center",
-    marginBottom: 25,
-    marginTop: 10,
+  // Signature section
+  signatureBlock: {
+    marginTop: 48,
+    alignItems: "flex-end",
   },
-  chapterTitle: {
-    fontSize: 24,
-    fontFamily: "Times-Bold",
-    textAlign: "center",
-    textTransform: "uppercase",
-    marginBottom: 2,
-  },
-  underline: {
-    width: 60,
-    height: 3,
-    backgroundColor: "#000000",
-    marginTop: 8,
-    alignSelf: "center",
+  signatureLine: {
+    width: 180,
+    borderTopWidth: 1.5,
+    borderTopColor: "#000000",
+    marginBottom: 6,
   },
 });
-

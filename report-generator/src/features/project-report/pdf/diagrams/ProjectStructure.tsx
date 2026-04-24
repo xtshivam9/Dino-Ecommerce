@@ -2,7 +2,7 @@ import { Svg, G, Rect, Text as SvgText, Line } from "@react-pdf/renderer";
 
 /**
  * Project Module Structure (Bond/Tree diagram)
- * Shows hierarchical decomposition of the dj-ecommerce system
+ * Shows hierarchical decomposition of the Dino-Ecommerce system
  */
 export default function ProjectStructure() {
   const width = 495;
@@ -15,7 +15,7 @@ export default function ProjectStructure() {
 
   // Root
   const root = {
-    label: "dj-ecommerce",
+    label: "Dino-Ecommerce 1.0",
     x: cx - productW / 2,
     y: 20,
     color: "#1e293b",
@@ -26,7 +26,7 @@ export default function ProjectStructure() {
     { label: "Frontend", x: 15, y: 85, color: "#2563eb" },
     { label: "API Layer", x: 120, y: 85, color: "#0891b2" },
     { label: "Business\nLogic", x: 225, y: 85, color: "#059669" },
-    { label: "Execution\nEngine", x: 330, y: 85, color: "#7c3aed" },
+    { label: "Payment\nGateway", x: 330, y: 85, color: "#7c3aed" },
     { label: "Data\nLayer", x: 420, y: 85, color: "#d97706" },
   ];
 
@@ -40,7 +40,7 @@ export default function ProjectStructure() {
   }[] = [
     // Frontend children
     {
-      label: "React Flow\nCanvas",
+      label: "Bootstrap\nCanvas",
       x: 0,
       y: 170,
       parentIdx: 0,
@@ -49,7 +49,7 @@ export default function ProjectStructure() {
     { label: "Dashboard\nUI", x: 0, y: 220, parentIdx: 0, color: "#3b82f6" },
     { label: "Auth\nPages", x: 0, y: 270, parentIdx: 0, color: "#3b82f6" },
     // API children
-    { label: "tRPC\nRouters", x: 105, y: 170, parentIdx: 1, color: "#06b6d4" },
+    { label: "Views\nRouters", x: 105, y: 170, parentIdx: 1, color: "#06b6d4" },
     {
       label: "REST\nEndpoints",
       x: 105,
@@ -66,7 +66,7 @@ export default function ProjectStructure() {
     },
     // Business children
     {
-      label: "Workflow\nManager",
+      label: "Order\nManager",
       x: 210,
       y: 170,
       parentIdx: 2,
@@ -74,26 +74,26 @@ export default function ProjectStructure() {
     },
     { label: "Team\nManager", x: 210, y: 220, parentIdx: 2, color: "#10b981" },
     {
-      label: "Credential\nVault",
+      label: "Product\nVault",
       x: 210,
       y: 270,
       parentIdx: 2,
       color: "#10b981",
     },
-    // Execution children
+    // Payment children
     {
-      label: "Inngest\nFunctions",
+      label: "Stripe\nFunctions",
       x: 315,
       y: 170,
       parentIdx: 3,
       color: "#8b5cf6",
     },
-    { label: "Model\nExecutor", x: 315, y: 220, parentIdx: 3, color: "#8b5cf6" },
+    { label: "Product\nExecutor", x: 315, y: 220, parentIdx: 3, color: "#8b5cf6" },
     { label: "AI\nProvider", x: 315, y: 270, parentIdx: 3, color: "#8b5cf6" },
     // Data children
-    { label: "Prisma\nORM", x: 420, y: 170, parentIdx: 4, color: "#f59e0b" },
+    { label: "Django ORM\nORM", x: 420, y: 170, parentIdx: 4, color: "#f59e0b" },
     {
-      label: "PostgreSQL\n(Neon)",
+      label: "SQLite\n(Neon)",
       x: 420,
       y: 220,
       parentIdx: 4,
@@ -101,7 +101,7 @@ export default function ProjectStructure() {
     },
   ];
 
-  function renderModel(
+  function renderProduct(
     label: string,
     x: number,
     y: number,
@@ -149,7 +149,7 @@ export default function ProjectStructure() {
   return (
     <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
       {/* Root product */}
-      {renderModel(root.label, root.x, root.y, root.color, productW + 15, 30)}
+      {renderProduct(root.label, root.x, root.y, root.color, productW + 15, 30)}
 
       {/* Root to L1 connections */}
       {l1.map((product, i) => (
@@ -168,7 +168,7 @@ export default function ProjectStructure() {
       {/* Level 1 products */}
       {l1.map((product, i) => (
         <G key={`l1-${i}`}>
-          {renderModel(product.label, product.x, product.y, product.color)}
+          {renderProduct(product.label, product.x, product.y, product.color)}
         </G>
       ))}
 
@@ -191,7 +191,7 @@ export default function ProjectStructure() {
       {/* Level 2 products */}
       {l2.map((product, i) => (
         <G key={`l2-${i}`}>
-          {renderModel(product.label, product.x, product.y, product.color, 75, 32)}
+          {renderProduct(product.label, product.x, product.y, product.color, 75, 32)}
         </G>
       ))}
 
@@ -212,7 +212,7 @@ export default function ProjectStructure() {
         textAnchor="middle"
         style={{ fontSize: 7, fontFamily: "Times-Roman", fill: "#555" }}
       >
-        5 Core Modules | 14 Sub-modules | 24 Model Types | 59 tRPC Procedures |
+        5 Core Modules | 14 Sub-modules | 24 Product Types | 59 Views Procedures |
         14 Database Models
       </SvgText>
 

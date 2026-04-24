@@ -1,7 +1,7 @@
 import { Svg, G, Rect, Text as SvgText, Line } from "@react-pdf/renderer";
 
 /**
- * Market Growth Bar Chart - Workflow automation market 2022-2030
+ * Market Growth Bar Chart - Indian E-commerce market 2022-2030
  * Fixed: CAGR text visible, proper spacing, no overlaps
  */
 export default function MarketGrowthChart() {
@@ -15,21 +15,21 @@ export default function MarketGrowthChart() {
   const chartH = 210;
 
   const data = [
-    { year: "2022", value: 9.4, projected: false },
-    { year: "2023", value: 11.5, projected: false },
-    { year: "2024", value: 13.6, projected: false },
-    { year: "2025", value: 16.8, projected: true },
-    { year: "2026", value: 20.6, projected: true },
-    { year: "2027", value: 25.3, projected: true },
-    { year: "2028", value: 31.0, projected: true },
-    { year: "2029", value: 38.0, projected: true },
-    { year: "2030", value: 46.2, projected: true },
+    { year: "2022", value: 74, projected: false },
+    { year: "2023", value: 90, projected: false },
+    { year: "2024", value: 112, projected: false },
+    { year: "2025", value: 133, projected: true },
+    { year: "2026", value: 160, projected: true },
+    { year: "2027", value: 188, projected: true },
+    { year: "2028", value: 220, projected: true },
+    { year: "2029", value: 260, projected: true },
+    { year: "2030", value: 325, projected: true },
   ];
 
-  const maxVal = 50;
+  const maxVal = 350;
   const barW = 34;
   const barGap = (chartW - data.length * barW) / (data.length + 1);
-  const yGridValues = [0, 10, 20, 30, 40, 50];
+  const yGridValues = [0, 50, 100, 150, 200, 250, 300, 350];
 
   return (
     <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
@@ -40,7 +40,7 @@ export default function MarketGrowthChart() {
         textAnchor="middle"
         style={{ fontSize: 11, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Global Workflow Automation Market Size (USD Billions)
+        Indian E-commerce Market Size (USD Billions)
       </SvgText>
 
       {/* CAGR annotation - positioned prominently */}
@@ -50,7 +50,7 @@ export default function MarketGrowthChart() {
         textAnchor="middle"
         style={{ fontSize: 9, fontFamily: "Times-Bold", fill: "#dc2626" }}
       >
-        CAGR: 22.5% (2022-2030)
+        CAGR: 19.4% (2022-2030)
       </SvgText>
 
       {/* Y-axis gridlines */}
@@ -99,9 +99,9 @@ export default function MarketGrowthChart() {
       {/* Trend line (dashed) */}
       <Line
         x1={chartX + barGap + barW / 2}
-        y1={chartY + chartH - (9.4 / maxVal) * chartH}
+        y1={chartY + chartH - (74 / maxVal) * chartH}
         x2={chartX + barGap + 8 * (barW + barGap) + barW / 2}
-        y2={chartY + chartH - (46.2 / maxVal) * chartH}
+        y2={chartY + chartH - (325 / maxVal) * chartH}
         stroke="#dc2626"
         strokeWidth={1}
         strokeDasharray="4,3"
@@ -217,7 +217,7 @@ export default function MarketGrowthChart() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: Workflow Automation Market Growth Projection
+        Figure: Indian E-commerce Market Growth Projection
       </SvgText>
     </Svg>
   );
