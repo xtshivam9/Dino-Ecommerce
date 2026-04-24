@@ -55,7 +55,7 @@
   var stripeTotal = Math.round(parseFloat('{{ order.get_total }}') * 100);
   
   var handler = StripeCheckout.configure({
-    key: 'pk_test_lX3r6OMjOU2yzFsNSHq6belT00EY82kZmH',
+    key: '{{ STRIPE_PUBLIC_KEY }}',
     image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
     locale: 'auto',
     token: function(token) {

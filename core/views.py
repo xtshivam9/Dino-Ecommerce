@@ -37,6 +37,11 @@ from core import forms
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
+def _stripe_configured():
+    key = (getattr(settings, 'STRIPE_SECRET_KEY', '') or '').strip()
+    return bool(key) and key != 'YOUR_STRIPE_SECRET_KEY_HERE'
+
+
 def send_contact_email(request):
     # Your email sending logic here
     return JsonResponse({'message': 'Email sent successfully'})
@@ -53,7 +58,8 @@ class PaymentView(View):
         if order.billing_address:
             context = {
                 'order': order,
-                'DISPLAY_COUPON_FORM': False
+                'DISPLAY_COUPON_FORM': False,
+                'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY,
             }
             return render(self.request, "payment.html", context)
         else:
@@ -66,8 +72,28 @@ class PaymentView(View):
         token = self.request.POST.get('stripeToken')
         amount = int(order.get_total() * 100)
         try:
+            if not _stripe_configured():
+                # Development fallback: process as dummy payment when Stripe secret is not configured.
+                payment = Payment()
+                payment.stripe_charge_id = "dummy_" + get_random_string(length=16)
+                payment.user = self.request.user
+                payment.amount = order.get_total()
+                payment.save()
+
+                order.ordered = True
+                order.payment = payment
+                order.ref_code = create_ref_code()
+                order.save()
+
+                messages.success(self.request, "Test payment successful (dummy mode).")
+                if self.request.headers.get('x-requested-with') == 'XMLHttpRequest' or self.request.GET.get('ajax') == '1':
+                    return JsonResponse({"status": "success", "message": "Dummy test payment successful"})
+                return redirect("/my-orders/?payment_success=1")
+
             if not token:
                 raise ValueError("Missing payment source (stripeToken). Please use the Recommended Dummy Payment for testing.")
+
+            stripe.api_key = settings.STRIPE_SECRET_KEY
             charge = stripe.Charge.create(
                 amount=amount,  # cents
                 currency="usd",
@@ -462,7 +488,8 @@ class CheckoutView(View):
                 'form': form,
                 'couponform': CouponForm(),
                 'order': order,
-                'DISPLAY_COUPON_FORM': True
+                'DISPLAY_COUPON_FORM': True,
+                'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY,
             }
             return render(self.request, "checkout.html", context)
 
@@ -512,7 +539,8 @@ class CheckoutView(View):
                     'form': form,
                     'couponform': CouponForm(),
                     'order': order,
-                    'DISPLAY_COUPON_FORM': True
+                    'DISPLAY_COUPON_FORM': True,
+                    'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY,
                 }
                 return render(self.request, "checkout.html", context)
 

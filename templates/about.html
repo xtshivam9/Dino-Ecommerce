@@ -1,428 +1,425 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us</title>
-    <style>
-      /* Timeline */
-      .timeline {
-        position: relative;
-        padding: 0;
-        list-style: none;
-      }
-      .timeline:before {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 40px;
-        width: 2px;
-        margin-left: -1.5px;
-        content: "";
-        background-color: #e9ecef;
-      }
-      .timeline > li {
-        position: relative;
-        min-height: 50px;
-        margin-bottom: 50px;
-      }
-      .timeline > li:after,
-      .timeline > li:before {
-        display: table;
-        content: " ";
-      }
-      .timeline > li:after {
-        clear: both;
-      }
-      .timeline > li .timeline-panel {
-        position: relative;
-        float: right;
-        width: 100%;
-        padding: 0 20px 0 100px;
-        text-align: left;
-      }
-      .timeline > li .timeline-panel:before {
-        right: auto;
-        left: -15px;
-        border-right-width: 15px;
-        border-left-width: 0;
-      }
-      .timeline > li .timeline-panel:after {
-        right: auto;
-        left: -14px;
-        border-right-width: 14px;
-        border-left-width: 0;
-      }
-      .timeline > li .timeline-image {
-        position: absolute;
-        z-index: 100;
-        left: 0;
-        width: 80px;
-        height: 80px;
-        margin-left: 0;
-        text-align: center;
-        color: white;
-        border: 7px solid #e9ecef;
-        border-radius: 100%;
-        background-color: #ffc800;
-      }
-      .timeline > li .timeline-image h4,
-      .timeline > li .timeline-image .h4 {
-        font-size: 10px;
-        line-height: 14px;
-        margin-top: 12px;
-      }
-      .timeline > li.timeline-inverted > .timeline-panel {
-        float: right;
-        padding: 0 20px 0 100px;
-        text-align: left;
-      }
-      .timeline > li.timeline-inverted > .timeline-panel:before {
-        right: auto;
-        left: -15px;
-        border-right-width: 15px;
-        border-left-width: 0;
-      }
-      .timeline > li.timeline-inverted > .timeline-panel:after {
-        right: auto;
-        left: -14px;
-        border-right-width: 14px;
-        border-left-width: 0;
-      }
-      .timeline > li:last-child {
-        margin-bottom: 0;
-      }
-      .timeline .timeline-heading h4,
-      .timeline .timeline-heading .h4 {
-        margin-top: 0;
-        color: inherit;
-      }
-      .timeline .timeline-heading h4.subheading,
-      .timeline .timeline-heading .subheading.h4 {
-        text-transform: none;
-      }
-      .timeline .timeline-body > ul,
-      .timeline .timeline-body > p {
-        margin-bottom: 0;
-      }
 
-      @media (min-width: 768px) {
-        .timeline:before {
-          left: 50%;
-        }
-        .timeline > li {
-          min-height: 100px;
-          margin-bottom: 100px;
-        }
-        .timeline > li .timeline-panel {
-          float: left;
-          width: 41%;
-          padding: 0 20px 20px 30px;
-          text-align: right;
-        }
-        .timeline > li .timeline-image {
-          left: 50%;
-          width: 100px;
-          height: 100px;
-          margin-left: -50px;
-        }
-        .timeline > li .timeline-image h4,
-        .timeline > li .timeline-image .h4 {
-          font-size: 13px;
-          line-height: 18px;
-          margin-top: 16px;
-        }
-        .timeline > li.timeline-inverted > .timeline-panel {
-          float: right;
-          padding: 0 30px 20px 20px;
-          text-align: left;
-        }
-      }
-      @media (min-width: 992px) {
-        .timeline > li {
-          min-height: 150px;
-        }
-        .timeline > li .timeline-panel {
-          padding: 0 20px 20px;
-        }
-        .timeline > li .timeline-image {
-          width: 150px;
-          height: 150px;
-          margin-left: -75px;
-        }
-        .timeline > li .timeline-image h4,
-        .timeline > li .timeline-image .h4 {
-          font-size: 18px;
-          line-height: 26px;
-          margin-top: 30px;
-        }
-        .timeline > li.timeline-inverted > .timeline-panel {
-          padding: 0 20px 20px;
-        }
-      }
-      @media (min-width: 1200px) {
-        .timeline > li {
-          min-height: 170px;
-        }
-        .timeline > li .timeline-panel {
-          padding: 0 20px 20px 100px;
-        }
-        .timeline > li .timeline-image {
-          width: 170px;
-          height: 170px;
-          margin-left: -85px;
-        }
-        .timeline > li .timeline-image h4,
-        .timeline > li .timeline-image .h4 {
-          margin-top: 40px;
-        }
-        .timeline > li.timeline-inverted > .timeline-panel {
-          padding: 0 100px 20px 20px;
-        }
-      }
+{% block head_title %}About Us{% endblock %}
 
-      .page-section {
-        padding: 6rem 0;
-      }
-      .page-section h2.section-heading,
-      .page-section .section-heading.h2 {
-        font-size: 2.5rem;
-        margin-top: 0;
-        margin-bottom: 1rem;
-      }
-      .page-section h3.section-subheading,
-      .page-section .section-subheading.h3 {
-        font-size: 1rem;
-        font-weight: 400;
-        font-style: italic;
-        font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont,
-          "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
-          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-          "Noto Color Emoji";
-        margin-bottom: 4rem;
-      }
+{% block content %}
+<style>
+  .about-page {
+    width: 100%;
+    padding: 2rem 0 4rem;
+    background:
+      radial-gradient(circle at top left, rgba(113, 127, 224, 0.08), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.04), transparent 28%),
+      linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  }
 
-      @media (min-width: 768px) {
-        section {
-          padding: 9rem 0;
-        }
-      }
+  .about-shell {
+    width: min(100%, 1480px);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
 
-      .text-center {
-        text-align: center !important;
-      }
+  .about-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+    gap: 32px;
+    align-items: center;
+    padding: 32px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  }
 
-      .page-section h2.section-heading,
-      .page-section .section-heading.h2 {
-        font-size: 2.5rem;
-        margin-top: 0;
-        margin-bottom: 1rem;
-      }
-      .text-uppercase {
-        text-transform: uppercase !important;
-      }
+  .about-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(113, 127, 224, 0.12);
+    color: #4f46e5;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
 
-      .page-section h3.section-subheading,
-      .page-section .section-subheading.h3 {
-        font-size: 1rem;
-        font-weight: 400;
-        font-style: italic;
-        font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont,
-          "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
-          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-          "Noto Color Emoji";
-        margin-bottom: 4rem;
-      }
+  .about-title {
+    font-size: clamp(2.4rem, 4vw, 4.7rem);
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+    color: #0f172a;
+    margin: 0 0 18px;
+    max-width: 12ch;
+  }
 
-      .text-muted {
-        --bs-text-opacity: 1;
-        color: #6c757d !important;
-      }
+  .about-lead {
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: #475569;
+    max-width: 66ch;
+    margin-bottom: 28px;
+  }
 
-      p {
-        line-height: 1.75;
-      }
-      @media (min-width: 1400px) {
-        .container-xxl,
-        .container-xl,
-        .container-lg,
-        .container-md,
-        .container-sm,
-        .container {
-          max-width: 1320px;
-        }
-      }
+  .about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
 
-      @media (min-width: 1200px) {
-        .container-xl,
-        .container-lg,
-        .container-md,
-        .container-sm,
-        .container {
-          max-width: 1140px;
-        }
-      }
+  .about-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
 
-      @media (min-width: 992px) {
-        .container-lg,
-        .container-md,
-        .container-sm,
-        .container {
-          max-width: 960px;
-        }
-      }
+  .about-button.primary {
+    background: #111827;
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.18);
+  }
 
-      @media (min-width: 768px) {
-        .container-md,
-        .container-sm,
-        .container {
-          max-width: 720px;
-        }
-      }
+  .about-button.secondary {
+    background: #fff;
+    color: #111827;
+    border: 1px solid rgba(17, 24, 39, 0.12);
+  }
 
-      @media (min-width: 576px) {
-        .container-sm,
-        .container {
-          max-width: 1100px;
-        }
-      }
+  .about-button:hover {
+    transform: translateY(-2px);
+  }
 
-      .container,
-      .container-fluid,
-      .container-xxl,
-      .container-xl,
-      .container-lg,
-      .container-md,
-      .container-sm {
-        width: 100%;
-        padding-right: var(--bs-gutter-x, 0.75rem);
-        padding-left: var(--bs-gutter-x, 0.75rem);
-        margin-right: auto;
-        margin-left: auto;
-      }
+  .about-card {
+    background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
+    color: #fff;
+    border-radius: 24px;
+    padding: 26px;
+    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.16);
+  }
 
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
+  .about-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-bottom: 18px;
+    background: rgba(255, 255, 255, 0.08);
+  }
 
-      div {
-        display: block;
-      }
+  .about-card-label {
+    display: inline-flex;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
 
-      .rounded-circle {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-    </style>
-  </head>
-  <body>
-    <section class="page-section" id="about">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="section-heading text-uppercase">About</h2>
-          <h3 class="section-subheading text-muted">
-            Building the future of online retail with passion and innovation.
-          </h3>
+  .about-card h3 {
+    font-size: 1.65rem;
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+
+  .about-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.75;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 24px;
+  }
+
+  .about-metric {
+    grid-column: span 3;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.05);
+  }
+
+  .about-metric strong {
+    display: block;
+    font-size: 2rem;
+    line-height: 1;
+    color: #111827;
+    margin-bottom: 10px;
+  }
+
+  .about-metric span {
+    color: #64748b;
+    line-height: 1.65;
+  }
+
+  .about-section {
+    margin-top: 30px;
+    padding: 34px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.06);
+  }
+
+  .section-heading {
+    font-size: 1.9rem;
+    line-height: 1.2;
+    color: #0f172a;
+    margin: 0 0 10px;
+  }
+
+  .section-subheading {
+    color: #64748b;
+    margin: 0 0 26px;
+    line-height: 1.75;
+    max-width: 72ch;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .story-item {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+    padding: 18px;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+  }
+
+  .story-item img {
+    width: 120px;
+    height: 120px;
+    border-radius: 18px;
+    object-fit: cover;
+  }
+
+  .story-meta {
+    color: #4f46e5;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+
+  .story-item h4 {
+    margin: 0 0 8px;
+    font-size: 1.25rem;
+    color: #0f172a;
+  }
+
+  .story-item p {
+    margin: 0;
+    color: #475569;
+    line-height: 1.7;
+  }
+
+  .story-cta {
+    margin-top: 22px;
+    padding: 24px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #111827 0%, #334155 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .story-cta h4 {
+    margin: 0 0 6px;
+    font-size: 1.3rem;
+  }
+
+  .story-cta p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: 1100px) {
+    .about-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .about-metric {
+      grid-column: span 6;
+    }
+
+    .story-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .about-page {
+      padding-top: 1rem;
+    }
+
+    .about-shell {
+      padding: 0 16px;
+    }
+
+    .about-hero,
+    .about-section {
+      padding: 22px;
+      border-radius: 22px;
+    }
+
+    .about-title {
+      max-width: none;
+    }
+
+    .about-metric {
+      grid-column: span 12;
+    }
+
+    .story-item {
+      grid-template-columns: 1fr;
+    }
+
+    .story-item img {
+      width: 100%;
+      height: 220px;
+    }
+  }
+</style>
+
+<section class="about-page">
+  <div class="about-shell">
+    <div class="about-hero">
+      <div>
+        <div class="about-kicker">Our story</div>
+        <h1 class="about-title">Built for shoppers who want style, value, and ease.</h1>
+        <p class="about-lead">
+          We started with a simple idea: online shopping should feel exciting, not complicated.
+          From everyday essentials to standout finds, we bring together products people actually want,
+          in a store that is easy to browse and pleasant to use.
+        </p>
+        <div class="about-actions">
+          <a href="/shop/" class="about-button primary">Shop now</a>
+          <a href="/" class="about-button secondary">Explore home</a>
         </div>
-        <ul class="timeline">
-          <li>
-            <div class="timeline-image">
-              <img
-                class="rounded-circle img-fluid"
-                src="{% static 'images/online-shopping-concept-shopping-cart-with-bags-and-big-computer-screen-flat-design-isolated-on-blue-background-free-vector.jpg' %}"
-                alt="..."
-              />
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>2009-2011</h4>
-                <h4 class="subheading">Our Humble Beginnings</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">
-                  We started with a simple vision: to make high-quality products accessible to everyone through a digital-first approach that prioritizes customer experience and style.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-inverted">
-            <div class="timeline-image">
-              <img
-                class="rounded-circle img-fluid"
-                src="{% static 'images/R.jpg' %}"
-                alt="..."
-              />
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>March 2024</h4>
-                <h4 class="subheading">An Agency is Born</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">
-                  By expanding our network and refining our internal logistics, we reached our first major milestone of serving over 10,000 happy customers across the globe.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-image">
-              <img
-                class="rounded-circle img-fluid"
-                src="{% static 'images/computer-monitor-with-hands-sell-and-buy-online-vector-4382233.jpg' %}"
-                alt="..."
-              />
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>December 2025</h4>
-                <h4 class="subheading">Transition to Full Service</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">
-                  Our transition to a full-service e-commerce platform allowed us to integrate advanced features like real-time order tracking and AI-driven personalized recommendations.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-inverted">
-            <div class="timeline-image">
-              <img
-                class="rounded-circle img-fluid"
-                src="{% static 'images/digital-marketing-design-vector-5185435.jpg' %}"
-                alt="..."
-              />
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>July 2026</h4>
-                <h4 class="subheading">Phase Two Expansion</h4>
-              </div>
-              <div class="timeline-body">
-                <p class="text-muted">
-                  Today, we continue to bridge the gap between global brands and quality-conscious consumers, redefining what it means to shop online in the modern era.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="timeline-inverted">
-            <div class="timeline-image">
-              <h4>
-                Be Part
-                <br />
-                Of Our
-                <br />
-                Story!
-              </h4>
-            </div>
-          </li>
-        </ul>
       </div>
-    </section>
-  </body>
-</html>
+
+      <div class="about-card">
+        <img
+          src="{% static 'images/online-shopping-concept-shopping-cart-with-bags-and-big-computer-screen-flat-design-isolated-on-blue-background-free-vector.jpg' %}"
+          alt="Online shopping concept"
+        />
+        <div class="about-card-label">Shopping story</div>
+        <h3>Helping customers find the right product without the usual hassle.</h3>
+        <p>
+          Our store is shaped around the shopping journey: clear product discovery, simple navigation,
+          trustworthy checkout, and a layout that keeps everything easy to understand on any device.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-metric">
+        <strong>10K+</strong>
+        <span>Orders completed with a focus on smooth shopping and reliable service.</span>
+      </div>
+      <div class="about-metric">
+        <strong>24/7</strong>
+        <span>Always ready for browsing, buying, and support when customers need it.</span>
+      </div>
+      <div class="about-metric">
+        <strong>Wide</strong>
+        <span>A wide, well-spaced layout that makes product discovery feel open and clear.</span>
+      </div>
+      <div class="about-metric">
+        <strong>Fast</strong>
+        <span>Built for quick browsing so customers can move from product to checkout faster.</span>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h2 class="section-heading">How the shop grew</h2>
+      <p class="section-subheading">
+      This version keeps the same milestone structure, but rewrites the story around online shopping,
+      product discovery, and the experience of building an e-commerce brand customers can trust.
+      </p>
+
+      <div class="story-grid">
+        <div class="story-item">
+          <img src="{% static 'images/online-shopping-concept-shopping-cart-with-bags-and-big-computer-screen-flat-design-isolated-on-blue-background-free-vector.jpg' %}" alt="Early stage of the business" />
+          <div>
+            <div class="story-meta">2009-2011</div>
+            <h4>Starting with everyday shopping needs</h4>
+            <p>
+              The journey began by focusing on the products people search for most often and making them
+              easier to find, compare, and buy online.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-item">
+          <img src="{% static 'images/R.jpg' %}" alt="Growth milestone" />
+          <div>
+            <div class="story-meta">March 2024</div>
+            <h4>A clearer shopping experience takes shape</h4>
+            <p>
+              As the catalog expanded, we refined the store layout, improved product presentation, and made
+              the buying journey feel more dependable for returning customers.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-item">
+          <img src="{% static 'images/computer-monitor-with-hands-sell-and-buy-online-vector-4382233.jpg' %}" alt="Transition to full service" />
+          <div>
+            <div class="story-meta">December 2025</div>
+            <h4>From browsing to checkout, everything became smoother</h4>
+            <p>
+              We introduced a more complete shopping flow with better navigation, stronger order tracking,
+              and a checkout experience designed to feel simple and familiar.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-item">
+          <img src="{% static 'images/digital-marketing-design-vector-5185435.jpg' %}" alt="Expansion milestone" />
+          <div>
+            <div class="story-meta">July 2026</div>
+            <h4>Growing into a bigger destination for shoppers</h4>
+            <p>
+              Today we continue to grow with fresh collections, smarter merchandising, and a cleaner store
+              experience that keeps shopping simple and enjoyable.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-cta">
+        <div>
+          <h4>Find your next favorite product</h4>
+          <p>Explore the catalog and discover a shopping experience built around comfort and clarity.</p>
+        </div>
+        <a href="/shop/" class="about-button primary">Browse products</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

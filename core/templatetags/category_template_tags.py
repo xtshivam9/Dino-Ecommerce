@@ -42,11 +42,12 @@ def categories_div():
     item_div_list = ""
     for i, j in enumerate(items):
         item_div_list += f"""
-        <div class="tight-gallery-item item-{i}">
-            <div class="block1 hov-img-zoom pos-relative">
+        <div class="tight-gallery-item item-{i}" style="--stagger:{i};">
+            <div class="block1 category-card pos-relative">
                 <img src="/media/{j.image}" alt="{j.title}">
-                <div class="block1-wrapbtn w-size2">
-                    <a href="/category/{j.slug}" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                <div class="category-card-overlay">
+                    <span class="category-card-kicker">Shop Category</span>
+                    <a href="/category/{j.slug}" class="category-card-cta">
                         {j.title}
                     </a>
                 </div>

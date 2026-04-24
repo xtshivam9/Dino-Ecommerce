@@ -86,11 +86,36 @@
 
 <!-- Category start -->
 <style>
-  .hov1 {
-    background-color: white !important;
-    color: black !important;
+  .slide1 {
+    margin-bottom: 0 !important;
   }
-  
+
+  .category-marquee {
+    margin: 0;
+    padding: 10px 0;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .category-marquee-track {
+    display: inline-block;
+    min-width: 100%;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    animation: marquee-scroll 20s linear infinite;
+  }
+
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
   .category-tight-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -105,23 +130,127 @@
     overflow: hidden;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    animation: category-reveal 0.6s ease forwards;
+    animation-delay: calc(var(--stagger, 0) * 90ms);
   }
 
-  .tight-gallery-item .block1 {
+  .tight-gallery-item .block1,
+  .category-card {
     width: 100%;
     height: 100%;
     margin-bottom: 0 !important;
+    border-radius: 0;
+    position: relative;
+  }
+
+  .category-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 20%, rgba(0, 0, 0, 0.55) 100%);
+    z-index: 1;
+    transition: opacity 0.35s ease;
+  }
+
+  .category-card::after {
+    content: "";
+    position: absolute;
+    top: -120%;
+    left: -50%;
+    width: 40%;
+    height: 300%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+    transform: rotate(20deg);
+    z-index: 3;
+    transition: transform 0.9s ease;
+    pointer-events: none;
   }
 
   .tight-gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.7s ease, filter 0.5s ease;
   }
-  
+
   .tight-gallery-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.08);
+    filter: saturate(1.15) contrast(1.05);
+  }
+
+  .tight-gallery-item:hover .category-card::after {
+    transform: rotate(20deg) translateX(230%);
+  }
+
+  .tight-gallery-item:hover .category-card::before {
+    opacity: 0.82;
+  }
+
+  .category-card-overlay {
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    transform: translateY(10px);
+    transition: transform 0.35s ease;
+  }
+
+  .tight-gallery-item:hover .category-card-overlay {
+    transform: translateY(0);
+  }
+
+  .category-card-kicker {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(4px);
+  }
+
+  .category-card-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 170px;
+    max-width: 92%;
+    padding: 11px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #111827 !important;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+  }
+
+  .tight-gallery-item:hover .category-card-cta {
+    transform: translateY(-2px);
+    background: #111827;
+    color: #ffffff !important;
+  }
+
+  @keyframes category-reveal {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
 
   /* Masonry / Bento specific alignments for 5 items */
@@ -147,6 +276,11 @@
     .tight-gallery-item.item-2 { grid-column: 2 / 3; grid-row: 3 / 4; }
     .tight-gallery-item.item-3 { grid-column: 1 / 2; grid-row: 4 / 5; }
     .tight-gallery-item.item-4 { grid-column: 2 / 3; grid-row: 4 / 5; }
+
+    .category-card-cta {
+      font-size: 17px;
+      min-width: 150px;
+    }
   }
 
   @media (max-width: 576px) {
@@ -158,9 +292,25 @@
       grid-column: 1 / 2 !important;
       grid-row: auto !important;
     }
+
+    .category-card-overlay {
+      padding: 14px 14px 16px;
+    }
+
+    .category-card-cta {
+      font-size: 16px;
+      min-width: 135px;
+      padding: 10px 14px;
+    }
   }
 </style>
-<section class="banner bgwhite p-t-40 p-b-40" style="overflow: hidden;">
+<section class="category-marquee" aria-label="Shop updates marquee">
+  <div class="category-marquee-track">
+    NEW ARRIVALS • FREE SHIPPING ON ELIGIBLE ORDERS • WATCHES • BAGS • DRESSES • ACCESSORIES • CASUAL WEAR • NEW ARRIVALS • FREE SHIPPING ON ELIGIBLE ORDERS • WATCHES • BAGS • DRESSES • ACCESSORIES • CASUAL WEAR
+  </div>
+</section>
+
+<section class="banner bgwhite p-t-0 p-b-0" style="overflow: hidden; margin: 0;">
   <div class="container-fluid p-0">
     {% categories_div %}
 

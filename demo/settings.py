@@ -150,8 +150,10 @@ SOCIALACCOUNT_PROVIDERS = {
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-STRIPE_PUBLIC_KEY = 'pk_test_lX3r6OMjOU2yzFsNSHq6belT00EY82kZmH'
-STRIPE_SECRET_KEY = 'YOUR_STRIPE_SECRET_KEY_HERE'
+# Stripe
+# Keep a safe test default for the publishable key and read secret key from env.
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', 'pk_test_lX3r6OMjOU2yzFsNSHq6belT00EY82kZmH')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 
 # settings.py
 

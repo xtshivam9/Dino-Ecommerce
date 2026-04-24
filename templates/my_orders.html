@@ -1,97 +1,380 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
+<style>
+/* CSS Reset / Base Setup */
+.orders-page {
+  width: 100%;
+  padding: 3rem 0 5rem;
+  background:
+    radial-gradient(circle at top right, rgba(113, 127, 224, 0.08), transparent 35%),
+    radial-gradient(circle at bottom left, rgba(17, 24, 39, 0.04), transparent 40%),
+    #f8fafc;
+  min-height: 80vh;
+}
+.orders-container {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.orders-header {
+  margin-bottom: 30px;
+}
+.orders-title {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+.orders-subtitle {
+  color: #64748b;
+  font-size: 1.05rem;
+}
 
-<div class="container" style="padding-top: 60px; padding-bottom: 80px; min-height: 60vh;">
-  <div class="row">
-    <div class="col-lg-12">
+/* Card Styles */
+.order-card {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.order-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: #f8fafc;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.order-date-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.order-date-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.order-date {
+  font-size: 1.1rem;
+  color: #0f172a;
+  font-weight: 700;
+}
+.order-total-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.order-total {
+  font-size: 1.25rem;
+  color: #4f46e5;
+  font-weight: 800;
+}
 
-      <div class="d-flex align-items-center mb-4">
-        <i class="fas fa-box mr-3" style="font-size: 28px; color: #717fe0;"></i>
-        <h2 class="mb-0" style="font-weight: 700; font-size: 28px;">My Orders</h2>
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.status-refunded {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+.status-requested {
+  background: #fffbeb;
+  color: #d97706;
+  border: 1px solid #fde68a;
+}
+.status-delivered {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+.status-transit {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+.status-processing {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+/* Item List */
+.order-body {
+  padding: 0;
+}
+.order-item-row {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+  gap: 16px;
+}
+.order-item-row:last-child {
+  border-bottom: none;
+}
+.item-img-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f1f5f9;
+  flex-shrink: 0;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+}
+.item-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.item-details {
+  flex-grow: 1;
+}
+.item-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.item-meta {
+  font-size: 0.95rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.item-price {
+  font-weight: 700;
+  color: #334155;
+}
+
+/* Footer */
+.order-footer {
+  padding: 16px 24px;
+  background: #fff;
+  border-top: 1px solid rgba(15, 23, 42, 0.04);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ref-code-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px dashed #cbd5e1;
+}
+.ref-label {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.ref-value {
+  font-size: 0.95rem;
+  font-family: monospace;
+  color: #0f172a;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Empty State */
+.empty-state {
+  background: #fff;
+  border-radius: 24px;
+  padding: 60px 30px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.empty-icon {
+  width: 90px;
+  height: 90px;
+  background: #eff6ff;
+  color: #4f46e5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin-bottom: 24px;
+}
+.empty-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+.empty-text {
+  font-size: 1.1rem;
+  color: #64748b;
+  max-width: 400px;
+  margin-bottom: 30px;
+}
+.btn-primary-gradient {
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+}
+.btn-primary-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.35);
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .order-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .ref-code-wrap {
+    justify-content: center;
+  }
+}
+</style>
+
+<div class="orders-page">
+  <div class="orders-container">
+    
+    <div class="orders-header">
+      <h1 class="orders-title">My Orders</h1>
+      <p class="orders-subtitle">View and track all your recent purchases.</p>
+    </div>
+
+    {% if orders %}
+      
+      {% for order in orders %}
+      <div class="order-card">
+        
+        <div class="order-header">
+          <div class="order-date-wrap">
+            <span class="order-date-label">Order Placed</span>
+            <span class="order-date">{{ order.ordered_date|date:"F j, Y" }}</span>
+          </div>
+          
+          <div class="order-total-wrap">
+            <span class="order-date-label">Total Amount</span>
+            <span class="order-total">${{ order.get_total|floatformat:2 }}</span>
+          </div>
+
+          <div>
+            {% if order.refund_granted %}
+              <span class="status-badge status-refunded">
+                <i class="fas fa-undo"></i> Refund Granted
+              </span>
+            {% elif order.refund_requested %}
+              <span class="status-badge status-requested">
+                <i class="fas fa-clock"></i> Refund Requested
+              </span>
+            {% elif order.received %}
+              <span class="status-badge status-delivered">
+                <i class="fas fa-check-circle"></i> Delivered
+              </span>
+            {% elif order.being_delivered %}
+              <span class="status-badge status-transit">
+                <i class="fas fa-truck"></i> In Transit
+              </span>
+            {% else %}
+              <span class="status-badge status-processing">
+                <i class="fas fa-box"></i> Processing
+              </span>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="order-body">
+          {% for order_item in order.items.all %}
+          <div class="order-item-row">
+            <div class="item-img-wrap">
+              {% if order_item.item.image %}
+                <img src="{{ order_item.item.image.url }}" alt="{{ order_item.item.title }}">
+              {% else %}
+                <i class="fas fa-image" style="font-size: 24px; color: #cbd5e1; display: flex; align-items: center; justify-content: center; height: 100%;"></i>
+              {% endif %}
+            </div>
+            <div class="item-details">
+              <div class="item-title">{{ order_item.item.title }}</div>
+              <div class="item-meta">
+                <span style="font-weight: 700; color: #475569;">Qty: {{ order_item.quantity }}</span>
+                <span>&bull;</span>
+                <span class="item-price">
+                  {% if order_item.item.discount_price %}
+                    ${{ order_item.get_total_discount_item_price|floatformat:2 }}
+                  {% else %}
+                    ${{ order_item.get_total_item_price|floatformat:2 }}
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="order-footer">
+          <div class="ref-code-wrap">
+            <span class="ref-label">Order Ref:</span>
+            <span class="ref-value">{{ order.ref_code|upper }}</span>
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+
+    {% else %}
+      
+      <div class="empty-state">
+        <div class="empty-icon">
+          <i class="fas fa-box-open"></i>
+        </div>
+        <h2 class="empty-title">No orders yet</h2>
+        <p class="empty-text">You haven't placed any orders. Discover our premium collection and make your first purchase.</p>
+        <a href="/shop/" class="btn-primary-gradient">
+          Browse the Shop
+        </a>
       </div>
 
-      {% if orders %}
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">Ref Code</th>
-                <th scope="col">Date</th>
-                <th scope="col">Items</th>
-                <th scope="col">Total</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for order in orders %}
-              <tr>
-                <td>
-                  <span class="badge badge-secondary" style="font-size: 13px; letter-spacing: 0.5px;">
-                    {{ order.ref_code|upper }}
-                  </span>
-                </td>
-                <td style="vertical-align: middle;">
-                  {{ order.ordered_date|date:"d M Y" }}
-                </td>
-                <td style="vertical-align: middle;">
-                  <ul class="list-unstyled mb-0">
-                    {% for order_item in order.items.all %}
-                    <li style="font-size: 14px;">
-                      <span class="font-weight-bold">{{ order_item.quantity }}×</span>
-                      {{ order_item.item.title }}
-                      {% if order_item.item.discount_price %}
-                        <small class="text-muted ml-1">${{ order_item.get_total_discount_item_price }}</small>
-                      {% else %}
-                        <small class="text-muted ml-1">${{ order_item.get_total_item_price }}</small>
-                      {% endif %}
-                    </li>
-                    {% endfor %}
-                  </ul>
-                </td>
-                <td style="vertical-align: middle; font-weight: 700;">
-                  ${{ order.get_total }}
-                </td>
-                <td style="vertical-align: middle;">
-                  {% if order.refund_granted %}
-                    <span class="badge badge-info" style="font-size: 12px; padding: 6px 10px;">
-                      <i class="fas fa-undo mr-1"></i> Refund Granted
-                    </span>
-                  {% elif order.refund_requested %}
-                    <span class="badge badge-warning" style="font-size: 12px; padding: 6px 10px;">
-                      <i class="fas fa-clock mr-1"></i> Refund Requested
-                    </span>
-                  {% elif order.received %}
-                    <span class="badge badge-success" style="font-size: 12px; padding: 6px 10px;">
-                      <i class="fas fa-check-circle mr-1"></i> Delivered
-                    </span>
-                  {% elif order.being_delivered %}
-                    <span class="badge badge-primary" style="font-size: 12px; padding: 6px 10px;">
-                      <i class="fas fa-truck mr-1"></i> In Transit
-                    </span>
-                  {% else %}
-                    <span class="badge badge-secondary" style="font-size: 12px; padding: 6px 10px;">
-                      <i class="fas fa-box mr-1"></i> Processing
-                    </span>
-                  {% endif %}
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      {% else %}
-        <div class="text-center py-5">
-          <i class="fas fa-box-open" style="font-size: 64px; color: #ccc;"></i>
-          <h4 class="mt-4 text-muted">No orders yet</h4>
-          <p class="text-muted">You haven't placed any orders. Start shopping!</p>
-          <a href="/shop/" class="btn btn-primary mt-2" style="background-color: #717fe0; border-color: #717fe0;">
-            Browse Shop
-          </a>
-        </div>
-      {% endif %}
+    {% endif %}
 
-    </div>
   </div>
 </div>
 

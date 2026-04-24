@@ -1,75 +1,519 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
+<style>
+  .order-page {
+    width: 100%;
+    padding: 1rem 0 3rem;
+    background:
+      radial-gradient(circle at top left, rgba(113, 127, 224, 0.12), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(17, 24, 39, 0.06), transparent 26%),
+      linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  }
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h2>Order Summary</h2>
-      {% if object and object.items.count > 0 %}
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Qty</th>
-            <th scope="col">Total Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for order_item in object.items.all %}
-          <tr>
-            <th scope="row">{{ forloop.counter }}</th>
-            <td>
-			<img src="{{ order_item.item.image.url }}" style="width: 130px;"> 
-            </td>
-            <td>{{ order_item.item.title }}</td>
-            <td>${{ order_item.item.price }}</td>
-            <td>
-            	<a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}"><i class="fas fa-minus mr-3"></i></a>
-            	{{ order_item.quantity }}
-            	<a href="{% url 'core:add-to-cart' order_item.item.slug %}"><i class="fas fa-plus ml-3"></i></a>
-            </td>
-            <td>
-              {% if order_item.item.discount_price %}
-                  ${{ order_item.get_total_discount_item_price }}
-                  <span class="badge badge-primary">  Saving ${{ order_item.get_amount_saved }}</span>
-              {% else %}
-                  ${{ order_item.get_total_item_price }}
-              {% endif %}
-              <a style="color: red" href="{% url 'core:remove-from-cart' order_item.item.slug %}">
-              	<i class="fas fa-trash float-right"></i>
-              </a>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-        {% if object.coupon %}
-        <tr>
-          <td colspan="5"><b>Coupon : </b></td>
-          <td>- ${{ object.coupon.amount }}</td>
-        </tr>
-        {% endif%}
-        <tr>
-        	<td colspan="5"><b>Order Total : </b></td>
-        	<td><b>${{ object.get_total }}</b></td>
-        </tr>
-        <tr>
-        	<td colspan="5">
-        		<a href="/checkout" class="btn btn-warning float-right ml-2">Checkout</a>
-        		<a href="/shop/" class="btn btn-primary float-right">Continue Shopping</a>
-        	</td>
-        </tr>
-      </table>
-      {% else %}
-      <div class="text-center py-5">
-        <h4 class="mb-4">Your cart is empty</h4>
-        <a href="/shop/" class="btn btn-primary">Continue Shopping</a>
+  .order-shell {
+    width: min(100%, 1360px);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .order-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: 20px;
+    align-items: center;
+    padding: 24px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #111827 0%, #334155 100%);
+    color: #fff;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+  }
+
+  .order-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .order-title {
+    font-size: clamp(2rem, 3.2vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+    margin: 0 0 12px;
+    max-width: 12ch;
+  }
+
+  .order-lead {
+    max-width: 60ch;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 0;
+  }
+
+  .order-banner {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 16px;
+  }
+
+  .order-banner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .order-banner-stat {
+    border-radius: 14px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .order-banner-stat strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .order-banner-stat span {
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .order-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: start;
+  }
+
+  .order-panel,
+  .order-summary-card,
+  .order-empty {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  }
+
+  .order-panel {
+    padding: 18px;
+  }
+
+  .order-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .order-panel-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #0f172a;
+  }
+
+  .order-count {
+    color: #64748b;
+    font-size: 0.95rem;
+  }
+
+  .order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .order-item {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 16px;
+    padding: 14px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+  }
+
+  .order-item img {
+    width: 110px;
+    height: 110px;
+    border-radius: 16px;
+    object-fit: cover;
+    background: #fff;
+  }
+
+  .order-item-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: start;
+    margin-bottom: 8px;
+  }
+
+  .order-item-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .order-item-meta {
+    color: #64748b;
+    font-size: 0.94rem;
+    margin-top: 4px;
+  }
+
+  .order-item-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+    white-space: nowrap;
+  }
+
+  .order-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .order-qty {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  .qty-link,
+  .remove-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .qty-link {
+    background: #e0e7ff;
+    color: #3730a3;
+  }
+
+  .remove-link {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+
+  .qty-link:hover,
+  .remove-link:hover {
+    transform: translateY(-1px);
+  }
+
+  .order-subtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    margin-top: 12px;
+  }
+
+  .order-subtotal span {
+    color: #475569;
+    font-size: 0.95rem;
+  }
+
+  .order-subtotal strong {
+    color: #0f172a;
+    font-size: 1rem;
+  }
+
+  .badge-saving {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+
+  .order-summary-card {
+    position: sticky;
+    top: 108px;
+    padding: 18px;
+  }
+
+  .order-summary-card h3 {
+    margin: 0 0 12px;
+    font-size: 1.15rem;
+    color: #0f172a;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    color: #334155;
+  }
+
+  .summary-row:last-of-type {
+    border-bottom: 0;
+  }
+
+  .summary-row.total {
+    font-weight: 800;
+    color: #0f172a;
+    font-size: 1.05rem;
+  }
+
+  .summary-coupon {
+    color: #16a34a;
+    font-weight: 700;
+  }
+
+  .order-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .order-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .order-button.primary {
+    background: #111827;
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(17, 24, 39, 0.18);
+  }
+
+  .order-button.secondary {
+    background: #fff;
+    color: #111827;
+    border: 1px solid rgba(17, 24, 39, 0.12);
+  }
+
+  .order-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .order-empty {
+    padding: 40px 24px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .order-empty h4 {
+    margin: 0 0 10px;
+    font-size: 1.4rem;
+    color: #0f172a;
+  }
+
+  .order-empty p {
+    margin: 0 0 18px;
+    color: #64748b;
+  }
+
+  @media (max-width: 1100px) {
+    .order-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .order-summary-card {
+      position: relative;
+      top: 0;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .order-shell {
+      padding: 0 16px;
+    }
+
+    .order-hero {
+      grid-template-columns: 1fr;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    .order-banner-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .order-item {
+      grid-template-columns: 1fr;
+    }
+
+    .order-item img {
+      width: 100%;
+      height: 220px;
+    }
+
+    .order-item-top {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<section class="order-page">
+  <div class="order-shell">
+    <div class="order-hero">
+      <div>
+        <div class="order-kicker">Your cart</div>
+        <h1 class="order-title">Order summary</h1>
+        <p class="order-lead">
+          Review the products in your cart, adjust quantities, remove items, and continue to checkout when you're ready.
+        </p>
       </div>
-      {% endif %}
+      <div class="order-banner">
+        <div class="order-banner-grid">
+          <div class="order-banner-stat">
+            <strong>Review</strong>
+            <span>Check items before placing the order.</span>
+          </div>
+          <div class="order-banner-stat">
+            <strong>Update</strong>
+            <span>Change quantity or remove items quickly.</span>
+          </div>
+          <div class="order-banner-stat">
+            <strong>Checkout</strong>
+            <span>Move on once the cart looks right.</span>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
+    {% if object and object.items.count > 0 %}
+    <div class="order-layout">
+      <div class="order-panel">
+        <div class="order-panel-header">
+          <h2>Items in your cart</h2>
+          <div class="order-count">{{ object.items.count }} item{{ object.items.count|pluralize }}</div>
+        </div>
+
+        <div class="order-items">
+          {% for order_item in object.items.all %}
+          <div class="order-item">
+            <img src="{{ order_item.item.image.url }}" alt="{{ order_item.item.title }}">
+            <div>
+              <div class="order-item-top">
+                <div>
+                  <h3 class="order-item-title">{{ order_item.item.title }}</h3>
+                  <div class="order-item-meta">{{ order_item.item.description_short }}</div>
+                </div>
+                <div class="order-item-price">
+                  {% if order_item.item.discount_price %}
+                    ${{ order_item.get_total_discount_item_price }}
+                  {% else %}
+                    ${{ order_item.get_total_item_price }}
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="order-item-controls">
+                <div class="order-qty">
+                  <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}" class="qty-link" aria-label="Decrease quantity">
+                    <i class="fas fa-minus"></i>
+                  </a>
+                  <span>{{ order_item.quantity }}</span>
+                  <a href="{% url 'core:add-to-cart' order_item.item.slug %}" class="qty-link" aria-label="Increase quantity">
+                    <i class="fas fa-plus"></i>
+                  </a>
+                </div>
+                <a style="text-decoration: none;" href="{% url 'core:remove-from-cart' order_item.item.slug %}" class="remove-link" aria-label="Remove item">
+                  <i class="fas fa-trash"></i>
+                </a>
+                {% if order_item.item.discount_price %}
+                  <span class="badge-saving">Saving ${{ order_item.get_amount_saved }}</span>
+                {% endif %}
+              </div>
+
+              <div class="order-subtotal">
+                <span>Unit price</span>
+                <strong>
+                  {% if order_item.item.discount_price %}
+                    ${{ order_item.item.discount_price }}
+                  {% else %}
+                    ${{ order_item.item.price }}
+                  {% endif %}
+                </strong>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <aside class="order-summary-card">
+        <h3>Summary</h3>
+        <div class="summary-row">
+          <span>Items</span>
+          <span>{{ object.items.count }}</span>
+        </div>
+        {% if object.coupon %}
+        <div class="summary-row">
+          <span>Coupon</span>
+          <span class="summary-coupon">- ${{ object.coupon.amount }}</span>
+        </div>
+        {% endif %}
+        <div class="summary-row total">
+          <span>Order total</span>
+          <span>${{ object.get_total }}</span>
+        </div>
+
+        <div class="order-actions">
+          <a href="/checkout" class="order-button primary">Checkout</a>
+          <a href="/shop/" class="order-button secondary">Continue shopping</a>
+        </div>
+      </aside>
+    </div>
+    {% else %}
+    <div class="order-empty">
+      <h4>Your cart is empty</h4>
+      <p>Start browsing the shop and add products to your cart.</p>
+      <a href="/shop/" class="order-button primary">Continue shopping</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
 {% endblock content %}
