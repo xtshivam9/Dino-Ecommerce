@@ -7,10 +7,6 @@ __pycache__/
 *.pyo
 *.pyd
 .env
-db.sqlite3
-media_root/
-static_root/
-staticfiles/
 temp*.py
 .DS_Store
 temp/
