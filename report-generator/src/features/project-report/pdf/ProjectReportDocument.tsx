@@ -40,7 +40,7 @@ import Annexures from "./sections/Annexures";
 export default function ProjectReportDocument() {
   return (
     <Document
-      title="Dino-Ecommerce - Project Report"
+      title="AROWAI 1.0 - Project Report"
       author="Rutashman Sharma & Lovejinder Singh"
       subject="BCA Final Year Project Report"
       keywords="ecommerce, django, project report, BCA"

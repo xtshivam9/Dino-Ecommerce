@@ -1,6 +1,6 @@
 "use client";
 
-import { View, Text } from "@react-pdf/renderer";
+import { View, Text, Image } from "@react-pdf/renderer";
 import { styles } from "../styles";
 import BookPageLayout from "../components/BookPageLayout";
 
@@ -43,47 +43,97 @@ export default function OutputScreens() {
       </View>
 
       <Text style={styles.paragraphIndent}>
-        This chapter presents the visual output of the Dino-Ecommerce platform, illustrating the user interface and overall user experience from initial product discovery to final checkout. Note: Actual screenshot images are intended to be inserted here in the final compiled document.
+        This chapter presents the visual output of the AROWAI 1.0 platform, illustrating the user interface from product discovery to checkout.
       </Text>
 
-      <Text style={styles.h2}>11.1 Home Page / Product Catalog</Text>
+      {/* 11.1 Home Page */}
+      <Text style={styles.h2}>11.1 Home Page</Text>
       <Text style={styles.paragraph}>
-        The homepage acts as the primary storefront, featuring a responsive grid layout of available products built with Bootstrap 4 cards. It includes a promotional carousel banner at the top and category filtering options.
+        The homepage features a hero banner, category navigation, and a responsive product grid showcasing the latest items.
       </Text>
-      <View style={{ height: 250, backgroundColor: "#f0f0f0", borderWidth: 1, borderColor: "#cccccc", borderStyle: "dashed", justifyContent: "center", alignItems: "center", marginBottom: 12, marginTop: 12 }}>
-        <Text style={{ fontFamily: "Times-Italic", color: "#888888", fontSize: 10 }}>[ Placeholder: Screenshot of Homepage with Product Grid ]</Text>
+      <View style={{ alignItems: "center", marginVertical: 10 }}>
+        <Image
+          style={{ width: 380, objectFit: "contain", borderWidth: 1, borderColor: "#dddddd" }}
+          src="/outputs/home.png"
+        />
+        <Text style={{ fontSize: 9, fontFamily: "Times-Italic", color: "#666666", marginTop: 6 }}>
+          Figure 11.1: AROWAI 1.0 Homepage
+        </Text>
       </View>
 
-      <Text style={styles.h2}>11.2 Product Detail Page</Text>
+      {/* 11.2 Product Catalog */}
+      <Text style={styles.h2}>11.2 Product Catalog</Text>
       <Text style={styles.paragraph}>
-        Clicking on a specific item opens the Product Detail page. This view provides high-resolution imagery, descriptive text, pricing (including strikethrough logic for discounted items), and the primary "Add to Cart" call-to-action button.
+        The shop page displays all available products in a clean grid layout with category filters and pagination.
       </Text>
-      <View style={{ height: 250, backgroundColor: "#f0f0f0", borderWidth: 1, borderColor: "#cccccc", borderStyle: "dashed", justifyContent: "center", alignItems: "center", marginBottom: 12, marginTop: 12 }}>
-        <Text style={{ fontFamily: "Times-Italic", color: "#888888", fontSize: 10 }}>[ Placeholder: Screenshot of Single Product Detail View ]</Text>
+      <View style={{ alignItems: "center", marginVertical: 10 }}>
+        <Image
+          style={{ width: 380, objectFit: "contain", borderWidth: 1, borderColor: "#dddddd" }}
+          src="/outputs/products.png"
+        />
+        <Text style={{ fontSize: 9, fontFamily: "Times-Italic", color: "#666666", marginTop: 6 }}>
+          Figure 11.2: Product Catalog Page
+        </Text>
       </View>
 
-      <Text style={styles.h2}>11.3 Order Summary (Shopping Cart)</Text>
+      {/* 11.3 Single Product Detail */}
+      <Text style={styles.h2}>11.3 Product Detail Page</Text>
       <Text style={styles.paragraph}>
-        The Cart view displays a tabular summary of selected items. It features interactive controls to increment, decrement, or delete items, with the subtotal updating dynamically.
+        The detail view provides product imagery, pricing with discount badges, size/color selectors, and a quantity control with Add to Cart functionality.
       </Text>
-      <View style={{ height: 200, backgroundColor: "#f0f0f0", borderWidth: 1, borderColor: "#cccccc", borderStyle: "dashed", justifyContent: "center", alignItems: "center", marginBottom: 12, marginTop: 12 }}>
-        <Text style={{ fontFamily: "Times-Italic", color: "#888888", fontSize: 10 }}>[ Placeholder: Screenshot of Shopping Cart Table ]</Text>
+      <View style={{ alignItems: "center", marginVertical: 10 }}>
+        <Image
+          style={{ width: 380, objectFit: "contain", borderWidth: 1, borderColor: "#dddddd" }}
+          src="/outputs/s-product.png"
+        />
+        <Text style={{ fontSize: 9, fontFamily: "Times-Italic", color: "#666666", marginTop: 6 }}>
+          Figure 11.3: Single Product Detail View
+        </Text>
       </View>
 
-      <Text style={styles.h2}>11.4 Secure Checkout Form</Text>
+      {/* 11.4 Shopping Cart */}
+      <Text style={styles.h2}>11.4 Order Summary (Shopping Cart)</Text>
       <Text style={styles.paragraph}>
-        The checkout page is a streamlined form capturing shipping and billing details. It integrates Stripe Elements for secure credit card input, ensuring PCI compliance.
+        The cart page shows selected items with quantity controls, unit pricing, and a live-updating order total summary sidebar.
       </Text>
-      <View style={{ height: 250, backgroundColor: "#f0f0f0", borderWidth: 1, borderColor: "#cccccc", borderStyle: "dashed", justifyContent: "center", alignItems: "center", marginBottom: 12, marginTop: 12 }}>
-        <Text style={{ fontFamily: "Times-Italic", color: "#888888", fontSize: 10 }}>[ Placeholder: Screenshot of Checkout Form with Stripe Element ]</Text>
+      <View style={{ alignItems: "center", marginVertical: 10 }}>
+        <Image
+          style={{ width: 380, objectFit: "contain", borderWidth: 1, borderColor: "#dddddd" }}
+          src="/outputs/cart.png"
+        />
+        <Text style={{ fontSize: 9, fontFamily: "Times-Italic", color: "#666666", marginTop: 6 }}>
+          Figure 11.4: Shopping Cart / Order Summary
+        </Text>
       </View>
 
-      <Text style={styles.h2}>11.5 Django Administration Panel</Text>
+      {/* 11.5 Checkout */}
+      <Text style={styles.h2}>11.5 Secure Checkout</Text>
       <Text style={styles.paragraph}>
-        The backend administrative interface, accessible only to superusers. It provides complete CRUD access to Orders, Items, Users, and Coupons, featuring robust filtering and search capabilities.
+        The checkout page captures shipping/billing details and integrates Stripe Elements for PCI-compliant card input.
       </Text>
-      <View style={{ height: 200, backgroundColor: "#f0f0f0", borderWidth: 1, borderColor: "#cccccc", borderStyle: "dashed", justifyContent: "center", alignItems: "center", marginBottom: 12, marginTop: 12 }}>
-        <Text style={{ fontFamily: "Times-Italic", color: "#888888", fontSize: 10 }}>[ Placeholder: Screenshot of Django Admin Dashboard ]</Text>
+      <View style={{ alignItems: "center", marginVertical: 10 }}>
+        <Image
+          style={{ width: 380, objectFit: "contain", borderWidth: 1, borderColor: "#dddddd" }}
+          src="/outputs/checkout.png"
+        />
+        <Text style={{ fontSize: 9, fontFamily: "Times-Italic", color: "#666666", marginTop: 6 }}>
+          Figure 11.5: Secure Checkout Form
+        </Text>
+      </View>
+
+      {/* 11.6 Payment Success */}
+      <Text style={styles.h2}>11.6 Payment Confirmation</Text>
+      <Text style={styles.paragraph}>
+        After successful payment via Stripe, the user sees a confirmation modal with a link to view their order history.
+      </Text>
+      <View style={{ alignItems: "center", marginVertical: 10 }}>
+        <Image
+          style={{ width: 380, objectFit: "contain", borderWidth: 1, borderColor: "#dddddd" }}
+          src="/outputs/payment.png"
+        />
+        <Text style={{ fontSize: 9, fontFamily: "Times-Italic", color: "#666666", marginTop: 6 }}>
+          Figure 11.6: Payment Successful Confirmation
+        </Text>
       </View>
 
     </BookPageLayout>

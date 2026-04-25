@@ -26,7 +26,7 @@ export default function Declaration({ pageNumber }: DeclarationProps) {
         <Text style={styles.paragraphIndent}>
           We hereby declare that this project report entitled{" "}
           <Text style={styles.bold}>
-            "DINO-ECOMMERCE - Online Shopping Platform"
+            "AROWAI 1.0 - Online Shopping Platform"
           </Text>{" "}
           submitted by us to{" "}
           <Text style={styles.bold}>Baba Budha Sahib College</Text> in partial

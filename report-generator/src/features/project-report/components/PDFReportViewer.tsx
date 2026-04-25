@@ -71,7 +71,7 @@ export default function PDFReportViewer() {
     if (!pdfUrl) return;
     const a = document.createElement("a");
     a.href = pdfUrl;
-    a.download = "Dino-Ecommerce-Project-Report.pdf";
+    a.download = "AROWAI-1.0-Project-Report.pdf";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

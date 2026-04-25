@@ -33,13 +33,13 @@ export default function Abstract({ pageNumber }: AbstractProps) {
           In the modern digital landscape, businesses face increasing pressure
           to establish a strong online presence to reach a wider audience and
           facilitate convenient shopping experiences. This project presents{" "}
-          <Text style={styles.bold}>DINO-ECOMMERCE</Text>, a robust and
+          <Text style={styles.bold}>AROWAI 1.0</Text>, a robust and
           user-friendly online shopping platform designed to streamline product
           browsing, cart management, and secure checkout processes.
         </Text>
 
         <Text style={[styles.paragraph, { marginTop: 12 }]}>
-          Dino-Ecommerce enables customers to effortlessly browse through various
+          AROWAI 1.0 enables customers to effortlessly browse through various
           product categories, view detailed item descriptions, and manage their
           shopping carts. The platform incorporates a secure checkout flow with{" "}
           <Text style={styles.bold}>Stripe Payment Gateway</Text> integration,
@@ -92,7 +92,7 @@ export default function Abstract({ pageNumber }: AbstractProps) {
               lineHeight: 1.6,
             }}
           >
-            "Dino-Ecommerce represents a comprehensive approach to building
+            "AROWAI 1.0 represents a comprehensive approach to building
             secure, scalable, and intuitive online shopping experiences using modern
             web frameworks."
           </Text>

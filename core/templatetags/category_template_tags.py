@@ -38,7 +38,14 @@ def categories_div():
     """
     section banner
     """
-    items = Category.objects.filter(is_active=True).order_by('title')
+    from django.db.models import Case, When, Value, IntegerField
+    items = Category.objects.filter(is_active=True).annotate(
+        priority=Case(
+            When(title__iexact='Watches', then=Value(0)),
+            default=Value(1),
+            output_field=IntegerField(),
+        )
+    ).order_by('priority', 'title')
     item_div_list = ""
     for i, j in enumerate(items):
         item_div_list += f"""

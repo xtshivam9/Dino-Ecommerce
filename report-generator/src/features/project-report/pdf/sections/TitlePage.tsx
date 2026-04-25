@@ -11,7 +11,8 @@ export default function TitlePage() {
     <Page
       size="A4"
       style={{
-        padding: 48,
+        paddingHorizontal: 48,
+        paddingVertical: 30,
         fontFamily: "Times-Bold",
         backgroundColor: "#ffffff",
       }}
@@ -33,8 +34,6 @@ export default function TitlePage() {
         {/* Title Box */}
         <View
           style={{
-            borderWidth: 2,
-            borderColor: "#000000",
             paddingHorizontal: 40,
             paddingVertical: 20,
             marginBottom: 12,
@@ -42,25 +41,15 @@ export default function TitlePage() {
         >
           <Text
             style={{
-              fontSize: 28,
+              fontSize: 31,
               fontFamily: "Times-Bold",
               fontWeight: "bold",
               letterSpacing: 2,
             }}
           >
-            DINO-ECOMMERCE
+            AROWAI 1.0
           </Text>
         </View>
-
-        {/* Underline */}
-        <View
-          style={{
-            width: 80,
-            height: 4,
-            backgroundColor: "#000000",
-            marginBottom: 16,
-          }}
-        />
 
         <Text
           style={{
@@ -71,19 +60,29 @@ export default function TitlePage() {
         >
           Online Shopping Platform
         </Text>
+
+        {/* Project Logo */}
+        <Image
+          style={{
+            width: 80,
+            height: 80,
+            marginTop: 30,
+            objectFit: "contain",
+            borderRadius: 12,
+          }}
+          src="/outputs/logo-file.png"
+        />
       </View>
 
       {/* Submission Text */}
       <View
         style={{
           alignItems: "center",
-          marginTop: 60,
+          marginTop: 30,
         }}
       >
         <View
           style={{
-            borderWidth: 1,
-            borderColor: "#666666",
             padding: 16,
             alignItems: "center",
           }}
@@ -119,12 +118,12 @@ export default function TitlePage() {
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
-          marginTop: 60,
+          marginTop: 30,
           paddingHorizontal: 16,
         }}
       >
         {/* Students */}
-        <View style={{ borderLeftWidth: 4, borderLeftColor: "#000000", paddingLeft: 12 }}>
+        <View style={{ paddingLeft: 12 }}>
           <Text
             style={{
               fontSize: 8,
@@ -159,7 +158,7 @@ export default function TitlePage() {
         </View>
 
         {/* Guides */}
-        <View style={{ borderLeftWidth: 4, borderLeftColor: "#000000", paddingLeft: 12 }}>
+        <View style={{ paddingLeft: 12 }}>
           <Text
             style={{
               fontSize: 8,
@@ -184,18 +183,26 @@ export default function TitlePage() {
       <View
         style={{
           alignItems: "center",
-          paddingTop: 60,
+          paddingTop: 20,
         }}
       >
         <View
           style={{
-            borderWidth: 1,
-            borderColor: "#cccccc",
             padding: 16,
             alignItems: "center",
             width: "100%",
           }}
         >
+          {/* GNDU Logo */}
+          <Image
+            style={{
+              width: 140,
+              height: 140,
+              marginBottom: 12,
+              objectFit: "contain",
+            }}
+            src="/gndu.png"
+          />
           <Text
             style={{
               fontSize: 16,

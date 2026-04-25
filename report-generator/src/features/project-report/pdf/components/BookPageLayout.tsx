@@ -112,7 +112,7 @@ export default function BookPageLayout({
           color: "#666666",
         }}
       >
-        Dino-Ecommerce — Project Report
+        AROWAI 1.0 — Project Report
       </Text>
     </Page>
   );

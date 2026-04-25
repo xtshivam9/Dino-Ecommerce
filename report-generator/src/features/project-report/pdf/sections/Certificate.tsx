@@ -36,7 +36,7 @@ export default function Certificate({ pageNumber }: CertificateProps) {
           <Text style={styles.paragraph}>
             This is to certify that the project report entitled{" "}
             <Text style={styles.bold}>
-              "DINO-ECOMMERCE - Online Shopping Platform"
+              "AROWAI 1.0 - Online Shopping Platform"
             </Text>{" "}
             submitted by <Text style={styles.bold}>Rutashman Sharma</Text> (Roll No:{" "}
             <Text style={styles.bold}>11792314708</Text>) and <Text style={styles.bold}>Lovejinder Singh</Text> (Roll No:{" "}

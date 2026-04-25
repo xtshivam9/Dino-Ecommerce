@@ -138,16 +138,39 @@ class HomeView(ListView):
     context_object_name = 'items'
 
 
-class OrderSummaryView(LoginRequiredMixin, View):
+class OrderSummaryView(View):
     def get(self, *args, **kwargs):
-        try:
-            order = Order.objects.get(user=self.request.user, ordered=False)
-            context = {
-                'object': order
-            }
+        # Authenticated users: load DB order
+        if self.request.user.is_authenticated:
+            try:
+                order = Order.objects.get(user=self.request.user, ordered=False)
+                context = {'object': order}
+            except ObjectDoesNotExist:
+                context = {}
             return render(self.request, 'order_summary.html', context)
-        except ObjectDoesNotExist:
-            return render(self.request, 'order_summary.html')
+
+        # Guest users: build a cart from session
+        cart = self.request.session.get('guest_cart', {})
+        guest_items = []
+        total = 0
+        for slug, qty in cart.items():
+            try:
+                item = Item.objects.get(slug=slug, is_active=True)
+                price = item.discount_price if item.discount_price else item.price
+                subtotal = price * qty
+                total += subtotal
+                guest_items.append({
+                    'item': item,
+                    'quantity': qty,
+                    'subtotal': subtotal,
+                })
+            except Item.DoesNotExist:
+                pass
+        context = {
+            'guest_cart': guest_items,
+            'guest_total': total,
+        }
+        return render(self.request, 'order_summary.html', context)
 
 
 class ShopView(ListView):
@@ -236,9 +259,22 @@ class CategoryView(View):
 #             return redirect("core:order-summary")
 
 
-@login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
+
+    if not request.user.is_authenticated:
+        # ----- Guest: store in session -----
+        cart = request.session.get('guest_cart', {})
+        if slug in cart:
+            cart[slug] += 1
+        else:
+            cart[slug] = 1
+        request.session['guest_cart'] = cart
+        request.session.modified = True
+        messages.info(request, "Item was added to your cart.")
+        return redirect("core:order-summary")
+
+    # ----- Authenticated user: store in DB -----
     order_item, created = OrderItem.objects.get_or_create(
         item=item,
         user=request.user,
@@ -251,11 +287,9 @@ def add_to_cart(request, slug):
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "Item qty was updated.")
-            return redirect("core:order-summary")
         else:
             order.items.add(order_item)
             messages.info(request, "Item was added to your cart.")
-            return redirect("core:order-summary")
     else:
         ordered_date = timezone.now()
         order = Order.objects.create(
@@ -265,66 +299,79 @@ def add_to_cart(request, slug):
     return redirect("core:order-summary")
 
 
-@login_required
 def remove_from_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
-    order_qs = Order.objects.filter(
-        user=request.user,
-        ordered=False)
+
+    if not request.user.is_authenticated:
+        # ----- Guest -----
+        cart = request.session.get('guest_cart', {})
+        if slug in cart:
+            del cart[slug]
+            request.session['guest_cart'] = cart
+            request.session.modified = True
+            messages.info(request, "Item was removed from your cart.")
+        else:
+            messages.info(request, "Item was not in your cart.")
+        return redirect("core:order-summary")
+
+    # ----- Authenticated -----
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
     if order_qs.exists():
         order = order_qs[0]
-        # check if the order item is in the order
         if order.items.filter(item__slug=item.slug).exists():
             order_item = OrderItem.objects.filter(
-                item=item,
-                user=request.user,
-                ordered=False
+                item=item, user=request.user, ordered=False
             )[0]
             order.items.remove(order_item)
             messages.info(request, "Item was removed from your cart.")
             return redirect("core:order-summary")
         else:
-            # add a message saying the user dosent have an order
             messages.info(request, "Item was not in your cart.")
             return redirect("core:product", slug=slug)
     else:
-        # add a message saying the user dosent have an order
-        messages.info(request, "u don't have an active order.")
+        messages.info(request, "You don't have an active order.")
         return redirect("core:product", slug=slug)
-    return redirect("core:product", slug=slug)
 
 
-@login_required
 def remove_single_item_from_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
-    order_qs = Order.objects.filter(
-        user=request.user,
-        ordered=False)
+
+    if not request.user.is_authenticated:
+        # ----- Guest -----
+        cart = request.session.get('guest_cart', {})
+        if slug in cart:
+            if cart[slug] > 1:
+                cart[slug] -= 1
+            else:
+                del cart[slug]
+            request.session['guest_cart'] = cart
+            request.session.modified = True
+            messages.info(request, "Item qty was updated.")
+        else:
+            messages.info(request, "Item was not in your cart.")
+        return redirect("core:order-summary")
+
+    # ----- Authenticated -----
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
     if order_qs.exists():
         order = order_qs[0]
-
         if order.items.filter(item__slug=item.slug).exists():
             order_item = OrderItem.objects.filter(
-                item=item,
-                user=request.user,
-                ordered=False
+                item=item, user=request.user, ordered=False
             )[0]
             if order_item.quantity > 1:
                 order_item.quantity -= 1
                 order_item.save()
             else:
                 order.items.remove(order_item)
-            messages.info(request, "This item qty was updated.")
+            messages.info(request, "Item qty was updated.")
             return redirect("core:order-summary")
         else:
-            # add a message saying the user dosent have an order
             messages.info(request, "Item was not in your cart.")
             return redirect("core:product", slug=slug)
     else:
-        # add a message saying the user dosent have an order
-        messages.info(request, "u don't have an active order.")
+        messages.info(request, "You don't have an active order.")
         return redirect("core:product", slug=slug)
-    return redirect("core:product", slug=slug)
 
 
 def get_coupon(request, code):
@@ -463,24 +510,60 @@ def send_contact_message(request):
 
 
 def login_view(request):
+    next_url = request.GET.get('next', '') or request.POST.get('next', '')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            # Redirect to a success page, or some other page
-            # Replace 'home' with the name of your home URL pattern
+            # --- Merge guest session cart into DB order ---
+            cart = request.session.get('guest_cart', {})
+            if cart:
+                order_qs = Order.objects.filter(user=user, ordered=False)
+                if order_qs.exists():
+                    order = order_qs[0]
+                else:
+                    order = Order.objects.create(
+                        user=user, ordered_date=timezone.now()
+                    )
+                for slug, qty in cart.items():
+                    try:
+                        item = Item.objects.get(slug=slug)
+                        order_item, created = OrderItem.objects.get_or_create(
+                            item=item, user=user, ordered=False
+                        )
+                        if not created:
+                            order_item.quantity += qty
+                        else:
+                            order_item.quantity = qty
+                        order_item.save()
+                        if not order.items.filter(item__slug=slug).exists():
+                            order.items.add(order_item)
+                    except Item.DoesNotExist:
+                        pass
+                del request.session['guest_cart']
+                request.session.modified = True
+            # Redirect to next URL or home
+            if next_url:
+                return redirect(next_url)
             return redirect('core:home')
         else:
-            # Return an error message or handle invalid login
-            return render(request, 'login.html', {'error_message': 'Invalid username or password.'})
+            return render(request, 'login.html', {
+                'error_message': 'Invalid username or password.',
+                'next': next_url,
+            })
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'next': next_url})
 
 
 class CheckoutView(View):
     def get(self, *args, **kwargs):
+        # Require login — redirect guests to login with ?next=/checkout/
+        if not self.request.user.is_authenticated:
+            messages.info(self.request, "Please log in to proceed to checkout.")
+            return redirect(f"/login/?next=/checkout/")
+
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
             form = CheckoutForm()
