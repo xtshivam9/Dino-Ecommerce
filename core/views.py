@@ -639,10 +639,9 @@ def logout_view(request):
     return redirect('core:login')
 
 
-
-def logout_view(request):
-    logout(request)
-    return redirect('core:login')
+@login_required
+def profile_view(request):
+    return render(request, 'profile.html')
 
 class MyOrdersView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):

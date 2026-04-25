@@ -1,0 +1,236 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}
+<style>
+  /* ── Login page overrides ── */
+  body.login {
+    background: var(--aw-bg) !important;
+  }
+
+  /* Remove white wrapper */
+  body.login #container {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  body.login #header {
+    display: flex !important;
+    background: linear-gradient(135deg, #0d1b2e 0%, #111827 60%, #0d2035 100%) !important;
+    border-bottom: 1px solid var(--aw-border) !important;
+    height: 64px !important;
+    padding: 0 40px !important;
+    align-items: center !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.5) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+
+  body.login .login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 40px;
+  }
+
+  body.login #content-main {
+    background: linear-gradient(145deg, #111827 0%, #1a2236 100%) !important;
+    border: 1px solid var(--aw-border) !important;
+    border-radius: 20px !important;
+    padding: 0 !important;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6) !important;
+    min-width: 420px !important;
+    max-width: 440px !important;
+    overflow: hidden !important;
+  }
+
+  .login-header-art {
+    background: linear-gradient(135deg, #0d2035 0%, #1a2236 100%);
+    padding: 36px 40px 30px;
+    border-bottom: 1px solid var(--aw-border);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .login-header-art::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .login-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .login-logo-text {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #f8fafc;
+  }
+
+  .login-tagline {
+    font-size: 13px;
+    color: #64748b;
+    letter-spacing: 0.3px;
+  }
+
+  body.login #content-main form {
+    padding: 32px 40px 36px;
+  }
+
+  body.login #content h1 {
+    display: none !important;
+  }
+
+  body.login .form-row label {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    color: #94a3b8 !important;
+    margin-bottom: 6px !important;
+    display: block;
+  }
+
+  body.login .form-row {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 0 20px 0 !important;
+  }
+
+  body.login input[type="text"],
+  body.login input[type="password"] {
+    width: 100% !important;
+    background: #0a0f1e !important;
+    border: 1px solid #1e2d45 !important;
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    color: #e2e8f0 !important;
+    transition: all 0.2s !important;
+  }
+
+  body.login input[type="text"]:focus,
+  body.login input[type="password"]:focus {
+    border-color: var(--aw-accent) !important;
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.2) !important;
+    outline: none !important;
+  }
+
+  body.login .submit-row {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: block !important;
+    margin-top: 8px !important;
+  }
+
+  body.login input[type="submit"] {
+    width: 100% !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 14px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.3px;
+    cursor: pointer !important;
+    box-shadow: 0 6px 20px rgba(16,185,129,0.4) !important;
+    transition: all 0.2s !important;
+  }
+
+  body.login input[type="submit"]:hover {
+    background: linear-gradient(135deg, #34d399, #10b981) !important;
+    box-shadow: 0 8px 28px rgba(16,185,129,0.55) !important;
+    transform: translateY(-1px);
+  }
+
+  body.login .errornote, body.login .errorlist {
+    background: rgba(239,68,68,0.1) !important;
+    border: 1px solid rgba(239,68,68,0.25) !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    color: #f87171 !important;
+    font-size: 13px !important;
+    margin-bottom: 16px !important;
+  }
+
+  body.login #footer { display: none; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-wrapper">
+  <div id="content-main">
+    <div class="login-header-art">
+      <div class="login-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="18" fill="url(#lg2)"/>
+          <path d="M10 28L18 12L26 28" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13 23H23" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="lg2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#10b981"/>
+              <stop offset="1" stop-color="#0d9488"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="login-logo-text">AROWAI</span>
+      </div>
+      <p class="login-tagline">Admin Portal · Secure Access</p>
+    </div>
+    <form action="{{ form.action }}" method="post" id="login-form">
+      {% csrf_token %}
+      {% if form.errors %}
+        <div class="errornote">
+          {% if form.errors.items|length == 1 %}
+            {% blocktrans trimmed %}Please correct the error below.{% endblocktrans %}
+          {% else %}
+            {% blocktrans trimmed %}Please correct the errors below.{% endblocktrans %}
+          {% endif %}
+        </div>
+        {% if form.non_field_errors %}
+        <ul class="errorlist nonfield">
+          {% for error in form.non_field_errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      {% endif %}
+      {% if next %}
+        <input type="hidden" name="next" value="{{ next }}">
+      {% endif %}
+      <div class="form-row">
+        <label for="{{ form.username.id_for_label }}">{% trans 'Username' %}</label>
+        {{ form.username }}
+      </div>
+      <div class="form-row">
+        <label for="{{ form.password.id_for_label }}">{% trans 'Password' %}</label>
+        {{ form.password }}
+      </div>
+      <div class="submit-row">
+        <input type="submit" value="{% trans 'Log in' %}">
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

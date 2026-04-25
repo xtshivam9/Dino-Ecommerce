@@ -76,6 +76,322 @@
     margin-bottom: 8px;
     font-size: 14px;
   }
+
+  .premium-payment-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.18), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.12), transparent 45%),
+      rgba(2, 6, 23, 0.58);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    padding: 16px;
+  }
+
+  .payment-modal-card {
+    width: 100%;
+    max-width: 560px;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 36%);
+    box-shadow: 0 30px 80px rgba(2, 6, 23, 0.35);
+    transform: scale(0.95) translateY(8px);
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .payment-modal-header {
+    padding: 28px 28px 18px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .payment-modal-title-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .payment-modal-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+  }
+
+  .payment-modal-title {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.03em;
+  }
+
+  .payment-modal-subtitle {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 14px;
+  }
+
+  .payment-modal-body {
+    padding: 18px 28px 28px;
+  }
+
+  .payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .payment-option-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid #dbe2ea;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #ffffff;
+    margin: 0;
+  }
+
+  .payment-option-label:hover {
+    border-color: #60a5fa;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+  }
+
+  .payment-option-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: #2563eb;
+    flex-shrink: 0;
+  }
+
+  .payment-option-content {
+    flex: 1;
+  }
+
+  .payment-option-name {
+    color: #0f172a;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .payment-option-desc {
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .payment-option-label.is-active {
+    border-color: #2563eb;
+    background: #eff6ff;
+    box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.2);
+  }
+
+  .payment-confirm-btn {
+    width: 100%;
+    border-radius: 12px;
+    font-weight: 700;
+    padding: 14px 18px;
+    background: #0f172a;
+    color: #ffffff;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 12px 22px rgba(15, 23, 42, 0.28);
+  }
+
+  .payment-confirm-btn:hover {
+    background: #1e293b;
+    transform: translateY(-1px);
+  }
+
+  .payment-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #eef2f7;
+    border: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    color: #334155;
+    font-size: 20px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  @media (max-width: 575px) {
+    .payment-modal-header {
+      padding: 22px 18px 14px;
+    }
+
+    .payment-modal-body {
+      padding: 14px 18px 18px;
+    }
+
+    .payment-modal-title {
+      font-size: 20px;
+    }
+  }
+
+  .stripe-card-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(2, 6, 23, 0.68);
+    backdrop-filter: blur(8px);
+    z-index: 10002;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .stripe-card-panel {
+    width: 100%;
+    max-width: 460px;
+    border-radius: 22px;
+    border: 1px solid #dbe2ea;
+    background: #ffffff;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+    transform: scale(0.96) translateY(8px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+  }
+
+  .stripe-card-header {
+    padding: 20px 22px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .stripe-card-title {
+    margin: 0;
+    color: #0f172a;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .stripe-card-subtitle {
+    margin: 4px 0 0;
+    color: #64748b;
+    font-size: 13px;
+  }
+
+  .stripe-card-close {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 999px;
+    background: #eef2f7;
+    color: #334155;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .stripe-card-body {
+    padding: 20px 22px 24px;
+  }
+
+  .stripe-field-label {
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .stripe-field {
+    height: 46px;
+    border: 1px solid #cfd8e3;
+    border-radius: 12px;
+    background: #f8fafc;
+    padding: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .stripe-field.is-focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    background: #ffffff;
+  }
+
+  .stripe-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .stripe-card-error {
+    min-height: 20px;
+    margin: 10px 0 0;
+    color: #dc2626;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .stripe-pay-btn {
+    width: 100%;
+    margin-top: 14px;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 12px 20px rgba(37, 99, 235, 0.28);
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  .stripe-pay-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.03);
+  }
+
+  .stripe-pay-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.72;
+  }
+
+  @media (max-width: 575px) {
+    .stripe-card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 
 <div class="container" style="margin-top: 60px; padding-bottom: 100px;">
@@ -147,39 +463,47 @@
     </div>
 
     <!-- Premium Payment Modal -->
-    <div id="premiumPaymentModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); z-index: 9999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
-      <div style="background: white; border-radius: 24px; padding: 40px; width: 100%; max-width: 480px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;">
-        <button type="button" onclick="closePaymentModal()" style="position: absolute; top: 20px; right: 25px; background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; color: #4b5563; transition: all 0.2s;">&times;</button>
-        
-        <div style="text-align: center; margin-bottom: 30px;">
-            <div style="width: 60px; height: 60px; background: #eff6ff; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#3b82f6" class="bi bi-wallet2" viewBox="0 0 16 16">
-                    <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.5-1.5H2V1.78a1.5 1.5 0 0 1 1.864-1.454L12.136.326zM14 5.5v-4h-.5L3.3 3.3L3 3v2h10l.3-.3.7.3zM15 13.5v-7h-11v7h11z"/>
-                </svg>
+    <div id="premiumPaymentModal" class="premium-payment-modal">
+      <div class="payment-modal-card">
+        <button type="button" class="payment-modal-close" onclick="closePaymentModal()" aria-label="Close payment modal">&times;</button>
+
+        <div class="payment-modal-header">
+          <div class="payment-modal-title-row">
+            <div class="payment-modal-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+                <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.5-1.5H2V1.78a1.5 1.5 0 0 1 1.864-1.454L12.136.326zM14 5.5v-4h-.5L3.3 3.3L3 3v2h10l.3-.3.7.3zM15 13.5v-7h-11v7h11z"/>
+              </svg>
             </div>
-            <h3 style="font-weight: 800; color: #111827; margin: 0; font-size: 24px; letter-spacing: -0.5px;">Choose Payment</h3>
-            <p style="color: #6b7280; font-size: 14px; margin: 8px 0 0;">Select your preferred secure payment engine</p>
+            <div>
+              <h3 class="payment-modal-title">Choose Payment Method</h3>
+              <p class="payment-modal-subtitle">Your transaction is encrypted end-to-end.</p>
+            </div>
+          </div>
         </div>
-        
-        <div class="payment-options" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;">
-          {% for value, name in form.fields.payment_option.choices %}
-          <label class="payment-option-label" style="display: flex; align-items: center; padding: 20px; border: 2px solid #f3f4f6; border-radius: 16px; cursor: pointer; transition: all 0.3s; font-weight: 600; color: #374151; margin: 0; position: relative; {% if value == 'D' %}border-color: #3b82f6; background: #f0f9ff;{% endif %}">
-            <input type="radio" name="modal_payment_option" value="{{ value }}" {% if value == 'D' %}checked{% endif %} style="width: 20px; height: 20px; margin-right: 15px; accent-color: #3b82f6;">
-            <div style="flex: 1;">
-                <div style="font-size: 16px;">{{ name }}</div>
+
+        <div class="payment-modal-body">
+          <div class="payment-options">
+            {% for value, name in form.fields.payment_option.choices %}
+            <label class="payment-option-label {% if value == 'D' %}is-active{% endif %}">
+              <input type="radio" name="modal_payment_option" value="{{ value }}" {% if value == 'D' %}checked{% endif %}>
+              <div class="payment-option-content">
+                <div class="payment-option-name">{{ name }}</div>
                 {% if value == 'D' %}
-                    <div style="font-size: 12px; color: #3b82f6; font-weight: 700;">Recommended for Testing <i class="fas fa-certificate ml-1"></i></div>
+                <div class="payment-option-desc">Recommended for testing checkout flow</div>
+                {% elif value == 'S' %}
+                <div class="payment-option-desc">Card payment via Stripe popup</div>
                 {% else %}
-                    <div style="font-size: 12px; color: #9ca3af; font-weight: 400;">Secure encryption dynamic</div>
+                <div class="payment-option-desc">Secure payment gateway</div>
                 {% endif %}
-            </div>
-          </label>
-          {% endfor %}
+              </div>
+            </label>
+            {% endfor %}
+          </div>
+
+          <button type="button" class="payment-confirm-btn" onclick="confirmPayment()">
+            Continue to Payment
+          </button>
         </div>
-        
-        <button type="button" onclick="confirmPayment()" style="width: 100%; border-radius: 12px; font-weight: 700; padding: 18px; background: #3b82f6; color: white; border: none; font-size: 16px; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);">
-            Make Payment <span style="margin-left: 8px;">$\rightarrow$</span>
-        </button>
       </div>
     </div>
 
@@ -201,6 +525,39 @@
         </div>
     </div>
 
+    <div id="stripeCardModal" class="stripe-card-modal">
+      <div class="stripe-card-panel">
+        <div class="stripe-card-header">
+          <div>
+            <h3 class="stripe-card-title">Card Payment</h3>
+            <p class="stripe-card-subtitle">Enter your card details securely</p>
+          </div>
+          <button type="button" class="stripe-card-close" onclick="closeStripeCardModal()" aria-label="Close card modal">&times;</button>
+        </div>
+        <div class="stripe-card-body">
+          <label class="stripe-field-label" for="card-number-element">Card number</label>
+          <div id="card-number-element" class="stripe-field"></div>
+
+          <div class="stripe-card-grid" style="margin-top: 12px;">
+            <div>
+              <label class="stripe-field-label" for="card-expiry-element">Expiry</label>
+              <div id="card-expiry-element" class="stripe-field"></div>
+            </div>
+            <div>
+              <label class="stripe-field-label" for="card-cvc-element">CVC</label>
+              <div id="card-cvc-element" class="stripe-field"></div>
+            </div>
+          </div>
+
+          <div id="stripe-card-error" class="stripe-card-error"></div>
+
+          <button id="stripePayButton" type="button" class="stripe-pay-btn" onclick="handleStripeCardPayment()">
+            Pay ${{ order.get_total }}
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Processing Overlay -->
     <div id="processingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); z-index: 10001; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
         <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem; color: #3b82f6 !important;">
@@ -209,21 +566,111 @@
         <p style="margin-top: 20px; font-weight: 700; color: #111827; font-size: 18px;">Verifying Payment...</p>
     </div>
 
-    <!-- Stripe Checkout Script (Restoring old functionality) -->
-    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 
     <script>
       var stripeTotal = Math.round(parseFloat('{{ order.get_total }}') * 100);
-      
-      var handler = StripeCheckout.configure({
-        key: '{{ STRIPE_PUBLIC_KEY }}',
-        image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
-        locale: 'auto',
-        token: function(token) {
-          // This callback runs after the user successfully enters card info in the Stripe popup
-          sendAJAXPayment('S', token.id);
+      var stripeInstance = null;
+      var stripeElements = null;
+      var stripeCardNumber = null;
+      var stripeCardExpiry = null;
+      var stripeCardCvc = null;
+      var stripeElementsReady = false;
+
+      function mountStripeElements() {
+        if (stripeElementsReady) return;
+
+        stripeInstance = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+        stripeElements = stripeInstance.elements({
+          fonts: [{ cssSrc: 'https://fonts.googleapis.com/css?family=Montserrat:500,600,700' }]
+        });
+
+        var elementStyle = {
+          base: {
+            color: '#0f172a',
+            fontFamily: 'Montserrat, system-ui, sans-serif',
+            fontSize: '16px',
+            '::placeholder': { color: '#94a3b8' }
+          },
+          invalid: {
+            color: '#dc2626'
+          }
+        };
+
+        stripeCardNumber = stripeElements.create('cardNumber', { style: elementStyle });
+        stripeCardExpiry = stripeElements.create('cardExpiry', { style: elementStyle });
+        stripeCardCvc = stripeElements.create('cardCvc', { style: elementStyle });
+
+        stripeCardNumber.mount('#card-number-element');
+        stripeCardExpiry.mount('#card-expiry-element');
+        stripeCardCvc.mount('#card-cvc-element');
+
+        function bindFieldState(el, containerId) {
+          var container = document.getElementById(containerId);
+          el.on('focus', function() {
+            container.classList.add('is-focus');
+          });
+          el.on('blur', function() {
+            container.classList.remove('is-focus');
+          });
+          el.on('change', function(event) {
+            var err = document.getElementById('stripe-card-error');
+            err.textContent = event.error ? event.error.message : '';
+          });
         }
-      });
+
+        bindFieldState(stripeCardNumber, 'card-number-element');
+        bindFieldState(stripeCardExpiry, 'card-expiry-element');
+        bindFieldState(stripeCardCvc, 'card-cvc-element');
+
+        stripeElementsReady = true;
+      }
+
+      function openStripeCardModal() {
+        mountStripeElements();
+        var modal = document.getElementById('stripeCardModal');
+        var panel = modal.querySelector('.stripe-card-panel');
+        modal.style.display = 'flex';
+        setTimeout(function() {
+          modal.style.opacity = '1';
+          panel.style.transform = 'scale(1) translateY(0)';
+        }, 10);
+      }
+
+      function closeStripeCardModal() {
+        var modal = document.getElementById('stripeCardModal');
+        var panel = modal.querySelector('.stripe-card-panel');
+        modal.style.opacity = '0';
+        panel.style.transform = 'scale(0.96) translateY(8px)';
+        setTimeout(function() {
+          modal.style.display = 'none';
+        }, 280);
+      }
+
+      async function handleStripeCardPayment() {
+        var payBtn = document.getElementById('stripePayButton');
+        var errorEl = document.getElementById('stripe-card-error');
+        errorEl.textContent = '';
+        payBtn.disabled = true;
+        payBtn.textContent = 'Processing...';
+
+        try {
+          var tokenResult = await stripeInstance.createToken(stripeCardNumber);
+          if (tokenResult.error) {
+            errorEl.textContent = tokenResult.error.message || 'Please check card details.';
+            payBtn.disabled = false;
+            payBtn.textContent = 'Pay ${{ order.get_total }}';
+            return;
+          }
+
+          closeStripeCardModal();
+          sendAJAXPayment('S', tokenResult.token.id);
+        } catch (error) {
+          errorEl.textContent = 'Unable to process card right now. Please try again.';
+          payBtn.disabled = false;
+          payBtn.textContent = 'Pay ${{ order.get_total }}';
+        }
+      }
 
       function openPaymentModal() {
         const form = document.getElementById('checkout-form');
@@ -233,17 +680,19 @@
         }
         
         const modal = document.getElementById('premiumPaymentModal');
+        const modalCard = modal.querySelector('.payment-modal-card');
         modal.style.display = 'flex';
         setTimeout(() => {
           modal.style.opacity = '1';
-          modal.firstElementChild.style.transform = 'scale(1)';
+          modalCard.style.transform = 'scale(1) translateY(0)';
         }, 10);
       }
 
       function closePaymentModal() {
         const modal = document.getElementById('premiumPaymentModal');
+        const modalCard = modal.querySelector('.payment-modal-card');
         modal.style.opacity = '0';
-        modal.firstElementChild.style.transform = 'scale(0.95)';
+        modalCard.style.transform = 'scale(0.95) translateY(8px)';
         setTimeout(() => {
           modal.style.display = 'none';
         }, 400);
@@ -257,15 +706,8 @@
         }
 
         if (selected.value === 'S') {
-            // Close selection modal so Stripe popup is visible/clear
             closePaymentModal();
-            // Open Legacy Stripe Popup (The "Proper Old Working Way")
-            handler.open({
-                name: 'Dino Shop',
-                description: 'Complete Your Order',
-                amount: stripeTotal,
-                currency: 'usd'
-            });
+          openStripeCardModal();
         } else {
             // Dummy or other payment - proceed immediately
             sendAJAXPayment(selected.value);
@@ -321,6 +763,9 @@
                 showSuccessPopup();
             } else {
                 alert("Payment Error: " + (data.message || "An unknown error occurred."));
+              var stripeBtn = document.getElementById('stripePayButton');
+              stripeBtn.disabled = false;
+              stripeBtn.textContent = 'Pay ${{ order.get_total }}';
             }
         })
         .catch(error => {
@@ -328,6 +773,9 @@
             setTimeout(() => overlay.style.display = 'none', 300);
             alert("Checkout Error: " + error.message);
             console.error('Checkout Error:', error);
+            var stripeBtn = document.getElementById('stripePayButton');
+            stripeBtn.disabled = false;
+            stripeBtn.textContent = 'Pay ${{ order.get_total }}';
         });
       }
 
@@ -340,21 +788,23 @@
         }, 10);
       }
 
-      // Re-close stripe handler on back button
-      window.addEventListener('popstate', function() {
-        if (typeof handler !== 'undefined') handler.close();
+      window.addEventListener('click', function(event) {
+        var paymentModal = document.getElementById('premiumPaymentModal');
+        var stripeModal = document.getElementById('stripeCardModal');
+        if (event.target === paymentModal) {
+          closePaymentModal();
+        }
+        if (event.target === stripeModal) {
+          closeStripeCardModal();
+        }
       });
 
       document.addEventListener('DOMContentLoaded', () => {
         const labels = document.querySelectorAll('.payment-options label');
         labels.forEach(label => {
           label.addEventListener('click', function() {
-            labels.forEach(l => {
-              l.style.borderColor = '#f3f4f6';
-              l.style.background = 'transparent';
-            });
-            this.style.borderColor = '#3b82f6';
-            this.style.background = '#f0f9ff';
+            labels.forEach(l => l.classList.remove('is-active'));
+            this.classList.add('is-active');
           });
         });
       });

@@ -185,7 +185,7 @@
           <span class="linedivide1"></span>
           <!-- Authenticated User Menu -->
           <div class="header-wrapicon1 dis-block">
-            <a href="javascript:void(0);">
+            <a href="{% url 'core:profile' %}">
               <img
                 src="{% static 'images/icons/icon-header-01.png' %}"
                 class="header-icon1"
@@ -194,6 +194,7 @@
             </a>
             <!-- Dropdown for User -->
             <ul class="sub_menu user-dropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; padding: 10px 15px; width: 150px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 1000; list-style: none; border-radius: 8px;">
+              <li style="padding: 5px 0;"><a href="{% url 'core:profile' %}" style="color: black; text-decoration: none;">Profile</a></li>
               <li style="padding: 5px 0;"><a href="{% url 'core:logout' %}" style="color: black; text-decoration: none;">Logout</a></li>
             </ul>
           </div>
@@ -256,7 +257,7 @@
         </div>
         <span class="linedivide2"></span>
         <div class="header-wrapicon1 dis-block">
-          <a href="javascript:void(0);">
+          <a href="{% url 'core:profile' %}">
             <img
               src="{% static 'images/icons/icon-header-01.png' %}"
               class="header-icon1"
@@ -264,6 +265,7 @@
             />
           </a>
           <ul class="sub_menu user-dropdown" style="display: none; position: absolute; top: 100%; right: 0; background: white; padding: 10px 15px; width: 120px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 1000; list-style: none; border-radius: 8px;">
+            <li style="padding: 5px 0;"><a href="{% url 'core:profile' %}" style="color: black; text-decoration: none;">Profile</a></li>
             <li style="padding: 5px 0;"><a href="{% url 'core:logout' %}" style="color: black; text-decoration: none;">Logout</a></li>
           </ul>
         </div>
@@ -325,6 +327,9 @@
           <a href="{% url 'core:my-orders' %}">
             <i class="fas fa-box mr-2" style="color: #717fe0;"></i>My Orders
           </a>
+        </li>
+        <li class="item-menu-mobile">
+          <a href="{% url 'core:profile' %}">Profile</a>
         </li>
         <li class="item-menu-mobile">
           <a href="{% url 'core:logout' %}">Logout</a>

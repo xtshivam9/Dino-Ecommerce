@@ -51,6 +51,7 @@ urlpatterns = [
     path('about_us/', about_us, name='about_us'),
     path('send-contact/', views.send_contact_message,
          name='send_contact_message'),
+        path('profile/', views.profile_view, name='profile'),
     
     path('logout/', views.logout_view, name='logout'),
 
