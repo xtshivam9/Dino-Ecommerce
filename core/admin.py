@@ -99,3 +99,16 @@ admin.site.register(Payment)
 admin.site.register(Coupon)
 admin.site.register(Refund)
 admin.site.register(BillingAddress, AddressAdmin)
+
+# ── Unregister unused apps from admin ─────────────────────────────────────────
+from django.contrib.sites.models import Site
+from allauth.socialaccount.models import SocialAccount, SocialApp, SocialToken
+from django.contrib.auth.models import Group
+
+try:
+    admin.site.unregister(Site)
+    admin.site.unregister(SocialAccount)
+    admin.site.unregister(SocialApp)
+    admin.site.unregister(SocialToken)
+except admin.sites.NotRegistered:
+    pass

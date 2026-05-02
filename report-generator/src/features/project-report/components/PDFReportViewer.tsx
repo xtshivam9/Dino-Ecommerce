@@ -12,7 +12,7 @@ import { Button } from "../../../components/ui/button";
  * Flow:
  * 1. Render <ProjectReportDocument /> via react-pdf's `pdf()` to get a blob
  * 2. Post-process the blob with pdf-lib to inject Arabic page numbers
- *    on content pages (skipping the first 16 preliminary pages)
+ *    on content pages (skipping the first 14 preliminary pages)
  * 3. Display the processed PDF in an <iframe> and offer a download button
  */
 export default function PDFReportViewer() {
@@ -40,7 +40,7 @@ export default function PDFReportViewer() {
       const arrayBuffer = await blob.arrayBuffer();
 
       // Step 2: Post-process with pdf-lib to add page numbers
-      const processedBytes = await addPageNumbers(arrayBuffer, 24);
+      const processedBytes = await addPageNumbers(arrayBuffer, 14);
 
       // Step 3: Create blob URL for display/download
       const processedBlob = new Blob([processedBytes as BlobPart], {

@@ -135,21 +135,98 @@ urlpatterns = [
         </Text>
       </View>
 
-      <Text style={[styles.h2, { marginTop: 24 }]}>Annexure C: Required Environment Variables</Text>
-      
+      <Text break style={[styles.h2, { marginTop: 0 }]}>Annexure C: Required Environment Variables</Text>
+
+      <Text style={styles.paragraphIndent}>
+        The following environment variables must be configured before running the application in any environment. Create a <Text style={styles.bold}>.env</Text> file in the project root and populate these values accordingly.
+      </Text>
+
       <View style={{ backgroundColor: "#f4f4f4", padding: 12, borderRadius: 4, marginBottom: 16 }}>
         <Text style={{ fontFamily: "Courier", fontSize: 8, lineHeight: 1.3 }}>
-{`# Django Configuration
+{`# ─── Django Core Configuration ───────────────────────────────────────────────
 SECRET_KEY='django-insecure-your-secret-key-here'
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1,.vercel.app
 
-# Stripe Configuration
+# ─── Stripe Payment Gateway ────────────────────────────────────────────────────
 STRIPE_PUBLIC_KEY='pk_test_your_public_key'
 STRIPE_SECRET_KEY='sk_test_your_secret_key'
 
-# Database (Production Only - defaults to sqlite3 locally)
+# ─── Database (Production Only) ────────────────────────────────────────────────
+# Locally, Django defaults to db.sqlite3
 DATABASE_URL='postgres://user:password@host:port/dbname'`}
+        </Text>
+      </View>
+
+      <Text style={styles.paragraph}>
+        <Text style={styles.bold}>Security Note:</Text> Never commit <Text style={styles.bold}>.env</Text> files to version control. Add <Text style={styles.bold}>.env</Text> to your <Text style={styles.bold}>.gitignore</Text> and use environment variable management services (e.g., Vercel environment settings, Heroku Config Vars) in production.
+      </Text>
+
+      {/* ─── End of Project ─── */}
+      <View
+        style={{
+          marginTop: 60,
+          alignItems: "center",
+          paddingTop: 30,
+          borderTopWidth: 1,
+          borderTopColor: "#cccccc",
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 10,
+            fontFamily: "Times-Roman",
+            color: "#888888",
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            marginBottom: 12,
+          }}
+        >
+          ─── End of Report ───
+        </Text>
+        <Text
+          style={{
+            fontSize: 18,
+            fontFamily: "Times-Bold",
+            color: "#000000",
+            textAlign: "center",
+            letterSpacing: 1,
+          }}
+        >
+          AROWAI 1.0 — Arowai Ecommerce 1.0
+        </Text>
+        <Text
+          style={{
+            fontSize: 11,
+            fontFamily: "Times-Italic",
+            color: "#444444",
+            textAlign: "center",
+            marginTop: 8,
+          }}
+        >
+          BCA Final Year Project Report
+        </Text>
+        <Text
+          style={{
+            fontSize: 10,
+            fontFamily: "Times-Roman",
+            color: "#666666",
+            textAlign: "center",
+            marginTop: 6,
+          }}
+        >
+          Submitted to: Department of Computer Applications
+        </Text>
+        <Text
+          style={{
+            fontSize: 10,
+            fontFamily: "Times-Roman",
+            color: "#666666",
+            textAlign: "center",
+            marginTop: 4,
+          }}
+        >
+          Academic Year: 2024–2025
         </Text>
       </View>
     </BookPageLayout>

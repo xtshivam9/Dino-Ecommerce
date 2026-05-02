@@ -1,5 +1,6 @@
 from django.urls import path
 from django.views import View
+from django.views.generic import TemplateView, RedirectView
 from .views import send_contact_email
 from django.urls import path
 from . import views
@@ -61,4 +62,8 @@ urlpatterns = [
     # path('about_us/', about_us, name='about_us'),
     # path('send-contact-email/', send_contact_email, name='send_contact_email'),
     #path('contact/', views.contact_form(), name='index'),
+    path('find-store/', TemplateView.as_view(template_name='find_store.html'), name='find_store'),
+    path('get-help/', TemplateView.as_view(template_name='get_help.html'), name='get_help'),
+    path('signup-email/', RedirectView.as_view(url='/#newsletter', permanent=True), name='signup_email'),
+    path('contact-us/', TemplateView.as_view(template_name='contact_us.html'), name='contact_us'),
 ]

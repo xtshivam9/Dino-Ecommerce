@@ -13,8 +13,8 @@ import {
 } from "@react-pdf/renderer";
 
 export default function SequenceDiagram() {
-  const width = 495;
-  const height = 480;
+  const width = 560;
+  const height = 510;
 
   const colors = {
     text: "#1a1a1a",
@@ -34,16 +34,16 @@ export default function SequenceDiagram() {
 
   // Participant positions (x centers)
   const parts = [
-    { x: 50, label: "User" },
-    { x: 135, label: "Templates UI" },
-    { x: 220, label: "Views API" },
-    { x: 305, label: "Database" },
-    { x: 390, label: "Stripe" },
-    { x: 460, label: "Product\nExecutor" },
+    { x: 45,  label: "User" },
+    { x: 140, label: "Templates UI" },
+    { x: 235, label: "Views API" },
+    { x: 330, label: "Database" },
+    { x: 420, label: "Stripe" },
+    { x: 510, label: "Product\nExecutor" },
   ];
 
-  const topY = 50;
-  const bottomY = 470;
+  const topY = 55;
+  const bottomY = 500;
 
   // Draw participant box
   const Participant = ({ x, label }: { x: number; label: string }) => {
@@ -399,9 +399,9 @@ export default function SequenceDiagram() {
       <Note x={10} y={215} text="Async processing begins" />
 
       {/* Phase 4: BFS Payment Loop */}
-      <Fragment x={355} y={232} w={130} h={170} label="LOOP" />
+      <Fragment x={395} y={232} w={155} h={170} label="LOOP" />
       <SvgText
-        x={360}
+        x={400}
         y={250}
         style={{
           fontSize: 5,

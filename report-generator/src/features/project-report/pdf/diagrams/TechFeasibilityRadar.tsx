@@ -15,8 +15,6 @@ export default function TechFeasibilityRadar() {
     { label: "Technology\nMaturity", score: 9 },
     { label: "Developer\nExperience", score: 8 },
     { label: "Scalability", score: 9 },
-    { label: "Community\nSupport", score: 9 },
-    { label: "Integration\nCapability", score: 7 },
     { label: "Security", score: 8 },
   ];
 

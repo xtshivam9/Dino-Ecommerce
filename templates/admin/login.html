@@ -1,11 +1,25 @@
 {% extends "admin/base_site.html" %}
 {% load i18n static %}
 
+{% block bodyclass %}login{% endblock %}
+
 {% block extrastyle %}{{ block.super }}
 <style>
   /* ── Login page overrides ── */
   body.login {
     background: var(--aw-bg) !important;
+  }
+
+  body.login #nav-sidebar,
+  body.login .breadcrumbs,
+  body.login #nav-toggle {
+    display: none !important;
+  }
+
+  body.login #content {
+    padding: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
   }
 
   /* Remove white wrapper */
@@ -17,18 +31,11 @@
   }
 
   body.login #header {
-    display: flex !important;
-    background: linear-gradient(135deg, #0d1b2e 0%, #111827 60%, #0d2035 100%) !important;
-    border-bottom: 1px solid var(--aw-border) !important;
-    height: 64px !important;
-    padding: 0 40px !important;
-    align-items: center !important;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.5) !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
+    display: none !important;
+  }
+
+  body.login .breadcrumbs {
+    display: none !important;
   }
 
   body.login .login-wrapper {
@@ -36,7 +43,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px 40px;
+    padding: 40px 20px;
   }
 
   body.login #content-main {
@@ -178,7 +185,13 @@
 </style>
 {% endblock %}
 
+{% block nav-sidebar %}{% endblock %}
+{% block nav-global %}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
 {% block content %}
+<script>document.body.classList.add('login');document.getElementById('header').style.display='none';</script>
 <div class="login-wrapper">
   <div id="content-main">
     <div class="login-header-art">

@@ -47,12 +47,12 @@ export default function SDLCOverview() {
         The Software Development Life Cycle (SDLC) is a structured, methodological framework utilized by software engineering teams to design, develop, test, and deploy high-quality software applications. It provides a standardized sequence of phases that ensures the final product meets or exceeds client expectations, is completed within schedule and budget estimates, and possesses structural integrity.
       </Text>
       <Text style={styles.paragraph}>
-        For the Dino-Ecommerce project, adhering to a rigorous SDLC was imperative to manage the complexities of integrating payment gateways, securing user data, and managing state across sessions. The life cycle acted as a blueprint, guiding the transition from abstract business requirements to a fully functional Django web application.
+        For the Arowai Ecommerce 1.0 project, adhering to a rigorous SDLC was imperative to manage the complexities of integrating payment gateways, securing user data, and managing state across sessions. The life cycle acted as a blueprint, guiding the transition from abstract business requirements to a fully functional Django web application.
       </Text>
 
       <Text style={styles.h2}>6.2 Importance of SDLC</Text>
       <Text style={styles.paragraphIndent}>
-        Implementing a defined SDLC provided several critical advantages for the development of Dino-Ecommerce:
+        Implementing a defined SDLC provided several critical advantages for the development of Arowai Ecommerce 1.0:
       </Text>
       <View style={{ paddingLeft: 16, marginBottom: 16 }}>
         <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>1. <Text style={styles.bold}>Risk Mitigation:</Text> Early identification of potential security vulnerabilities in payment flows before implementation.</Text>
@@ -63,7 +63,7 @@ export default function SDLCOverview() {
 
       <Text style={styles.h2}>6.3 SDLC Phases Overview</Text>
       <Text style={styles.paragraphIndent}>
-        The development of Dino-Ecommerce proceeded through the following standard SDLC phases:
+        The development of Arowai Ecommerce 1.0 proceeded through the following standard SDLC phases:
       </Text>
 
       <Text style={styles.h3}>Phase 1: Requirement Gathering and Analysis</Text>
@@ -88,7 +88,7 @@ export default function SDLCOverview() {
 
       <Text style={styles.h3}>Phase 5: Deployment</Text>
       <Text style={styles.paragraph}>
-        Once testing concluded, the application was prepared for production. Static files were collected, database migrations were finalized, and the application was deployed using a cloud provider (e.g., Vercel or Heroku), making the Dino-Ecommerce platform accessible to end-users via the internet.
+        Once testing concluded, the application was prepared for production. Static files were collected, database migrations were finalized, and the application was deployed using a cloud provider (e.g., Vercel or Heroku), making the Arowai Ecommerce 1.0 platform accessible to end-users via the internet.
       </Text>
 
       <Text style={styles.h3}>Phase 6: Maintenance</Text>

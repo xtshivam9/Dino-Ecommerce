@@ -319,7 +319,7 @@ export default function Level1DFD() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: Level 1 Data Flow Diagram — Dino-Ecommerce System
+        Figure: Level 1 Data Flow Diagram — Arowai Ecommerce 1.0 System
       </SvgText>
     </Svg>
   );

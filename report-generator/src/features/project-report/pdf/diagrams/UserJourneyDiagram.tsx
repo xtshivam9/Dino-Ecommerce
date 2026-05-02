@@ -8,7 +8,7 @@ import {
 } from "@react-pdf/renderer";
 
 /**
- * User Order Journey — Step-by-step flow diagram showing user journey through Dino-Ecommerce
+ * User Order Journey — Step-by-step flow diagram showing user journey through Arowai Ecommerce 1.0
  * Used in User Manual chapter
  */
 export default function UserJourneyDiagram() {

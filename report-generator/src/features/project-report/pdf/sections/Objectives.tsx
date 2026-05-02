@@ -45,7 +45,7 @@ export default function Objectives() {
 
       <Text style={styles.h2}>3.1 Introduction</Text>
       <Text style={styles.paragraphIndent}>
-        Clear and measurable objectives are the cornerstone of any successful software engineering project. They define the intended outcomes, guide architectural decisions, and provide a metric against which the final product can be evaluated. The objectives for Dino-Ecommerce are categorized into Primary, Secondary, and Technical objectives to ensure a holistic approach to system development.
+        Clear and measurable objectives are the cornerstone of any successful software engineering project. They define the intended outcomes, guide architectural decisions, and provide a metric against which the final product can be evaluated. The objectives for Arowai Ecommerce 1.0 are categorized into Primary, Secondary, and Technical objectives to ensure a holistic approach to system development.
       </Text>
 
       <Text style={styles.h2}>3.2 Primary Objectives</Text>
@@ -129,7 +129,7 @@ export default function Objectives() {
 
       <Text style={styles.h2}>3.6 Summary</Text>
       <Text style={styles.paragraphIndent}>
-        The defined objectives establish a clear roadmap for the Dino-Ecommerce project. By focusing on security, architectural integrity, and user experience, the project aims to deliver a high-quality software solution that addresses the specific challenges identified in the problem statement.
+        The defined objectives establish a clear roadmap for the Arowai Ecommerce 1.0 project. By focusing on security, architectural integrity, and user experience, the project aims to deliver a high-quality software solution that addresses the specific challenges identified in the problem statement.
       </Text>
 
     </BookPageLayout>

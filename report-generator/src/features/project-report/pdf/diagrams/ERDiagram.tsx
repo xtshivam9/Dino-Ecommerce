@@ -406,7 +406,7 @@ export default function ERDiagram() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: Entity-Relationship Diagram — Dino-Ecommerce Database
+        Figure: Entity-Relationship Diagram — Arowai Ecommerce 1.0 Database
       </SvgText>
     </Svg>
   );

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Sign Up For Email{% endblock %}
+{% block content %}
+<section class="container py-5 mt-5" style="min-height: 50vh;">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center mt-5">
+      <h1 class="mb-4">Sign Up For Email</h1>
+      <p class="lead">Join our newsletter to get the latest updates and offers.</p>
+      <div class="p-4 bg-light rounded mt-4">
+        <form>
+          <div class="form-group mb-3">
+            <input type="email" class="form-control" placeholder="Enter your email address">
+          </div>
+          <button type="submit" class="btn btn-dark w-100">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -14,7 +14,7 @@ import {
 
 export default function DeploymentDiagram() {
   const width = 495;
-  const height = 420;
+  const height = 520;
 
   // Colors
   const colors = {
@@ -150,309 +150,57 @@ export default function DeploymentDiagram() {
         Deployment Architecture
       </SvgText>
 
-      {/* Layer Labels */}
-      <SvgText
-        x={8}
-        y={42}
-        style={{ fontSize: 7, fontFamily: "Times-Bold", fill: colors.label }}
-      >
-        CLIENT TIER
-      </SvgText>
-      <Line
-        x1={8}
-        y1={45}
-        x2={487}
-        y2={45}
-        stroke="#dddddd"
-        strokeWidth={0.5}
-      />
+      {/* === CLIENT TIER === */}
+      <SvgText x={8} y={42} style={{ fontSize: 7, fontFamily: "Times-Bold", fill: colors.label }}>CLIENT TIER</SvgText>
+      <Line x1={8} y1={45} x2={487} y2={45} stroke="#dddddd" strokeWidth={0.5} />
 
-      <SvgText
-        x={8}
-        y={132}
-        style={{ fontSize: 7, fontFamily: "Times-Bold", fill: colors.label }}
-      >
-        EDGE / CDN
-      </SvgText>
-      <Line
-        x1={8}
-        y1={135}
-        x2={487}
-        y2={135}
-        stroke="#dddddd"
-        strokeWidth={0.5}
-      />
+      {/* === EDGE / CDN === */}
+      <SvgText x={8} y={152} style={{ fontSize: 7, fontFamily: "Times-Bold", fill: colors.label }}>EDGE / CDN</SvgText>
+      <Line x1={8} y1={155} x2={487} y2={155} stroke="#dddddd" strokeWidth={0.5} />
 
-      <SvgText
-        x={8}
-        y={222}
-        style={{ fontSize: 7, fontFamily: "Times-Bold", fill: colors.label }}
-      >
-        APPLICATION TIER
-      </SvgText>
-      <Line
-        x1={8}
-        y1={225}
-        x2={487}
-        y2={225}
-        stroke="#dddddd"
-        strokeWidth={0.5}
-      />
+      {/* === APPLICATION TIER === */}
+      <SvgText x={8} y={258} style={{ fontSize: 7, fontFamily: "Times-Bold", fill: colors.label }}>APPLICATION TIER</SvgText>
+      <Line x1={8} y1={261} x2={487} y2={261} stroke="#dddddd" strokeWidth={0.5} />
 
-      <SvgText
-        x={8}
-        y={332}
-        style={{ fontSize: 7, fontFamily: "Times-Bold", fill: colors.label }}
-      >
-        DATA / SERVICES TIER
-      </SvgText>
-      <Line
-        x1={8}
-        y1={335}
-        x2={487}
-        y2={335}
-        stroke="#dddddd"
-        strokeWidth={0.5}
-      />
+      {/* === DATA / SERVICES TIER === */}
+      <SvgText x={8} y={390} style={{ fontSize: 7, fontFamily: "Times-Bold", fill: colors.label }}>DATA / SERVICES TIER</SvgText>
+      <Line x1={8} y1={393} x2={487} y2={393} stroke="#dddddd" strokeWidth={0.5} />
 
-      {/* Client Tier */}
-      <Product
-        x={40}
-        y={52}
-        w={120}
-        h={65}
-        fill={colors.client}
-        stroke={colors.clientBorder}
-        title="Web Browser"
-        items={["HTML5 / CSS3", "Bootstrap 4 UI", "jQuery / AJAX"]}
-      />
-      <Product
-        x={190}
-        y={52}
-        w={120}
-        h={65}
-        fill={colors.client}
-        stroke={colors.clientBorder}
-        title="Mobile Browser"
-        items={["Responsive Layout", "Touch-optimized UI"]}
-      />
-      <Product
-        x={340}
-        y={52}
-        w={120}
-        h={65}
-        fill={colors.client}
-        stroke={colors.clientBorder}
-        title="Payment Gateway"
-        items={["Stripe Checkout", "Stripe Elements", "Card Validation"]}
-      />
+      {/* Client Tier boxes */}
+      <Product x={40} y={55} w={120} h={70} fill={colors.client} stroke={colors.clientBorder} title="Web Browser" items={["HTML5 / CSS3", "Bootstrap 4 UI", "jQuery / AJAX"]} />
+      <Product x={190} y={55} w={120} h={70} fill={colors.client} stroke={colors.clientBorder} title="Mobile Browser" items={["Responsive Layout", "Touch-optimized UI"]} />
+      <Product x={340} y={55} w={120} h={70} fill={colors.client} stroke={colors.clientBorder} title="Payment Gateway" items={["Stripe Checkout", "Stripe Elements", "Card Validation"]} />
 
-      {/* Edge / CDN */}
-      <Product
-        x={100}
-        y={142}
-        w={150}
-        h={65}
-        fill={colors.cdn}
-        stroke={colors.cdnBorder}
-        title="Web Server (Gunicorn)"
-        items={["WSGI Gateway", "Static File Serving", "SSL/TLS Termination"]}
-      />
-      <Product
-        x={280}
-        y={142}
-        w={150}
-        h={65}
-        fill={colors.cdn}
-        stroke={colors.cdnBorder}
-        title="Nginx / CDN"
-        items={["Reverse Proxy", "Static Assets", "WhiteNoise"]}
-      />
+      {/* Edge / CDN boxes */}
+      <Product x={90} y={165} w={150} h={70} fill={colors.cdn} stroke={colors.cdnBorder} title="Web Server (Gunicorn)" items={["WSGI Gateway", "Static File Serving", "SSL/TLS Termination"]} />
+      <Product x={270} y={165} w={150} h={70} fill={colors.cdn} stroke={colors.cdnBorder} title="Nginx / CDN" items={["Reverse Proxy", "Static Assets", "WhiteNoise"]} />
 
-      {/* Application Tier */}
-      <Product
-        x={20}
-        y={235}
-        w={130}
-        h={80}
-        fill={colors.server}
-        stroke={colors.serverBorder}
-        title="Django App Server"
-        items={[
-          "Django Views",
-          "URL Dispatcher",
-          "Allauth (Auth)",
-          "Template Engine",
-        ]}
-      />
-      <Product
-        x={170}
-        y={235}
-        w={130}
-        h={80}
-        fill={colors.server}
-        stroke={colors.serverBorder}
-        title="Order Processing"
-        items={[
-          "Cart Management",
-          "Stripe Charges",
-          "Coupon Validation",
-          "Refund Handler",
-        ]}
-      />
-      <Product
-        x={320}
-        y={235}
-        w={150}
-        h={80}
-        fill={colors.server}
-        stroke={colors.serverBorder}
-        title="Background Tasks"
-        items={[
-          "Email Notifications",
-          "Inventory Updates",
-          "Order Confirmations",
-          "Admin Alerts",
-        ]}
-      />
+      {/* Application Tier boxes */}
+      <Product x={15} y={272} w={135} h={90} fill={colors.server} stroke={colors.serverBorder} title="Django App Server" items={["Django Views", "URL Dispatcher", "Allauth (Auth)", "Template Engine"]} />
+      <Product x={175} y={272} w={135} h={90} fill={colors.server} stroke={colors.serverBorder} title="Order Processing" items={["Cart Management", "Stripe Charges", "Coupon Validation", "Refund Handler"]} />
+      <Product x={335} y={272} w={145} h={90} fill={colors.server} stroke={colors.serverBorder} title="Background Tasks" items={["Email Notifications", "Inventory Updates", "Order Confirmations", "Admin Alerts"]} />
 
-      {/* Data Tier */}
-      <Product
-        x={20}
-        y={345}
-        w={110}
-        h={60}
-        fill={colors.db}
-        stroke={colors.dbBorder}
-        title="SQLite / PostgreSQL"
-        items={["Primary Database", "Django ORM", "Migrations"]}
-      />
-      <Product
-        x={150}
-        y={345}
-        w={110}
-        h={60}
-        fill={colors.db}
-        stroke={colors.dbBorder}
-        title="Media Storage"
-        items={["Product Images", "User Uploads", "Static Assets"]}
-      />
-      <Product
-        x={280}
-        y={345}
-        w={100}
-        h={60}
-        fill={colors.queue}
-        stroke={colors.queueBorder}
-        title="Stripe API"
-        items={["Payment Intents", "Charge Objects", "Refund API"]}
-      />
-      <Product
-        x={400}
-        y={345}
-        w={80}
-        h={60}
-        fill={colors.db}
-        stroke={colors.dbBorder}
-        title="Third-Party"
-        items={["SMTP Email", "Allauth"]}
-      />
+      {/* Data Tier boxes */}
+      <Product x={10} y={403} w={110} h={70} fill={colors.db} stroke={colors.dbBorder} title="SQLite / PostgreSQL" items={["Primary Database", "Django ORM", "Migrations"]} />
+      <Product x={138} y={403} w={110} h={70} fill={colors.db} stroke={colors.dbBorder} title="Media Storage" items={["Product Images", "User Uploads", "Static Assets"]} />
+      <Product x={268} y={403} w={105} h={70} fill={colors.queue} stroke={colors.queueBorder} title="Stripe API" items={["Payment Intents", "Charge Objects", "Refund API"]} />
+      <Product x={388} y={403} w={97} h={70} fill={colors.db} stroke={colors.dbBorder} title="Third-Party" items={["SMTP Email", "Allauth"]} />
 
       {/* Arrows - Client to Edge */}
-      <Arrow
-        x1={100}
-        y1={117}
-        x2={150}
-        y2={142}
-        label="HTTPS"
-        labelX={110}
-        labelY={130}
-      />
-      <Arrow
-        x1={250}
-        y1={117}
-        x2={220}
-        y2={142}
-        label="HTTPS"
-        labelX={250}
-        labelY={130}
-      />
-      <Arrow
-        x1={400}
-        y1={117}
-        x2={380}
-        y2={142}
-        label="Stripe JS"
-        labelX={405}
-        labelY={130}
-      />
+      <Arrow x1={100} y1={125} x2={145} y2={165} label="HTTPS" labelX={110} labelY={146} />
+      <Arrow x1={250} y1={125} x2={225} y2={165} label="HTTPS" labelX={250} labelY={146} />
+      <Arrow x1={400} y1={125} x2={375} y2={165} label="Stripe JS" labelX={408} labelY={146} />
 
       {/* Edge to App */}
-      <Arrow
-        x1={155}
-        y1={207}
-        x2={100}
-        y2={235}
-        label="SSR/ISR"
-        labelX={112}
-        labelY={222}
-      />
-      <Arrow
-        x1={200}
-        y1={207}
-        x2={235}
-        y2={235}
-        label="Events"
-        labelX={230}
-        labelY={222}
-      />
-      <Arrow
-        x1={380}
-        y1={207}
-        x2={395}
-        y2={235}
-        label="Routes"
-        labelX={400}
-        labelY={222}
-      />
+      <Arrow x1={155} y1={235} x2={100} y2={272} label="SSR/ISR" labelX={112} labelY={256} />
+      <Arrow x1={205} y1={235} x2={245} y2={272} label="Events" labelX={238} labelY={256} />
+      <Arrow x1={365} y1={235} x2={395} y2={272} label="Routes" labelX={398} labelY={256} />
 
       {/* App to Data */}
-      <Arrow
-        x1={85}
-        y1={315}
-        x2={75}
-        y2={345}
-        label="Django ORM"
-        labelX={65}
-        labelY={332}
-      />
-      <Arrow
-        x1={235}
-        y1={315}
-        x2={205}
-        y2={345}
-        label="Files"
-        labelX={230}
-        labelY={332}
-      />
-      <Arrow
-        x1={235}
-        y1={315}
-        x2={330}
-        y2={345}
-        label="Events"
-        labelX={295}
-        labelY={332}
-      />
-      <Arrow
-        x1={395}
-        y1={315}
-        x2={440}
-        y2={345}
-        label="REST"
-        labelX={430}
-        labelY={332}
-      />
+      <Arrow x1={82} y1={362} x2={65} y2={403} label="Django ORM" labelX={55} labelY={384} />
+      <Arrow x1={245} y1={362} x2={193} y2={403} label="Files" labelX={228} labelY={384} />
+      <Arrow x1={245} y1={362} x2={320} y2={403} label="Events" labelX={295} labelY={384} />
+      <Arrow x1={407} y1={362} x2={437} y2={403} label="REST" labelX={435} labelY={384} />
     </Svg>
   );
 }

@@ -53,9 +53,9 @@ export default function ProjectReportDocument() {
       <Preface pageNumber={4} />
       <Abstract pageNumber={5} />
       <TableOfContents startPage={6} />
-      <ListOfFigures startPage={11} />
-      <ListOfTables startPage={12} />
-      <Acronyms startPage={13} />
+      <ListOfFigures startPage={7} />
+      <ListOfTables startPage={8} />
+      <Acronyms startPage={10} />
 
       {/* ========== Content Pages (Arabic Numerals) ========== */}
 

@@ -193,7 +193,7 @@ export default function SWOTDiagram() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: SWOT Analysis — Dino-Ecommerce Project
+        Figure: SWOT Analysis — Arowai Ecommerce 1.0 Project
       </SvgText>
     </Svg>
   );

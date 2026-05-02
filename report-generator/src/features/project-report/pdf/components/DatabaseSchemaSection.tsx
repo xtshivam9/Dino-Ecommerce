@@ -287,7 +287,7 @@ export default function DatabaseSchemaSection() {
       <Text style={styles.h3}>7.6.1 Complete Database Schema</Text>
       <Text style={styles.paragraphIndent}>
         The following tables define the complete database schema for the
-        Dino-Ecommerce platform, organized by functional domain. Each table
+        Arowai Ecommerce 1.0 platform, organized by functional domain. Each table
         includes field names, data types, and constraints as specified in the
         Django models (models.py).
       </Text>

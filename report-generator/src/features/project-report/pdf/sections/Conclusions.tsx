@@ -44,7 +44,7 @@ export default function Conclusions() {
 
       <Text style={styles.h2}>12.1 Project Summary</Text>
       <Text style={styles.paragraphIndent}>
-        The development of Dino-Ecommerce successfully achieved its primary goal: establishing a secure, scalable, and fully functional online shopping platform from the ground up. By utilizing the robust architecture of the Django framework in conjunction with the Stripe payment gateway, the project demonstrates a pragmatic approach to modern web development that balances rapid implementation with enterprise-grade security.
+        The development of Arowai Ecommerce 1.0 successfully achieved its primary goal: establishing a secure, scalable, and fully functional online shopping platform from the ground up. By utilizing the robust architecture of the Django framework in conjunction with the Stripe payment gateway, the project demonstrates a pragmatic approach to modern web development that balances rapid implementation with enterprise-grade security.
       </Text>
 
       <Text style={styles.h2}>12.2 Key Achievements</Text>
@@ -78,7 +78,7 @@ export default function Conclusions() {
 
       <Text style={styles.h2}>12.4 Future Scope</Text>
       <Text style={styles.paragraphIndent}>
-        Software is never truly finished; it simply iterates. Based on the foundation established by Dino-Ecommerce, several significant enhancements are planned for future iterations:
+        Software is never truly finished; it simply iterates. Based on the foundation established by Arowai Ecommerce 1.0, several significant enhancements are planned for future iterations:
       </Text>
 
       <Text style={styles.h3}>1. RESTful API Implementation</Text>
@@ -98,7 +98,7 @@ export default function Conclusions() {
 
       <Text style={styles.h2}>12.5 Final Conclusion</Text>
       <Text style={styles.paragraphIndent}>
-        In conclusion, Dino-Ecommerce stands as a testament to the power of Python and Django in solving real-world commercial challenges. The project not only met its academic and technical objectives but also provided an invaluable, hands-on learning experience in full-stack web engineering, database design, and third-party API integration.
+        In conclusion, Arowai Ecommerce 1.0 stands as a testament to the power of Python and Django in solving real-world commercial challenges. The project not only met its academic and technical objectives but also provided an invaluable, hands-on learning experience in full-stack web engineering, database design, and third-party API integration.
       </Text>
 
     </BookPageLayout>

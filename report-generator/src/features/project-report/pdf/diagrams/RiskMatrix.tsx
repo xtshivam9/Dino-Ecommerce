@@ -275,7 +275,7 @@ export default function RiskMatrix() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: Risk Assessment Matrix — Dino-Ecommerce Project
+        Figure: Risk Assessment Matrix — Arowai Ecommerce 1.0 Project
       </SvgText>
     </Svg>
   );

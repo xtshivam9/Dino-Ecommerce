@@ -8,7 +8,7 @@ import {
 } from "@react-pdf/renderer";
 
 /**
- * Dino-Ecommerce vs Competitors Comparison Radar
+ * Arowai Ecommerce 1.0 vs Competitors Comparison Radar
  * Used in Chapter 2 Problem Statement
  */
 export default function ComparisonRadar() {
@@ -21,12 +21,9 @@ export default function ComparisonRadar() {
   const dimensions = [
     { label: "Ease of Use", dino: 8, competitor: 5 },
     { label: "Payment Integration", dino: 9, competitor: 5 },
-    { label: "Self-Hosting", dino: 8, competitor: 9 },
-    { label: "Product Management", dino: 7, competitor: 9 },
-    { label: "User Auth", dino: 8, competitor: 4 },
-    { label: "Django/Python", dino: 9, competitor: 6 },
-    { label: "Community", dino: 4, competitor: 8 },
-    { label: "Modern Stack", dino: 9, competitor: 6 },
+    { label: "Customization", dino: 9, competitor: 6 },
+    { label: "Security", dino: 8, competitor: 7 },
+    { label: "Performance", dino: 8, competitor: 6 },
   ];
 
   const n = dimensions.length;
@@ -53,7 +50,7 @@ export default function ComparisonRadar() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Feature Comparison Radar: Dino-Ecommerce vs Shopify/WooCommerce
+        Feature Comparison Radar: Arowai Ecommerce 1.0 vs Shopify/WooCommerce
       </SvgText>
 
       {/* Grid rings */}
@@ -112,7 +109,7 @@ export default function ComparisonRadar() {
         );
       })}
 
-      {/* Dino-Ecommerce polygon */}
+      {/* Arowai Ecommerce 1.0 polygon */}
       {dinoPoints.map((p, i) => {
         const next = dinoPoints[(i + 1) % n];
         return (
@@ -135,7 +132,7 @@ export default function ComparisonRadar() {
         </G>
       ))}
 
-      {/* Data points — Dino-Ecommerce */}
+      {/* Data points — Arowai Ecommerce 1.0 */}
       {dinoPoints.map((p, i) => (
         <G key={`dino-pt-${i}`}>
           <Circle cx={p.x} cy={p.y} r={3.5} fill="#3b82f6" />
@@ -166,7 +163,7 @@ export default function ComparisonRadar() {
         y={height - 20}
         style={{ fontSize: 7, fontFamily: "Times-Bold", fill: "#3b82f6" }}
       >
-        Dino-Ecommerce
+        Arowai Ecommerce 1.0
       </SvgText>
       <Line
         x1={cx + 10}

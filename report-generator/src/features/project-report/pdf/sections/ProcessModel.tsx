@@ -10,12 +10,12 @@ export default function ProcessModel() {
     <BookPageLayout chapterTitle="Software Process Model" chapterNum="06" isContinued>
       <Text style={styles.h2}>6.4 Selected Process Model: Agile Methodology</Text>
       <Text style={styles.paragraphIndent}>
-        Choosing the right software development methodology is paramount to project success. Given the dynamic nature of web development and the need for continuous integration of complex components like payment gateways, the traditional Waterfall model was deemed too rigid. Instead, the <Text style={styles.bold}>Agile Methodology</Text> was selected for the development of Dino-Ecommerce.
+        Choosing the right software development methodology is paramount to project success. Given the dynamic nature of web development and the need for continuous integration of complex components like payment gateways, the traditional Waterfall model was deemed too rigid. Instead, the <Text style={styles.bold}>Agile Methodology</Text> was selected for the development of Arowai Ecommerce 1.0.
       </Text>
       
       <Text style={styles.h3}>6.4.1 Justification for Agile</Text>
       <Text style={styles.paragraphIndent}>
-        Agile development is characterized by iterative progress, frequent reassessment of requirements, and high adaptability. This model was perfectly suited for Dino-Ecommerce for several reasons:
+        Agile development is characterized by iterative progress, frequent reassessment of requirements, and high adaptability. This model was perfectly suited for Arowai Ecommerce 1.0 for several reasons:
       </Text>
       <View style={{ paddingLeft: 16, marginBottom: 16 }}>
         <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 8 }}>

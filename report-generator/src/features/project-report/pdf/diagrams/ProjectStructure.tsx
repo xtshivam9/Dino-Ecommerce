@@ -2,7 +2,7 @@ import { Svg, G, Rect, Text as SvgText, Line } from "@react-pdf/renderer";
 
 /**
  * Project Module Structure (Bond/Tree diagram)
- * Shows hierarchical decomposition of the Dino-Ecommerce system
+ * Shows hierarchical decomposition of the Arowai Ecommerce 1.0 system
  */
 export default function ProjectStructure() {
   const width = 495;
@@ -15,7 +15,7 @@ export default function ProjectStructure() {
 
   // Root
   const root = {
-    label: "Dino-Ecommerce 1.0",
+    label: "Arowai Ecommerce 1.0",
     x: cx - productW / 2,
     y: 20,
     color: "#1e293b",

@@ -76,10 +76,11 @@
   #header {
     background: linear-gradient(135deg, #0d1b2e 0%, #111827 60%, #0d2035 100%) !important;
     border-bottom: 1px solid var(--aw-border) !important;
-    padding: 0 24px !important;
-    height: 64px !important;
+    padding: 0 40px !important;
+    height: 70px !important;
     display: flex !important;
     align-items: center !important;
+    justify-content: space-between !important;
     box-shadow: 0 2px 20px rgba(0,0,0,0.5) !important;
     position: sticky;
     top: 0;
@@ -159,8 +160,13 @@
   .breadcrumbs {
     background: var(--aw-surface) !important;
     border-bottom: 1px solid var(--aw-border) !important;
-    padding: 10px 24px !important;
+    padding: 14px 40px !important;
     font-size: 13px !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    white-space: normal !important;
   }
 
   .breadcrumbs a {
@@ -175,7 +181,9 @@
   }
 
   #content {
-    padding: 28px 28px !important;
+    padding: 40px !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
   }
 
   /* ── Page titles ──────────────────────────────── */
@@ -201,7 +209,28 @@
   #nav-sidebar, .sidebar {
     background: var(--aw-surface) !important;
     border-right: 1px solid var(--aw-border) !important;
-    padding: 16px 0;
+    padding: 20px 12px;
+    width: 260px;
+  }
+
+  #nav-sidebar .module caption,
+  #nav-sidebar .module th {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  #nav-sidebar .module td {
+    padding: 10px 12px !important;
+  }
+
+  #nav-sidebar .addlink, 
+  #nav-sidebar .changelink, 
+  #nav-sidebar .viewlink {
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+    overflow-wrap: normal !important;
+    padding: 4px 8px !important;
   }
 
   #nav-sidebar .current-app > .section:last-child {
@@ -214,9 +243,9 @@
     background: var(--aw-panel) !important;
     border: 1px solid var(--aw-border) !important;
     border-radius: var(--aw-radius) !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     box-shadow: var(--aw-shadow) !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 28px !important;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
 
@@ -234,8 +263,10 @@
     font-weight: 700 !important;
     letter-spacing: 1.5px !important;
     text-transform: uppercase !important;
-    padding: 14px 18px !important;
+    padding: 16px 24px !important;
     border-bottom: 1px solid var(--aw-border) !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
   }
 
   /* ── App index table rows ─────────────────────── */
@@ -244,9 +275,17 @@
     background: transparent !important;
     border-bottom: 1px solid var(--aw-border) !important;
     color: var(--aw-text) !important;
-    padding: 12px 16px !important;
+    padding: 14px 20px !important;
     vertical-align: middle !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
   }
+
+  /* Result list tables */
+  #result_list { width: 100% !important; table-layout: auto !important; }
+  #result_list th, #result_list td { white-space: normal !important; }
 
   table th {
     font-weight: 600 !important;
@@ -353,34 +392,37 @@
     background: var(--aw-panel) !important;
     border-top: 1px solid var(--aw-border) !important;
     border-radius: 0 0 var(--aw-radius) var(--aw-radius) !important;
-    padding: 14px 20px !important;
+    padding: 16px 24px !important;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
   }
 
   /* ── Forms / Fieldsets ───────────────────────── */
-  .form-row, .aligned label {
+  .form-row {
     background: transparent !important;
     color: var(--aw-text) !important;
     border-bottom: 1px solid var(--aw-border) !important;
-    padding: 12px 16px !important;
+    padding: 20px 24px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   fieldset {
     background: var(--aw-panel) !important;
     border: 1px solid var(--aw-border) !important;
     border-radius: var(--aw-radius) !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 28px !important;
     padding: 0 !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
   fieldset h2 {
     background: rgba(0,0,0,0.25) !important;
-    padding: 12px 18px !important;
-    font-size: 12px !important;
+    padding: 16px 24px !important;
+    font-size: 13px !important;
     font-weight: 700 !important;
     letter-spacing: 1px !important;
     text-transform: uppercase !important;
@@ -391,11 +433,14 @@
 
   .aligned label {
     color: #94a3b8 !important;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-    width: 160px !important;
-    display: inline-block;
-    vertical-align: top;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    display: block !important;
+    width: auto !important;
+    margin-bottom: 6px !important;
+    padding: 0 !important;
+    border: none !important;
+    white-space: normal !important;
   }
 
   input[type=text], input[type=password], input[type=email],
@@ -405,11 +450,12 @@
     color: var(--aw-text) !important;
     border: 1px solid var(--aw-border) !important;
     border-radius: var(--aw-radius-sm) !important;
-    padding: 8px 12px !important;
+    padding: 10px 14px !important;
     font-size: 14px !important;
     font-family: 'Inter', sans-serif !important;
     transition: border-color 0.2s, box-shadow 0.2s !important;
     outline: none !important;
+    max-width: 100%;
   }
 
   input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
@@ -422,16 +468,20 @@
     background: var(--aw-surface) !important;
   }
 
-  .help { color: var(--aw-muted) !important; font-size: 12px !important; }
+  .help { color: var(--aw-muted) !important; font-size: 12px !important; display: block !important; margin-top: 4px !important; white-space: normal !important; word-break: break-word !important; }
 
   /* ── Pagination ──────────────────────────────── */
   .paginator {
     background: var(--aw-panel) !important;
     border: 1px solid var(--aw-border) !important;
     border-radius: var(--aw-radius) !important;
-    padding: 10px 16px !important;
+    padding: 14px 20px !important;
     color: var(--aw-muted) !important;
     font-size: 13px !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
   }
 
   .paginator a {
@@ -456,6 +506,12 @@
     background: var(--aw-panel) !important;
     border-left: 1px solid var(--aw-border) !important;
     border-radius: var(--aw-radius) !important;
+    overflow: visible !important;
+  }
+
+  #changelist-filter ul li a {
+    white-space: normal !important;
+    word-break: break-word !important;
   }
 
   #changelist-filter h2 {
@@ -497,7 +553,11 @@
   #toolbar {
     background: var(--aw-surface) !important;
     border-bottom: 1px solid var(--aw-border) !important;
-    padding: 12px 24px !important;
+    padding: 16px 24px !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
   #searchbar {
@@ -607,6 +667,8 @@
   /* ── Inline delete / edit ────────────────────── */
   .inline-deletelink { color: #f87171 !important; font-size: 12px !important; }
   .inline-group .tabular tr.has_original td { background: rgba(16,185,129,0.03) !important; }
+  .inline-group { margin-top: 24px !important; }
+  .inline-group .tabular td { padding: 12px 16px !important; white-space: normal !important; word-break: break-word !important; }
 
   /* ── Object actions ──────────────────────────── */
   .object-tools li a {
@@ -641,6 +703,18 @@
 
   body.login #header {
     display: none !important;
+  }
+
+  body.login #nav-sidebar,
+  body.login .breadcrumbs,
+  body.login #nav-toggle,
+  body.login #toggle-nav-sidebar {
+    display: none !important;
+  }
+
+  body.login #content {
+    padding: 0 !important;
+    max-width: none !important;
   }
 
   body.login #content-main {

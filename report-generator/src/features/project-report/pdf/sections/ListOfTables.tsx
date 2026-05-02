@@ -8,131 +8,74 @@ interface ListOfTablesProps {
 }
 
 const tables = [
-  // Chapter 1
-  { number: "1.1", title: "Technology Stack", page: "4" },
-  { number: "1.2", title: "Technology Justification", page: "5" },
-  { number: "1.3", title: "Key Features Summary", page: "6" },
-  { number: "1.4", title: "Report Organization", page: "7" },
+  // Chapter 1 - Introduction
+  { number: "1.1", title: "Technology Stack", page: "2" },
+  { number: "1.2", title: "Report Organization", page: "5" },
 
-  // Chapter 2
-  {
-    number: "2.1",
-    title: "Feature Comparison of E-commerce Platforms",
-    page: "11",
-  },
-  {
-    number: "2.2",
-    title: "Detailed Feature Comparison \u2014 Dino-Ecommerce vs Shopify",
-    page: "12",
-  },
+  // Chapter 2 - Problem Statement
+  { number: "2.1", title: "Feature Comparison of E-commerce Platforms", page: "7" },
+  { number: "2.2", title: "Detailed Feature Comparison — Arowai Ecommerce 1.0 vs Shopify", page: "8" },
 
-  // Chapter 3
-  {
-    number: "3.1",
-    title: "Technology Stack Selection and Justification",
-    page: "17",
-  },
+  // Chapter 3 - Objectives
+  { number: "3.1", title: "Technology Stack Selection and Justification", page: "11" },
 
   // Chapter 4 - Feasibility Study
-  {
-    number: "4.1",
-    title: "Technology Stack Feasibility Assessment",
-    page: "20",
-  },
-  { number: "4.2", title: "Technical Risk Analysis", page: "21" },
-  { number: "4.3", title: "Infrastructure Cost Analysis", page: "22" },
-  { number: "4.4", title: "Feasibility Summary", page: "25" },
+  { number: "4.1", title: "Technology Stack Feasibility Assessment", page: "13" },
+  { number: "4.2", title: "Technical Risk Analysis", page: "14" },
+  { number: "4.3", title: "Infrastructure Cost Analysis", page: "14" },
+  { number: "4.4", title: "Feasibility Summary", page: "15" },
 
   // Chapter 5 - Estimation & Planning
-  { number: "5.1", title: "Lines of Code by Module", page: "27" },
-  { number: "5.2", title: "Risk Analysis Matrix", page: "29" },
+  { number: "5.1", title: "Lines of Code by Module", page: "16" },
+  { number: "5.2", title: "Risk Analysis Matrix", page: "17" },
 
   // Chapter 6 - SDLC
-  { number: "6.1", title: "SDLC Phases and Deliverables Overview", page: "33" },
-  { number: "6.2", title: "SDLC Phase Duration and Timeline", page: "38" },
-  { number: "6.3", title: "Sprint Structure and Ceremonies", page: "34" },
-  { number: "6.4", title: "Sprint Overview and Deliverables", page: "34" },
-  {
-    number: "6.5",
-    title: "Comparison of Development Methodologies",
-    page: "34",
-  },
-  { number: "6.6", title: "Interview Participants and Use Cases", page: "35" },
-  { number: "6.7", title: "Questionnaire Respondent Demographics", page: "35" },
-  { number: "6.8", title: "Current Tool Usage and Satisfaction", page: "35" },
-  { number: "6.9", title: "Primary Use Cases Identified", page: "36" },
-  { number: "6.10", title: "Stakeholder Analysis", page: "36" },
-  { number: "6.11", title: "Requirements Traceability Matrix", page: "37" },
-  { number: "6.12", title: "Primary Data Entities", page: "37" },
-  { number: "6.13", title: "Requirements Summary by Category", page: "37" },
-  {
-    number: "6.14",
-    title: "Requirements Traceability Matrix (SRS)",
-    page: "38",
-  },
+  { number: "6.1", title: "SDLC Phases and Deliverables Overview", page: "18" },
+  { number: "6.2", title: "Sprint Structure and Ceremonies", page: "20" },
+  { number: "6.3", title: "Comparison of Development Methodologies", page: "21" },
+  { number: "6.4", title: "Stakeholder Analysis", page: "24" },
+  { number: "6.5", title: "Requirements Traceability Matrix", page: "25" },
+  { number: "6.6", title: "Primary Data Entities", page: "26" },
 
   // Chapter 7 - System Design
-  { number: "7.1", title: "Context Diagram Data Flows", page: "41" },
-  { number: "7.2", title: "Use Case Specifications", page: "42" },
-  { number: "7.3", title: "Entity Relationships", page: "43" },
-  { number: "7.4", title: "User Table Schema", page: "44" },
-  { number: "7.5", title: "Item Table Schema", page: "44" },
-  { number: "7.6", title: "Order Table Schema", page: "44" },
-  { number: "7.7", title: "OrderItem Table Schema", page: "45" },
-  { number: "7.8", title: "Payment Table Schema", page: "45" },
-  { number: "7.9", title: "BillingAddress Table Schema", page: "45" },
-  { number: "7.10", title: "Entity Relationship Summary", page: "45" },
+  { number: "7.1", title: "Context Diagram Data Flows", page: "28" },
+  { number: "7.2", title: "Use Case Specifications", page: "30" },
+  { number: "7.3", title: "Entity Relationships", page: "32" },
+  { number: "7.4", title: "User Table Schema", page: "33" },
+  { number: "7.5", title: "Order Table Schema", page: "34" },
+  { number: "7.6", title: "Payment Table Schema", page: "34" },
+  { number: "7.7", title: "Entity Relationship Summary", page: "35" },
 
   // Chapter 8 - Implementation
-  { number: "8.1", title: "Project Directory Structure", page: "47" },
-  { number: "8.2", title: "Django Models Summary", page: "48" },
-  { number: "8.3", title: "Django Views Implementation", page: "49" },
-  { number: "8.4", title: "Stripe Payment Integration", page: "50" },
-  { number: "8.5", title: "Django URL Routes", page: "51" },
+  { number: "8.1", title: "Project Directory Structure", page: "37" },
+  { number: "8.2", title: "Django Models Summary", page: "38" },
+  { number: "8.3", title: "Django Views Implementation", page: "38" },
+  { number: "8.4", title: "Stripe Payment Integration", page: "38" },
 
   // Chapter 9 - Testing
-  { number: "9.1", title: "SOLID Principles Implementation", page: "53" },
-  { number: "9.2", title: "Design Patterns Used", page: "53" },
-  { number: "9.3", title: "Testing Levels and Coverage", page: "54" },
-  { number: "9.4", title: "Unit Test Cases", page: "54" },
-  { number: "9.5", title: "Integration Test Cases", page: "54" },
-  { number: "9.6", title: "System Test Cases", page: "55" },
-  { number: "9.7", title: "UI/UX Test Cases", page: "55" },
-  { number: "9.8", title: "Security Test Cases", page: "56" },
-  { number: "9.9", title: "Performance Test Results", page: "56" },
-  { number: "9.10", title: "Defect Tracking Log", page: "57" },
-  { number: "9.11", title: "Complete Test Results Summary", page: "57" },
+  { number: "9.1", title: "Unit Test Cases", page: "39" },
+  { number: "9.2", title: "Integration Test Cases", page: "40" },
+  { number: "9.3", title: "System Test Cases", page: "40" },
 
   // Chapter 10 - User Manual
-  { number: "10.1", title: "Common Payment Errors", page: "60" },
-  { number: "10.2", title: "Admin Role Permissions Matrix", page: "61" },
-  { number: "10.3", title: "Common Issues & Resolutions", page: "62" },
+  { number: "10.1", title: "Customer Guide Steps", page: "41" },
+  { number: "10.2", title: "Admin Role Permissions Matrix", page: "41" },
 
   // Chapter 12 - Conclusions
-  { number: "12.1", title: "Project Objectives Achievement", page: "68" },
-  { number: "12.2", title: "Current Limitations", page: "68" },
+  { number: "12.1", title: "Project Objectives Achievement", page: "46" },
+  { number: "12.2", title: "Current Limitations", page: "47" },
 
   // Annexures
-  { number: "A.1", title: "Complete Django Database Schema", page: "71" },
-  { number: "B.1", title: "HTTP API Endpoints", page: "71" },
-  { number: "C.1", title: "Django Views Summary", page: "71" },
-  { number: "D.1", title: "Required Environment Variables", page: "71" },
+  { number: "A.1", title: "Complete Django Database Schema", page: "50" },
+  { number: "B.1", title: "HTTP API Endpoints", page: "50" },
 ];
 
 // Split items across pages
-const ITEMS_PER_PAGE_1 = 22; // First page (with header)
-const ITEMS_PER_PAGE_N = 22; // Continuation pages
+const ITEMS_PER_PAGE = 22;
 
-const page1Items = tables.slice(0, ITEMS_PER_PAGE_1);
-const page2Items = tables.slice(
-  ITEMS_PER_PAGE_1,
-  ITEMS_PER_PAGE_1 + ITEMS_PER_PAGE_N,
-);
-const page3Items = tables.slice(
-  ITEMS_PER_PAGE_1 + ITEMS_PER_PAGE_N,
-  ITEMS_PER_PAGE_1 + ITEMS_PER_PAGE_N * 2,
-);
-const page4Items = tables.slice(ITEMS_PER_PAGE_1 + ITEMS_PER_PAGE_N * 2);
+const page1Items = tables.slice(0, ITEMS_PER_PAGE);
+const page2Items = tables.slice(ITEMS_PER_PAGE, ITEMS_PER_PAGE * 2);
+const page3Items = tables.slice(ITEMS_PER_PAGE * 2);
 
 /**
  * List of Tables - Multi-page editorial design with consistent margins
@@ -293,15 +236,6 @@ export default function ListOfTables({ startPage }: ListOfTablesProps) {
           {renderHeader(true)}
           <View>{page3Items.map(renderTableItem)}</View>
           {renderFooter(2)}
-        </Page>
-      )}
-
-      {/* Page 4 */}
-      {page4Items.length > 0 && (
-        <Page size="A4" style={pageStyle}>
-          {renderHeader(true)}
-          <View>{page4Items.map(renderTableItem)}</View>
-          {renderFooter(3)}
         </Page>
       )}
     </>

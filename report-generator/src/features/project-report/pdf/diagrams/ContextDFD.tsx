@@ -9,7 +9,7 @@ import {
 } from "@react-pdf/renderer";
 
 /**
- * Context Diagram (Level 0 DFD) - Dino-Ecommerce System
+ * Context Diagram (Level 0 DFD) - Arowai Ecommerce 1.0 System
  * Redesigned with better visual hierarchy, colored entities, and clear flow labels
  */
 export default function ContextDFD() {
@@ -103,7 +103,7 @@ export default function ContextDFD() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Context Diagram (Level 0 DFD) — Dino-Ecommerce System
+        Context Diagram (Level 0 DFD) — Arowai Ecommerce 1.0 System
       </SvgText>
 
       {/* Central process — double ellipse per DFD convention */}
@@ -131,7 +131,7 @@ export default function ContextDFD() {
         textAnchor="middle"
         style={{ fontSize: 11, fontFamily: "Times-Bold", fill: "white" }}
       >
-        Dino-Ecommerce
+        Arowai Ecommerce 1.0
       </SvgText>
       <SvgText
         x={cx}
@@ -299,7 +299,7 @@ export default function ContextDFD() {
         textAnchor="middle"
         style={{ fontSize: 10, fontFamily: "Times-Bold", fill: "#333" }}
       >
-        Figure: Context Diagram (Level 0 DFD) — Dino-Ecommerce System
+        Figure: Context Diagram (Level 0 DFD) — Arowai Ecommerce 1.0 System
       </SvgText>
     </Svg>
   );
