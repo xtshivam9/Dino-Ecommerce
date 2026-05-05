@@ -9,12 +9,12 @@ import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
  *   starting from 1, placed at the bottom-right of each page.
  *
  * @param pdfBytes - The raw PDF as Uint8Array or ArrayBuffer
- * @param preliminaryPageCount - Number of preliminary pages to skip (default 18)
+ * @param preliminaryPageCount - Number of preliminary pages to skip (default 19)
  * @returns Modified PDF as Uint8Array with page numbers added
  */
 export async function addPageNumbers(
   pdfBytes: ArrayBuffer | Uint8Array,
-  preliminaryPageCount = 22,
+  preliminaryPageCount = 14,
 ): Promise<Uint8Array> {
   const pdfDoc = await PDFDocument.load(pdfBytes);
   const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);

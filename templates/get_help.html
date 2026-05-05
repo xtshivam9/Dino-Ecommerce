@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Get Help{% endblock %}
+{% block content %}
+<style>
+  .premium-page {
+    width: 100%;
+    padding: 5rem 0 7rem;
+    background:
+      radial-gradient(circle at top left, rgba(113, 127, 224, 0.08), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.04), transparent 28%),
+      linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+    font-family: 'Inter', 'Roboto', sans-serif;
+  }
+  .premium-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(113, 127, 224, 0.12);
+    color: #4f46e5;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .premium-title {
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: #0f172a;
+    font-weight: 800;
+    margin-bottom: 15px;
+  }
+  .premium-lead {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #475569;
+    max-width: 600px;
+    margin: 0 auto 40px;
+  }
+  
+  .faq-container {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    border-radius: 28px;
+    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.06);
+    padding: 40px;
+    text-align: left;
+  }
+
+  .faq-header {
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0f172a;
+    text-align: center;
+  }
+
+  .accordion .card {
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    border-radius: 16px !important;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02) !important;
+    transition: all 0.2s ease;
+    overflow: hidden;
+  }
+  
+  .accordion .card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+    border-color: rgba(79, 70, 229, 0.3) !important;
+  }
+
+  .accordion .card-header {
+    background: #ffffff !important;
+    padding: 5px 10px;
+    border-bottom: none !important;
+  }
+
+  .accordion .btn-link {
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    font-size: 1.15rem !important;
+    padding: 18px 15px;
+    text-decoration: none !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .accordion .btn-link i {
+    transition: transform 0.3s ease;
+    color: #4f46e5;
+    font-size: 1rem;
+  }
+
+  .accordion .btn-link:not(.collapsed) i {
+    transform: rotate(180deg);
+  }
+
+  .accordion .card-body {
+    padding: 0 25px 25px 25px;
+    color: #475569;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .faq-container { padding: 25px; }
+    .premium-page { padding: 3rem 1rem 5rem; }
+  }
+</style>
+
+<section class="premium-page">
+  <div class="container text-center">
+    <div class="premium-kicker">Support Center</div>
+    <h1 class="premium-title">How Can We Help?</h1>
+    <p class="premium-lead">Find answers to common questions about orders, returns, and our services. We're here to make your experience seamless.</p>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="faq-container">
+          <h4 class="faq-header">Frequently Asked Questions</h4>
+          
+          <div class="accordion" id="faqAccordion">
+            <!-- FAQ Item 1 -->
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    How can I track my order?
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                <div class="card-body">
+                  You can track your order status in the "My Orders" section of your profile. Once your order ships, we'll also send you a confirmation email with a tracking link.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    What is your return policy?
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                <div class="card-body">
+                  We offer a hassle-free 30-day return policy for unused items in their original packaging. Just initiate a return request from your account, and we'll guide you through the process.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    How do I contact customer service?
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                <div class="card-body">
+                  You can reach out to our dedicated support team via the <a href="{% url 'core:contact_us' %}" style="color: #4f46e5; font-weight: 600;">Contact Us</a> page. We aim to respond to all inquiries within 24 hours.
+                </div>
+              </div>
+            </div>
+            
+            <!-- FAQ Item 4 -->
+            <div class="card">
+              <div class="card-header" id="headingFour">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Do you offer international shipping?
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+                <div class="card-body">
+                  Yes, we offer worldwide delivery! Shipping costs and delivery times vary by location, which you can review during the checkout process before finalizing your order.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

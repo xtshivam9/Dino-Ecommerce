@@ -5,7 +5,6 @@ import { styles } from "../styles";
 import BookPageLayout from "../components/BookPageLayout";
 import FeasibilityRadar from "../diagrams/TechFeasibilityRadar";
 import CostBreakdownChart from "../diagrams/CostBreakdownChart";
-import ScheduleTimeline from "../diagrams/ScheduleTimeline";
 
 export default function FeasibilityStudy() {
   return (
@@ -47,24 +46,12 @@ export default function FeasibilityStudy() {
 
       <Text style={styles.h2}>4.1 Introduction</Text>
       <Text style={styles.paragraphIndent}>
-        A feasibility study is a critical preliminary phase in the Software Development Life Cycle (SDLC). It objectively evaluates the practicality of the proposed project, ensuring that the necessary technical, economic, and operational resources are available and that the project is likely to succeed. For Dino-Ecommerce, this analysis justifies the investment of time and resources into developing a custom Django-based platform.
+        This feasibility study evaluates the technical, economic, and operational viability of Arowai Ecommerce 1.0 to ensure project success.
       </Text>
 
       <Text style={styles.h2}>4.2 Technical Feasibility</Text>
       <Text style={styles.paragraphIndent}>
-        Technical feasibility assesses whether the required technology exists to implement the proposed system and if the development team possesses the necessary skills.
-      </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>1. Framework Suitability:</Text> Django is a mature, highly documented Python framework explicitly designed for building database-driven applications. Its ORM (Object-Relational Mapping) easily handles complex queries required for order management and inventory tracking.
-      </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>2. Payment Integration:</Text> Stripe provides robust Python SDKs and comprehensive REST APIs. The technical risk of integrating payment processing is low, given Stripe's extensive documentation and testing environments.
-      </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>3. Frontend Implementation:</Text> Utilizing HTML5, CSS3, and Bootstrap 4 ensures rapid UI development without the overhead of learning complex single-page application (SPA) frameworks like React or Angular for this specific project scope.
-      </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Conclusion:</Text> The project is <Text style={styles.bold}>Highly Feasible</Text> technically. The chosen stack is proven, stable, and perfectly suited for e-commerce requirements.
+        <Text style={styles.bold}>Assessment:</Text> The project is <Text style={styles.bold}>Highly Feasible</Text>. Django's mature ORM handles complex order/inventory queries, Stripe provides robust Python SDKs with comprehensive documentation, and Bootstrap enables rapid UI development without SPA framework complexity.
       </Text>
 
       {/* Technical Feasibility Radar */}
@@ -77,20 +64,7 @@ export default function FeasibilityStudy() {
 
       <Text style={styles.h2}>4.3 Economic Feasibility</Text>
       <Text style={styles.paragraphIndent}>
-        Economic feasibility, often called cost-benefit analysis, determines whether the financial costs of developing the system are justified by the expected benefits.
-      </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Development Costs:</Text> As an academic/open-source project, development labor costs are zero. 
-      </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Infrastructure Costs:</Text> 
-        {"\n"}• Framework: Django (Open Source - $0)
-        {"\n"}• Database: SQLite/PostgreSQL (Open Source - $0)
-        {"\n"}• Hosting: Vercel/Heroku Hobby Tier ($0 - $7/month)
-        {"\n"}• Payments: Stripe (Pay-as-you-go, no setup fees, ~2.9% + 30¢ per transaction)
-      </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Conclusion:</Text> The project is <Text style={styles.bold}>Highly Feasible</Text> economically. The utilization of open-source technologies and free-tier cloud hosting minimizes upfront capital expenditure.
+        <Text style={styles.bold}>Costs:</Text> Development: $0 (academic); Infrastructure: Django/SQLite (free), Vercel/Heroku ($0-7/month), Stripe (2.9% + 30¢/transaction). <Text style={styles.bold}>Conclusion:</Text> <Text style={styles.bold}>Highly Feasible</Text> with minimal upfront investment.
       </Text>
 
       {/* Cost Breakdown Diagram */}
@@ -103,44 +77,22 @@ export default function FeasibilityStudy() {
 
       <Text style={styles.h2}>4.4 Operational Feasibility</Text>
       <Text style={styles.paragraphIndent}>
-        Operational feasibility measures how well the proposed system solves the problems identified and how easily it can be adopted by end-users and administrators.
-      </Text>
-      <Text style={styles.paragraph}>
-        Dino-Ecommerce utilizes the built-in Django Admin interface, which provides a highly intuitive, pre-built dashboard for managing database records. This significantly reduces the training required for store owners to manage inventory. For end-users, the platform adheres to standard e-commerce UI conventions (cart icon in the top right, clear checkout buttons), ensuring a zero-learning-curve shopping experience.
-      </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Conclusion:</Text> The project is <Text style={styles.bold}>Highly Feasible</Text> operationally.
+        Django Admin provides an intuitive dashboard for inventory management, while standard e-commerce UI conventions (cart icon, clear checkout flow) ensure minimal learning curve for users. <Text style={styles.bold}>Conclusion:</Text> <Text style={styles.bold}>Highly Feasible</Text>.
       </Text>
 
       <Text style={styles.h2}>4.5 Schedule Feasibility</Text>
       <Text style={styles.paragraphIndent}>
-        Schedule feasibility assesses whether the project can be completed within the allocated time frame (typically one academic semester).
+        Django's "batteries-included" approach accelerates development. With Agile methodology and two-week sprints, the core MVP (catalog, cart, checkout) can be achieved within 8-10 weeks—feasible within one academic semester.
       </Text>
-      <Text style={styles.paragraph}>
-        Given the "batteries-included" nature of Django, core features like authentication and database schema creation are accelerated. By adopting an Agile methodology with two-week sprints, the core MVP (catalog, cart, checkout) can realistically be achieved within 8-10 weeks, leaving ample time for testing and deployment.
-      </Text>
-
-      {/* Schedule Timeline Diagram */}
-      <View style={{ marginTop: 20, marginBottom: 20 }}>
-        <ScheduleTimeline />
-        <Text style={{ textAlign: "center", fontSize: 10, fontFamily: "Times-Italic", marginTop: 8, color: "#666666" }}>
-          Figure 4.3: Project Schedule Timeline
-        </Text>
-      </View>
 
       <Text style={styles.h2}>4.6 Legal Feasibility</Text>
       <Text style={styles.paragraphIndent}>
-        Legal feasibility evaluates potential conflicts with legal requirements, data protection laws, and software licensing.
-      </Text>
-      <Text style={styles.paragraph}>
-        • All libraries and frameworks used (Django, Python, Bootstrap) are open-source and legally permissible for commercial or academic use.
-        {"\n"}• By offloading payment processing to Stripe, the application avoids storing sensitive credit card data, thereby circumventing strict PCI-DSS compliance requirements for the local server.
-        {"\n"}• Standard terms of service and privacy policy templates can be integrated easily.
+        All frameworks (Django, Python, Bootstrap) are open-source licensed. Stripe integration offloads PCI-DSS compliance by ensuring no credit card data touches local servers.
       </Text>
 
-      <Text style={styles.h2}>4.7 Feasibility Summary</Text>
+      <Text style={styles.h2}>4.7 Summary</Text>
       <Text style={styles.paragraphIndent}>
-        The comprehensive feasibility study indicates that the Dino-Ecommerce project is viable across all dimensions. The combination of open-source tools, well-documented APIs, and manageable scope ensures that the project can be successfully executed within the available constraints.
+        Arowai Ecommerce 1.0 is viable across all feasibility dimensions—technical, economic, operational, schedule, and legal—ensuring successful execution within available constraints.
       </Text>
     </BookPageLayout>
   );

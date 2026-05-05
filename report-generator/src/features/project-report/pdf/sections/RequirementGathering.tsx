@@ -9,12 +9,12 @@ export default function RequirementGathering() {
     <BookPageLayout chapterTitle="Requirement Gathering" chapterNum="06" isContinued>
       <Text style={styles.h2}>6.7 Requirement Gathering Process</Text>
       <Text style={styles.paragraphIndent}>
-        Requirement gathering is the process of defining exactly what the software must do to satisfy the needs of its stakeholders. For an e-commerce platform, these stakeholders primarily include end-users (shoppers) and administrators (store owners). The goal of this phase was to identify both the explicit functional requirements and the implicit non-functional constraints that Dino-Ecommerce needed to address.
+        Requirement gathering is the process of defining exactly what the software must do to satisfy the needs of its stakeholders. For an e-commerce platform, these stakeholders primarily include end-users (shoppers) and administrators (store owners). The goal of this phase was to identify both the explicit functional requirements and the implicit non-functional constraints that Arowai Ecommerce 1.0 needed to address.
       </Text>
 
       <Text style={styles.h3}>6.7.1 Methodology</Text>
       <Text style={styles.paragraphIndent}>
-        Unlike bespoke enterprise software where requirements are gathered via extensive client interviews, a platform like Dino-Ecommerce targets broad market needs. Therefore, requirement gathering was conducted through a combination of:
+        Unlike bespoke enterprise software where requirements are gathered via extensive client interviews, a platform like Arowai Ecommerce 1.0 targets broad market needs. Therefore, requirement gathering was conducted through a combination of:
       </Text>
       <View style={{ paddingLeft: 16, marginBottom: 16 }}>
         <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>1. <Text style={styles.bold}>Competitor Analysis:</Text> Analyzing platforms like Shopify and WooCommerce to identify baseline expectations for modern shopping carts.</Text>

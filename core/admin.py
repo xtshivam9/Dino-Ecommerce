@@ -2,6 +2,11 @@ from django.contrib import admin
 
 from .models import Item, OrderItem, Order, Payment, Coupon, Refund, BillingAddress, Category, Slide
 
+# ── Arowai Branding ──────────────────────────────────────────────────────────
+admin.site.site_header = "Arowai Admin"
+admin.site.site_title  = "Arowai"
+admin.site.index_title = "Arowai Management Portal"
+
 
 def make_refund_accepted(modeladmin, request, queryset):
     queryset.update(refund_requested=False, refund_granted=True)
@@ -94,3 +99,16 @@ admin.site.register(Payment)
 admin.site.register(Coupon)
 admin.site.register(Refund)
 admin.site.register(BillingAddress, AddressAdmin)
+
+# ── Unregister unused apps from admin ─────────────────────────────────────────
+from django.contrib.sites.models import Site
+from allauth.socialaccount.models import SocialAccount, SocialApp, SocialToken
+from django.contrib.auth.models import Group
+
+try:
+    admin.site.unregister(Site)
+    admin.site.unregister(SocialAccount)
+    admin.site.unregister(SocialApp)
+    admin.site.unregister(SocialToken)
+except admin.sites.NotRegistered:
+    pass

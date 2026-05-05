@@ -34,13 +34,11 @@
     <div class="container">
       <!-- Single Line Footer Links -->
       <div class="d-flex justify-content-center flex-wrap" style="gap: 20px;">
-          <a href="">FIND A STORE</a>
-          <a href="">SIGN UP FOR EMAIL</a>
-          <a href="">BECOME A MEMBER</a>
-          <a href="">GET HELP</a>
-          <a href="">ABOUT US</a>
-          <a href="">CAREERS</a>
-          <a href="">CONTACT US</a>
+          <a href="{% url 'core:find_store' %}">FIND A STORE</a>
+          <a href="/#newsletter">SIGN UP FOR EMAIL</a>
+          <a href="{% url 'core:get_help' %}">GET HELP</a>
+          <a href="{% url 'core:about_us' %}">ABOUT US</a>
+          <a href="{% url 'core:contact_us' %}">CONTACT US</a>
       </div>
       
       <hr>

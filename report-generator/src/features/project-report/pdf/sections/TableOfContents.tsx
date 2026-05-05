@@ -1,7 +1,7 @@
 "use client";
 
 import { Page, View, Text } from "@react-pdf/renderer";
-import { styles, toRoman, PAGE_MARGINS, FOOTER_BOTTOM } from "../styles";
+import { toRoman, PAGE_MARGINS } from "../styles";
 
 interface TableOfContentsProps {
   startPage: number;
@@ -15,267 +15,34 @@ const tocItems = [
   { chapter: "", title: "Preface", page: "iv", type: "intro" },
   { chapter: "", title: "Abstract", page: "v", type: "intro" },
   { chapter: "", title: "Table of Contents", page: "vi", type: "intro" },
-  { chapter: "", title: "List of Figures", page: "ix", type: "intro" },
-  { chapter: "", title: "List of Tables", page: "x", type: "intro" },
+  { chapter: "", title: "List of Figures", page: "vii", type: "intro" },
+  { chapter: "", title: "List of Tables", page: "ix", type: "intro" },
   { chapter: "", title: "List of Acronyms", page: "xi", type: "intro" },
 
-  // Chapter 1
+  // Content Chapters
   { chapter: "01", title: "INTRODUCTION", page: "1", type: "main" },
-  { chapter: "", title: "1.1 Project Overview", page: "1", type: "sub" },
-  { chapter: "", title: "1.2 Background", page: "1", type: "sub" },
-  { chapter: "", title: "1.3 Problem Statement", page: "2", type: "sub" },
-  { chapter: "", title: "1.4 Motivation", page: "3", type: "sub" },
-  { chapter: "", title: "1.5 Project Objectives", page: "3", type: "sub" },
-  { chapter: "", title: "1.6 Proposed Solution", page: "4", type: "sub" },
-  { chapter: "", title: "1.7 Technology Stack", page: "4", type: "sub" },
-  {
-    chapter: "",
-    title: "1.8 Technology Justification",
-    page: "5",
-    type: "sub",
-  },
-  { chapter: "", title: "1.9 Scope of the Project", page: "6", type: "sub" },
-  { chapter: "", title: "1.10 Key Features Summary", page: "6", type: "sub" },
-  { chapter: "", title: "1.11 Report Organization", page: "7", type: "sub" },
-
-  // Chapter 2
-  { chapter: "02", title: "PROBLEM STATEMENT & LITERATURE REVIEW", page: "8", type: "main" },
-  { chapter: "", title: "2.1 Introduction", page: "8", type: "sub" },
-  { chapter: "", title: "2.2 Problem Statement", page: "8", type: "sub" },
-  {
-    chapter: "",
-    title: "2.3 Market Demand & Industry Trends",
-    page: "9",
-    type: "sub",
-  },
-  {
-    chapter: "",
-    title: "2.4 Analysis of Existing Solutions",
-    page: "10",
-    type: "sub",
-  },
-  { chapter: "", title: "2.5 Comparative Analysis", page: "11", type: "sub" },
-  {
-    chapter: "",
-    title: "2.5.1 Detailed Comparison",
-    page: "12",
-    type: "sub",
-  },
-  { chapter: "", title: "2.6 Gap Analysis", page: "13", type: "sub" },
-  {
-    chapter: "",
-    title: "2.7 Proposed Solution Overview",
-    page: "13",
-    type: "sub",
-  },
-  {
-    chapter: "",
-    title: "2.8 Justification for New Development",
-    page: "14",
-    type: "sub",
-  },
-  { chapter: "", title: "2.9 Summary", page: "14", type: "sub" },
-
-  // Chapter 3
-  { chapter: "03", title: "OBJECTIVES", page: "15", type: "main" },
-  { chapter: "", title: "3.1 Introduction", page: "15", type: "sub" },
-  { chapter: "", title: "3.2 Primary Objectives", page: "15", type: "sub" },
-  { chapter: "", title: "3.3 Secondary Objectives", page: "16", type: "sub" },
-  { chapter: "", title: "3.4 Technical Objectives", page: "17", type: "sub" },
-  { chapter: "", title: "3.5 Expected Outcomes", page: "18", type: "sub" },
-  { chapter: "", title: "3.6 Summary", page: "18", type: "sub" },
-
-  // Chapter 4
-  { chapter: "04", title: "FEASIBILITY STUDY", page: "19", type: "main" },
-  { chapter: "", title: "4.1 Introduction", page: "19", type: "sub" },
-  { chapter: "", title: "4.2 Technical Feasibility", page: "19", type: "sub" },
-  { chapter: "", title: "4.3 Economic Feasibility", page: "21", type: "sub" },
-  {
-    chapter: "",
-    title: "4.4 Operational Feasibility",
-    page: "22",
-    type: "sub",
-  },
-  { chapter: "", title: "4.5 Schedule Feasibility", page: "23", type: "sub" },
-  { chapter: "", title: "4.6 Legal Feasibility", page: "23", type: "sub" },
-  { chapter: "", title: "4.7 SWOT Analysis", page: "24", type: "sub" },
-  { chapter: "", title: "4.8 Feasibility Summary", page: "25", type: "sub" },
-  { chapter: "", title: "4.9 Conclusion", page: "25", type: "sub" },
-
-  // Chapter 5
-  {
-    chapter: "05",
-    title: "PROJECT ESTIMATION & PLANNING",
-    page: "26",
-    type: "main",
-  },
-  { chapter: "", title: "5.1 Introduction to COCOMO", page: "26", type: "sub" },
-  {
-    chapter: "",
-    title: "5.2 Lines of Code Estimation",
-    page: "26",
-    type: "sub",
-  },
-  { chapter: "", title: "5.3 Basic COCOMO Model", page: "27", type: "sub" },
-  {
-    chapter: "",
-    title: "5.4 Intermediate COCOMO Model",
-    page: "28",
-    type: "sub",
-  },
-  { chapter: "", title: "5.5 Risk Analysis", page: "29", type: "sub" },
-  {
-    chapter: "",
-    title: "5.6 Actual vs Estimated Comparison",
-    page: "30",
-    type: "sub",
-  },
-  { chapter: "", title: "5.7 Summary", page: "31", type: "sub" },
-
-  // Chapter 6
-  {
-    chapter: "06",
-    title: "SOFTWARE DEVELOPMENT LIFE CYCLE",
-    page: "32",
-    type: "main",
-  },
-  { chapter: "", title: "6.1 Introduction to SDLC", page: "32", type: "sub" },
-  { chapter: "", title: "6.2 Importance of SDLC", page: "32", type: "sub" },
-  { chapter: "", title: "6.3 SDLC Phases Overview", page: "33", type: "sub" },
-  { chapter: "", title: "6.4 Requirement Gathering", page: "34", type: "sub" },
-  { chapter: "", title: "6.5 SRS Preparation", page: "36", type: "sub" },
-  { chapter: "", title: "6.6 Phase Timeline", page: "38", type: "sub" },
-  { chapter: "", title: "6.7 Summary", page: "39", type: "sub" },
-
-  // Chapter 7
-  { chapter: "07", title: "SYSTEM DESIGN", page: "40", type: "main" },
-  { chapter: "", title: "7.1 Introduction", page: "40", type: "sub" },
-  { chapter: "", title: "7.2 Data Flow Diagrams", page: "40", type: "sub" },
-  { chapter: "", title: "7.3 Use Case Diagrams", page: "42", type: "sub" },
-  {
-    chapter: "",
-    title: "7.4 Entity-Relationship Diagram",
-    page: "43",
-    type: "sub",
-  },
-  { chapter: "", title: "7.5 Architecture Design", page: "44", type: "sub" },
-  { chapter: "", title: "7.6 Database Schema", page: "44", type: "sub" },
-  { chapter: "", title: "7.7 Security Design", page: "45", type: "sub" },
-  { chapter: "", title: "7.8 Summary", page: "45", type: "sub" },
-
-  // Chapter 8
-  { chapter: "08", title: "IMPLEMENTATION", page: "46", type: "main" },
-  { chapter: "", title: "8.1 Introduction", page: "46", type: "sub" },
-  { chapter: "", title: "8.2 Project Structure", page: "46", type: "sub" },
-  {
-    chapter: "",
-    title: "8.3 Frontend Implementation",
-    page: "47",
-    type: "sub",
-  },
-  {
-    chapter: "",
-    title: "8.4 Backend Implementation",
-    page: "48",
-    type: "sub",
-  },
-  { chapter: "", title: "8.5 Authentication", page: "49", type: "sub" },
-  { chapter: "", title: "8.6 Payment Integration", page: "50", type: "sub" },
-  { chapter: "", title: "8.7 API Routes", page: "50", type: "sub" },
-  { chapter: "", title: "8.8 Deployment", page: "51", type: "sub" },
-  { chapter: "", title: "8.9 Summary", page: "52", type: "sub" },
-
-  // Chapter 9
-  { chapter: "09", title: "TESTING", page: "53", type: "main" },
-  { chapter: "", title: "9.1 Testing Strategy", page: "53", type: "sub" },
-  { chapter: "", title: "9.2 Unit Testing", page: "53", type: "sub" },
-  { chapter: "", title: "9.3 Integration Testing", page: "54", type: "sub" },
-  { chapter: "", title: "9.4 UI/UX Testing", page: "55", type: "sub" },
-  { chapter: "", title: "9.5 Security Testing", page: "55", type: "sub" },
-  { chapter: "", title: "9.6 Performance Testing", page: "56", type: "sub" },
-  { chapter: "", title: "9.7 Defect Tracking", page: "56", type: "sub" },
-  { chapter: "", title: "9.8 Test Results Summary", page: "57", type: "sub" },
-  { chapter: "", title: "9.9 Testing Conclusion", page: "58", type: "sub" },
-
-  // Chapter 10
-  { chapter: "10", title: "USER MANUAL", page: "59", type: "main" },
-  { chapter: "", title: "10.1 Getting Started", page: "59", type: "sub" },
-  { chapter: "", title: "10.2 Navigation", page: "59", type: "sub" },
-  { chapter: "", title: "10.3 Browsing Products", page: "60", type: "sub" },
-  { chapter: "", title: "10.4 Cart & Checkout", page: "60", type: "sub" },
-  { chapter: "", title: "10.5 Admin Dashboard", page: "61", type: "sub" },
-  { chapter: "", title: "10.6 Order History", page: "62", type: "sub" },
-
-  // Chapter 11
-  { chapter: "11", title: "OUTPUT & SCREENSHOTS", page: "63", type: "main" },
-  {
-    chapter: "",
-    title: "11.1 Home Page",
-    page: "63",
-    type: "sub",
-  },
-  { chapter: "", title: "11.2 Shop & Categories", page: "63", type: "sub" },
-  { chapter: "", title: "11.3 Product Details", page: "64", type: "sub" },
-  { chapter: "", title: "11.4 Shopping Cart", page: "64", type: "sub" },
-  {
-    chapter: "",
-    title: "11.5 Checkout Process",
-    page: "65",
-    type: "sub",
-  },
-  { chapter: "", title: "11.6 Admin Panel", page: "65", type: "sub" },
-  { chapter: "", title: "11.7 Summary", page: "66", type: "sub" },
-
-  // Chapter 12
-  {
-    chapter: "12",
-    title: "CONCLUSIONS & FUTURE SCOPE",
-    page: "67",
-    type: "main",
-  },
-  { chapter: "", title: "12.1 Project Summary", page: "67", type: "sub" },
-  { chapter: "", title: "12.2 Key Achievements", page: "67", type: "sub" },
-  { chapter: "", title: "12.3 Limitations", page: "68", type: "sub" },
-  { chapter: "", title: "12.4 Future Scope", page: "68", type: "sub" },
-  { chapter: "", title: "12.5 Conclusion", page: "69", type: "sub" },
+  { chapter: "02", title: "PROBLEM STATEMENT & LITERATURE REVIEW", page: "6", type: "main" },
+  { chapter: "03", title: "OBJECTIVES", page: "10", type: "main" },
+  { chapter: "04", title: "FEASIBILITY STUDY", page: "12", type: "main" },
+  { chapter: "05", title: "PROJECT ESTIMATION & PLANNING", page: "15", type: "main" },
+  { chapter: "06", title: "SOFTWARE DEVELOPMENT LIFE CYCLE", page: "17", type: "main" },
+  { chapter: "07", title: "SYSTEM DESIGN", page: "26", type: "main" },
+  { chapter: "08", title: "IMPLEMENTATION", page: "35", type: "main" },
+  { chapter: "09", title: "TESTING", page: "37", type: "main" },
+  { chapter: "10", title: "USER MANUAL", page: "39", type: "main" },
+  { chapter: "11", title: "OUTPUT & SCREENSHOTS", page: "40", type: "main" },
+  { chapter: "12", title: "CONCLUSIONS & FUTURE SCOPE", page: "46", type: "main" },
 
   // Back Matter
-  { chapter: "", title: "REFERENCES", page: "70", type: "main", noNum: true },
-  { chapter: "", title: "ANNEXURES", page: "71", type: "main", noNum: true },
+  { chapter: "", title: "REFERENCES", page: "49", type: "back" },
+  { chapter: "", title: "ANNEXURES", page: "50", type: "back" },
 ];
-
-const ITEMS_PER_PAGE_1 = 21; // Front matter + first chapters
-const ITEMS_PER_PAGE_2 = 24;
-const ITEMS_PER_PAGE_3 = 24;
-const ITEMS_PER_PAGE_4 = 24;
-const ITEMS_PER_PAGE_5 = 24;
-const ITEMS_PER_PAGE_6 = 24;
-const ITEMS_PER_PAGE_7 = 24; // Extra pages to accommodate overflow
-const ITEMS_PER_PAGE_8 = 24;
-
-const page1Items = tocItems.slice(0, ITEMS_PER_PAGE_1);
-const s2 = ITEMS_PER_PAGE_1;
-const page2Items = tocItems.slice(s2, s2 + ITEMS_PER_PAGE_2);
-const s3 = s2 + ITEMS_PER_PAGE_2;
-const page3Items = tocItems.slice(s3, s3 + ITEMS_PER_PAGE_3);
-const s4 = s3 + ITEMS_PER_PAGE_3;
-const page4Items = tocItems.slice(s4, s4 + ITEMS_PER_PAGE_4);
-const s5 = s4 + ITEMS_PER_PAGE_4;
-const page5Items = tocItems.slice(s5, s5 + ITEMS_PER_PAGE_5);
-const s6 = s5 + ITEMS_PER_PAGE_5;
-const page6Items = tocItems.slice(s6, s6 + ITEMS_PER_PAGE_6);
-const s7 = s6 + ITEMS_PER_PAGE_6;
-const page7Items = tocItems.slice(s7, s7 + ITEMS_PER_PAGE_7);
-const s8 = s7 + ITEMS_PER_PAGE_7;
-const page8Items = tocItems.slice(s8, s8 + ITEMS_PER_PAGE_8);
-const page9Items = tocItems.slice(s8 + ITEMS_PER_PAGE_8); // Any remaining items
 
 export default function TableOfContents({ startPage }: TableOfContentsProps) {
   const renderTocItem = (item: (typeof tocItems)[0], index: number) => {
     const isMain = item.type === "main";
     const isIntro = item.type === "intro";
-
-    // Add extra spacing before the first main chapter if it follows intro items
+    const isBack = item.type === "back";
     const isFirstChapter = item.title === "INTRODUCTION";
 
     return (
@@ -283,49 +50,48 @@ export default function TableOfContents({ startPage }: TableOfContentsProps) {
         key={index}
         style={{
           flexDirection: "row",
-          alignItems: "flex-end", // Align text to bottom of row for cleaner look
-          marginBottom: isMain || isIntro ? 12 : 6,
-          marginTop: isMain && !isFirstChapter ? 8 : isFirstChapter ? 24 : 0, // Add extra space before Chapter 1
-          borderTopWidth: isFirstChapter ? 1 : 0, // Separator line before Chapter 1
-          borderTopColor: "#eeeeee",
-          paddingTop: isFirstChapter ? 16 : 0,
+          alignItems: "flex-end",
+          marginBottom: isMain || isIntro || isBack ? 11 : 6,
+          marginTop: isFirstChapter ? 20 : isMain && !isFirstChapter ? 6 : 0,
+          borderTopWidth: isFirstChapter ? 1 : 0,
+          borderTopColor: "#dddddd",
+          paddingTop: isFirstChapter ? 14 : 0,
         }}
       >
-        {/* Chapter Number Column */}
+        {/* Chapter Number */}
         <View style={{ width: 40 }}>
-          {item.chapter && (
+          {item.chapter ? (
             <Text
               style={{
                 fontFamily: "Times-Bold",
                 fontSize: 12,
-                color: "#888888", // Subtle grey for numbers
+                color: "#888888",
               }}
             >
               {item.chapter}
             </Text>
-          )}
+          ) : null}
         </View>
 
-        {/* Title Column */}
+        {/* Title + Dot Leader */}
         <View style={{ flex: 1, flexDirection: "row", alignItems: "flex-end" }}>
           <Text
             style={{
-              fontFamily: isMain || isIntro ? "Times-Bold" : "Times-Roman",
-              fontSize: isMain || isIntro ? 11 : 10,
-              color: isMain || isIntro ? "#000000" : "#444444",
-              letterSpacing: isMain ? 1 : 0,
-              textTransform: isMain ? "uppercase" : "none",
+              fontFamily: isMain || isBack ? "Times-Bold" : "Times-Roman",
+              fontSize: isMain || isBack ? 11 : 10,
+              color: isMain || isBack ? "#111111" : "#333333",
+              letterSpacing: isMain ? 0.8 : 0,
+              textTransform: isMain || isBack ? "uppercase" : "none",
             }}
           >
             {item.title}
           </Text>
 
-          {/* Dot Leader - aesthetic visual connector */}
           <View
             style={{
               flex: 1,
               borderBottomWidth: 1,
-              borderBottomColor: isMain || isIntro ? "#eeeeee" : "#f0f0f0",
+              borderBottomColor: "#e8e8e8",
               borderBottomStyle: "dotted",
               marginBottom: 2,
               marginLeft: 8,
@@ -337,10 +103,10 @@ export default function TableOfContents({ startPage }: TableOfContentsProps) {
         {/* Page Number */}
         <Text
           style={{
-            fontFamily: isMain || isIntro ? "Times-Bold" : "Times-Roman",
-            fontSize: isMain || isIntro ? 11 : 10,
-            color: isMain || isIntro ? "#000000" : "#444444",
-            width: 30, // Slightly wider for roman numerals
+            fontFamily: isMain || isBack ? "Times-Bold" : "Times-Roman",
+            fontSize: isMain || isBack ? 11 : 10,
+            color: isMain || isBack ? "#111111" : "#333333",
+            width: 30,
             textAlign: "right",
           }}
         >
@@ -350,321 +116,82 @@ export default function TableOfContents({ startPage }: TableOfContentsProps) {
     );
   };
 
-  const renderHeader = (isContd: boolean) => (
-    <View style={{ marginBottom: 40, marginTop: 0 }}>
-      <Text
-        style={{
-          fontSize: 10,
-          fontFamily: "Times-Roman",
-          color: "#888888",
-          letterSpacing: 4,
-          textTransform: "uppercase",
-          marginBottom: 8,
-          textAlign: "center",
-        }}
-      >
-        Contents
-      </Text>
-      <Text
-        style={{
-          fontSize: 24,
-          fontFamily: "Times-Bold",
-          textAlign: "center",
-          letterSpacing: 1.5,
-          textTransform: "uppercase",
-        }}
-      >
-        {isContd ? "Continued..." : "Table of Contents"}
-      </Text>
+  return (
+    <Page
+      size="A4"
+      style={{
+        paddingTop: 50,
+        paddingBottom: PAGE_MARGINS.bottom,
+        paddingLeft: PAGE_MARGINS.left,
+        paddingRight: PAGE_MARGINS.right,
+        fontFamily: "Times-Roman",
+        fontSize: 12,
+        lineHeight: 1.5,
+        color: "#000000",
+        backgroundColor: "#ffffff",
+      }}
+    >
+      {/* Header */}
+      <View style={{ marginBottom: 36, marginTop: 0 }}>
+        <Text
+          style={{
+            fontSize: 10,
+            fontFamily: "Times-Roman",
+            color: "#888888",
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            marginBottom: 8,
+            textAlign: "center",
+          }}
+        >
+          Contents
+        </Text>
+        <Text
+          style={{
+            fontSize: 24,
+            fontFamily: "Times-Bold",
+            textAlign: "center",
+            letterSpacing: 1.5,
+            textTransform: "uppercase",
+          }}
+        >
+          Table of Contents
+        </Text>
+        <View
+          style={{
+            width: 40,
+            height: 1,
+            backgroundColor: "#000000",
+            alignSelf: "center",
+            marginTop: 16,
+          }}
+        />
+      </View>
+
+      {/* TOC Items */}
+      <View>{tocItems.map(renderTocItem)}</View>
+
+      {/* Footer */}
       <View
         style={{
-          width: 40,
-          height: 1,
-          backgroundColor: "#000000",
-          alignSelf: "center",
-          marginTop: 16,
+          position: "absolute",
+          bottom: 20,
+          left: 0,
+          right: 0,
+          textAlign: "center",
         }}
-      />
-    </View>
-  );
-
-  return (
-    <>
-      <Page
-        size="A4"
-        style={{
-          paddingTop: 50, // Smaller top - no header on prelim pages
-          paddingBottom: PAGE_MARGINS.bottom,
-          paddingLeft: PAGE_MARGINS.left,
-          paddingRight: PAGE_MARGINS.right,
-          fontFamily: "Times-Roman",
-          fontSize: 12,
-          lineHeight: 1.5,
-          color: "#000000",
-          backgroundColor: "#ffffff",
-        }}
+        fixed
       >
-        {renderHeader(false)}
-        <View>{page1Items.map(renderTocItem)}</View>
-        <View
+        <Text
           style={{
-            position: "absolute",
-            bottom: 20,
-            left: 0,
-            right: 0,
-            textAlign: "center",
-          }}
-          fixed
-        >
-          <Text
-            style={{
-              fontSize: 10,
-              fontFamily: "Times-Roman",
-              color: "#444444",
-            }}
-          >
-            {toRoman(startPage)}
-          </Text>
-        </View>
-      </Page>
-
-      <Page
-        size="A4"
-        style={{
-          paddingTop: 50, // Smaller top - no header on prelim pages
-          paddingBottom: PAGE_MARGINS.bottom,
-          paddingLeft: PAGE_MARGINS.left,
-          paddingRight: PAGE_MARGINS.right,
-          fontFamily: "Times-Roman",
-          fontSize: 12,
-          lineHeight: 1.5,
-          color: "#000000",
-          backgroundColor: "#ffffff",
-        }}
-      >
-        {renderHeader(true)}
-        <View>{page2Items.map(renderTocItem)}</View>
-        <View
-          style={{
-            position: "absolute",
-            bottom: FOOTER_BOTTOM,
-            left: 0,
-            right: 0,
-            textAlign: "center",
-          }}
-          fixed
-        >
-          <Text
-            style={{
-              fontSize: 10,
-              fontFamily: "Times-Roman",
-              color: "#444444",
-            }}
-          >
-            {toRoman(startPage + 1)}
-          </Text>
-        </View>
-      </Page>
-
-      {page3Items.length > 0 && (
-        <Page
-          size="A4"
-          style={{
-            paddingTop: 50,
-            paddingBottom: PAGE_MARGINS.bottom,
-            paddingLeft: PAGE_MARGINS.left,
-            paddingRight: PAGE_MARGINS.right,
+            fontSize: 10,
             fontFamily: "Times-Roman",
-            fontSize: 12,
-            lineHeight: 1.5,
-            color: "#000000",
-            backgroundColor: "#ffffff",
+            color: "#444444",
           }}
         >
-          {renderHeader(true)}
-          <View>{page3Items.map(renderTocItem)}</View>
-          <View
-            style={{
-              position: "absolute",
-              bottom: FOOTER_BOTTOM,
-              left: 0,
-              right: 0,
-              textAlign: "center",
-            }}
-            fixed
-          >
-            <Text
-              style={{
-                fontSize: 10,
-                fontFamily: "Times-Roman",
-                color: "#444444",
-              }}
-            >
-              {toRoman(startPage + 2)}
-            </Text>
-          </View>
-        </Page>
-      )}
-
-      {page4Items.length > 0 && (
-        <Page
-          size="A4"
-          style={{
-            paddingTop: 50,
-            paddingBottom: PAGE_MARGINS.bottom,
-            paddingLeft: PAGE_MARGINS.left,
-            paddingRight: PAGE_MARGINS.right,
-            fontFamily: "Times-Roman",
-            fontSize: 12,
-            lineHeight: 1.5,
-            color: "#000000",
-            backgroundColor: "#ffffff",
-          }}
-        >
-          {renderHeader(true)}
-          <View>{page4Items.map(renderTocItem)}</View>
-          <View
-            style={{
-              position: "absolute",
-              bottom: FOOTER_BOTTOM,
-              left: 0,
-              right: 0,
-              textAlign: "center",
-            }}
-            fixed
-          >
-            <Text
-              style={{
-                fontSize: 10,
-                fontFamily: "Times-Roman",
-                color: "#444444",
-              }}
-            >
-              {toRoman(startPage + 3)}
-            </Text>
-          </View>
-        </Page>
-      )}
-
-      {page5Items.length > 0 && (
-        <Page
-          size="A4"
-          style={{
-            paddingTop: 50,
-            paddingBottom: PAGE_MARGINS.bottom,
-            paddingLeft: PAGE_MARGINS.left,
-            paddingRight: PAGE_MARGINS.right,
-            fontFamily: "Times-Roman",
-            fontSize: 12,
-            lineHeight: 1.5,
-            color: "#000000",
-            backgroundColor: "#ffffff",
-          }}
-        >
-          {renderHeader(true)}
-          <View>{page5Items.map(renderTocItem)}</View>
-          <View
-            style={{
-              position: "absolute",
-              bottom: FOOTER_BOTTOM,
-              left: 0,
-              right: 0,
-              textAlign: "center",
-            }}
-            fixed
-          >
-            <Text
-              style={{
-                fontSize: 10,
-                fontFamily: "Times-Roman",
-                color: "#444444",
-              }}
-            >
-              {toRoman(startPage + 4)}
-            </Text>
-          </View>
-        </Page>
-      )}
-
-      {page6Items.length > 0 && (
-        <Page
-          size="A4"
-          style={{
-            paddingTop: 50,
-            paddingBottom: PAGE_MARGINS.bottom,
-            paddingLeft: PAGE_MARGINS.left,
-            paddingRight: PAGE_MARGINS.right,
-            fontFamily: "Times-Roman",
-            fontSize: 12,
-            lineHeight: 1.5,
-            color: "#000000",
-            backgroundColor: "#ffffff",
-          }}
-        >
-          {renderHeader(true)}
-          <View>{page6Items.map(renderTocItem)}</View>
-          <View
-            style={{
-              position: "absolute",
-              bottom: FOOTER_BOTTOM,
-              left: 0,
-              right: 0,
-              textAlign: "center",
-            }}
-            fixed
-          >
-            <Text
-              style={{
-                fontSize: 10,
-                fontFamily: "Times-Roman",
-                color: "#444444",
-              }}
-            >
-              {toRoman(startPage + 5)}
-            </Text>
-          </View>
-        </Page>
-      )}
-
-      {page7Items.length > 0 && (
-        <Page
-          size="A4"
-          style={{
-            paddingTop: 50,
-            paddingBottom: PAGE_MARGINS.bottom,
-            paddingLeft: PAGE_MARGINS.left,
-            paddingRight: PAGE_MARGINS.right,
-            fontFamily: "Times-Roman",
-            fontSize: 12,
-            lineHeight: 1.5,
-            color: "#000000",
-            backgroundColor: "#ffffff",
-          }}
-        >
-          {renderHeader(true)}
-          <View>{page7Items.map(renderTocItem)}</View>
-          <View
-            style={{
-              position: "absolute",
-              bottom: FOOTER_BOTTOM,
-              left: 0,
-              right: 0,
-              textAlign: "center",
-            }}
-            fixed
-          >
-            <Text
-              style={{
-                fontSize: 10,
-                fontFamily: "Times-Roman",
-                color: "#444444",
-              }}
-            >
-              {toRoman(startPage + 6)}
-            </Text>
-          </View>
-        </Page>
-      )}
-    </>
+          {toRoman(startPage)}
+        </Text>
+      </View>
+    </Page>
   );
 }

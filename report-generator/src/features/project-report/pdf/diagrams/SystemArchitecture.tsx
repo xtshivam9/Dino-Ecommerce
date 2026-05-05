@@ -8,7 +8,7 @@ import {
 } from "@react-pdf/renderer";
 
 /**
- * System Architecture Diagram - 5-Layer architecture for Dino-Ecommerce
+ * System Architecture Diagram - 5-Layer architecture for Arowai Ecommerce 1.0
  * Django MVT e-commerce platform with Stripe integration
  */
 export default function SystemArchitecture() {

@@ -25,7 +25,7 @@ export default function Preface({ pageNumber }: PrefaceProps) {
       <View>
         <Text style={styles.paragraphIndent}>
           This project report presents the development of{" "}
-          <Text style={styles.bold}>DINO-ECOMMERCE</Text>, a comprehensive
+          <Text style={styles.bold}>Arowai Ecommerce 1.0</Text>, a comprehensive
           online shopping platform designed to provide a seamless and secure
           e-commerce experience. The project was
           undertaken as part of the academic requirements for the degree of{" "}

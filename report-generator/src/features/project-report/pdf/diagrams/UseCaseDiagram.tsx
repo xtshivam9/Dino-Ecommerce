@@ -114,7 +114,7 @@ export default function UseCaseDiagram() {
         textAnchor="middle"
         style={{ fontSize: 9, fontFamily: "Times-Bold", fill: "#2563eb" }}
       >
-        Dino-Ecommerce System
+        Arowai Ecommerce 1.0 System
       </SvgText>
 
       {/* Actors */}

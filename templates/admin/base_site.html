@@ -1,0 +1,743 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Arowai Admin') }}{% endblock %}
+
+{% block branding %}
+<div id="site-name">
+  <a href="{% url 'admin:index' %}" class="arowai-brand">
+    <span class="arowai-logo-icon">
+      <svg width="28" height="28" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="18" cy="18" r="18" fill="url(#brand-grad)"/>
+        <path d="M10 25L18 11L26 25" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13 21H23" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="brand-grad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#10b981"/>
+            <stop offset="1" stop-color="#0d9488"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </span>
+    <span class="arowai-logo-text">AROWAI</span>
+    <span class="arowai-logo-badge">Admin</span>
+  </a>
+</div>
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ===================================================
+     AROWAI ADMIN — PREMIUM DARK THEME
+     Color Palette:
+       Background: #0a0f1e  (deep navy)
+       Surface:    #111827  (midnight)
+       Panel:      #1a2236  (dark card)
+       Accent:     #10b981  (emerald green)
+       Accent2:    #f59e0b  (gold / amber)
+       Text:       #e2e8f0  (light slate)
+       Muted:      #64748b  (slate)
+       Border:     #1e293b  (dark border)
+  =================================================== */
+
+  :root {
+    --aw-bg:       #0a0f1e;
+    --aw-surface:  #111827;
+    --aw-panel:    #1a2236;
+    --aw-border:   #1e2d45;
+    --aw-accent:   #10b981;
+    --aw-accent-h: #059669;
+    --aw-gold:     #f59e0b;
+    --aw-text:     #e2e8f0;
+    --aw-muted:    #64748b;
+    --aw-danger:   #ef4444;
+    --aw-radius:   10px;
+    --aw-radius-sm: 6px;
+    --aw-shadow:   0 4px 20px rgba(0,0,0,0.4);
+    --aw-glow:     0 0 0 3px rgba(16,185,129,0.25);
+  }
+
+  /* ── Base reset ───────────────────────────────── */
+  * { box-sizing: border-box; }
+
+  html, body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    background: var(--aw-bg) !important;
+    color: var(--aw-text) !important;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── Header / Branding ───────────────────────── */
+  #header {
+    background: linear-gradient(135deg, #0d1b2e 0%, #111827 60%, #0d2035 100%) !important;
+    border-bottom: 1px solid var(--aw-border) !important;
+    padding: 0 40px !important;
+    height: 70px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.5) !important;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  #header #site-name {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .arowai-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none !important;
+  }
+
+  .arowai-logo-icon {
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(0 2px 8px rgba(16,185,129,0.4));
+  }
+
+  .arowai-logo-text {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #f8fafc !important;
+    text-decoration: none;
+  }
+
+  .arowai-logo-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    background: linear-gradient(90deg, var(--aw-accent), #34d399);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    margin-left: 2px;
+  }
+
+  /* Header links */
+  #header a, #header .current-user {
+    color: #94a3b8 !important;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  #header a:hover { color: var(--aw-accent) !important; text-decoration: none; }
+
+  #user-tools {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #94a3b8 !important;
+  }
+
+  #user-tools a {
+    color: #94a3b8 !important;
+    padding: 6px 14px;
+    border-radius: var(--aw-radius-sm);
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
+
+  #user-tools a:hover {
+    color: #fff !important;
+    background: rgba(16,185,129,0.12);
+    border-color: rgba(16,185,129,0.25);
+  }
+
+  /* ── Breadcrumbs ─────────────────────────────── */
+  .breadcrumbs {
+    background: var(--aw-surface) !important;
+    border-bottom: 1px solid var(--aw-border) !important;
+    padding: 14px 40px !important;
+    font-size: 13px !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    white-space: normal !important;
+  }
+
+  .breadcrumbs a {
+    color: var(--aw-accent) !important;
+  }
+
+  .breadcrumbs a:hover { text-decoration: underline; }
+
+  /* ── Content wrapper ──────────────────────────── */
+  #content-main, #content, #content-related {
+    background: transparent !important;
+  }
+
+  #content {
+    padding: 40px !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+  }
+
+  /* ── Page titles ──────────────────────────────── */
+  #content h1 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #f8fafc !important;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px !important;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--aw-border);
+  }
+
+  #content h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f1f5f9 !important;
+    margin-bottom: 14px !important;
+    letter-spacing: 0.2px;
+  }
+
+  /* ── Sidebar (Module list) ───────────────────── */
+  #nav-sidebar, .sidebar {
+    background: var(--aw-surface) !important;
+    border-right: 1px solid var(--aw-border) !important;
+    padding: 20px 12px;
+    width: 260px;
+  }
+
+  #nav-sidebar .module caption,
+  #nav-sidebar .module th {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  #nav-sidebar .module td {
+    padding: 10px 12px !important;
+  }
+
+  #nav-sidebar .addlink, 
+  #nav-sidebar .changelink, 
+  #nav-sidebar .viewlink {
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+    overflow-wrap: normal !important;
+    padding: 4px 8px !important;
+  }
+
+  #nav-sidebar .current-app > .section:last-child {
+    display: block !important;
+  }
+
+  /* ── App modules / index cards ────────────────── */
+  #content-main .module,
+  .module {
+    background: var(--aw-panel) !important;
+    border: 1px solid var(--aw-border) !important;
+    border-radius: var(--aw-radius) !important;
+    overflow: visible !important;
+    box-shadow: var(--aw-shadow) !important;
+    margin-bottom: 28px !important;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .module:hover {
+    border-color: rgba(16,185,129,0.3) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.1) !important;
+  }
+
+  .module caption,
+  .module > h2,
+  .module > table > caption {
+    background: linear-gradient(135deg, #0d2035 0%, #1a2236 100%) !important;
+    color: var(--aw-accent) !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    padding: 16px 24px !important;
+    border-bottom: 1px solid var(--aw-border) !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+  }
+
+  /* ── App index table rows ─────────────────────── */
+  .app-core tr th, .app-core tr td,
+  table th, table td {
+    background: transparent !important;
+    border-bottom: 1px solid var(--aw-border) !important;
+    color: var(--aw-text) !important;
+    padding: 14px 20px !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Result list tables */
+  #result_list { width: 100% !important; table-layout: auto !important; }
+  #result_list th, #result_list td { white-space: normal !important; }
+
+  table th {
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    color: var(--aw-muted) !important;
+    background: rgba(0,0,0,0.2) !important;
+  }
+
+  table tr:hover td {
+    background: rgba(16,185,129,0.04) !important;
+  }
+
+  /* ── App index links ─────────────────────────── */
+  .model-item a,
+  #content-main a,
+  table td a {
+    color: #60a5fa !important;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  #content-main a:hover,
+  table td a:hover {
+    color: var(--aw-accent) !important;
+  }
+
+  .addlink, .changelink, .viewlink {
+    font-size: 12px !important;
+    padding: 4px 10px !important;
+    border-radius: 5px !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+  }
+
+  .addlink {
+    background: rgba(16,185,129,0.12) !important;
+    color: var(--aw-accent) !important;
+    border: 1px solid rgba(16,185,129,0.2) !important;
+  }
+
+  .addlink:hover {
+    background: rgba(16,185,129,0.2) !important;
+    color: #fff !important;
+  }
+
+  .changelink, .viewlink {
+    background: rgba(96,165,250,0.10) !important;
+    color: #60a5fa !important;
+    border: 1px solid rgba(96,165,250,0.2) !important;
+  }
+
+  .changelink:hover, .viewlink:hover {
+    background: rgba(96,165,250,0.2) !important;
+    color: #fff !important;
+  }
+
+  /* ── Buttons ─────────────────────────────────── */
+  .button, input[type=submit], input[type=button],
+  .submit-row input, .submit-row a {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-radius: var(--aw-radius-sm) !important;
+    padding: 9px 20px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    letter-spacing: 0.2px;
+  }
+
+  .button.default, input[type=submit].default,
+  [type=submit]:not(.deletelink):not(.closelink),
+  .submit-row input[type=submit] {
+    background: linear-gradient(135deg, var(--aw-accent), var(--aw-accent-h)) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(16,185,129,0.35) !important;
+  }
+
+  .button.default:hover,
+  [type=submit]:not(.deletelink):not(.closelink):hover {
+    background: linear-gradient(135deg, #34d399, var(--aw-accent)) !important;
+    box-shadow: 0 6px 20px rgba(16,185,129,0.5) !important;
+    transform: translateY(-1px);
+  }
+
+  .deletelink {
+    background: rgba(239,68,68,0.15) !important;
+    color: #f87171 !important;
+    border: 1px solid rgba(239,68,68,0.2) !important;
+  }
+
+  .deletelink:hover {
+    background: rgba(239,68,68,0.25) !important;
+    color: #fff !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* ── Submit row ──────────────────────────────── */
+  .submit-row {
+    background: var(--aw-panel) !important;
+    border-top: 1px solid var(--aw-border) !important;
+    border-radius: 0 0 var(--aw-radius) var(--aw-radius) !important;
+    padding: 16px 24px !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Forms / Fieldsets ───────────────────────── */
+  .form-row {
+    background: transparent !important;
+    color: var(--aw-text) !important;
+    border-bottom: 1px solid var(--aw-border) !important;
+    padding: 20px 24px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  fieldset {
+    background: var(--aw-panel) !important;
+    border: 1px solid var(--aw-border) !important;
+    border-radius: var(--aw-radius) !important;
+    margin-bottom: 28px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  fieldset h2 {
+    background: rgba(0,0,0,0.25) !important;
+    padding: 16px 24px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    color: var(--aw-accent) !important;
+    margin: 0 !important;
+    border-bottom: 1px solid var(--aw-border) !important;
+  }
+
+  .aligned label {
+    color: #94a3b8 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    display: block !important;
+    width: auto !important;
+    margin-bottom: 6px !important;
+    padding: 0 !important;
+    border: none !important;
+    white-space: normal !important;
+  }
+
+  input[type=text], input[type=password], input[type=email],
+  input[type=url], input[type=number], textarea, select,
+  .vTextField, .vLargeTextField {
+    background: #0f1b2d !important;
+    color: var(--aw-text) !important;
+    border: 1px solid var(--aw-border) !important;
+    border-radius: var(--aw-radius-sm) !important;
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+    outline: none !important;
+    max-width: 100%;
+  }
+
+  input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
+  input[type=url]:focus, input[type=number]:focus, textarea:focus, select:focus {
+    border-color: var(--aw-accent) !important;
+    box-shadow: var(--aw-glow) !important;
+  }
+
+  select option {
+    background: var(--aw-surface) !important;
+  }
+
+  .help { color: var(--aw-muted) !important; font-size: 12px !important; display: block !important; margin-top: 4px !important; white-space: normal !important; word-break: break-word !important; }
+
+  /* ── Pagination ──────────────────────────────── */
+  .paginator {
+    background: var(--aw-panel) !important;
+    border: 1px solid var(--aw-border) !important;
+    border-radius: var(--aw-radius) !important;
+    padding: 14px 20px !important;
+    color: var(--aw-muted) !important;
+    font-size: 13px !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .paginator a {
+    color: var(--aw-accent) !important;
+    padding: 4px 10px;
+    border-radius: 5px;
+    transition: background 0.2s;
+  }
+
+  .paginator a:hover { background: rgba(16,185,129,0.12); }
+
+  .paginator .this-page {
+    background: linear-gradient(135deg, var(--aw-accent), var(--aw-accent-h)) !important;
+    color: #fff !important;
+    padding: 4px 12px !important;
+    border-radius: 5px !important;
+    font-weight: 700 !important;
+  }
+
+  /* ── Filters (right sidebar) ─────────────────── */
+  #changelist-filter {
+    background: var(--aw-panel) !important;
+    border-left: 1px solid var(--aw-border) !important;
+    border-radius: var(--aw-radius) !important;
+    overflow: visible !important;
+  }
+
+  #changelist-filter ul li a {
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  #changelist-filter h2 {
+    background: rgba(0,0,0,0.25) !important;
+    color: var(--aw-accent) !important;
+    font-size: 11px !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    padding: 14px 18px !important;
+    border-bottom: 1px solid var(--aw-border) !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+  }
+
+  #changelist-filter h3 {
+    color: #94a3b8 !important;
+    font-size: 11px !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    padding: 12px 18px 6px !important;
+    font-weight: 700 !important;
+  }
+
+  #changelist-filter ul li a {
+    color: #94a3b8 !important;
+    padding: 6px 18px !important;
+    display: block;
+    transition: all 0.15s;
+    font-size: 13px;
+  }
+
+  #changelist-filter ul li.selected a,
+  #changelist-filter ul li a:hover {
+    color: var(--aw-accent) !important;
+    background: rgba(16,185,129,0.08) !important;
+  }
+
+  /* ── Search bar ──────────────────────────────── */
+  #toolbar {
+    background: var(--aw-surface) !important;
+    border-bottom: 1px solid var(--aw-border) !important;
+    padding: 16px 24px !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  #searchbar {
+    background: #0f1b2d !important;
+    border: 1px solid var(--aw-border) !important;
+    border-radius: var(--aw-radius-sm) !important;
+    color: var(--aw-text) !important;
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  #searchbar:focus {
+    border-color: var(--aw-accent) !important;
+    box-shadow: var(--aw-glow) !important;
+    outline: none;
+  }
+
+  #toolbar #changelist-search input[type=submit] {
+    background: linear-gradient(135deg, var(--aw-accent), var(--aw-accent-h)) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: var(--aw-radius-sm) !important;
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-left: 6px;
+  }
+
+  /* ── Result list checkboxes ──────────────────── */
+  #result_list tr.selected td { background: rgba(16,185,129,0.06) !important; }
+  input[type=checkbox]:checked { accent-color: var(--aw-accent) !important; }
+
+  /* ── Messages / alerts ───────────────────────── */
+  .messagelist li {
+    border-radius: var(--aw-radius-sm) !important;
+    margin-bottom: 8px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 12px 16px !important;
+  }
+
+  .messagelist .success {
+    background: rgba(16,185,129,0.12) !important;
+    border: 1px solid rgba(16,185,129,0.25) !important;
+    color: #34d399 !important;
+  }
+
+  .messagelist .error, .messagelist .warning {
+    background: rgba(239,68,68,0.12) !important;
+    border: 1px solid rgba(239,68,68,0.25) !important;
+    color: #f87171 !important;
+  }
+
+  /* ── Recent actions ──────────────────────────── */
+  #recent-actions-module, #recent-actions-module .actionlist li {
+    font-size: 13px !important;
+  }
+
+  #recent-actions-module .actionlist li {
+    border-bottom: 1px solid var(--aw-border) !important;
+    padding: 8px 12px !important;
+    color: #94a3b8 !important;
+  }
+
+  /* ── Action select ───────────────────────────── */
+  .actions select {
+    background: #0f1b2d !important;
+    color: var(--aw-text) !important;
+    border: 1px solid var(--aw-border) !important;
+    border-radius: var(--aw-radius-sm) !important;
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  /* ── Calendar / datetime picker ──────────────── */
+  .calendar td, .timelist li { color: var(--aw-text) !important; }
+  .calendar td a:hover, .timelist a:hover { background: var(--aw-accent) !important; color: #fff !important; }
+  .calendarbox, .clockbox { background: var(--aw-panel) !important; border: 1px solid var(--aw-border) !important; border-radius: var(--aw-radius) !important; }
+
+  /* ── Index app grid ──────────────────────────── */
+  #content-main > .app-core,
+  #content-main > div {
+    animation: fadeSlide 0.3s ease both;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive ──────────────────────────────── */
+  @media (max-width: 767px) {
+    #header { padding: 0 16px !important; }
+    #content { padding: 16px !important; }
+  }
+
+  /* ── Scrollbar ───────────────────────────────── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--aw-bg); }
+  ::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--aw-muted); }
+
+  /* ── Inline delete / edit ────────────────────── */
+  .inline-deletelink { color: #f87171 !important; font-size: 12px !important; }
+  .inline-group .tabular tr.has_original td { background: rgba(16,185,129,0.03) !important; }
+  .inline-group { margin-top: 24px !important; }
+  .inline-group .tabular td { padding: 12px 16px !important; white-space: normal !important; word-break: break-word !important; }
+
+  /* ── Object actions ──────────────────────────── */
+  .object-tools li a {
+    background: var(--aw-panel) !important;
+    color: var(--aw-accent) !important;
+    border: 1px solid rgba(16,185,129,0.25) !important;
+    border-radius: 20px !important;
+    padding: 6px 16px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px;
+    transition: all 0.2s;
+  }
+
+  .object-tools li a:hover {
+    background: rgba(16,185,129,0.15) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(16,185,129,0.2) !important;
+  }
+
+  /* ── Highlight first column links in changelist ── */
+  th.field-title a, td.field-title a { font-weight: 600 !important; }
+
+  /* ── Login page ──────────────────────────────── */
+  body.login {
+    background: var(--aw-bg) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  body.login #header {
+    display: none !important;
+  }
+
+  body.login #nav-sidebar,
+  body.login .breadcrumbs,
+  body.login #nav-toggle,
+  body.login #toggle-nav-sidebar {
+    display: none !important;
+  }
+
+  body.login #content {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  body.login #content-main {
+    background: var(--aw-panel) !important;
+    border-radius: 18px !important;
+    border: 1px solid var(--aw-border) !important;
+    padding: 40px !important;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5) !important;
+    min-width: 380px;
+  }
+
+  body.login #content h1 {
+    text-align: center;
+    font-size: 22px;
+    color: var(--aw-accent) !important;
+    border-bottom: none !important;
+    margin-bottom: 30px !important;
+  }
+
+  body.login .submit-row {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+</style>
+{% endblock %}

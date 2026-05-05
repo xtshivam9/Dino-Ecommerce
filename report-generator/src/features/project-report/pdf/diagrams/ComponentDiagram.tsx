@@ -1,6 +1,6 @@
 /**
  * Component Hierarchy Diagram
- * Shows Django MVT component architecture for Dino-Ecommerce
+ * Shows Django MVT component architecture for Arowai Ecommerce 1.0
  * For Chapter 6 (System Design) - Component section
  */
 import {

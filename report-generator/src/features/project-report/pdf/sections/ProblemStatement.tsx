@@ -59,32 +59,17 @@ export default function ProblemStatement() {
 
       <Text style={styles.h2}>2.1 Introduction</Text>
       <Text style={styles.paragraphIndent}>
-        Before embarking on the development of a complex software system like an e-commerce platform, it is crucial to thoroughly analyze the existing landscape, understand the market demands, and clearly define the problems that the proposed system intends to solve. This chapter provides a comprehensive literature review of the current e-commerce ecosystem, analyzes competing solutions, and formally articulates the problem statement for the Dino-Ecommerce project.
+        This chapter analyzes the e-commerce landscape, competing solutions, and defines the problem statement for Arowai Ecommerce 1.0.
       </Text>
 
       <Text style={styles.h2}>2.2 Problem Statement</Text>
-      <View style={{ backgroundColor: "#f9f9f9", padding: 16, borderLeftWidth: 4, borderLeftColor: "#000000", marginBottom: 16 }}>
-        <Text style={{ fontFamily: "Times-Bold", fontSize: 12, marginBottom: 8 }}>Core Problem Definition:</Text>
-        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, lineHeight: 1.5 }}>
-          "Small and medium enterprises (SMEs) face significant barriers to entry when attempting to establish a bespoke, highly customized online retail presence. Existing SaaS platforms enforce rigid templates and recurring fees that diminish profit margins, while custom enterprise development is prohibitively expensive. There is a distinct lack of a middle-ground solution: a lightweight, secure, and extensible open-source foundation that provides essential e-commerce capabilities (cart, checkout, payment integration) without architectural lock-in, enabling rapid deployment and absolute data sovereignty."
-        </Text>
-      </View>
-
-      <Text style={styles.paragraph}>
-        Specifically, businesses struggle with:
-      </Text>
-      <View style={{ paddingLeft: 16, marginBottom: 16 }}>
-        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>1. <Text style={styles.bold}>Vendor Lock-in:</Text> Difficulty migrating data or customizing processes on proprietary platforms.</Text>
-        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>2. <Text style={styles.bold}>Security Vulnerabilities:</Text> High risk of data breaches when relying on poorly maintained plugins.</Text>
-        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 4 }}>3. <Text style={styles.bold}>Complex Integrations:</Text> Challenges in connecting payment gateways reliably without affecting user experience.</Text>
-      </View>
-
-      <Text style={styles.h2}>2.3 Market Demand & Industry Trends</Text>
       <Text style={styles.paragraphIndent}>
-        The global e-commerce market has experienced unprecedented growth. The shift in consumer behavior, preferring the convenience, variety, and competitive pricing of online shopping, has forced traditional brick-and-mortar retailers to adapt or perish.
+        SMEs face barriers when establishing customized online retail: SaaS platforms enforce rigid templates with recurring fees, while enterprise solutions are prohibitively expensive. The market lacks a middle-ground solution providing essential e-commerce capabilities (cart, checkout, payment) without architectural lock-in. Key challenges include: (1) <Text style={styles.bold}>Vendor Lock-in</Text> - proprietary platforms restrict customization; (2) <Text style={styles.bold}>Security Risks</Text> - third-party plugins create vulnerabilities; (3) <Text style={styles.bold}>Integration Complexity</Text> - payment gateway implementation is technically demanding.
       </Text>
-      <Text style={styles.paragraph}>
-        Recent industry reports indicate a continuous upward trajectory in digital sales volume, particularly in emerging markets like India. This growth necessitates scalable infrastructure capable of handling high transaction volumes securely. Furthermore, modern consumers demand a seamless user experience, mobile responsiveness, and instantaneous payment confirmation.
+
+      <Text style={styles.h2}>2.3 Market Demand</Text>
+      <Text style={styles.paragraphIndent}>
+        The e-commerce market shows continuous growth, particularly in emerging markets like India. This necessitates scalable, secure infrastructure with seamless user experience and mobile responsiveness.
       </Text>
 
       {/* Market Growth Chart Diagram */}
@@ -95,54 +80,40 @@ export default function ProblemStatement() {
         </Text>
       </View>
 
-      <Text style={styles.h2}>2.4 Analysis of Existing Solutions</Text>
+      <Text style={styles.h2}>2.4 Existing Solutions</Text>
       <Text style={styles.paragraphIndent}>
-        To position Dino-Ecommerce effectively, we must evaluate the current market leaders and their respective strengths and weaknesses. The market is broadly divided into two categories: Hosted SaaS platforms and Self-Hosted Open Source systems.
-      </Text>
-
-      <Text style={styles.h3}>2.4.1 Hosted SaaS Platforms (e.g., Shopify, BigCommerce)</Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Strengths:</Text> Extremely fast setup time, managed hosting, integrated CDN, and a vast marketplace of plugins and themes. They require zero server maintenance knowledge.
+        <Text style={styles.bold}>Hosted SaaS (Shopify, BigCommerce):</Text> Fast setup with managed hosting, but restricted customization, vendor-controlled data, and recurring fees.
       </Text>
       <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Weaknesses:</Text> Businesses do not own the underlying code or the database. Customizing the checkout process is often restricted to higher-tier enterprise plans. Recurring monthly fees plus transaction percentage fees significantly eat into revenue.
-      </Text>
-
-      <Text style={styles.h3}>2.4.2 Self-Hosted Solutions (e.g., WooCommerce, Magento)</Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Strengths:</Text> Complete ownership of data and code. Highly customizable with thousands of available plugins. No mandatory transaction fees beyond the payment gateway provider's standard rates.
-      </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>Weaknesses:</Text> Magento is notoriously resource-heavy and requires specialized developers. WooCommerce, being built on WordPress, often suffers from "plugin bloat" leading to severe performance degradation and frequent security vulnerabilities if not meticulously updated.
+        <Text style={styles.bold}>Self-Hosted (WooCommerce, Magento):</Text> Full data ownership and customization, but Magento is resource-heavy and WooCommerce suffers from plugin bloat and security issues.
       </Text>
 
       <Text style={styles.h2}>2.5 Comparative Analysis</Text>
+      <Text style={styles.paragraphIndent}>
+        The following comparison highlights Arowai Ecommerce 1.0's positioning against market leaders:
+      </Text>
 
       {/* Comparison Table */}
-      <View style={{ marginTop: 16, marginBottom: 24 }}>
-        <View style={{ flexDirection: "row", backgroundColor: "#f0f0f0", borderTopWidth: 1, borderBottomWidth: 1, borderColor: "#000000", paddingVertical: 6 }}>
-          <Text style={{ width: "25%", fontFamily: "Times-Bold", fontSize: 10, paddingLeft: 8 }}>Feature</Text>
-          <Text style={{ width: "25%", fontFamily: "Times-Bold", fontSize: 10 }}>Shopify</Text>
-          <Text style={{ width: "25%", fontFamily: "Times-Bold", fontSize: 10 }}>WooCommerce</Text>
-          <Text style={{ width: "25%", fontFamily: "Times-Bold", fontSize: 10 }}>Dino-Ecommerce</Text>
+      <View style={{ marginTop: 16, marginBottom: 20 }}>
+        <View style={{ flexDirection: "row", backgroundColor: "#f0f0f0", borderTopWidth: 1, borderBottomWidth: 1, borderColor: "#000000", paddingVertical: 5 }}>
+          <Text style={{ width: "25%", fontFamily: "Times-Bold", fontSize: 9, paddingLeft: 6 }}>Feature</Text>
+          <Text style={{ width: "25%", fontFamily: "Times-Bold", fontSize: 9 }}>Shopify</Text>
+          <Text style={{ width: "25%", fontFamily: "Times-Bold", fontSize: 9 }}>WooCommerce</Text>
+          <Text style={{ width: "25%", fontFamily: "Times-Bold", fontSize: 9 }}>Arowai Ecommerce 1.0</Text>
         </View>
         {[
-          { feature: "Architecture", t1: "Proprietary SaaS", t2: "PHP/WordPress Plugin", t3: "Python/Django MVT" },
-          { feature: "Data Ownership", t1: "Vendor Controlled", t2: "Self-Hosted (Full)", t3: "Self-Hosted (Full)" },
-          { feature: "Customization", t1: "Limited (Liquid)", t2: "High (PHP)", t3: "Unlimited (Python)" },
-          { feature: "Performance", t1: "High (Managed)", t2: "Variable (Plugin heavy)", t3: "High (Optimized DB)" },
-          { feature: "Security", t1: "High (Managed)", t2: "Medium (Update dependent)", t3: "High (Django core)" }
+          { feature: "Architecture", t1: "Proprietary SaaS", t2: "PHP/WordPress", t3: "Python/Django" },
+          { feature: "Data Ownership", t1: "Vendor Controlled", t2: "Self-Hosted", t3: "Self-Hosted" },
+          { feature: "Customization", t1: "Limited", t2: "High", t3: "Unlimited" },
+          { feature: "Security", t1: "Managed", t2: "Plugin-dependent", t3: "Django Core" }
         ].map((row, i) => (
-          <View key={i} style={{ flexDirection: "row", borderBottomWidth: 1, borderColor: "#eeeeee", paddingVertical: 6 }}>
-            <Text style={{ width: "25%", fontFamily: "Times-Bold", fontSize: 10, paddingLeft: 8 }}>{row.feature}</Text>
-            <Text style={{ width: "25%", fontFamily: "Times-Roman", fontSize: 10 }}>{row.t1}</Text>
-            <Text style={{ width: "25%", fontFamily: "Times-Roman", fontSize: 10 }}>{row.t2}</Text>
-            <Text style={{ width: "25%", fontFamily: "Times-Roman", fontSize: 10 }}>{row.t3}</Text>
+          <View key={i} style={{ flexDirection: "row", borderBottomWidth: 1, borderColor: "#eeeeee", paddingVertical: 5 }}>
+            <Text style={{ width: "25%", fontFamily: "Times-Roman", fontSize: 9, paddingLeft: 6 }}>{row.feature}</Text>
+            <Text style={{ width: "25%", fontFamily: "Times-Roman", fontSize: 9 }}>{row.t1}</Text>
+            <Text style={{ width: "25%", fontFamily: "Times-Roman", fontSize: 9 }}>{row.t2}</Text>
+            <Text style={{ width: "25%", fontFamily: "Times-Roman", fontSize: 9 }}>{row.t3}</Text>
           </View>
         ))}
-        <Text style={{ textAlign: "center", fontSize: 10, fontFamily: "Times-Italic", marginTop: 8, color: "#666666" }}>
-          Table 2.1: Feature Comparison of E-commerce Platforms
-        </Text>
       </View>
 
       {/* Feature Radar Diagram */}
@@ -155,31 +126,17 @@ export default function ProblemStatement() {
 
       <Text style={styles.h2}>2.6 Gap Analysis</Text>
       <Text style={styles.paragraphIndent}>
-        The comparative analysis highlights a distinct gap: the market lacks a lightweight, developer-friendly, Python-based framework tailored specifically for rapid e-commerce deployment. While excellent general-purpose frameworks exist (like Django itself), building the complex business logic for carts, orders, and Stripe integration from scratch every time is inefficient.
-      </Text>
-      <Text style={styles.paragraph}>
-        Dino-Ecommerce bridges this gap by providing a pre-architected Django project that already contains the complex transactional logic, allowing developers and businesses to focus immediately on frontend customization and product catalog management rather than reinventing the wheel for payment processing.
+        The market lacks a lightweight, Python-based e-commerce framework with pre-built transactional logic. Arowai Ecommerce 1.0 bridges this gap by providing a pre-architected Django solution with integrated cart, order, and Stripe payment handling—enabling developers to focus on customization rather than rebuilding core e-commerce functionality.
       </Text>
 
-      <Text style={styles.h2}>2.7 Proposed Solution Overview</Text>
+      <Text style={styles.h2}>2.7 Proposed Solution</Text>
       <Text style={styles.paragraphIndent}>
-        Dino-Ecommerce addresses these challenges through a thoughtfully engineered architecture:
+        Arowai Ecommerce 1.0 leverages Django's built-in security (SQL injection, XSS, CSRF protection), a relational database schema for data integrity, and Stripe integration for PCI-compliant payment processing—providing a secure, customizable, and production-ready e-commerce foundation.
       </Text>
-      <View style={{ paddingLeft: 16, marginBottom: 16 }}>
-        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 8 }}>
-          • <Text style={styles.bold}>Framework Choice:</Text> By utilizing Django, the platform inherits built-in protections against common vulnerabilities like SQL injection, XSS, and CSRF attacks.
-        </Text>
-        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 8 }}>
-          • <Text style={styles.bold}>Data Model Design:</Text> A highly relational database schema ensures data integrity across Users, Orders, and Payments.
-        </Text>
-        <Text style={{ fontFamily: "Times-Roman", fontSize: 11, marginBottom: 8 }}>
-          • <Text style={styles.bold}>Decoupled Payments:</Text> Integrating Stripe offloads the immense burden of PCI compliance while providing a world-class checkout experience.
-        </Text>
-      </View>
 
       <Text style={styles.h2}>2.8 Summary</Text>
       <Text style={styles.paragraphIndent}>
-        In conclusion, while the e-commerce market is saturated with platforms, there remains a critical need for solutions that offer absolute data sovereignty, high security, and deep customizability without exorbitant enterprise costs. Dino-Ecommerce is positioned to fulfill this need, leveraging the robustness of Python and Django to deliver a secure, scalable, and highly adaptable online shopping foundation.
+        Arowai Ecommerce 1.0 addresses the market need for a secure, customizable, and cost-effective Python-based e-commerce solution—providing data sovereignty and production-ready functionality without enterprise platform overhead.
       </Text>
     </BookPageLayout>
   );

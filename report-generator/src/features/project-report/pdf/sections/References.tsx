@@ -31,7 +31,7 @@ export default function References() {
       </View>
 
       <Text style={styles.paragraphIndent}>
-        The development of the Dino-Ecommerce platform was heavily reliant on the following official documentation, technical literature, and open-source resources:
+        The development of the Arowai Ecommerce 1.0 platform was heavily reliant on the following official documentation, technical literature, and open-source resources:
       </Text>
 
       <View style={{ marginTop: 16 }}>

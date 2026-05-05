@@ -36,7 +36,7 @@ export default function InnerCoverPage() {
               color: "#111111",
             }}
           >
-            DINO-ECOMMERCE
+            Arowai Ecommerce 1.0
           </Text>
           <Text
             style={{
