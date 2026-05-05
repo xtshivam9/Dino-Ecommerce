@@ -18,7 +18,7 @@ from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
 from .forms import CheckoutForm, CouponForm, RefundForm
-from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon, Refund, Category
+from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon, Refund, Category, USD_TO_INR
 from django.http import HttpResponseRedirect, JsonResponse
 from django.template import RequestContext
 from django.shortcuts import render
@@ -96,7 +96,7 @@ class PaymentView(View):
             stripe.api_key = settings.STRIPE_SECRET_KEY
             charge = stripe.Charge.create(
                 amount=amount,  # cents
-                currency="usd",
+                currency="inr",
                 source=token
             )
             # create the payment
@@ -157,6 +157,7 @@ class OrderSummaryView(View):
             try:
                 item = Item.objects.get(slug=slug, is_active=True)
                 price = item.discount_price if item.discount_price else item.price
+                price = round(price * USD_TO_INR, 2)
                 subtotal = price * qty
                 total += subtotal
                 guest_items.append({
@@ -612,6 +613,8 @@ class CheckoutView(View):
                     return redirect('core:payment', payment_option='stripe')
                 elif payment_option == 'P':
                     return redirect('core:payment', payment_option='paypal')
+                elif payment_option == 'D':
+                    return redirect('core:dummy-payment')
                 else:
                     messages.warning(
                         self.request, "Invalid payment option select")
