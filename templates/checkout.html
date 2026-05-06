@@ -525,39 +525,6 @@
         </div>
     </div>
 
-    <div id="stripeCardModal" class="stripe-card-modal">
-      <div class="stripe-card-panel">
-        <div class="stripe-card-header">
-          <div>
-            <h3 class="stripe-card-title">Card Payment</h3>
-            <p class="stripe-card-subtitle">Enter your card details securely</p>
-          </div>
-          <button type="button" class="stripe-card-close" onclick="closeStripeCardModal()" aria-label="Close card modal">&times;</button>
-        </div>
-        <div class="stripe-card-body">
-          <label class="stripe-field-label" for="card-number-element">Card number</label>
-          <div id="card-number-element" class="stripe-field"></div>
-
-          <div class="stripe-card-grid" style="margin-top: 12px;">
-            <div>
-              <label class="stripe-field-label" for="card-expiry-element">Expiry</label>
-              <div id="card-expiry-element" class="stripe-field"></div>
-            </div>
-            <div>
-              <label class="stripe-field-label" for="card-cvc-element">CVC</label>
-              <div id="card-cvc-element" class="stripe-field"></div>
-            </div>
-          </div>
-
-          <div id="stripe-card-error" class="stripe-card-error"></div>
-
-          <button id="stripePayButton" type="button" class="stripe-pay-btn" onclick="handleStripeCardPayment()">
-            Pay ${{ order.get_total }}
-          </button>
-        </div>
-      </div>
-    </div>
-
     <!-- Processing Overlay -->
     <div id="processingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); z-index: 10001; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
         <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem; color: #3b82f6 !important;">
@@ -566,112 +533,7 @@
         <p style="margin-top: 20px; font-weight: 700; color: #111827; font-size: 18px;">Verifying Payment...</p>
     </div>
 
-    <script src="https://js.stripe.com/v3/"></script>
-
     <script>
-      var stripeTotal = Math.round(parseFloat('{{ order.get_total }}') * 100);
-      var stripeInstance = null;
-      var stripeElements = null;
-      var stripeCardNumber = null;
-      var stripeCardExpiry = null;
-      var stripeCardCvc = null;
-      var stripeElementsReady = false;
-
-      function mountStripeElements() {
-        if (stripeElementsReady) return;
-
-        stripeInstance = Stripe('{{ STRIPE_PUBLIC_KEY }}');
-        stripeElements = stripeInstance.elements({
-          fonts: [{ cssSrc: 'https://fonts.googleapis.com/css?family=Montserrat:500,600,700' }]
-        });
-
-        var elementStyle = {
-          base: {
-            color: '#0f172a',
-            fontFamily: 'Montserrat, system-ui, sans-serif',
-            fontSize: '16px',
-            '::placeholder': { color: '#94a3b8' }
-          },
-          invalid: {
-            color: '#dc2626'
-          }
-        };
-
-        stripeCardNumber = stripeElements.create('cardNumber', { style: elementStyle });
-        stripeCardExpiry = stripeElements.create('cardExpiry', { style: elementStyle });
-        stripeCardCvc = stripeElements.create('cardCvc', { style: elementStyle });
-
-        stripeCardNumber.mount('#card-number-element');
-        stripeCardExpiry.mount('#card-expiry-element');
-        stripeCardCvc.mount('#card-cvc-element');
-
-        function bindFieldState(el, containerId) {
-          var container = document.getElementById(containerId);
-          el.on('focus', function() {
-            container.classList.add('is-focus');
-          });
-          el.on('blur', function() {
-            container.classList.remove('is-focus');
-          });
-          el.on('change', function(event) {
-            var err = document.getElementById('stripe-card-error');
-            err.textContent = event.error ? event.error.message : '';
-          });
-        }
-
-        bindFieldState(stripeCardNumber, 'card-number-element');
-        bindFieldState(stripeCardExpiry, 'card-expiry-element');
-        bindFieldState(stripeCardCvc, 'card-cvc-element');
-
-        stripeElementsReady = true;
-      }
-
-      function openStripeCardModal() {
-        mountStripeElements();
-        var modal = document.getElementById('stripeCardModal');
-        var panel = modal.querySelector('.stripe-card-panel');
-        modal.style.display = 'flex';
-        setTimeout(function() {
-          modal.style.opacity = '1';
-          panel.style.transform = 'scale(1) translateY(0)';
-        }, 10);
-      }
-
-      function closeStripeCardModal() {
-        var modal = document.getElementById('stripeCardModal');
-        var panel = modal.querySelector('.stripe-card-panel');
-        modal.style.opacity = '0';
-        panel.style.transform = 'scale(0.96) translateY(8px)';
-        setTimeout(function() {
-          modal.style.display = 'none';
-        }, 280);
-      }
-
-      async function handleStripeCardPayment() {
-        var payBtn = document.getElementById('stripePayButton');
-        var errorEl = document.getElementById('stripe-card-error');
-        errorEl.textContent = '';
-        payBtn.disabled = true;
-        payBtn.textContent = 'Processing...';
-
-        try {
-          var tokenResult = await stripeInstance.createToken(stripeCardNumber);
-          if (tokenResult.error) {
-            errorEl.textContent = tokenResult.error.message || 'Please check card details.';
-            payBtn.disabled = false;
-            payBtn.textContent = 'Pay ${{ order.get_total }}';
-            return;
-          }
-
-          closeStripeCardModal();
-          sendAJAXPayment('S', tokenResult.token.id);
-        } catch (error) {
-          errorEl.textContent = 'Unable to process card right now. Please try again.';
-          payBtn.disabled = false;
-          payBtn.textContent = 'Pay ${{ order.get_total }}';
-        }
-      }
-
       function openPaymentModal() {
         const form = document.getElementById('checkout-form');
         if (!form.checkValidity()) {
@@ -705,97 +567,31 @@
           return;
         }
 
-        if (selected.value === 'S') {
-            closePaymentModal();
-          openStripeCardModal();
-        } else {
-            // Dummy or other payment - proceed immediately
-            sendAJAXPayment(selected.value);
-        }
-      }
-
-      function sendAJAXPayment(paymentOption, stripeToken = null) {
         const form = document.getElementById('checkout-form');
-        const formData = new FormData(form);
-        formData.append('payment_option', paymentOption);
-        if (stripeToken) {
-            formData.append('stripeToken', stripeToken);
-        }
+        
+        // Remove old hidden input if exists
+        const oldInput = form.querySelector('input[name="payment_option"]');
+        if (oldInput) oldInput.remove();
+
+        const paymentInput = document.createElement('input');
+        paymentInput.type = 'hidden';
+        paymentInput.name = 'payment_option';
+        paymentInput.value = selected.value;
+        form.appendChild(paymentInput);
 
         // Show Processing Overlay
         const overlay = document.getElementById('processingOverlay');
         overlay.style.display = 'flex';
         setTimeout(() => overlay.style.opacity = '1', 10);
 
-        // Close selection modal if it's still open (for non-Stripe)
         closePaymentModal();
-
-        // Perform AJAX Submission
-        let url = "";
-        if (paymentOption === "D") {
-            url = "/dummy-payment/?ajax=1";
-        } else {
-            url = "/payment/" + (paymentOption === "S" ? "stripe" : "paypal") + "/?ajax=1";
-        }
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) {
-                return response.text().then(text => {
-                    throw new Error(`Server ${response.status}: ${text.substring(0, 100)}`);
-                });
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Hide Processing Overlay
-            overlay.style.opacity = '0';
-            setTimeout(() => overlay.style.display = 'none', 300);
-
-            if (data.status === 'success') {
-                showSuccessPopup();
-            } else {
-                alert("Payment Error: " + (data.message || "An unknown error occurred."));
-              var stripeBtn = document.getElementById('stripePayButton');
-              stripeBtn.disabled = false;
-              stripeBtn.textContent = 'Pay ${{ order.get_total }}';
-            }
-        })
-        .catch(error => {
-            overlay.style.opacity = '0';
-            setTimeout(() => overlay.style.display = 'none', 300);
-            alert("Checkout Error: " + error.message);
-            console.error('Checkout Error:', error);
-            var stripeBtn = document.getElementById('stripePayButton');
-            stripeBtn.disabled = false;
-            stripeBtn.textContent = 'Pay ${{ order.get_total }}';
-        });
-      }
-
-      function showSuccessPopup() {
-        const modal = document.getElementById('paymentSuccessModal');
-        modal.style.display = 'flex';
-        setTimeout(() => {
-            modal.style.opacity = '1';
-            modal.querySelector('div').style.transform = 'scale(1)';
-        }, 10);
+        form.submit();
       }
 
       window.addEventListener('click', function(event) {
         var paymentModal = document.getElementById('premiumPaymentModal');
-        var stripeModal = document.getElementById('stripeCardModal');
         if (event.target === paymentModal) {
           closePaymentModal();
-        }
-        if (event.target === stripeModal) {
-          closeStripeCardModal();
         }
       });
 
