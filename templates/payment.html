@@ -33,14 +33,24 @@
   <div class="row">
     <div class="col-md-8 order-md-1">
       <div class="payment-container">
-    	  <h4 class="mb-4">Complete Your Payment</h4>
-        <p class="text-muted mb-4">You will be securely redirected to our payment popup to complete your transaction using Stripe.</p>
+    	  <h4 class="mb-4" style="display: flex; align-items: center; gap: 10px;">
+          Complete Your Payment
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe Logo" style="height: 24px;">
+        </h4>
+        <p class="text-muted mb-4">Enter your card details securely below. This inline payment form is officially <strong>Powered by Stripe Elements</strong> for maximum security and seamless checkout.</p>
         
         <form action="." method="post" id="stripe-form">
             {% csrf_token %}
             <input type="hidden" id="stripeToken" name="stripeToken" />
             <input type="hidden" id="stripeEmail" name="stripeEmail" />
-            <button id="customButton" class="payment-btn">💳 Pay with Card Element</button>
+            <div id="card-element" style="padding: 14px; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 20px; background: #f8fafc;"></div>
+            <div id="card-errors" role="alert" style="color: #dc2626; margin-bottom: 20px; font-size: 14px; font-weight: 500;"></div>
+            <button id="customButton" class="payment-btn" type="submit" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+              </svg>
+              Pay securely with Stripe (₹{{ order.get_total }})
+            </button>
         </form>
       </div>
     </div>
@@ -50,35 +60,61 @@
 {% endblock content %}
 
 {% block extra_scripts %}
-<script src="https://checkout.stripe.com/checkout.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
 <script>
-  var stripeTotal = Math.round(parseFloat('{{ order.get_total }}') * 100);
-  
-  var handler = StripeCheckout.configure({
-    key: '{{ STRIPE_PUBLIC_KEY }}',
-    image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
-    locale: 'auto',
-    token: function(token) {
-      document.getElementById('stripeToken').value = token.id;
-      document.getElementById('stripeEmail').value = token.email;
-      document.getElementById('customButton').disabled = true;
-      document.getElementById('customButton').innerText = "Processing...";
-      document.getElementById('stripe-form').submit();
+  var stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+  var elements = stripe.elements({
+    fonts: [{ cssSrc: 'https://fonts.googleapis.com/css?family=Montserrat:500,600,700' }]
+  });
+
+  var style = {
+    base: {
+      color: '#32325d',
+      fontFamily: 'Montserrat, "Helvetica Neue", Helvetica, sans-serif',
+      fontSmoothing: 'antialiased',
+      fontSize: '16px',
+      '::placeholder': {
+        color: '#aab7c4'
+      }
+    },
+    invalid: {
+      color: '#fa755a',
+      iconColor: '#fa755a'
+    }
+  };
+
+  var card = elements.create('card', {style: style});
+  card.mount('#card-element');
+
+  card.addEventListener('change', function(event) {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+      displayError.textContent = event.error.message;
+    } else {
+      displayError.textContent = '';
     }
   });
 
-  document.getElementById('customButton').addEventListener('click', function(e) {
-    handler.open({
-      name: 'Arowai',
-      description: 'Cart Checkout',
-      amount: stripeTotal,
-      currency: 'usd'
-    });
-    e.preventDefault();
-  });
+  var form = document.getElementById('stripe-form');
+  var submitBtn = document.getElementById('customButton');
 
-  window.addEventListener('popstate', function() {
-    handler.close();
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Processing...";
+
+    stripe.createToken(card).then(function(result) {
+      if (result.error) {
+        var errorElement = document.getElementById('card-errors');
+        errorElement.textContent = result.error.message;
+        submitBtn.disabled = false;
+        submitBtn.innerText = "💳 Pay ₹{{ order.get_total }}";
+      } else {
+        document.getElementById('stripeToken').value = result.token.id;
+        document.getElementById('stripeEmail').value = "{{ request.user.email }}";
+        form.submit();
+      }
+    });
   });
 </script>
 {% endblock extra_scripts %}

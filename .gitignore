@@ -9,7 +9,6 @@ env/
 .venv/
 venv/
 ENV/
-.env
 
 # Build / Distribution
 build/
@@ -30,7 +29,6 @@ staticfiles/
 # media_root/
 
 # IDE / Editor
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -41,3 +39,9 @@ Thumbs.db
 
 # Project Specific
 report-generator/
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
+config.bat
+node_modules
