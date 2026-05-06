@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load category_template_tags %}
+{% load currency_tags %}
 
 {% block content %}
 <style>
@@ -380,7 +381,7 @@
 								<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">Filter</button>
 							</div>
 							<div class="s-text3 p-t-10 p-b-10">
-								Range: $<span id="value-lower">610</span> - $<span id="value-upper">980</span>
+								Range: ₹<span id="value-lower">610</span> - ₹<span id="value-upper">980</span>
 							</div>
 						</div>
 					</div>
@@ -412,11 +413,11 @@
 						<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
 							<select class="selection-2" name="sorting">
 								<option>Price</option>
-								<option>$0.00 - $50.00</option>
-								<option>$50.00 - $100.00</option>
-								<option>$100.00 - $150.00</option>
-								<option>$150.00 - $200.00</option>
-								<option>$200.00+</option>
+								<option>₹0.00 - ₹50.00</option>
+								<option>₹50.00 - ₹100.00</option>
+								<option>₹100.00 - ₹150.00</option>
+								<option>₹150.00 - ₹200.00</option>
+								<option>₹200.00+</option>
 							</select>
 						</div>
 					</div>
@@ -448,10 +449,10 @@
 							</div>
 							<div class="premium-prices">
 								{% if item.discount_price %}
-									<span class="premium-old-price">${{ item.price }}</span>
-									<span class="premium-current-price">${{ item.discount_price }}</span>
+									<span class="premium-old-price">₹{{ item.price|to_inr }}</span>
+									<span class="premium-current-price">₹{{ item.discount_price|to_inr }}</span>
 								{% else %}
-									<span class="premium-current-price">${{ item.price }}</span>
+									<span class="premium-current-price">₹{{ item.price|to_inr }}</span>
 								{% endif %}
 							</div>
 						</div>

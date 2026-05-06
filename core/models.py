@@ -23,6 +23,9 @@ ADDRESS_CHOICES = (
     ('S', 'Shipping'),
 )
 
+# USD to INR conversion rate
+USD_TO_INR = 95
+
 
 class Slide(models.Model):
     caption1 = models.CharField(max_length=100)
@@ -93,13 +96,13 @@ class OrderItem(models.Model):
         return f"{self.quantity} of {self.item.title}"
 
     def get_total_item_price(self):
-        return self.quantity * self.item.price
+        return round(self.quantity * self.item.price * USD_TO_INR, 2)
 
     def get_total_discount_item_price(self):
-        return self.quantity * self.item.discount_price
+        return round(self.quantity * self.item.discount_price * USD_TO_INR, 2)
 
     def get_amount_saved(self):
-        return self.get_total_item_price() - self.get_total_discount_item_price()
+        return round(self.get_total_item_price() - self.get_total_discount_item_price(), 2)
 
     def get_final_price(self):
         if self.item.discount_price:
@@ -146,8 +149,8 @@ class Order(models.Model):
         for order_item in self.items.all():
             total += order_item.get_final_price()
         if self.coupon:
-            total -= self.coupon.amount
-        return total
+            total -= round(self.coupon.amount * USD_TO_INR, 2)
+        return round(total, 2)
 
 
 class BillingAddress(models.Model):

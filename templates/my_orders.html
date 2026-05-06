@@ -294,7 +294,7 @@
           
           <div class="order-total-wrap">
             <span class="order-date-label">Total Amount</span>
-            <span class="order-total">${{ order.get_total|floatformat:2 }}</span>
+            <span class="order-total">₹{{ order.get_total|floatformat:2 }}</span>
           </div>
 
           <div>
@@ -339,9 +339,9 @@
                 <span>&bull;</span>
                 <span class="item-price">
                   {% if order_item.item.discount_price %}
-                    ${{ order_item.get_total_discount_item_price|floatformat:2 }}
+                    ₹{{ order_item.get_total_discount_item_price|floatformat:2 }}
                   {% else %}
-                    ${{ order_item.get_total_item_price|floatformat:2 }}
+                    ₹{{ order_item.get_total_item_price|floatformat:2 }}
                   {% endif %}
                 </span>
               </div>
@@ -377,5 +377,51 @@
 
   </div>
 </div>
+
+<!-- Premium Success Modal -->
+<div id="paymentSuccessModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); z-index: 10000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.5s ease;">
+    <div style="background: white; border-radius: 24px; padding: 40px; width: 100%; max-width: 450px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); transform: scale(0.9); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        <div style="width: 100px; height: 100px; background: #ecfdf5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+            <div style="width: 70px; height: 70px; background: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-check-lg" viewBox="0 0 16 16">
+                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.037a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.42-6.446a.24.24 0 0 1 .012-.012z"/>
+                </svg>
+            </div>
+        </div>
+        <h2 style="font-weight: 800; color: #111827; margin-bottom: 12px; font-size: 28px; letter-spacing: -1px;">Thank You!</h2>
+        <p style="color: #6b7280; font-size: 16px; line-height: 1.6; margin-bottom: 32px;">Your payment was successful and your order has been placed. You can track its status below.</p>
+        <button onclick="closeSuccessModal()" style="display: block; width: 100%; background: #111827; color: white; border: none; padding: 16px; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+            View My Orders
+        </button>
+    </div>
+</div>
+
+<script>
+  function closeSuccessModal() {
+      const modal = document.getElementById('paymentSuccessModal');
+      modal.style.opacity = '0';
+      modal.querySelector('div').style.transform = 'scale(0.9)';
+      setTimeout(() => {
+          modal.style.display = 'none';
+          
+          // Clean up the URL
+          const url = new URL(window.location);
+          url.searchParams.delete('payment_success');
+          window.history.replaceState({}, '', url);
+      }, 500);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('payment_success') === '1') {
+          const modal = document.getElementById('paymentSuccessModal');
+          modal.style.display = 'flex';
+          // Trigger reflow
+          void modal.offsetWidth;
+          modal.style.opacity = '1';
+          modal.querySelector('div').style.transform = 'scale(1)';
+      }
+  });
+</script>
 
 {% endblock content %}

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load currency_tags %}
 {% block content %}
 
 <style>
@@ -552,12 +553,12 @@
       <!-- Price -->
       <div class="pd-price-row">
         {% if object.discount_price %}
-          <span class="pd-price-current">${{ object.discount_price }}</span>
-          <span class="pd-price-original">${{ object.price }}</span>
+          <span class="pd-price-current">₹{{ object.discount_price|to_inr }}</span>
+          <span class="pd-price-original">₹{{ object.price|to_inr }}</span>
           {% widthratio object.discount_price object.price 100 as pct %}
           <span class="pd-save-badge">{{ pct }}% off</span>
         {% else %}
-          <span class="pd-price-current">${{ object.price }}</span>
+          <span class="pd-price-current">₹{{ object.price|to_inr }}</span>
         {% endif %}
       </div>
 
@@ -614,7 +615,7 @@
 
       <!-- Delivery perks -->
       <div class="pd-delivery-strip">
-        <span class="pd-delivery-badge"><i class="fa fa-truck"></i> Free Shipping over $50</span>
+        <span class="pd-delivery-badge"><i class="fa fa-truck"></i> Free Shipping over ₹50</span>
         <span class="pd-delivery-badge"><i class="fa fa-refresh"></i> Easy Returns</span>
         <span class="pd-delivery-badge"><i class="fa fa-lock"></i> Secure Checkout</span>
       </div>
@@ -657,12 +658,12 @@
         <table class="pd-info-table">
           <tr><td>SKU</td><td>{{ object.stock_no }}</td></tr>
           <tr><td>Category</td><td>{{ object.category }}</td></tr>
-          <tr><td>Price</td><td>${{ object.price }}</td></tr>
-          {% if object.discount_price %}<tr><td>Sale Price</td><td>${{ object.discount_price }}</td></tr>{% endif %}
+          <tr><td>Price</td><td>₹{{ object.price|to_inr }}</td></tr>
+          {% if object.discount_price %}<tr><td>Sale Price</td><td>₹{{ object.discount_price|to_inr }}</td></tr>{% endif %}
           <tr><td>Available Sizes</td><td>S, M, L, XL, XXL</td></tr>
           <tr><td>Available Colors</td><td>Black, White, Blue, Red, Gray</td></tr>
           <tr><td>Returns</td><td>30-day hassle-free return policy</td></tr>
-          <tr><td>Shipping</td><td>Free shipping on orders over $50</td></tr>
+          <tr><td>Shipping</td><td>Free shipping on orders over ₹50</td></tr>
         </table>
       </div>
 
@@ -696,10 +697,10 @@
             <span class="pd-related-name">{{ related.title }}</span>
             <div class="pd-related-prices">
               {% if related.discount_price %}
-                <span class="pd-related-price-main">${{ related.discount_price }}</span>
-                <span class="pd-related-price-old">${{ related.price }}</span>
+                <span class="pd-related-price-main">₹{{ related.discount_price|to_inr }}</span>
+                <span class="pd-related-price-old">₹{{ related.price|to_inr }}</span>
               {% else %}
-                <span class="pd-related-price-main">${{ related.price }}</span>
+                <span class="pd-related-price-main">₹{{ related.price|to_inr }}</span>
               {% endif %}
             </div>
           </div>

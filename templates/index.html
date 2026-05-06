@@ -2,6 +2,7 @@
 {% load static %} 
 {% load category_template_tags %} 
 {%load slide_template_tags %} 
+{% load currency_tags %}
 {% block content %}
 <style>
   /*[ Block2 ]
@@ -526,10 +527,10 @@
 
               <div class="premium-prices">
                 {% if item.discount_price %}
-                  <span class="premium-old-price">${{ item.price }}</span>
-                  <span class="premium-current-price">${{ item.discount_price }}</span>
+                  <span class="premium-old-price">₹{{ item.price|to_inr }}</span>
+                  <span class="premium-current-price">₹{{ item.discount_price|to_inr }}</span>
                 {% else %}
-                  <span class="premium-current-price">${{ item.price }}</span>
+                  <span class="premium-current-price">₹{{ item.price|to_inr }}</span>
                 {% endif %}
               </div>
             </div>

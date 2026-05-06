@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load currency_tags %}
 
 {% block content %}
 <style>
@@ -444,9 +445,9 @@
                 </div>
                 <div class="order-item-price">
                   {% if order_item.item.discount_price %}
-                    ${{ order_item.get_total_discount_item_price }}
+                    ₹{{ order_item.get_total_discount_item_price }}
                   {% else %}
-                    ${{ order_item.get_total_item_price }}
+                    ₹{{ order_item.get_total_item_price }}
                   {% endif %}
                 </div>
               </div>
@@ -465,7 +466,7 @@
                   <i class="fas fa-trash"></i>
                 </a>
                 {% if order_item.item.discount_price %}
-                  <span class="badge-saving">Saving ${{ order_item.get_amount_saved }}</span>
+                  <span class="badge-saving">Saving ₹{{ order_item.get_amount_saved }}</span>
                 {% endif %}
               </div>
 
@@ -473,9 +474,9 @@
                 <span>Unit price</span>
                 <strong>
                   {% if order_item.item.discount_price %}
-                    ${{ order_item.item.discount_price }}
+                    ₹{{ order_item.item.discount_price|to_inr }}
                   {% else %}
-                    ${{ order_item.item.price }}
+                    ₹{{ order_item.item.price|to_inr }}
                   {% endif %}
                 </strong>
               </div>
@@ -494,12 +495,12 @@
         {% if object.coupon %}
         <div class="summary-row">
           <span>Coupon</span>
-          <span class="summary-coupon">- ${{ object.coupon.amount }}</span>
+          <span class="summary-coupon">- ₹{{ object.coupon.amount|to_inr }}</span>
         </div>
         {% endif %}
         <div class="summary-row total">
           <span>Order total</span>
-          <span>${{ object.get_total }}</span>
+          <span>₹{{ object.get_total }}</span>
         </div>
 
         <div class="order-actions">
@@ -534,7 +535,7 @@
                   <h3 class="order-item-title">{{ entry.item.title }}</h3>
                   <div class="order-item-meta">{{ entry.item.description_short }}</div>
                 </div>
-                <div class="order-item-price">${{ entry.subtotal }}</div>
+                <div class="order-item-price">₹{{ entry.subtotal }}</div>
               </div>
 
               <div class="order-item-controls">
@@ -556,9 +557,9 @@
                 <span>Unit price</span>
                 <strong>
                   {% if entry.item.discount_price %}
-                    ${{ entry.item.discount_price }}
+                    ₹{{ entry.item.discount_price|to_inr }}
                   {% else %}
-                    ${{ entry.item.price }}
+                    ₹{{ entry.item.price|to_inr }}
                   {% endif %}
                 </strong>
               </div>
@@ -576,7 +577,7 @@
         </div>
         <div class="summary-row total">
           <span>Order total</span>
-          <span>${{ guest_total }}</span>
+          <span>₹{{ guest_total }}</span>
         </div>
 
         <div class="order-actions">
